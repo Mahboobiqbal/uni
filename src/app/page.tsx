@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import UniversityOverview from "@/components/home/UniversityOverview";
+import ViceChancellorSection from "@/components/home/ViceChancellorSection";
 import AnnouncementsBoard from "@/components/home/AnnouncementsBoard";
 import FeaturedSpotlight from "@/components/home/FeaturedSpotlight";
 import DiamondFeaturesGrid from "@/components/home/DiamondFeaturesGrid";
@@ -17,6 +18,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <UniversityOverview />
+        <ViceChancellorSection />
         <AnnouncementsBoard />
         <FeaturedSpotlight />
         <DiamondFeaturesGrid />

@@ -4,6 +4,28 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Integrated React Bits `<ProfileCard />` & Vice Chancellor Section
+
+### Action Summary
+- **Created Primitive `<ProfileCard />` (`src/components/ui/ProfileCard.tsx` & `ProfileCard.css`)**:
+  - Implemented the full React Bits `ProfileCard` component with TypeScript strict typing and React 19 compatibility.
+  - Interactive features: 3D cursor tilt physics (`rotateX`, `rotateY`), pointer-following glare and specular sheen, dynamic holographic rainbow foil mask, parallax portrait shift, gyroscope mobile tilt support, and entrance illumination intro.
+  - Integrated `@hugeicons/react` and `@hugeicons/core-free-icons` (`Mail01Icon`) for the action button.
+- **Created Assets**:
+  - Added official portrait of Vice Chancellor Prof. Dr. Hassan Sher at his executive office desk: `public/vc-portrait.jpg`.
+  - Added repeating academic crest SVG pattern for the holographic foil mask: `public/pattern-crest.svg`.
+- **Built `<ViceChancellorSection />` (`src/components/home/ViceChancellorSection.tsx`)**:
+  - Positioned directly below the Bento grid (`UniversityOverview`) and above the gazette announcements (`AnnouncementsBoard`) in `src/app/page.tsx`.
+  - Executive Alpine card container with subtle atmospheric emerald/maroon lighting.
+  - Left column: Floating 3D interactive `<ProfileCard />` featuring Prof. Dr. Hassan Sher, official circular crest badge (`/uos-logo-circle.png`), Charbagh office status, and direct email action with toast feedback.
+  - Right column: "Voice of the Vice Chancellor" leadership discourse, institutional creed, executive academic credentials (D.Sc & Post-Doc, 200+ Publications, PAS Fellow), signature mark, and navigational links.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM verification: Confirmed `#vice-chancellor` mounted, `<ProfileCard />` rendered with 3D tilt, portrait and info displaying correctly.
+
+---
+
 ## [2026-11-14] — Seamless Hero-to-Overview Dissolve Gradient (Eliminated Hard Border)
 
 ### Action Summary

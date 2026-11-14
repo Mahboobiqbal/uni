@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+  <!-- Minimalist Academic Crest Grid -->
+  <g stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <!-- Center Crest Symbol -->
+    <path d="M30 14 L38 20 L38 32 C38 38 30 44 30 44 C30 44 22 38 22 32 L22 20 Z" />
+    <path d="M30 20 L30 36" stroke-width="0.9" />
+    <path d="M26 26 L34 26" stroke-width="0.9" />
+    
+    <!-- Corner Decorative Accents -->
+    <circle cx="6" cy="6" r="1.5" fill="white" />
+    <circle cx="54" cy="6" r="1.5" fill="white" />
+    <circle cx="6" cy="54" r="1.5" fill="white" />
+    <circle cx="54" cy="54" r="1.5" fill="white" />
+    
+    <!-- Subtle Connecting Lattice -->
+    <path d="M0 30 H12 M48 30 H60" opacity="0.4" />
+    <path d="M30 0 V6 M30 54 V60" opacity="0.4" />
+  </g>
+</svg>
