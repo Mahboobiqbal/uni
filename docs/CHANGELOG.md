@@ -29,7 +29,42 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
-## [2026-11-14] — Campus Bulletin: Dead-Space Fix + OriginKit/React Bits-Inspired Feel
+## [2026-11-14] — Flagship Prestige Architecture Refactor: Forest Obsidian Palette, Razor-Sharp Hero & Institutional Styling
+
+### Action Summary
+- **Color System & Gradient Elimination**:
+  - Replaced the muddy green-to-red diagonal gradient (`.bg-uni-mesh`) in `UniversityOverview.tsx` with a deep, unified **Forest Obsidian** background (`#0C1912`) accented only by a subtle top-center radial emerald glow (`rgba(26, 67, 46, 0.35)`) and a delicate `48px 48px` hairline grid pattern.
+  - Eliminated the blurry white bottom fade and green glow blob, replacing them with a crisp architectural transition (`border-b border-white/10`) leading directly into **Warm Alabaster** (`#F8F7F4`) for `ViceChancellorSection.tsx`.
+  - Standardized all brand accents across cards and badges to strictly use **Deep Forest Green** (`#153B27`), **University Crimson** (`#7F1D1D`), and **Warm Muted Gold** (`#B48A3E`). Completely eradicated generic SaaS blue, purple, and orange pastel badges inside Academic Breadth, Student Resources, and Vice Chancellor cards, replacing them with cohesive neutral stone/emerald/crimson/gold tinted pills.
+- **Hero & Video Overlay Upgrade**:
+  - Implemented multi-stop cinematic vignette overlay (`linear-gradient(to bottom, rgba(8,15,11,0.75) 0%, rgba(8,15,11,0.45) 45%, #0C1912 100%)`) over the background video, ensuring razor-sharp typography contrast regardless of video brightness and seamless continuity with the Forest Obsidian section below.
+  - Upgraded Hero H1 to authoritative institutional typography: *"Shaping Scholars & Innovators in the Heart of Swat"* (`font-serif font-extrabold tracking-tight leading-[1.08]`).
+  - Implemented dual-button CTA layout: primary University Crimson button (*"Explore Programs"*, `#7F1D1D`) and secondary glassmorphic button (*"Virtual Campus Tour"*).
+  - Standardized navbar links to academic terminology: *"Programs"*, *"Faculty"*, *"Academics"*, *"Admissions"*, *"Campus Life"*, *"Research"*, with primary CTA updated to *"Student Portal"*.
+- **Elevated 3-Pillar Feature Strip & Bento Cards**:
+  - Restyled the 3-column maroon feature bar ("Quality", "Leadership", "Experience") as a sleek, elevated architectural bar (`bg-[#6B1818]/95 backdrop-blur-md border border-white/15 shadow-2xl`) bridging the bottom of the hero video into the dark section below with reduced vertical padding.
+  - In `MagicBento.tsx` and `MagicBento.css`, replaced heavy drop shadows with crisp `1px` borders (`border-stone-200` in light mode, `border-white/10` in dark mode) and consistent `p-7` (`28px`) internal padding.
+- **Vice Chancellor Section Polish**:
+  - In `ProfileCard.tsx` and `ProfileCard.css`, added `caption` support to replace the social-media style `@handle` and green status dot with an authoritative institutional caption: *"Prof. Dr. Hassan Sher — Vice Chancellor, University of Swat"*.
+  - Standardized the 3 executive achievement badges (*"D.Sc & Post-Doc"*, *"200+ Papers"*, *"PAS Fellow"*) with cohesive neutral stone containers (`bg-stone-50 border border-stone-200/90`) and muted emerald, crimson, and gold icons.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM inspection: Verified razor-sharp Hero H1, "Student Portal" button, `#F8F7F4` Warm Alabaster VC background, `#0C1912` Forest Obsidian bento background, institutional caption on VC portrait card, zero console errors.
+
+---
+
+## [2026-11-14] — Flagship Prestige Architecture Refactor: Forest Obsidian Palette, Razor-Sharp Hero & Institutional Styling
+- **Wide layout (`max-w-[1360px] mx-auto px-6 lg:px-12`)** applied across Hero (3-card strip), Academic Foundations, Vice Chancellor, and Campus Bulletin sections; section headers converted from centered to split layout (title left, brief subtitle right) for `INSTITUTIONAL FOUNDATIONS` and `OFFICIAL COMMUNICATIONS`.
+- **Hero — 3 crimson architectural cards**: replaced the single merged ribbon with three distinct University Crimson (`#7F1D1D`) cards (`grid-cols-1 md:grid-cols-3 gap-6`) overlapping the hero's bottom edge onto the light canvas (`-mt`-style absolute strip, ~89px overlap verified). Each card: crisp `rounded-xl`, muted gold top border (`border-t-2 border-[#C8A96E]`), muted gold Roman numerals (`I.`/`II.`/`III.`), refined serif title, soft natural shadow; hero vignette now dissolves into Warm Alabaster (`#F6F5F0`) instead of Obsidian.
+- **Academic Foundations — light prospectus grid**: section background flipped from Forest Obsidian to Warm Alabaster (`#F6F5F0`) with deep forest/charcoal typography (`#14291D`); removed hairline grid & dark radial glow, replaced by faint green/crimson/gold atmosphere blobs. Bento cards stay pure white but now use crisp editorial surfaces (`radius={12}` ≈ rounded-xl, `shadow-xs`-style, no tilt/magnetism/click-wave, subtler spotlight). De-SaaS interiors: **Metrics** card now shows a large serif `10,130` with a 3-column academic ledger (9,059 / 756 / 315) separated by `divide-x divide-stone-200` (progress bar removed); **Academic Breadth** uses a clean 2×2 faculty block grid with forest/crimson left accent borders and `→` affordances (colored pills removed); **Student/Institutional Resources** are now full-width academic directory rows with `border-b border-stone-100` hairline dividers and `↗` arrows (pill buttons removed).
+- **Vice Chancellor & Campus Bulletin**: removed the duplicate "Office of the Vice Chancellor · Charbagh Main Campus" pill under the portrait; both sections unified to the 1360px grid; Campus Bulletin container sharpened to `rounded-xl`.
+- Unused `ChevronRight` import removed from `UniversityOverview`.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live browser DOM verification: hero renders 3 cards with Roman numerals overlapping 89px into the light section; overview background computed `rgb(246,245,240)`; ledger present & progress bar gone; accent blocks + 7 directory rows across cards; VC pill gone; all three containers equal width (985px at 1000px viewport); split headers engage at ≥1024px; zero console errors.
+
 
 ### Action Summary
 - **Fixed empty areas**:

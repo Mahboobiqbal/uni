@@ -10,7 +10,6 @@ import {
   ArrowUpRight,
   FlaskConical,
   Library,
-  ChevronRight,
   ScrollText,
   Network
 } from 'lucide-react';
@@ -43,7 +42,7 @@ const overviewItems: MagicBentoItem[] = [
           </div>
 
           {/* Heading */}
-          <h3 className="font-serif text-3xl sm:text-4xl lg:text-[38px] text-stone-900 font-bold tracking-[-0.025em] leading-[1.12] mb-5">
+          <h3 className="font-serif text-3xl sm:text-4xl lg:text-[38px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12] mb-5">
             About University of Swat
           </h3>
 
@@ -99,7 +98,7 @@ const overviewItems: MagicBentoItem[] = [
             </span>
           </div>
 
-          <h3 className="font-serif text-2xl sm:text-[26px] text-stone-900 font-bold tracking-[-0.02em] leading-tight mb-2">
+          <h3 className="font-serif text-2xl sm:text-[26px] text-[#14291D] font-bold tracking-[-0.02em] leading-tight mb-2">
             Academic Breadth
           </h3>
 
@@ -109,25 +108,23 @@ const overviewItems: MagicBentoItem[] = [
           </p>
         </div>
 
-        {/* Disciplines Visualization - Standardized brand accents */}
+        {/* Structured Academic Faculty Blocks */}
         <div className="pt-3 border-t border-stone-200/80">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-            <div className="py-2.5 px-3 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-[#153B27]/40 transition-all hover:shadow-xs">
-              <span className="block text-sm sm:text-[14.5px] font-bold text-stone-900">Sciences</span>
-              <span className="text-xs text-[#153B27] font-semibold">Natural &amp; Life</span>
-            </div>
-            <div className="py-2.5 px-3 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-[#B48A3E]/50 transition-all hover:shadow-xs">
-              <span className="block text-sm sm:text-[14.5px] font-bold text-stone-900">Computing</span>
-              <span className="text-xs text-[#B48A3E] font-semibold">CS &amp; Software</span>
-            </div>
-            <div className="py-2.5 px-3 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-[#7F1D1D]/40 transition-all hover:shadow-xs">
-              <span className="block text-sm sm:text-[14.5px] font-bold text-stone-900">Management</span>
-              <span className="text-xs text-[#7F1D1D] font-semibold">Business &amp; Econ</span>
-            </div>
-            <div className="py-2.5 px-3 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-400 transition-all hover:shadow-xs">
-              <span className="block text-sm sm:text-[14.5px] font-bold text-stone-900">Humanities</span>
-              <span className="text-xs text-stone-600 font-semibold">Law &amp; Social</span>
-            </div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+            {[
+              { name: 'Sciences', note: 'Natural & Life Sciences', accent: 'border-[#153B27]' },
+              { name: 'Computing', note: 'CS & Software Engineering', accent: 'border-[#7F1D1D]' },
+              { name: 'Management', note: 'Business & Economics', accent: 'border-[#153B27]' },
+              { name: 'Humanities', note: 'Law & Social Sciences', accent: 'border-[#7F1D1D]' },
+            ].map((d) => (
+              <div key={d.name} className={`group flex items-start justify-between gap-3 border-l-2 ${d.accent} pl-3 cursor-pointer`}>
+                <div>
+                  <p className="text-sm font-bold text-[#14291D]">{d.name}</p>
+                  <p className="text-xs text-stone-500 mt-0.5">{d.note}</p>
+                </div>
+                <span className="text-stone-300 group-hover:text-[#153B27] transition-colors">→</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -155,7 +152,7 @@ const overviewItems: MagicBentoItem[] = [
           </div>
 
           <div className="flex flex-wrap items-baseline gap-3 mb-2">
-            <span className="font-serif text-4xl sm:text-5xl font-bold tracking-[-0.025em] text-stone-900">
+            <span className="font-serif text-4xl sm:text-5xl font-bold tracking-[-0.025em] text-[#14291D]">
               10,130
             </span>
             <h3 className="font-serif text-xl sm:text-2xl text-stone-800 font-bold">
@@ -169,38 +166,21 @@ const overviewItems: MagicBentoItem[] = [
           </p>
         </div>
 
-        {/* Degree Breakdown Proportion Bar & Legends with brand colors */}
-        <div className="pt-3 border-t border-stone-200/80 flex flex-col gap-2">
-          <div className="w-full h-2.5 rounded-full bg-stone-200/80 overflow-hidden flex shadow-inner">
-            <div
-              className="bg-[#153B27] h-full"
-              style={{ width: '89.4%' }}
-              title="BS Students: 9,059 (89.4%)"
-            />
-            <div
-              className="bg-[#7F1D1D] h-full"
-              style={{ width: '7.5%' }}
-              title="MPhil/MS Students: 756 (7.5%)"
-            />
-            <div
-              className="bg-[#B48A3E] h-full"
-              style={{ width: '3.1%' }}
-              title="PhD Scholars: 315 (3.1%)"
-            />
-          </div>
-          <div className="flex items-center justify-between text-xs sm:text-[13px] text-stone-700 font-semibold">
-            <span className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#153B27]" />
-              <strong className="text-stone-900">9,059</strong> BS (89.4%)
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#7F1D1D]" />
-              <strong className="text-stone-900">756</strong> MPhil/MS (7.5%)
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#B48A3E]" />
-              <strong className="text-stone-900">315</strong> PhD Scholars (3.1%)
-            </span>
+        {/* Academic Ledger — 3-column breakdown separated by hairline dividers */}
+        <div className="pt-4 border-t border-stone-200/80">
+          <div className="grid grid-cols-3 divide-x divide-stone-200">
+            <div className="pr-4">
+              <p className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D]">9,059</p>
+              <p className="text-xs text-stone-500 font-medium mt-1">BS Students</p>
+            </div>
+            <div className="px-4">
+              <p className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D]">756</p>
+              <p className="text-xs text-stone-500 font-medium mt-1">MPhil / MS</p>
+            </div>
+            <div className="pl-4">
+              <p className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D]">315</p>
+              <p className="text-xs text-stone-500 font-medium mt-1">PhD Scholars</p>
+            </div>
           </div>
         </div>
       </div>
@@ -227,7 +207,7 @@ const overviewItems: MagicBentoItem[] = [
             </span>
           </div>
 
-          <h3 className="font-serif text-2xl sm:text-[26px] text-stone-900 font-bold tracking-[-0.02em] leading-tight mb-2">
+          <h3 className="font-serif text-2xl sm:text-[26px] text-[#14291D] font-bold tracking-[-0.02em] leading-tight mb-2">
             Interdisciplinary Research
           </h3>
 
@@ -237,30 +217,24 @@ const overviewItems: MagicBentoItem[] = [
           </p>
         </div>
 
-        {/* Elegant Research Collaboration Box */}
+        {/* Academic Linkage Directory Row */}
         <div className="pt-3 border-t border-stone-200/80">
-          <div className="flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-2xl bg-stone-50 border border-stone-200/90 transition-all hover:border-[#153B27]/40 hover:shadow-xs">
+          <Link
+            href="#research"
+            className="group flex items-center justify-between gap-4 py-3 border-b border-stone-100"
+            title="Explore ORIC"
+          >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#153B27]/10 text-[#153B27] flex items-center justify-center shrink-0">
-                <Network className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-lg bg-[#153B27]/8 text-[#153B27] flex items-center justify-center shrink-0">
+                <Network className="w-4 h-4" />
               </div>
-              <div className="flex flex-col">
-                <span className="text-sm sm:text-[14.5px] font-bold text-stone-900 leading-tight">
-                  Academic Linkages &amp; Research Partnerships
-                </span>
-                <span className="text-xs sm:text-[12.5px] text-stone-600 font-medium mt-0.5">
-                  Regional field laboratories, Gandharan studies &amp; high-altitude botany clusters
-                </span>
+              <div>
+                <p className="text-sm font-bold text-[#14291D]">Academic Linkages &amp; Research Partnerships</p>
+                <p className="text-xs text-stone-500 mt-0.5">Regional field laboratories, Gandharan studies &amp; high-altitude botany clusters</p>
               </div>
             </div>
-            <Link
-              href="#research"
-              className="p-1.5 rounded-lg text-[#153B27] hover:bg-[#153B27]/10 transition-all"
-              title="Explore ORIC"
-            >
-              <ArrowUpRight className="w-5 h-5" />
-            </Link>
-          </div>
+            <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-[#153B27] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
+          </Link>
         </div>
       </div>
     )
@@ -281,7 +255,7 @@ const overviewItems: MagicBentoItem[] = [
             <span>Student Resources</span>
           </div>
 
-          <h3 className="font-serif text-xl sm:text-[22px] text-stone-900 font-bold tracking-[-0.015em] mb-1.5">
+          <h3 className="font-serif text-xl sm:text-[22px] text-[#14291D] font-bold tracking-[-0.015em] mb-1.5">
             Your University Journey
           </h3>
 
@@ -291,48 +265,23 @@ const overviewItems: MagicBentoItem[] = [
           </p>
         </div>
 
-        {/* Cohesive Stone & Brand Pill Links */}
-        <div className="flex flex-col gap-2 pt-2.5 border-t border-stone-200/80">
-          <Link
-            href="#admissions-desk"
-            className="group flex items-center justify-between px-3 py-2 rounded-xl bg-stone-50 border border-stone-200/90 hover:bg-stone-100 hover:border-stone-300 transition-all"
-          >
-            <span className="flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-stone-900">
-              <span className="w-2 h-2 rounded-full bg-[#7F1D1D] group-hover:scale-125 transition-transform" />
-              Admissions
-            </span>
-            <ChevronRight className="w-3.5 h-3.5 text-[#7F1D1D] group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            href="#portal"
-            className="group flex items-center justify-between px-3 py-2 rounded-xl bg-stone-50 border border-stone-200/90 hover:bg-stone-100 hover:border-stone-300 transition-all"
-          >
-            <span className="flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-stone-900">
-              <span className="w-2 h-2 rounded-full bg-[#153B27] group-hover:scale-125 transition-transform" />
-              Student Portal
-            </span>
-            <ChevronRight className="w-3.5 h-3.5 text-[#153B27] group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            href="#programs"
-            className="group flex items-center justify-between px-3 py-2 rounded-xl bg-stone-50 border border-stone-200/90 hover:bg-stone-100 hover:border-stone-300 transition-all"
-          >
-            <span className="flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-stone-900">
-              <span className="w-2 h-2 rounded-full bg-[#B48A3E] group-hover:scale-125 transition-transform" />
-              Enrollment &amp; Registration
-            </span>
-            <ChevronRight className="w-3.5 h-3.5 text-[#B48A3E] group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            href="#announcements-section"
-            className="group flex items-center justify-between px-3 py-2 rounded-xl bg-stone-50 border border-stone-200/90 hover:bg-stone-100 hover:border-stone-300 transition-all"
-          >
-            <span className="flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-stone-900">
-              <span className="w-2 h-2 rounded-full bg-stone-500 group-hover:scale-125 transition-transform" />
-              Examinations
-            </span>
-            <ChevronRight className="w-3.5 h-3.5 text-stone-500 group-hover:translate-x-1 transition-transform" />
-          </Link>
+        {/* Academic Directory Rows */}
+        <div className="pt-2.5 border-t border-stone-200/80">
+          {[
+            { label: 'Admissions', href: '#admissions-desk' },
+            { label: 'Student Portal', href: '#portal' },
+            { label: 'Enrollment & Registration', href: '#programs' },
+            { label: 'Examinations', href: '#announcements-section' },
+          ].map((row) => (
+            <Link
+              key={row.label}
+              href={row.href}
+              className="group flex items-center justify-between py-3 border-b border-stone-100 last:border-b-0 text-sm font-semibold text-[#14291D] hover:text-[#153B27] transition-colors"
+            >
+              <span>{row.label}</span>
+              <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-[#153B27] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </Link>
+          ))}
         </div>
       </div>
     )
@@ -353,7 +302,7 @@ const overviewItems: MagicBentoItem[] = [
             <span>Institutional Resources</span>
           </div>
 
-          <h3 className="font-serif text-xl sm:text-[22px] text-stone-900 font-bold tracking-[-0.015em] mb-1.5">
+          <h3 className="font-serif text-xl sm:text-[22px] text-[#14291D] font-bold tracking-[-0.015em] mb-1.5">
             University Administration &amp; Information
           </h3>
 
@@ -363,29 +312,24 @@ const overviewItems: MagicBentoItem[] = [
           </p>
         </div>
 
-        {/* Compact Functional Action Links */}
-        <div className="flex flex-col gap-2 pt-2.5 border-t border-stone-200/80">
-          <Link
-            href="#faculty"
-            className="group flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-stone-50 border border-stone-200/90 hover:bg-stone-100 hover:border-stone-300 transition-all"
-          >
-            <span className="flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-stone-900">
-              <Library className="w-4 h-4 text-[#153B27] group-hover:scale-110 transition-transform" />
-              University Directory
-            </span>
-            <ArrowUpRight className="w-4 h-4 text-[#153B27] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
-
-          <Link
-            href="#locations-mega"
-            className="group flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-stone-50 border border-stone-200/90 hover:bg-stone-100 hover:border-stone-300 transition-all"
-          >
-            <span className="flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-stone-900">
-              <ScrollText className="w-4 h-4 text-[#7F1D1D] group-hover:scale-110 transition-transform" />
-              Official Contacts
-            </span>
-            <ArrowUpRight className="w-4 h-4 text-[#7F1D1D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
+        {/* Academic Directory Rows */}
+        <div className="pt-2.5 border-t border-stone-200/80">
+          {[
+            { label: 'University Directory', href: '#faculty', icon: <Library className="w-4 h-4" /> },
+            { label: 'Official Contacts', href: '#locations-mega', icon: <ScrollText className="w-4 h-4" /> },
+          ].map((row) => (
+            <Link
+              key={row.label}
+              href={row.href}
+              className="group flex items-center justify-between py-3 border-b border-stone-100 last:border-b-0"
+            >
+              <span className="flex items-center gap-3 text-sm font-semibold text-[#14291D] group-hover:text-[#153B27] transition-colors">
+                <span className="text-[#153B27]/70">{row.icon}</span>
+                {row.label}
+              </span>
+              <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-[#153B27] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </Link>
+          ))}
         </div>
       </div>
     )
@@ -395,50 +339,50 @@ const overviewItems: MagicBentoItem[] = [
 export default function UniversityOverview() {
   return (
     <section
-      className="py-20 sm:py-28 bg-[#0C1912] border-b border-white/10 text-white relative overflow-hidden"
+      className="relative overflow-hidden py-24 lg:py-32 bg-[#F6F5F0] text-[#14291D]"
       data-purpose="bento-overview"
       id="about-uni"
     >
-      {/* Hairline Grid Pattern Texture */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
+      {/* Subtle academic atmosphere accents */}
+      <div className="absolute -top-28 -left-24 w-[440px] h-[440px] rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -right-24 w-[460px] h-[460px] rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 w-96 h-96 -translate-x-1/2 rounded-full bg-[#C8A96E]/8 blur-3xl pointer-events-none" />
 
-      {/* Subtle, Low-Opacity Top Radial Emerald Glow */}
-      <div className="absolute inset-x-0 top-0 h-[450px] bg-[radial-gradient(ellipse_75%_320px_at_50%_0%,rgba(26,67,46,0.35),transparent_75%)] pointer-events-none z-0" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
-          <div className="flex items-center gap-2.5 mb-3">
-            <span className="h-0.5 w-7 bg-[#7F1D1D]" />
-            <span className="text-xs uppercase tracking-widest text-[#B48A3E] font-bold">
-              Institutional Foundations
-            </span>
-            <span className="h-0.5 w-7 bg-[#7F1D1D]" />
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+        {/* Split Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12 lg:mb-16">
+          <div>
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="h-0.5 w-7 bg-[#7F1D1D]" />
+              <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+                Institutional Foundations
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold tracking-[-0.025em] text-[#14291D] leading-[1.12]">
+              Academic Foundations, Research &amp; Institutional Impact
+            </h2>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-[-0.025em] text-white leading-[1.12]">
-            Academic Foundations, Research &amp; Institutional Impact
-          </h2>
-          <p className="font-sans text-base sm:text-lg text-stone-300/90 max-w-3xl mx-auto mt-4 leading-[1.68]">
+          <p className="font-sans text-sm sm:text-base text-stone-500 max-w-md lg:text-right leading-[1.68]">
             Explore the academic disciplines, research initiatives and institutional resources that
             shape the University of Swat.
           </p>
         </div>
 
-        {/* Six-Card Bento Grid */}
+        {/* Six-Card Bento Grid — crisp academic tiles */}
         <MagicBento
           columns={4}
-          rowHeight={300}
+          rowHeight={288}
           gap={18}
-          radius={24}
+          radius={12}
           theme="light"
           glowColor="#153B27"
           enableBorderGlow={true}
           enableSpotlight={true}
-          spotlightRadius={380}
+          spotlightRadius={320}
           enableStars={false}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
+          enableTilt={false}
+          enableMagnetism={false}
+          clickEffect={false}
           textAutoHide={false}
           items={overviewItems}
         />

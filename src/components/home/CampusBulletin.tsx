@@ -314,38 +314,39 @@ export default function CampusBulletin() {
     <section
       id="campus-bulletin"
       data-purpose="campus-bulletin"
-      className="relative overflow-hidden py-16 sm:py-20 bg-[#F8F7F4]"
+      className="relative overflow-hidden py-16 sm:py-20 bg-[#F6F5F0]"
     >
       {/* VC-style ambient color aura behind the bulletin */}
       <div className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full bg-[#153B27]/8 blur-3xl pointer-events-none" />
       <div className="absolute top-1/3 -left-24 w-[380px] h-[380px] rounded-full bg-[#7F1D1D]/8 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 right-1/4 w-[460px] h-[460px] rounded-full bg-[#B48A3E]/10 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
-          <div className="flex items-center gap-2.5 mb-3">
-            <span className="h-0.5 w-7 bg-[#7F1D1D]" />
-            <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
-              Official Communications
-            </span>
-            <span className="h-0.5 w-7 bg-[#7F1D1D]" />
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+        {/* Split Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="h-0.5 w-7 bg-[#7F1D1D]" />
+              <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+                Official Communications
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
+              Campus Bulletin &amp; Official Announcements
+            </h2>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-stone-900 font-bold tracking-[-0.025em] leading-[1.12]">
-            Campus Bulletin &amp; Official Announcements
-          </h2>
-          <p className="font-sans text-sm sm:text-base text-stone-500 max-w-2xl mx-auto mt-4 leading-[1.68]">
+          <p className="font-sans text-sm sm:text-base text-stone-500 max-w-md lg:text-right leading-[1.68]">
             Official administrative, academic, examination and campus gazettes issued by the
             Registrar&rsquo;s Office of the University of Swat.
           </p>
-
-          {/* Latest-headline ticker (infinite marquee) */}
-          <HeadlineTicker items={announcementsForCategory('Recent').slice(0, 6)} />
         </div>
+
+        {/* Latest-headline ticker (infinite marquee) */}
+        <HeadlineTicker items={announcementsForCategory('Recent').slice(0, 6)} />
 
         {/* Unified 3-Column Master-Detail Container — bento tile surface + spotlight */}
         <div
-          className="group relative rounded-[28px] bg-gradient-to-b from-white to-[#FBF9F6] border border-stone-200/80 shadow-[0_24px_70px_-28px_rgba(21,59,39,0.16),0_2px_6px_rgba(21,59,39,0.05)] overflow-hidden"
+          className="group relative rounded-xl bg-gradient-to-b from-white to-[#FBF9F6] border border-stone-200/80 shadow-[0_24px_70px_-28px_rgba(21,59,39,0.16),0_2px_6px_rgba(21,59,39,0.05)] overflow-hidden"
           onMouseEnter={() => {
             const el = spotRef.current;
             if (el) el.style.opacity = '1';

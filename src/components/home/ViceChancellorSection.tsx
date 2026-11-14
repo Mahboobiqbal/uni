@@ -22,7 +22,7 @@ export default function ViceChancellorSection() {
 
   return (
     <section
-      className="py-20 sm:py-28 bg-[#F8F7F4] relative overflow-hidden"
+      className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
       data-purpose="vice-chancellor-section"
       id="vice-chancellor"
     >
@@ -38,7 +38,7 @@ export default function ViceChancellorSection() {
         </div>
       )}
 
-      <div className="w-full max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+      <div className="w-full max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left: React Bits <ProfileCard /> with 3D Tilt & Holographic Foil */}
@@ -69,12 +69,6 @@ export default function ViceChancellorSection() {
                 onContactClick={handleContactClick}
                 className="mx-auto shadow-md"
               />
-            </div>
-
-            {/* Sub-card Institutional Location Caption */}
-            <div className="mt-4 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-stone-200/90 text-xs text-stone-600 font-medium shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-[#153B27]" />
-              <span>Office of the Vice Chancellor · Charbagh Main Campus</span>
             </div>
           </div>
 
