@@ -4,6 +4,31 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Seamless Hero-to-Overview Dissolve Gradient (Eliminated Hard Border)
+
+### Action Summary
+- **Seam Border Elimination**:
+  - Identified the root cause of the horizontal dividing seam between `HeroSection` and `UniversityOverview`:
+    1. `HeroSection` bottom gradient stopped at only 65% opacity (`from-[#1D3523]/65`), leaving video/black partially visible at `bottom: 0px`.
+    2. `UniversityOverview` had a bright emerald radial glow ellipse (`rgba(52,211,153,0.32)`) starting at `top: 0` that was abruptly clipped by `overflow-hidden`, creating a sharp color contrast right at the boundary.
+  - **`src/components/home/HeroSection.tsx`**:
+    - Replaced the semi-transparent bottom fade with an extended 380px multi-stop gradient reaching 100% solid University Forest Green (`#1D3523`) over the bottom 40px:
+      `linear-gradient(to top, #1D3523 0%, #1D3523 40px, rgba(29, 53, 35, 0.92) 100px, rgba(29, 53, 35, 0.6) 210px, rgba(29, 53, 35, 0.2) 290px, transparent 100%)`.
+    - Added an unclipped soft ambient glow (`rgba(47,62,41,0.45)`) positioned above the seam.
+  - **`src/components/home/UniversityOverview.tsx`**:
+    - Replaced the clipped bright top radial glow with a matching continuous downward linear gradient:
+      `linear-gradient(to bottom, #1D3523 0%, #1D3523 40px, rgba(29, 53, 35, 0.88) 100px, rgba(29, 53, 35, 0.45) 160px, transparent 100%)`.
+    - Created an 80px contiguous band of identical `#1D3523` across the boundary (40px in Hero + 40px in Overview), eliminating any color discontinuity.
+  - **Result**:
+    - The hard horizontal dividing line is 100% eliminated.
+    - Scrolling between Hero and Overview feels smooth and continuous, looking like one unified section.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools visual verification: Confirmed boundary line is completely invisible and sections blend seamlessly.
+
+---
+
 ## [2026-11-14] — Reduced Hero Green Dissolve Glow by 40%
 
 ### Action Summary
