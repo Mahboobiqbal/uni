@@ -78,7 +78,7 @@ uni/
 
 - **`Navbar`** (`src/components/layout/Navbar.tsx`): High-contrast editorial navigation overlay with official circular University crest (`/uos-logo-circle.png`), "University of Swat" branding, horizontal menu triggers with smooth cubic-bezier fade-in 2-column floating mega-menu cards (with top caret and expanded spacing) matching the reference design, and Crimson Maroon (`#731C1C`) "Sign up" button.
 - **`HeroSection`** (`src/components/home/HeroSection.tsx`): Full-viewport cinematic video background hero with tightened headline typography (-0.025em tracking, 1.08 leading), loose body copy (1.65 leading), "Take a Tour" CTA button, and bottom translucent Crimson Maroon (`#5D1616`) expanded ribbon (`Quality`, `Leadership`, `Experience`).
-- **`UniversityOverview`** (`src/components/home/UniversityOverview.tsx`): 2-column bento card (Institutional Heritage, Academic Breadth, and Institutional Metrics) with the top metric counter ribbon removed.
+- **`UniversityOverview`** (`src/components/home/UniversityOverview.tsx`): Interactive 6-cell bento grid powered by React Bits `<MagicBento />` (`src/components/ui/MagicBento.tsx`), featuring cursor spotlights, Deep Forest Green (`#1D3523`) border glows, canvas stars, physics tilt, click wave shockwaves, and domain data (Institutional Heritage, Total Disciplines, ORIC Analytics, Research Alliances, Admissions Automation, and Security).
 - **`ViceChancellorDesk`** (`src/components/home/ViceChancellorDesk.tsx`): Leadership desk message and portrait.
 - **`UniversityQuote`** (`src/components/home/UniversityQuote.tsx`): Institutional creed section.
 - **`AnnouncementsBoard`** (`src/components/home/AnnouncementsBoard.tsx`): 3-column interactive gazette with bulletin preview.

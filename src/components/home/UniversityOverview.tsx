@@ -1,161 +1,153 @@
-export default function UniversityOverview() {
-  return (
-    <section
-      className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-      data-purpose="bento-overview"
-      id="about-uni"
-    >
-      {/* Bento Split */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        {/* Left: Large "About Uni" Bento Card */}
-        <div className="lg:col-span-7 alpine-card p-8 sm:p-12 flex flex-col justify-between border-t-4 border-t-brand-emerald relative overflow-hidden">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-0.5 w-8 bg-[#731C1C]" />
+'use client';
+
+import React from 'react';
+import MagicBento, { type MagicBentoItem } from '@/components/ui/MagicBento';
+
+const overviewItems: MagicBentoItem[] = [
+  {
+    id: 'heritage',
+    colSpan: 2,
+    rowSpan: 2,
+    content: (
+      <div className="flex flex-col justify-between h-full text-left p-1">
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2.5">
+              <span className="h-0.5 w-6 bg-[#731C1C]" />
               <span className="text-xs uppercase tracking-widest text-[#731C1C] font-semibold">
                 Institutional Heritage
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#111827] font-bold tracking-[-0.02em] leading-[1.12] mb-6">
-              About University of Swat
-            </h2>
-            <p className="text-slate-700 text-base leading-[1.65] mb-6 font-normal">
-              The University of Swat was established under the Khyber Pakhtunkhwa Act to
-              advance higher education in northern Pakistan. Located amidst the
-              awe-inspiring Hindu Raj mountains and Gandharan heritage sites, the
-              university integrates traditional scholarly rigor with modern research
-              frontiers.
-            </p>
-            <p className="text-slate-600 text-sm leading-[1.65] mb-6 font-normal">
-              From botanical genomics of medicinal flora in the Swat basin to quantum
-              computing, archaeological preservation, and sustainable alpine tourism, our
-              interdisciplinary centers cultivate critical inquiry and regional
-              socioeconomic development.
-            </p>
+            <div className="w-9 h-9 rounded-full overflow-hidden border border-slate-200/80 shadow-xs p-0.5 bg-white shrink-0">
+              <img
+                src="/uos-logo-circle.png"
+                alt="University of Swat Crest"
+                className="w-full h-full object-contain rounded-full"
+              />
+            </div>
           </div>
-          <div className="pt-6 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-brand-emerald">
+          <h3 className="font-serif text-2xl sm:text-3xl lg:text-[32px] text-[#111827] font-bold tracking-[-0.02em] leading-[1.15] mb-4">
+            About University of Swat
+          </h3>
+          <p className="font-sans text-slate-700 text-sm sm:text-[14.5px] leading-[1.68] mb-4 font-normal">
+            The University of Swat was established under the Khyber Pakhtunkhwa Act to advance
+            higher education in northern Pakistan. Located amidst the awe-inspiring Hindu Raj
+            mountains and Gandharan heritage sites, the university integrates traditional
+            scholarly rigor with modern research frontiers.
+          </p>
+          <p className="font-sans text-slate-600 text-xs sm:text-[13.5px] leading-[1.65] font-normal">
+            From botanical genomics of medicinal flora in the Swat basin to quantum computing,
+            archaeological preservation, and sustainable alpine tourism, our interdisciplinary
+            centers cultivate critical inquiry and regional socioeconomic development.
+          </p>
+        </div>
+        <div className="pt-5 mt-6 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-[#1D3523]">
+          <div className="flex items-center gap-2">
             <span>Chartered by Government of Khyber Pakhtunkhwa</span>
             <span>•</span>
-            <span className="text-slate-500">
-              Higher Education Commission Accredited
-            </span>
+            <span className="text-slate-500">Higher Education Commission Accredited</span>
           </div>
-        </div>
-
-        {/* Right Column: Bento Cards (Total Disciplines + Analytics) */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          {/* Top Right Card: Total Disciplines */}
-          <div className="alpine-card p-7 border-l-4 border-l-brand-emerald flex-1 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs uppercase tracking-widest text-brand-emerald font-bold">
-                  Academic Breadth
-                </span>
-                <span className="p-2 rounded-xl bg-emerald-50 text-brand-emerald border border-emerald-100">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <h3 className="font-serif text-2xl text-slate-900 font-bold mb-2">
-                Total Disciplines
-              </h3>
-              <p className="text-slate-600 text-xs sm:text-sm mb-5 leading-relaxed">
-                Comprehensive degree programs spanning modern computing, cellular
-                microbiology, legal studies, linguistics, and high-altitude agronomy.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100">
-              <div className="bg-slate-50/80 p-3.5 rounded-xl border border-slate-200">
-                <span className="block text-2xl font-bold text-slate-900 font-serif">
-                  35+
-                </span>
-                <span className="text-xs text-slate-500 font-medium">
-                  Academic Departments
-                </span>
-              </div>
-              <div className="bg-slate-50/80 p-3.5 rounded-xl border border-slate-200">
-                <span className="block text-2xl font-bold text-slate-900 font-serif">
-                  104
-                </span>
-                <span className="text-xs text-slate-500 font-medium">
-                  Degree Specializations
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Right Card: Analytics */}
-          <div className="alpine-card p-7 border-l-4 border-l-brand-gold flex-1 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs uppercase tracking-widest text-brand-gold font-bold">
-                  Institutional Metrics
-                </span>
-                <span className="p-2 rounded-xl bg-amber-50 text-brand-gold border border-amber-100">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <h3 className="font-serif text-2xl text-slate-900 font-bold mb-2">
-                Analytics &amp; Research
-              </h3>
-              <p className="text-slate-600 text-xs sm:text-sm mb-5 leading-relaxed">
-                ORIC-driven research enterprise with top quartile international impact
-                factor papers and national patent grants.
-              </p>
-            </div>
-            <div className="grid grid-cols-3 gap-2.5 pt-4 border-t border-slate-100 text-center">
-              <div className="bg-amber-50/40 p-2.5 rounded-xl border border-amber-100">
-                <span className="block text-xl font-bold text-amber-700 font-serif">
-                  1,240+
-                </span>
-                <span className="text-[11px] text-slate-500 font-medium">
-                  W-Cat Publications
-                </span>
-              </div>
-              <div className="bg-emerald-50/40 p-2.5 rounded-xl border border-emerald-100">
-                <span className="block text-xl font-bold text-brand-emerald font-serif">
-                  18:1
-                </span>
-                <span className="text-[11px] text-slate-500 font-medium">
-                  Student-Faculty Ratio
-                </span>
-              </div>
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-                <span className="block text-xl font-bold text-slate-800 font-serif">
-                  ₨ 480M
-                </span>
-                <span className="text-[11px] text-slate-500 font-medium">
-                  Research Grants
-                </span>
-              </div>
-            </div>
-          </div>
+          <span className="px-2.5 py-1 rounded-full bg-[#1D3523]/10 text-[#1D3523] text-[11px] font-semibold">
+            Est. 2010
+          </span>
         </div>
       </div>
+    )
+  },
+  {
+    id: 'disciplines',
+    colSpan: 2,
+    rowSpan: 1,
+    label: 'Academic Breadth',
+    title: 'Total Disciplines & Degree Programs',
+    description:
+      '35+ Academic Departments & 104 Specializations spanning Computing, Health, Law & Sciences.',
+    visual: 'dashboard'
+  },
+  {
+    id: 'analytics',
+    colSpan: 2,
+    rowSpan: 1,
+    label: 'Institutional Metrics',
+    title: 'Analytics & ORIC Research Enterprise',
+    description:
+      '1,240+ W-Cat Publications, 18:1 Student-Faculty Ratio, and ₨ 480M in Research Grants.',
+    visual: 'analytics'
+  },
+  {
+    id: 'collaboration',
+    colSpan: 2,
+    rowSpan: 1,
+    label: 'Research Alliances',
+    title: 'Interdisciplinary Collaboration',
+    description:
+      'Joint research clusters across high-altitude alpine ecology and Gandharan antiquities.',
+    visual: 'collaboration'
+  },
+  {
+    id: 'automation',
+    colSpan: 1,
+    rowSpan: 1,
+    label: 'Student Gateway',
+    title: 'Admissions Automation',
+    description: 'End-to-end digital enrollment & merit verification.',
+    visual: 'automation'
+  },
+  {
+    id: 'security',
+    colSpan: 1,
+    rowSpan: 1,
+    label: 'Enterprise Security',
+    title: 'Identity & Access (2FA / SSO)',
+    description: 'Secure student portal, LMS & controller records.',
+    visual: 'security'
+  }
+];
+
+export default function UniversityOverview() {
+  return (
+    <section
+      className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      data-purpose="bento-overview"
+      id="about-uni"
+    >
+      {/* Editorial Section Header */}
+      <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
+        <div className="flex items-center gap-2.5 mb-3">
+          <span className="h-0.5 w-6 bg-[#731C1C]" />
+          <span className="text-xs uppercase tracking-widest text-[#731C1C] font-semibold">
+            Institutional Overview
+          </span>
+          <span className="h-0.5 w-6 bg-[#731C1C]" />
+        </div>
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.025em] text-[#111827] leading-[1.12]">
+          Heritage, Breadth &amp; Research Enterprise
+        </h2>
+        <p className="font-sans text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mt-3.5 leading-[1.65]">
+          Explore the academic foundations, research institutes, and modern digital ecosystems
+          advancing education at the University of Swat.
+        </p>
+      </div>
+
+      {/* Interactive Magic Bento Grid from React Bits */}
+      <MagicBento
+        columns={4}
+        rowHeight={235}
+        gap={16}
+        radius={22}
+        theme="light"
+        glowColor="#1D3523"
+        enableBorderGlow={true}
+        enableSpotlight={true}
+        spotlightRadius={320}
+        enableStars={true}
+        particleCount={20}
+        enableTilt={true}
+        enableMagnetism={true}
+        clickEffect={true}
+        textAutoHide={false}
+        items={overviewItems}
+      />
     </section>
   );
 }
-
