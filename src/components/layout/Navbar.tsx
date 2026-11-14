@@ -68,8 +68,8 @@ const universityNavItems: CardNavItem[] = [
 
 export default function Navbar() {
   const brandLogo = (
-    <div className="flex items-center gap-3.5 sm:gap-4.5 py-1 group">
-      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl p-1 bg-white border-2 border-emerald-600/30 shadow-md flex items-center justify-center shrink-0 overflow-hidden group-hover:border-emerald-600 transition-all duration-300">
+    <div className="flex items-center gap-3.5 sm:gap-4 py-1 group">
+      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl p-1.5 bg-white border border-slate-200/90 shadow-[0_1px_3px_rgba(15,23,42,0.06)] flex items-center justify-center shrink-0 overflow-hidden group-hover:border-emerald-600/40 transition-all duration-300">
         <img
           src="/ODF.jpg"
           alt="University of Swat Crest"
@@ -80,7 +80,7 @@ export default function Navbar() {
         <span className="font-serif font-bold text-lg sm:text-xl md:text-2xl tracking-tight text-slate-900 uppercase group-hover:text-emerald-700 transition-colors">
           University of Swat
         </span>
-        <span className="text-[10px] sm:text-xs tracking-widest text-emerald-700 font-sans font-bold uppercase mt-0.5">
+        <span className="text-[10px] sm:text-xs tracking-wider text-emerald-700 font-sans font-bold uppercase mt-0.5">
           Khyber Pakhtunkhwa, Pakistan
         </span>
       </div>

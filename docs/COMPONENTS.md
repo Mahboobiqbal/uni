@@ -4,8 +4,8 @@ This file tracks every component in the University of Swat project, its source l
 
 | Component | Path | Type | Status | Description |
 |---|---|---|---|---|
-| `Navbar` | `src/components/layout/Navbar.tsx` | Client | **Active (Full-Width Text Triggers)** | Edge-to-edge top navigation with large ODF crest logo, clean text category triggers (Programs, Departments, Campuses, Portals), and neutral white panel |
-| `CardNav` | `src/components/ui/CardNav.tsx` | Client | **Active (Text Links & Spring Physics)** | Card navbar with full-width spring physics open/close animations, pure text links with inline arrows (no button boxes), and clean 2-column vertical reading order |
+| `Navbar` | `src/components/layout/Navbar.tsx` | Client | **Active (Stageshow Craft Polish)** | Edge-to-edge top navigation with calibrated logo nested insets, clean text category triggers, and stageshow design tokens |
+| `CardNav` | `src/components/ui/CardNav.tsx` | Client | **Active (Stageshow Tokens & Spring Physics)** | Card navbar with full-width spring physics, stageshow design tokens (`--ss-*`), restrained text links with micro-animated arrows, and clean 2-column layout |
 | `Footer` | `src/components/layout/Footer.tsx` | Server | Baseline | 4-column directory, campus contacts, social links, legal bar |
 | `HeroSection` | `src/components/home/HeroSection.tsx` | Server | Baseline | Split hero with ancient/modern headline, quick portal gateway, campus card |
 | `UniversityOverview` | `src/components/home/UniversityOverview.tsx` | Server | Baseline | 3-item metrics ribbon + 2-column bento card (About, Disciplines, Analytics) |

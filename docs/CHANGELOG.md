@@ -4,6 +4,41 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Stageshow Design System & Craft Polish Applied to Header
+
+### Action Summary
+- **Integrated Stageshow Design Tokens**:
+  - Implemented the complete `stageshow` token architecture directly into the header:
+    - Surfaces: `--ss-surface` (`#ffffff`), `--ss-canvas` (`#f8fafc`), `--ss-chrome` (`#ffffff`), `--ss-well` (`#f1f5f9`).
+    - Lines & hairlines: `--ss-line` (`rgba(15, 23, 42, 0.08)`), `--ss-line-faint` (`rgba(15, 23, 42, 0.04)`).
+    - Typography inks: `--ss-text-strong` (`#0f172a`), `--ss-text` (`#334155`), `--ss-text-faint` (`#64748b`).
+    - Iconography inks: `--ss-icon` (`#64748b`), `--ss-icon-faint` (`#94a3b8`).
+    - Accent: `--ss-accent` (`#059669` University Emerald), `--ss-accent-hover` (`#047857`).
+    - Radii: `--ss-radius-sm` (6px), `--ss-radius-md` (8px), `--ss-radius-lg` (12px), `--ss-radius-window` (20px), `--ss-radius-pill` (999px).
+    - Depth: `--ss-shadow-card`, `--ss-shadow-window`, `--ss-shadow-hero` (`0 0 0 1px rgba(15, 23, 42, 0.05), 0 20px 48px -12px rgba(15, 23, 42, 0.12)`).
+    - Physics easing: `--ss-ease` (`cubic-bezier(0.22, 1, 0.36, 1)`).
+- **Craft Principles Applied per `stageshow` Craft Guidelines**:
+  - **Restraint & Typography**: UI text kept in comfortable 15.5px reading pitch with a 1.45 line-height and optical letter tracking; title-to-description spacing adheres to the 4-6px ink rule.
+  - **Nested Shape Insets**: Logo box outer radius (`rounded-2xl`, 16px) accurately equals inner radius + 1.5 padding with hairline border (`border-slate-200/90`) and subtle card depth shadow.
+  - **Action Button Precision**: "Apply Now" CTA button engineered with stageshow button metrics (`height: 42px`, `border-radius: var(--ss-radius-md)`, solid emerald background `#059669` transitioning by exactly one step to `#047857` on hover, precision contact shadow).
+  - **Reading Edge Alignment & Micro-motion**: Dual-arrow Hugeicons indicators sized optically to `14px` (`strokeWidth: 1.8`) with smooth `var(--ss-ease)` translation and micro-accent emerald transition on link hover.
+  - **Directory Badge**: Styled as a clean stageshow pill `Badge` with `--ss-canvas` background, `--ss-line` border, and `--ss-text` color.
+
+### Files Modified
+- `src/components/ui/CardNav.css`: Complete rewrite adopting the Stageshow design tokens, precision shadows, and craft geometry.
+- `src/components/ui/CardNav.tsx`: Updated `THEMES` to stageshow token variables and refined icon sizing (`14px`, stroke `1.8`).
+- `src/components/layout/Navbar.tsx`: Refined logo box border, padding, and optical typography.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- Visual verification with Chrome DevTools at `http://localhost:3000` confirming:
+  - Header chrome has crisp hairline borders and soft hero drop shadow.
+  - Logo frame has calibrated nested padding and soft shadow.
+  - Navigation triggers and dropdown links render as pure, high-craft text links.
+  - Smooth spring transitions and micro-motion operate smoothly.
+
+---
+
 ## [2026-11-14] — Pure Plain Text Header Triggers & Buttonless Neutral Dropdown Links
 
 ### Action Summary

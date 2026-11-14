@@ -76,8 +76,8 @@ uni/
 
 ## 4. Current Component Registry
 
-- **`Navbar`** (`src/components/layout/Navbar.tsx`): Full-screen width edge-to-edge navigation bar powered by `<CardNav />` with enlarged official ODF crest logo (`w-14 h-14 sm:w-16 sm:h-16`), left-aligned branding, and pure text category triggers (`Programs`, `Departments`, `Campuses`, `Portals`) without button boxes.
-- **`CardNav`** (`src/components/ui/CardNav.tsx`, `CardNav.css`): React Bits spring physics animated navigation opening dedicated single-card dropdowns full screen width across a 2-column vertical ordered layout of pure text links with inline arrows (no button cards, no outlines, no extraneous colors) and smooth open/close physics.
+- **`Navbar`** (`src/components/layout/Navbar.tsx`): Full-screen width edge-to-edge navigation bar powered by `<CardNav />` with calibrated ODF crest logo nested insets, left-aligned branding, and stageshow craft-polished pure text category triggers (`Programs`, `Departments`, `Campuses`, `Portals`).
+- **`CardNav`** (`src/components/ui/CardNav.tsx`, `CardNav.css`): React Bits spring physics animated navigation built with Stageshow design tokens (`--ss-*`), restrained pure text links with optical reading-edge alignment, micro-animated arrows, and deterministic 2-column vertical layout.
 - **`HeroSection`** (`src/components/home/HeroSection.tsx`): Split hero with quick portal utilities.
 - **`UniversityOverview`** (`src/components/home/UniversityOverview.tsx`): Metric ribbon + 2-column bento card.
 - **`ViceChancellorDesk`** (`src/components/home/ViceChancellorDesk.tsx`): Leadership desk message and portrait.
