@@ -14,6 +14,7 @@ This file tracks every component in the University of Swat project, its source l
 | `CampusLifeHeritage` | `src/components/home/CampusLifeHeritage.tsx` | Client | **Active (Bento Gallery)** | Split-header bento grid: featured Charbagh Main Campus tile (span 2×2) beside an aligned 2×2 of Women Campus / Central Library / Sports Complex / Heritage tiles — hover zoom, frosted captions, hairline rings, and keyboard lightbox |
 | `RankingSection` | `src/components/home/RankingSection.tsx` | Client | **Active (React Bits Bento Scorecard)** | HEC 91.4% W-Category, GreenMetric Top 15, THE 301–400, and 4 badge tiles on the React Bits `<MagicBento />` grid with embedded graphs (area chart, rating bar, bar chart, sparkline) and full motion (tilt, magnetism, click wave, stars, intro stagger, spotlight, border glow) — light editorial tiles, forest glow; split header |
 | `Footer` | `src/components/layout/Footer.tsx` | Server | **Active (Quick Portals + Institutional Columns)** | White footer on the 1360px grid with a Quick Portals card row (CMS, SUJRIS, e-Office, Campus TV) above four institutional columns (Admissions, In Focus, Quick Links, Contact Us), green-tinted headings/links, social icons, and bottom crest/copyright/legal bar |
+| `PageHeader` | `src/components/layout/PageHeader.tsx` | Server | **Active (Shared Page Hero)** | Reusable split page header (eyebrow + serif H1 + right description + back link) used by all sub-pages |
 
 ---
 

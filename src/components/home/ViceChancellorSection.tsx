@@ -136,14 +136,14 @@ export default function ViceChancellorSection() {
               {/* Quick Action Links */}
               <div className="flex flex-wrap items-center gap-2.5 text-xs font-semibold">
                 <Link
-                  href="#locations-mega"
+                  href="/campus-life"
                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#153B27] text-white hover:bg-[#153B27]/90 transition-colors shadow-xs"
                 >
                   <span>Campuses &amp; Locations</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
                 <Link
-                  href="#campus-bulletin"
+                  href="/academics"
                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-700 hover:bg-stone-50 transition-colors shadow-xs"
                 >
                   <span>Statutory Regulations</span>

@@ -67,7 +67,7 @@ export default function Footer() {
             {portals.map((portal) => (
               <Link
                 key={portal.name}
-                href="#portal"
+                href="/portal"
                 className="group flex items-start gap-4 p-5 rounded-xl border border-stone-200/90 bg-stone-50/60 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:bg-white hover:shadow-[0_14px_32px_-16px_rgba(21,59,39,0.25)]"
               >
                 <span className="w-10 h-10 rounded-lg bg-[#153B27]/8 text-[#153B27] flex items-center justify-center shrink-0">
@@ -96,32 +96,32 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-slate-600">
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#admissions-desk">
+                <a className="hover:text-[#153B27] font-medium transition" href="/admissions">
                   Undergraduate Admissions
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#admissions-desk">
+                <a className="hover:text-[#153B27] font-medium transition" href="/admissions">
                   Graduate &amp; MS Admissions
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#admissions-desk">
+                <a className="hover:text-[#153B27] font-medium transition" href="/admissions">
                   Doctoral Fellowships
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#admissions-desk">
+                <a className="hover:text-[#153B27] font-medium transition" href="/admissions">
                   Fee Structure &amp; Dues
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#admissions-desk">
+                <a className="hover:text-[#153B27] font-medium transition" href="/admissions">
                   Scholarships &amp; Financial Aid
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#admissions-desk">
+                <a className="hover:text-[#153B27] font-medium transition" href="/admissions">
                   Prospectus 2026-27 (PDF)
                 </a>
               </li>
@@ -135,32 +135,32 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-slate-600">
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   Office of Research (ORIC)
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   Quality Enhancement Cell
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-life">
+                <a className="hover:text-[#153B27] font-medium transition" href="/campus-life">
                   Gandhara Heritage Museum
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-life">
+                <a className="hover:text-[#153B27] font-medium transition" href="/campus-life">
                   Directorate of Sports
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-life">
+                <a className="hover:text-[#153B27] font-medium transition" href="/campus-life">
                   Career Development Centre
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   Anti-Harassment Syndicate
                 </a>
               </li>
@@ -174,32 +174,32 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-slate-600">
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   HEC Digital Library
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   University Statutes &amp; Acts
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   Tender Notices &amp; Procurement
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   Careers &amp; Faculty Jobs
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   Official University Gazette
                 </a>
               </li>
               <li>
-                <a className="hover:text-[#153B27] font-medium transition" href="#campus-bulletin">
+                <a className="hover:text-[#153B27] font-medium transition" href="/#campus-bulletin">
                   Affiliated Degree Colleges
                 </a>
               </li>

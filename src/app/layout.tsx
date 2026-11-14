@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
   const plusJakartaSans = Plus_Jakarta_Sans({
@@ -69,7 +71,9 @@ import "./globals.css";
       >
         Skip to main content
       </a>
+      <Navbar />
       {children}
+      <Footer />
     </body>
   </html>
 );

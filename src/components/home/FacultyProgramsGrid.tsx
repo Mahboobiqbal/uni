@@ -147,7 +147,7 @@ export default function FacultyProgramsGrid() {
 
               {/* Explore link */}
               <Link
-                href="#programs"
+                href="/programs"
                 className="group/link relative mt-auto flex items-center justify-between pt-4 border-t border-stone-100 text-sm font-semibold text-[#14291D] hover:text-[#153B27] transition-colors"
               >
                 Explore programs

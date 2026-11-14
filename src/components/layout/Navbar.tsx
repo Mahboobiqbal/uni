@@ -18,15 +18,15 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Home', href: '#' },
+  { label: 'Home', href: '/' },
   {
     label: 'Programs',
-    href: '#programs',
+    href: '/programs',
     hasDropdown: true,
     submenu: [
       {
         label: 'BS Computer Science & SE',
-        href: '#programs',
+        href: '/programs',
         description: 'Artificial Intelligence, Software Systems & Data Networks',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Doctor of Pharmacy (Pharm-D)',
-        href: '#programs',
+        href: '/programs',
         description: '5-Year Clinical, Hospital & Industrial Pharmacy',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -46,7 +46,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'BBA & Management Sciences',
-        href: '#programs',
+        href: '/programs',
         description: 'Strategic Leadership, Corporate Finance & HR Analytics',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -56,7 +56,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'BS Environmental Sciences',
-        href: '#programs',
+        href: '/programs',
         description: 'Alpine Ecology, Mountain Hydrology & Climate Change',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -66,7 +66,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'M.Phil & MS Research',
-        href: '#programs',
+        href: '/programs',
         description: 'Archaeology, Mathematics, Applied Analytics & IT',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -76,7 +76,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Ph.D. Doctoral Studies',
-        href: '#programs',
+        href: '/programs',
         description: 'Computer Science, High-Altitude Botany & Zoology',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -88,15 +88,15 @@ const navItems: NavItem[] = [
       }
     ]
   },
-  { label: 'Faculty', href: '#faculty' },
+  { label: 'Faculty', href: '/faculty' },
   {
     label: 'Academics',
-    href: '#academics',
+    href: '/academics',
     hasDropdown: true,
     submenu: [
       {
         label: 'Faculties & Institutes',
-        href: '#departments',
+        href: '/faculty',
         description: 'Specialized research institutes & faculties',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -106,7 +106,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Undergraduate Degrees',
-        href: '#programs',
+        href: '/programs',
         description: '4-Year BS Computer Science, SE & BBA',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -118,7 +118,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Graduate & Ph.D.',
-        href: '#programs',
+        href: '/programs',
         description: 'MS, M.Phil & Doctoral research programs',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -128,7 +128,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'ORIC Research Cell',
-        href: '#research',
+        href: '/research',
         description: 'High-altitude ecology & Gandharan studies',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -138,7 +138,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Academic Calendar',
-        href: '#announcements-section',
+        href: '/#campus-bulletin',
         description: 'Semester schedules, gazettes & date sheets',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -148,7 +148,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Digital Scholarly Library',
-        href: '#departments',
+        href: '/faculty',
         description: 'HEC digital repository & research papers',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -160,12 +160,12 @@ const navItems: NavItem[] = [
   },
   {
     label: 'Admissions',
-    href: '#admissions-desk',
+    href: '/admissions',
     hasDropdown: true,
     submenu: [
       {
         label: 'Admissions 2026',
-        href: '#admissions-desk',
+        href: '/admissions',
         description: 'Fall application criteria & deadlines',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -175,7 +175,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Merit Lists',
-        href: '#announcements-section',
+        href: '/#campus-bulletin',
         description: 'Departmental admission notifications',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -185,7 +185,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Fee Structure',
-        href: '#fees',
+        href: '/admissions',
         description: 'Semester dues & online challan generator',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -195,7 +195,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Scholarships & Aid',
-        href: '#fees',
+        href: '/admissions',
         description: 'HEC Need-Based & Ehsaas scholarships',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -205,7 +205,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Online Application Portal',
-        href: '#admissions-desk',
+        href: '/admissions',
         description: 'Direct student enrollment gateway',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -215,7 +215,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Admissions Desk',
-        href: '#admissions-desk',
+        href: '/admissions',
         description: 'Directorate guidance & counseling support',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -227,12 +227,12 @@ const navItems: NavItem[] = [
   },
   {
     label: 'Campus Life',
-    href: '#campus-life',
+    href: '/campus-life',
     hasDropdown: true,
     submenu: [
       {
         label: 'Sports Complex',
-        href: '#sports',
+        href: '/campus-life',
         description: 'Cricket stadium, gymnasium & athletic arena',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -242,7 +242,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Varsity Teams',
-        href: '#sports',
+        href: '/campus-life',
         description: 'KPK regional tournament squads & trials',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -252,7 +252,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Adventure & Hiking',
-        href: '#sports',
+        href: '/campus-life',
         description: 'Alpine mountaineering & Swat valley youth',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -262,7 +262,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Fitness & Recreation',
-        href: '#sports',
+        href: '/campus-life',
         description: 'Indoor courts, badminton & health suites',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -272,7 +272,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Student Societies & Clubs',
-        href: '#campus-life',
+        href: '/campus-life',
         description: 'Literary, Debating & Environmental Societies',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -282,7 +282,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Hostels & Campus Services',
-        href: '#campus-life',
+        href: '/campus-life',
         description: 'Residential dormitories, transport & dining',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -292,7 +292,7 @@ const navItems: NavItem[] = [
       }
     ]
   },
-  { label: 'Research', href: '#research' }
+  { label: 'Research', href: '/research' }
 ];
 
 export default function Navbar() {
@@ -497,7 +497,7 @@ export default function Navbar() {
         {/* Right Action Button: "Student Portal" in Official University Crimson #7F1D1D */}
         <div className="hidden md:flex items-center">
           <Link
-            href="#portal"
+            href="/portal"
             className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-black/20 focus:outline-none"
           >
             Student Portal
@@ -589,7 +589,7 @@ export default function Navbar() {
 
             <div className="pt-3">
               <Link
-                href="#portal"
+                href="/portal"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] text-white text-base font-semibold py-3 rounded-lg transition-colors shadow-md"
               >

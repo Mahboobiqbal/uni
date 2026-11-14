@@ -144,13 +144,13 @@ export default function HeroSection() {
         {/* Dual-Action CTA: Primary University Crimson & Secondary Glassmorphic Button */}
         <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
-            href="#programs"
+            href="/programs"
             className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-lg shadow-lg shadow-black/40 hover:scale-[1.02] active:scale-100 transition-all"
           >
             Explore Programs
           </Link>
           <Link
-            href="#explore"
+            href="/campus-life"
             className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 active:bg-white/15 text-white backdrop-blur-md border border-white/20 font-semibold text-sm sm:text-base px-7 py-3.5 rounded-lg transition-all shadow-md shadow-black/20 hover:scale-[1.02] active:scale-100"
           >
             Virtual Campus Tour

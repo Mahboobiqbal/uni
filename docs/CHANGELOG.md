@@ -11,6 +11,24 @@ All modifications, component replacements, and architectural updates are logged 
 - `npx tsc --noEmit`: Exited with code 0.
 - Live DOM verification: ticker track/strip elements gone; the header's next sibling is the unified container; zero console errors.
 
+## [2026-11-14] — Multi-Page Build: All Linked Pages in Home Style
+
+### Action Summary
+- Created a shared `PageHeader` component and built **7 routes** in the home page's design language (alabaster canvas, split headers, serif/sans pair, forest/crimson/gold palette, white rounded-xl cards, hover lifts, arrows):
+  - `/programs` — degree catalogue by level (BS/MS/MPhil/PhD counts, faculty shortcuts)
+  - `/faculty` — faculty departments grid with accent left borders
+  - `/academics` — calendar, examination office, library, quality cards
+  - `/admissions` — apply steps, key dates, fees & aid, dark-green CTA
+  - `/campus-life` — reuse of the bento gallery + everyday student life blocks
+  - `/research` — research centres, funding list, publication highlights
+  - `/portal` — service-gateway cards grid
+- **Global chrome**: moved `Navbar`/`Footer` into the root layout so every route shares them (removed from the home page); skip link retained.
+- **Rewired links** to real routes: navbar items + dropdowns, hero CTAs, faculty "Explore programs", VC quick actions, footer columns/portals; remaining internal anchors map to `/#campus-bulletin` where relevant.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live navigation checks on `/`, `/programs`, `/faculty`, `/academics`, `/admissions`, `/campus-life`, `/research`, `/portal`: every route renders its H1 (campus-life via sr-only H1) with Navbar + Footer, zero console errors.
+
 ## [2026-11-14] — Campus Life Gallery Rearranged as Bento Grid
 
 ### Action Summary
