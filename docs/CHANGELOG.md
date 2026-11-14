@@ -4,6 +4,21 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Full Wide-Screen Layout for Vice Chancellor Section (Removed Outer Section Card)
+
+### Action Summary
+- **Removed Outer Section Box (`src/components/home/ViceChancellorSection.tsx`)**:
+  - Removed the boxed `alpine-card` container and outer borders around the section while preserving the 3D interactive `<ProfileCard />`.
+  - Upgraded the inner layout to a wide-screen grid (`w-full max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12`) directly on the section canvas.
+  - Generous horizontal breathing room with enhanced gap spacing (`gap-12 lg:gap-16 items-center`).
+  - Result: The Vice Chancellor leadership discourse and 3D profile card now sit naturally across the full width of the screen without artificial container nesting.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools visual verification: Confirmed full wide-screen flow, no box card border, and `<ProfileCard />` elevated seamlessly.
+
+---
+
 ## [2026-11-14] — Integrated React Bits `<ProfileCard />` & Vice Chancellor Section
 
 ### Action Summary
