@@ -1,170 +1,155 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowUpRight, BookOpen, Briefcase, Cpu, FlaskConical, GraduationCap, Scale } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Briefcase, Cpu, FlaskConical, GraduationCap, Scale, CheckCircle2 } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
+import { programsDetailCatalog } from '@/data/programsDetailData';
+import { facultiesCatalog } from '@/data/departmentsData';
 
 export const metadata: Metadata = {
-  title: 'Programs | University of Swat',
+  title: 'Academic Degree Programs | University of Swat',
   description:
-    'Undergraduate, graduate and doctoral degree programs at the University of Swat — BS, MS, MPhil and PhD across five academic faculties.',
+    'Undergraduate, graduate and doctoral degree programs at the University of Swat — BS, MS, MPhil and PhD across 4 faculties.',
 };
-
-const levels = [
-  {
-    id: 'undergraduate',
-    icon: <GraduationCap className="w-5 h-5" />,
-    title: 'Undergraduate',
-    subtitle: '4-year BS & professional degrees',
-    programs: [
-      'BS Computer Science',
-      'BS Software Engineering',
-      'BS Information Technology',
-      'BS Environmental Sciences',
-      'BS Biotechnology',
-      'BS Microbiology',
-      'BS Chemistry',
-      'BS Physics',
-      'BS Botany',
-      'BS Zoology',
-      'Doctor of Pharmacy (Pharm-D)',
-      'BBA (Honors)',
-      'BS Economics',
-      'LLB (5-Year)',
-      'BS English',
-      'BS Urdu',
-      'BS Pashto',
-      'BS Islamic Studies',
-      'BS Sociology',
-      'BS Applied Psychology',
-      'BS Mass Communication',
-    ],
-  },
-  {
-    id: 'graduate',
-    icon: <BookOpen className="w-5 h-5" />,
-    title: 'Graduate · MS / MPhil',
-    subtitle: 'Research and professional master\u2019s degrees',
-    programs: [
-      'MS Computer Science',
-      'MS Software Engineering',
-      'MS Information Technology',
-      'MS Management Sciences',
-      'MS Economics',
-      'MS Microbiology',
-      'MPhil Archaeology & Heritage',
-      'MPhil Chemistry',
-      'MPhil Physics',
-      'MPhil Mathematics',
-      'MPhil Botany',
-      'MPhil Zoology',
-      'MPhil English',
-      'MPhil Islamic Studies',
-      'LLM',
-      'MA Sociology',
-      'MA Psychology',
-    ],
-  },
-  {
-    id: 'doctoral',
-    icon: <FlaskConical className="w-5 h-5" />,
-    title: 'Doctoral · PhD',
-    subtitle: 'Doctoral research programs',
-    programs: [
-      'PhD Computer Science',
-      'PhD Chemistry',
-      'PhD Physics',
-      'PhD Mathematics',
-      'PhD Botany & Herbal Studies',
-      'PhD Zoology & Wildlife',
-      'PhD Economics',
-      'PhD English',
-      'PhD Islamic Studies',
-    ],
-  },
-];
-
-const facultyShortcuts = [
-  { label: 'Computing & IT', href: '/faculty#computing', icon: <Cpu className="w-4 h-4" /> },
-  { label: 'Sciences', href: '/faculty#sciences', icon: <FlaskConical className="w-4 h-4" /> },
-  { label: 'Management Sciences', href: '/faculty#management', icon: <Briefcase className="w-4 h-4" /> },
-  { label: 'Law & Legal Studies', href: '/faculty#law', icon: <Scale className="w-4 h-4" /> },
-  { label: 'Humanities & Languages', href: '/faculty#humanities', icon: <BookOpen className="w-4 h-4" /> },
-];
 
 export default function ProgramsPage() {
   return (
-    <>
+    <div className="bg-[#F6F5F0] min-h-screen">
       <PageHeader
-        eyebrow="Academic Programs"
-        title="Programs"
-        description="Complete degree catalogue across undergraduate, graduate and doctoral levels, organized by faculty."
+        tag="Academic Programs"
+        title="Degrees &amp; Curricula"
+        subtitle="Explore our comprehensive array of accredited undergraduate, master's, and doctoral programs designed for academic rigor and career readiness."
+        eyebrow="Scholastic Degree Finder"
       />
 
-      <main className="py-14 lg:py-20 bg-[#F6F5F0]">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
-          {/* Level sections */}
-          <div className="space-y-12 lg:space-y-16">
-            {levels.map(level => (
-              <section key={level.id} id={level.id} className="scroll-mt-24">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-10 h-10 rounded-xl bg-[#153B27]/8 text-[#153B27] flex items-center justify-center shrink-0">
-                    {level.icon}
-                  </span>
-                  <div>
-                    <h2 className="font-serif text-2xl sm:text-3xl text-[#14291D] font-bold tracking-[-0.02em]">
-                      {level.title}
-                    </h2>
-                    <p className="text-xs text-stone-500 font-medium mt-0.5">{level.subtitle}</p>
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20">
+        
+        {/* Featured Key Degree Programs with Dedicated Specification Pages */}
+        <div className="mb-20">
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="h-0.5 w-7 bg-[#7F1D1D]" />
+            <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+              Flagship Degrees
+            </span>
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 font-bold mb-4">
+            Featured Degree Specifications
+          </h2>
+          <p className="font-sans text-stone-600 max-w-2xl text-sm sm:text-base leading-relaxed mb-8">
+            Detailed semester-by-semester course roadmaps, credit allocations, eligibility requirements, and career pathways.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {programsDetailCatalog.map((prog) => (
+              <div
+                key={prog.slug}
+                className="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-xs hover:border-[#153B27]/40 hover:shadow-md transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-[#153B27] border border-emerald-200">
+                      {prog.duration}
+                    </span>
+                    <span className="text-[11px] font-mono text-stone-400">
+                      {prog.creditHours} Credits
+                    </span>
                   </div>
-                  <span className="ml-auto text-xs font-bold text-[#7F1D1D] bg-[#7F1D1D]/8 border border-[#7F1D1D]/20 px-3 py-1.5 rounded-full">
-                    {level.programs.length} programs
-                  </span>
+
+                  <h3 className="font-serif text-xl font-bold text-stone-900 group-hover:text-[#153B27] transition-colors mb-2">
+                    <Link href={`/programs/${prog.slug}`}>
+                      {prog.name}
+                    </Link>
+                  </h3>
+
+                  <p className="font-sans text-xs text-stone-600 leading-relaxed mb-4 line-clamp-3">
+                    {prog.description}
+                  </p>
+
+                  <div className="text-[11px] text-stone-500 font-medium mb-4 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#7F1D1D] shrink-0" />
+                    <span>{prog.departmentName}</span>
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {level.programs.map(program => (
-                    <Link
-                      key={program}
-                      href="/admissions"
-                      className="group flex items-center justify-between gap-3 p-4 rounded-xl bg-white border border-stone-200/90 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_14px_30px_-16px_rgba(21,59,39,0.25)]"
-                    >
-                      <span className="text-sm font-semibold text-[#14291D] group-hover:text-[#153B27] transition-colors">
-                        {program}
-                      </span>
-                      <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-[#153B27] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
-                    </Link>
-                  ))}
+                <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-[#153B27]">
+                    View Detailed Syllabus
+                  </span>
+                  <Link
+                    href={`/programs/${prog.slug}`}
+                    className="p-2 rounded-xl bg-stone-50 border border-stone-200 text-stone-600 group-hover:bg-[#153B27] group-hover:text-white transition-colors"
+                    aria-label={`View details of ${prog.name}`}
+                  >
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
                 </div>
-              </section>
+              </div>
             ))}
           </div>
-
-          {/* Faculty shortcuts */}
-          <section className="mt-14 lg:mt-20 p-6 sm:p-8 rounded-xl bg-white border border-stone-200/90 shadow-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-5">
-              <h2 className="font-serif text-2xl text-[#14291D] font-bold">
-                Explore by Faculty
-              </h2>
-              <p className="text-sm text-stone-500 sm:ml-auto">
-                Department-level details for each academic family.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-              {facultyShortcuts.map(f => (
-                <Link
-                  key={f.label}
-                  href={f.href}
-                  className="group flex items-center gap-3 p-4 rounded-xl border border-stone-200/90 bg-stone-50/60 transition-all duration-300 hover:bg-white hover:border-emerald-500/40 hover:shadow-[0_12px_26px_-14px_rgba(21,59,39,0.25)]"
-                >
-                  <span className="text-[#153B27]">{f.icon}</span>
-                  <span className="text-sm font-semibold text-[#14291D]">{f.label}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-[#153B27] ml-auto transition-all" />
-                </Link>
-              ))}
-            </div>
-          </section>
         </div>
-      </main>
-    </>
+
+        {/* Complete Academic Catalog by Faculty */}
+        <div>
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="h-0.5 w-7 bg-[#153B27]" />
+            <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
+              Full Program Directory
+            </span>
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 font-bold mb-8">
+            Complete Degrees by Academic Faculty
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {facultiesCatalog.map((faculty) => (
+              <div
+                key={faculty.slug}
+                className="p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs"
+              >
+                <div className="pb-4 border-b border-stone-100 mb-6">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#7F1D1D] block mb-1">
+                    Faculty
+                  </span>
+                  <h3 className="font-serif text-2xl font-bold text-stone-900">
+                    {faculty.name}
+                  </h3>
+                </div>
+
+                <div className="space-y-6">
+                  {faculty.departments.map((dept) => (
+                    <div key={dept.id} className="p-4 rounded-2xl bg-stone-50 border border-stone-200/70">
+                      <div className="flex items-center justify-between mb-2">
+                        <Link
+                          href={`/departments/${dept.id}`}
+                          className="font-serif text-base font-bold text-stone-900 hover:text-[#153B27] transition-colors"
+                        >
+                          {dept.name}
+                        </Link>
+                        <Link
+                          href={`/departments/${dept.id}`}
+                          className="text-xs font-semibold text-[#153B27] hover:underline"
+                        >
+                          Dept. Profile
+                        </Link>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 mt-2">
+                        {dept.programsOffered.map((p, pIdx) => (
+                          <span
+                            key={pIdx}
+                            className="text-xs px-2.5 py-1 rounded-lg bg-white border border-stone-200 text-stone-700 font-medium"
+                          >
+                            {p}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
   );
 }

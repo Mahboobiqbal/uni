@@ -15,43 +15,43 @@ interface CampusTile {
 const tiles: CampusTile[] = [
   {
     id: 'main-campus',
-    image: '/campus-main.jpg',
+    image: '/images/campus/charbagh-campus.jpg',
     title: 'Charbagh Main Campus',
-    description: 'Central administration, the library, and the science, computing and engineering blocks.',
+    description: 'Central administration, Academic Block C, science laboratories, and 100% green solarized campus facilities.',
     alt: 'Charbagh Main Campus of the University of Swat',
     badge: 'Main Campus',
     featured: true,
   },
   {
     id: 'women-campus',
-    image: '/campus-shot-2.jpg',
+    image: '/images/campus/women-campus.jpg',
     title: 'Women Campus',
-    description: 'Dedicated campus for female students with its own faculty, library and sports facilities.',
+    description: 'Dedicated campus for female students housing the College of Home Sciences, modern biology labs, and specialized facilities.',
     alt: 'Women Campus of the University of Swat',
     badge: 'Women Campus',
   },
   {
     id: 'library',
-    image: '/campus-shot-3.jpg',
-    title: 'Central Library',
-    description: 'Open-stack collections, HEC digital library access and 24/7 reading corners.',
-    alt: 'Central Library of the University of Swat',
-    badge: 'Library',
+    image: '/images/campus/admin-block.jpg',
+    title: 'Central Library & Administration',
+    description: 'Executive secretariats, automated book catalog, HEC Digital Library access, and dedicated scholar reading halls.',
+    alt: 'Central Administration and Library at University of Swat',
+    badge: 'Administration',
   },
   {
     id: 'sports',
-    image: '/campus-shot-4.jpg',
-    title: 'Sports Complex',
-    description: 'Cricket grounds, gymnasium, athletic arena and indoor courts for varsity teams.',
-    alt: 'Sports complex of the University of Swat',
-    badge: 'Sports',
+    image: '/images/campus/main-campus-gate.jpeg',
+    title: 'Main Campus Portal & Sports',
+    description: 'Official main gate, sports pavilions, cricket grounds, and athletic tournament fields for university varsity teams.',
+    alt: 'University of Swat Main Campus Entrance',
+    badge: 'Campus Gate',
   },
   {
     id: 'heritage',
-    image: '/campus-shot-5.jpg',
+    image: '/images/news/news-gandhara-mou-oct2026.jpeg',
     title: 'Swat Valley & Gandhara Heritage',
-    description: 'Ancient Buddhist stupas at Butkara, alpine landscapes and Gandharan scholarship.',
-    alt: 'Swat valley heritage around the University of Swat',
+    description: 'World-famous Gandhara Buddhist stupas, archaeology collaborations with Sri Lankan NIIBS, and valley alpine heritage.',
+    alt: 'Gandhara heritage and international research at University of Swat',
     badge: 'Heritage',
   },
 ];
@@ -66,6 +66,24 @@ export default function CampusLifeHeritage() {
     if (!activeId) return undefined;
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') close();
+      if (event.key === 'Tab') {
+        // Minimal focus trap: keep focus inside the dialog while open.
+        const dialog = document.querySelector('[role="dialog"]');
+        if (!dialog) return;
+        const focusables = dialog.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);

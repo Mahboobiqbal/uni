@@ -1,3 +1,107 @@
+# Sowat University Website — Agent Instructions
+
+You are redesigning the complete Sowat University website.
+
+This is not a one-page landing page. It is a full institutional university website with approximately 15–30 pages.
+
+Your goal is to create a premium, award-winning, editorial, credible, and distinctive university experience. It must feel like a real university—not a generic AI-generated SaaS template.
+
+## Non-negotiable rules
+
+1. Understand before designing.
+   - First read the existing website, sitemap, navigation, pages, programs, faculty, news, events, admissions, research, and contact content.
+   - Identify the university’s purpose, audiences, academic structure, and user journeys.
+   - Never invent programs, faculty, research, statistics, dates, or testimonials.
+
+2. Design the whole system first.
+   - Produce a complete sitemap, URL map, navigation structure, content model, page templates, and card system before writing production code.
+   - Treat every page as part of one coherent university ecosystem.
+
+3. Use a premium editorial direction.
+   - Typography-led, spacious, confident, warm, institutional, and modern.
+   - Strong visual hierarchy.
+   - Real photography and meaningful imagery.
+   - Restrained color and motion.
+   - Distinctive layouts, not repeated generic sections.
+
+4. Avoid AI-slop patterns.
+   - No generic centered hero on every page.
+   - No purple gradients, gradient text, or gradient-heavy sections.
+   - No emoji as icons.
+   - No identical three-column card grids across every page.
+   - No decorative animation that does not improve comprehension.
+   - No stock-photo clichés.
+   - No fake startup-style marketing language.
+
+5. Cards must have a purpose.
+   - Use cards only when they represent repeatable content: programs, faculty, news, events, research, campus life, announcements, locations, or quick links.
+   - Define required fields, image ratio, hierarchy, hover behavior, mobile layout, and accessibility for every card.
+   - Vary layouts: feature stories, directories, profiles, timelines, calendars, maps, indexes, and narrative sections.
+
+6. Motion must serve comprehension.
+   - Use subtle, purposeful transitions.
+   - Respect reduced-motion preferences.
+   - Do not animate everything.
+   - Motion should guide attention, reveal hierarchy, and improve orientation.
+
+7. Accessibility is mandatory.
+   - Maintain strong color contrast.
+   - Use semantic HTML.
+   - Ensure keyboard navigation.
+   - Provide alt text guidance for meaningful images.
+   - Ensure readable typography and touch targets.
+
+8. Preserve factual content.
+   - Keep existing university facts unless the user explicitly approves a change.
+   - Flag missing, outdated, conflicting, or unclear content instead of inventing replacements.
+
+## Required workflow
+
+Follow this exact sequence:
+
+1. Crawl and analyze the existing website.
+2. Create `UNIVERSITY-BRIEF.md`.
+3. Create `SITEMAP.md`, `URL-MAP.md`, `NAVIGATION.md`, and `CONTENT-MODEL.md`.
+4. Create `LAYOUT-SYSTEM.md`, `CARD-SYSTEM.md`, and `PAGE-BLUEPRINTS.md`.
+5. Create `DESIGN-TOKENS.md`, `TYPOGRAPHY.md`, `COLOR-SYSTEM.md`, `MOTION-SYSTEM.md`, and `ACCESSIBILITY.md`.
+6. Wait for user approval.
+7. Implement the design system and shared components.
+8. Build the homepage.
+9. Build the remaining page templates.
+10. Run a final quality review for consistency, accessibility, responsiveness, performance, and content accuracy.
+
+## Required deliverables
+
+Create these files before implementation:
+
+- `docs/UNIVERSITY-BRIEF.md`
+- `docs/SITEMAP.md`
+- `docs/URL-MAP.md`
+- `docs/NAVIGATION.md`
+- `docs/CONTENT-MODEL.md`
+- `docs/LAYOUT-SYSTEM.md`
+- `docs/CARD-SYSTEM.md`
+- `docs/PAGE-BLUEPRINTS.md`
+- `docs/DESIGN-TOKENS.md`
+- `docs/TYPOGRAPHY.md`
+- `docs/COLOR-SYSTEM.md`
+- `docs/MOTION-SYSTEM.md`
+- `docs/ACCESSIBILITY.md`
+- `docs/IMPLEMENTATION-PLAN.md`
+
+## Definition of done
+
+The website is complete only when:
+
+- Every page has a clear purpose and audience.
+- Navigation is intuitive across all 15–30 pages.
+- Every repeated content type uses a consistent template.
+- Cards are meaningful, varied, and reusable.
+- The visual language is consistent across the entire site.
+- The homepage, academics, admissions, research, campus life, faculty, news, events, alumni, and contact pages feel like one university.
+- The site is responsive, accessible, fast, and production-ready.
+- It feels crafted, premium, and worthy of a high-end university web experience.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 ## This is NOT the Next.js you know
@@ -78,10 +182,18 @@ uni/
 
 - **`Navbar`** (`src/components/layout/Navbar.tsx`): High-contrast editorial navigation overlay with official circular University crest (`/uos-logo-circle.png`), "University of Swat" branding, horizontal menu triggers with smooth cubic-bezier fade-in 2-column floating mega-menu cards, academic taxonomy (Programs, Faculty, Academics, Admissions, Campus Life, Research), and University Crimson (`#7F1D1D`) "Student Portal" button.
 - **`HeroSection`** (`src/components/home/HeroSection.tsx`): Full-viewport cinematic video background hero with multi-stop vignette dissolving into Warm Alabaster (`#F6F5F0`), authoritative display serif H1 ("Shaping Scholars & Innovators in the Heart of Swat"), dual CTA ("Explore Programs" & "Virtual Campus Tour"), and three distinct University Crimson (`#7F1D1D`) architectural cards (Quality, Leadership, Experience) with muted gold top border (`border-[#C8A96E]`) and Roman numerals, overlapping the hero's bottom edge onto the light section below.
-- **`ViceChancellorSection`** (`src/components/home/ViceChancellorSection.tsx`): Full wide-screen "Voice of the Vice Chancellor" leadership discourse section on Warm Alabaster (`#F6F5F0`) aligned to the shared 1360px grid, featuring an enlarged 420px React Bits `<ProfileCard />` (`src/components/ui/ProfileCard.tsx`) with 3D interactive physics tilt, cursor glare, authentic portrait of Prof. Dr. Hassan Sher at his executive office desk, concise inspirational leadership statement, unified neutral stone achievement badges, signature, and direct communication links.
+- **`ViceChancellorSection`** (`src/components/home/ViceChancellorSection.tsx`): Full wide-screen "Voice of the Vice Chancellor" leadership discourse section on Warm Alabaster (`#F6F5F0`) aligned to the shared 1360px grid, featuring an enlarged 420px React Bits `<ProfileCard />` (`src/components/ui/ProfileCard.tsx`) with 3D interactive physics tilt, cursor glare, authentic portrait of newly appointed Vice Chancellor Prof. Dr. Husnul Amin (`/images/leadership/vc-prof-dr-husnul-amin.jpeg`), concise inspirational leadership statement, unified neutral stone achievement badges, signature, and direct communication links.
 - **`CampusBulletin`** (`src/components/home/CampusBulletin.tsx`): Flagship 2-column master-detail bulletin styled to match the bento & VC-card visual language (rounded surface gradient, cursor-following spotlight, ambient aura, sheen-sweep tiles, gradient action buttons, sliding active-tab pill on a full-width category rail, scroll-hint edge fades, crest watermark) — Recent/News/Admissions/Exams/Teachers/Students/Vacations, seamless auto-looping notice feed (pause on hover; resume unless a card was clicked), and full official notice reader with serif headline, callout box, Share/Download action bar, and Web Share API + toast feedback. Replaces the legacy `AnnouncementsBoard` gazette.
 - **`FacultyProgramsGrid`** (`src/components/home/FacultyProgramsGrid.tsx`): Interactive academic grid with split header and 5 faculty cards (Computing & IT, Sciences, Management Sciences, Law & Legal Studies, Humanities & Languages) — serif degree counts, level chips, forest/crimson accent borders, sheen hover + lift, and "Explore programs" links.
-- **`CampusLifeHeritage`** (`src/components/home/CampusLifeHeritage.tsx`): Bento gallery with split header — featured Charbagh Main Campus tile (`/campus-main.jpg`, span 2×2) beside an aligned 2×2 of Women Campus / Central Library / Sports Complex / Heritage tiles; hover zoom, frosted captions, hairline rings, and keyboard lightbox; supplies the `#campus-life` anchor.
+- **`CampusLifeHeritage`** (`src/components/home/CampusLifeHeritage.tsx`): Bento gallery with split header — featured Charbagh Main Campus tile (`/images/campus/charbagh-campus.jpg`, span 2×2) beside an aligned 2×2 of Women Campus / Central Library / Sports Complex / Heritage tiles; hover zoom, frosted captions, hairline rings, and keyboard lightbox; supplies the `#campus-life` anchor.
 - **`RankingSection`** (`src/components/home/RankingSection.tsx`): React Bits `<MagicBento />` scorecard grid with embedded graphs (area chart, rating bar, bar chart, sparkline) and full motion (tilt, magnetism, click wave, stars, intro stagger, spotlight, border glow) — HEC 91.4% W-Category, GreenMetric Top 15, THE 301–400, #1 Malakand, 3.68 NAEAC, 100% HEC, Top 5 Ecosystem tiles; light editorial styling with forest glow.
 - **`Footer`** (`src/components/layout/Footer.tsx`): White footer with a Quick Portals card row (CMS, SUJRIS, e-Office, Campus TV) above four institutional columns (Admissions, In Focus, Quick Links, Contact Us), green-tinted headings/links, social icons, and bottom crest/copyright/legal bar.
-- **Multi-page site**: routes `/programs`, `/faculty`, `/academics`, `/admissions`, `/campus-life`, `/research`, `/portal` built in the home design language using the shared `PageHeader` component; Navbar/Footer moved into the root layout.
+- **Multi-page site (64 static routes prerendered)**: Comprehensive university ecosystem built in the approved editorial design language using the shared `PageHeader` component and structured data stores (`src/data/`):
+  - Catalog & Profiles: `/faculty`, `/departments/[slug]` (all 28 departments), `/programs`, `/programs/[slug]` (detailed syllabi for BSCS, BSSE, BBA, BS Chemistry, LLB, BS Env Sci).
+  - Leadership: `/leadership`, `/leadership/vice-chancellor`, `/leadership/[slug]` (Registrar, Treasurer, Controller, Provost).
+  - Academics: `/academics`, `/academics/calendar`, `/academics/downloads`.
+  - Admissions: `/admissions`, `/admissions/fee-structure`, `/admissions/merit-lists`.
+  - Research: `/research`, `/research/oric`, `/research/asrb`.
+  - Campuses & Life: `/campus-life`, `/campuses/main-campus`, `/campuses/women-campus`.
+  - News & Events: `/news`, `/news/[slug]`, `/events`.
+  - Governance & Access: `/about`, `/affiliated-colleges`, `/contact`, `/portal`.

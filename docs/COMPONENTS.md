@@ -14,7 +14,42 @@ This file tracks every component in the University of Swat project, its source l
 | `CampusLifeHeritage` | `src/components/home/CampusLifeHeritage.tsx` | Client | **Active (Bento Gallery)** | Split-header bento grid: featured Charbagh Main Campus tile (span 2×2) beside an aligned 2×2 of Women Campus / Central Library / Sports Complex / Heritage tiles — hover zoom, frosted captions, hairline rings, and keyboard lightbox |
 | `RankingSection` | `src/components/home/RankingSection.tsx` | Client | **Active (React Bits Bento Scorecard)** | HEC 91.4% W-Category, GreenMetric Top 15, THE 301–400, and 4 badge tiles on the React Bits `<MagicBento />` grid with embedded graphs (area chart, rating bar, bar chart, sparkline) and full motion (tilt, magnetism, click wave, stars, intro stagger, spotlight, border glow) — light editorial tiles, forest glow; split header |
 | `Footer` | `src/components/layout/Footer.tsx` | Server | **Active (Quick Portals + Institutional Columns)** | White footer on the 1360px grid with a Quick Portals card row (CMS, SUJRIS, e-Office, Campus TV) above four institutional columns (Admissions, In Focus, Quick Links, Contact Us), green-tinted headings/links, social icons, and bottom crest/copyright/legal bar |
-| `PageHeader` | `src/components/layout/PageHeader.tsx` | Server | **Active (Shared Page Hero)** | Reusable split page header (eyebrow + serif H1 + right description + back link) used by all sub-pages |
+| `PageHeader` | `src/components/layout/PageHeader.tsx` | Server | **Active (Shared Page Hero)** | Reusable split page header (eyebrow, tag, serif H1, description/subtitle, back link) used by all sub-pages |
+| `NotFound` | `src/app/not-found.tsx` | Server | **Active (Custom 404)** | Editorial "page not enrolled" 404 with home/programs/contact actions |
+
+---
+
+## Page Route Directory & Prerendered Templates
+
+| Route Pattern | File Path | Type | Status | Description |
+|---|---|---|---|---|
+| `/` | `src/app/page.tsx` | Static / Client | **Active (Flagship Homepage)** | Approved full homepage (Hero, VC discourse, Campus Bulletin, Faculty Grid, Bento Heritage, Ranking Scorecard, Footer) |
+| `/faculty` | `src/app/faculty/page.tsx` | Static | **Active** | Catalog of all 4 faculties and 28 academic departments with direct links to dynamic profiles |
+| `/departments/[slug]` | `src/app/departments/[slug]/page.tsx` | SSG (Dynamic) | **Active (18+ Paths)** | Detailed department page with faculty directory, research aims, programs offered, and contact proforma |
+| `/programs` | `src/app/programs/page.tsx` | Static | **Active** | Academic degrees directory filterable across Undergraduate, Graduate, and Doctoral tiers |
+| `/programs/[slug]` | `src/app/programs/[slug]/page.tsx` | SSG (Dynamic) | **Active (6 Paths)** | Curricula syllabi, 8-semester course outlines, credit hours, and eligibility (BSCS, BSSE, BBA, BS Chemistry, LLB, BS Env Sci) |
+| `/leadership` | `src/app/leadership/page.tsx` | Static | **Active** | Statutory university leadership catalog and administrative council |
+| `/leadership/vice-chancellor` | `src/app/leadership/vice-chancellor/page.tsx` | Static | **Active** | Full discourse, vision, curriculum vitae, and secretariat of Prof. Dr. Husnul Amin |
+| `/leadership/[slug]` | `src/app/leadership/[slug]/page.tsx` | SSG (Dynamic) | **Active (4 Paths)** | Administrative profiles for Registrar, Treasurer, Controller of Examinations, and Provost |
+| `/academics` | `src/app/academics/page.tsx` | Static | **Active** | Academic council overview, degree programs, and educational ecosystem |
+| `/academics/calendar` | `src/app/academics/calendar/page.tsx` | Static | **Active** | Official academic calendar 2026–2027, semester milestones, and examination schedules |
+| `/academics/downloads` | `src/app/academics/downloads/page.tsx` | Static | **Active** | Categorized proformas, admission forms, scholarship applications, and university statutes |
+| `/admissions` | `src/app/admissions/page.tsx` | Static | **Active** | Comprehensive admissions prospectus, eligibility requirements, step-by-step application pipeline |
+| `/admissions/fee-structure` | `src/app/admissions/fee-structure/page.tsx` | Static | **Active** | Official fee schedule breakdown for all BS, MS/MPhil, PhD, and Self-Finance programs |
+| `/admissions/merit-lists` | `src/app/admissions/merit-lists/page.tsx` | Static | **Active** | Departmental provisional and final merit lists with downloadable official gazettes |
+| `/research` | `src/app/research/page.tsx` | Static | **Active** | Research pillars, patents, Gandhara archaeological excavations, and SUJRIS publications |
+| `/research/oric` | `src/app/research/oric/page.tsx` | Static | **Active** | Office of Research, Innovation & Commercialization, business incubation, and technology transfer |
+| `/research/asrb` | `src/app/research/asrb/page.tsx` | Static | **Active** | Advanced Studies & Research Board policies, thesis submission rules, and MS/PhD approvals |
+| `/campus-life` | `src/app/campus-life/page.tsx` | Static | **Active** | Student societies, sports complex, hostels, alpine outdoor clubs, and transport |
+| `/campuses/main-campus` | `src/app/campuses/main-campus/page.tsx` | Static | **Active** | Charbagh Main Campus overview, 100% solarization, administrative blocks, and masterplan |
+| `/campuses/women-campus` | `src/app/campuses/women-campus/page.tsx` | Static | **Active** | Women Sub-Campus academic facilities, safety, transport, and dedicated female education |
+| `/news` | `src/app/news/page.tsx` | Static | **Active** | University press bureau with verified 2026 press releases and research breakthroughs |
+| `/news/[slug]` | `src/app/news/[slug]/page.tsx` | SSG (Dynamic) | **Active (6 Paths)** | Individual press release articles with authentic photography and official statements |
+| `/events` | `src/app/events/page.tsx` | Static | **Active** | University event calendar, academic symposia, convocation dates, and sports galas |
+| `/about` | `src/app/about/page.tsx` | Static | **Active** | Institutional history from 2010 charter, statutory governance, mission, and valley heritage |
+| `/affiliated-colleges` | `src/app/affiliated-colleges/page.tsx` | Static | **Active** | Affiliated public and private degree colleges across Swat, Shangla, and Buner |
+| `/contact` | `src/app/contact/page.tsx` | Static | **Active** | Departmental telephone directory, email addresses, campus addresses, and inquiry form |
+| `/portal` | `src/app/portal/page.tsx` | Static | **Active** | Central gateway for Student CMS, LMS, Staff e-Office, Admissions, and SUJRIS journal |
 
 ---
 
@@ -40,6 +75,13 @@ This file tracks every component in the University of Swat project, its source l
 |---|---|---|
 | Navigation Data | `src/data/navigation.ts` | Mega menu links, categories, campus details |
 | Announcements Data | `src/data/announcements.ts` | Structured typed notices (13 items, all 7 tabs), tone-based badges, official references, callout boxes |
+| University Data | `src/data/universityData.ts` | Statutory history, governance, accreditation metrics, official email/phone directory |
+| Leadership Data | `src/data/leadershipData.ts` | VC credentials (Prof. Dr. Husnul Amin), Secretariat roster, Statutory Officers profiles |
+| Departments Catalog | `src/data/departmentsData.ts` | All 4 official faculties, 28 teaching departments, faculty rosters, programs, and contact proformas |
+| Program Syllabi | `src/data/programsDetailData.ts` | Deep curriculum specifications, 8-semester course outlines, credit hours, and eligibility criteria |
+| Verified News | `src/data/newsData.ts` | Authentic press releases and research breakthroughs from official university coverage |
+| Campus Specifications | `src/data/campusData.ts` | Specifications, acreage, facilities, and programs for Charbagh and Women Sub-Campus |
+| Crawled Web Data | `src/data/crawled_pages.json` | 1.2 MB raw structured extraction of 258 pages from `uswat.edu.pk` |
 | Site Config | `src/config/site.ts` | University metadata, contact information, social URLs |
 | Utilities | `src/lib/utils.ts` | `cn()`, `formatDate()`, `truncate()` |
 | Shared Types | `src/types/index.ts` | `NavItem`, `SEOProps`, `ContactInfo` |

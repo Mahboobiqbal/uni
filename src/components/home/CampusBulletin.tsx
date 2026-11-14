@@ -248,7 +248,36 @@ export default function CampusBulletin() {
   };
 
   const handleDownload = () => {
-    showToast(`Preparing official university sealed PDF for: ${selectedAnnouncement.title}`);
+    const announcement = selectedAnnouncement;
+    const text = [
+      'UNIVERSITY OF SWAT',
+      'Official Announcement / Gazette',
+      '',
+      `Title: ${announcement.title}`,
+      `Category: ${announcement.category}`,
+      `Badge: ${announcement.badge}`,
+      `Reference: ${announcement.reference}`,
+      `Date: ${announcement.date}`,
+      '',
+      ...announcement.paragraphs,
+      '',
+      announcement.callout ? `${announcement.callout.title}: ${announcement.callout.text}` : '',
+      '',
+      '© University of Swat · Charbagh, Swat, Khyber Pakhtunkhwa, Pakistan',
+    ]
+      .filter((line) => line !== '')
+      .join('\n');
+
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${announcement.reference.replace(/[^a-z0-9]/gi, '-')}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    showToast(`Downloaded official notice: ${announcement.title}`);
   };
 
   return (
@@ -372,7 +401,7 @@ export default function CampusBulletin() {
             <div className="col-span-12 lg:col-span-7 relative overflow-hidden p-6 sm:p-8 flex flex-col justify-between bg-white min-w-0">
               {/* Faint institutional watermark filling the reader's tail space */}
               <div aria-hidden="true" className="pointer-events-none absolute -bottom-10 -right-8 w-64 h-64 opacity-[0.045] select-none">
-                <img src="/uos-logo-circle.png" alt="" className="w-full h-full object-contain rounded-full" />
+                <img src="/uos-logo-circle.png" alt="" aria-hidden="true" className="w-full h-full object-contain rounded-full" />
               </div>
 
               <div key={selectedAnnouncement.id} className="animate-notice-rise relative">

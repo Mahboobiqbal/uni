@@ -41,12 +41,12 @@ export default function ViceChancellorSection() {
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#153B27]/15 via-[#7F1D1D]/10 to-[#B48A3E]/10 blur-2xl opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none" />
               
               <ProfileCard
-                avatarUrl="/vc-portrait.jpg"
+                avatarUrl="/images/leadership/vc-prof-dr-husnul-amin.jpeg"
                 iconUrl="/pattern-crest.svg"
                 miniAvatarUrl="/uos-logo-circle.png"
-                name="Prof. Dr. Hassan Sher"
+                name="Prof. Dr. Husnul Amin"
                 title="Vice Chancellor · University of Swat"
-                caption="Prof. Dr. Hassan Sher"
+                caption="Prof. Dr. Husnul Amin"
                 captionClassName="text-[#153B27] font-semibold"
                 contactText=""
                 showUserInfo={true}
@@ -83,9 +83,10 @@ export default function ViceChancellorSection() {
 
               {/* Concise, Inspiring Leadership Statement */}
               <blockquote className="font-sans text-stone-700 text-base sm:text-lg lg:text-[19px] leading-[1.68] font-normal mb-8 border-l-2 border-[#153B27]/40 pl-5 italic">
-                &ldquo;Our institutional ambition is not merely granting diplomas, but cultivating analytical
-                thinkers who illuminate solutions for climate resilience, digital technology, and societal harmony.
-                At Swat, we empower generations where intellect transforms into human service.&rdquo;
+                &ldquo;It is with immense pride, humility, and a profound sense of responsibility that I assume
+                the office of Vice Chancellor of the University of Swat. We stand at a pivotal moment to cultivate
+                intellectual excellence, good governance, campus-wide green solarization, and dedicated empowerment
+                for our scholars across Swat and beyond.&rdquo;
               </blockquote>
 
               {/* Executive Academic Credentials (Clean, Unified Stone & Brand Accents) */}
@@ -95,8 +96,8 @@ export default function ViceChancellorSection() {
                     <Award className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-xs font-bold text-stone-900">D.Sc &amp; Post-Doc</span>
-                    <span className="text-[11px] text-stone-600">Meritorious Professor</span>
+                    <span className="block text-xs font-bold text-stone-900">PhD (Doctoral Scholar)</span>
+                    <span className="text-[11px] text-stone-600">Academic Leadership</span>
                   </div>
                 </div>
 
@@ -105,8 +106,8 @@ export default function ViceChancellorSection() {
                     <Building2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-xs font-bold text-stone-900">200+ Papers</span>
-                    <span className="text-[11px] text-stone-600">High-Impact Research</span>
+                    <span className="block text-xs font-bold text-stone-900">Green Campus</span>
+                    <span className="text-[11px] text-stone-600">100% Solarization</span>
                   </div>
                 </div>
 
@@ -115,8 +116,8 @@ export default function ViceChancellorSection() {
                     <FileText className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-xs font-bold text-stone-900">PAS Fellow</span>
-                    <span className="text-[11px] text-stone-600">Pakistan Academy of Sci.</span>
+                    <span className="block text-xs font-bold text-stone-900">Oct 2026</span>
+                    <span className="text-[11px] text-stone-600">Appointed Vice Chancellor</span>
                   </div>
                 </div>
               </div>
@@ -126,7 +127,7 @@ export default function ViceChancellorSection() {
             <div className="pt-6 border-t border-stone-200/90 flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="font-serif italic text-2xl sm:text-[28px] text-[#153B27] font-bold tracking-tight">
-                  Prof. Dr. Hassan Sher
+                  Prof. Dr. Husnul Amin
                 </div>
                 <div className="text-xs text-stone-500 font-sans font-medium mt-0.5">
                   Vice Chancellor, University of Swat
@@ -136,17 +137,17 @@ export default function ViceChancellorSection() {
               {/* Quick Action Links */}
               <div className="flex flex-wrap items-center gap-2.5 text-xs font-semibold">
                 <Link
-                  href="/campus-life"
+                  href="/leadership/vice-chancellor"
                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#153B27] text-white hover:bg-[#153B27]/90 transition-colors shadow-xs"
                 >
-                  <span>Campuses &amp; Locations</span>
+                  <span>Full Message &amp; Secretariat</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
                 <Link
-                  href="/academics"
+                  href="/about"
                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-700 hover:bg-stone-50 transition-colors shadow-xs"
                 >
-                  <span>Statutory Regulations</span>
+                  <span>About University</span>
                 </Link>
               </div>
             </div>

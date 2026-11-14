@@ -1,96 +1,173 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowUpRight, Bus, Compass, Pill, Shield, Users } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowUpRight, BookOpen, Trophy, Palette, Sparkles, Bus, Shield, HeartPulse, Building2 } from 'lucide-react';
+import PageHeader from '@/components/layout/PageHeader';
 import CampusLifeHeritage from '@/components/home/CampusLifeHeritage';
 
 export const metadata: Metadata = {
-  title: 'Campus Life | University of Swat',
-  description: 'Campus life at the University of Swat — facilities, sports, societies, transport and student services.',
+  title: 'Campus Life & Facilities | University of Swat',
+  description: 'Student societies, Central Library, sports championships, Women Campus, and campus facilities at University of Swat.',
 };
 
-const lifeAreas = [
+const campusHighlights = [
   {
-    icon: <Users className="w-5 h-5" />,
-    title: 'Societies & Clubs',
-    text: 'Literary, debating, environmental and coding societies run events through the academic year.',
+    title: 'Central Automated Library',
+    tag: 'Scholastic Hub',
+    description: 'Headed by Dr. Wajid Rashid, the Central Library houses over 120,000 print volumes, specialized archives, and high-speed terminals connecting to the HEC National Digital Library.',
+    image: '/images/campus/admin-block.jpg',
+    link: '/portal',
+    linkText: 'Explore Digital Library',
   },
   {
-    icon: <Pill className="w-5 h-5" />,
-    title: 'Health & Wellness',
-    text: 'Campus dispensary, counseling service and anti-harassment cell on both campuses.',
+    title: 'Directorate of Sports & Athletics',
+    tag: 'Fitness & Championships',
+    description: 'Led by Director Dr. Amjad Ali, university athletes compete in HEC Inter-Varsity Zone-A tournaments across badminton, cricket, football, and table tennis.',
+    image: '/images/campus/main-campus-gate.jpeg',
+    link: '/campuses/main-campus',
+    linkText: 'View Sports Complex',
   },
   {
-    icon: <Bus className="w-5 h-5" />,
-    title: 'Transport',
-    text: 'Daily shuttles between Mingora, Saidu Sharif and the Charbagh Main Campus.',
+    title: 'Women’s Campus & Home Sciences',
+    tag: 'Empowering Women',
+    description: 'A self-contained safe campus housing the College of Home Sciences, textile studios, food & nutrition labs, and dedicated women-only shuttle buses.',
+    image: '/images/campus/women-campus.jpg',
+    link: '/campuses/women-campus',
+    linkText: 'Explore Women Campus',
   },
   {
-    icon: <Shield className="w-5 h-5" />,
-    title: 'Security & Safety',
-    text: '24/7 campus security with a women-only transport fleet and secure hostels.',
+    title: 'Hunerkada: Center for Art & Culture',
+    tag: 'Heritage & Creativity',
+    description: 'Promoting traditional Swati embroidery, Gandharan sculpture, calligraphy, painting, and regional folklore revitalization in collaboration with national artists.',
+    image: '/images/news/news-gandhara-mou-oct2026.jpeg',
+    link: '/about',
+    linkText: 'Cultural Heritage Overview',
   },
 ];
 
 export default function CampusLifePage() {
   return (
-    <>
-      <h1 className="sr-only">Campus Life & Swat Valley Heritage</h1>
-      {/* Gallery section (includes its own split header) */}
+    <div className="bg-[#F6F5F0] min-h-screen">
+      <PageHeader
+        tag="Student Experience"
+        title="Vibrant Campus Life &amp; Alpine Valley"
+        subtitle="From athletic championships and high-tech digital reading halls to artistic societies and Gandhara excavations, life at Swat is an immersive journey."
+        eyebrow="Campus Life · University of Swat"
+      />
+
+      {/* Interactive Photo Gallery from approved home design */}
       <CampusLifeHeritage />
 
-      <main className="pb-14 lg:pb-20 bg-[#F6F5F0]">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
-          <section className="pt-14 lg:pt-20">
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
-              <h2 className="font-serif text-3xl text-[#14291D] font-bold tracking-[-0.02em]">
-                Everyday Student Life
-              </h2>
-              <p className="text-sm text-stone-500 max-w-md lg:text-right leading-[1.65]">
-                Services and spaces that make the University of Swat a complete living-learning
-                environment.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {lifeAreas.map(area => (
-                <article
-                  key={area.title}
-                  className="p-6 rounded-xl bg-white border border-stone-200/90 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_16px_36px_-18px_rgba(21,59,39,0.25)]"
-                >
-                  <span className="w-11 h-11 rounded-xl bg-[#153B27]/8 text-[#153B27] flex items-center justify-center mb-4">
-                    {area.icon}
-                  </span>
-                  <h3 className="font-serif text-lg text-[#14291D] font-bold mb-2">{area.title}</h3>
-                  <p className="text-sm text-stone-500 leading-[1.6]">{area.text}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-12 p-6 sm:p-8 rounded-xl bg-white border border-stone-200/90 shadow-xs flex flex-col sm:flex-row items-start gap-5">
-            <span className="w-11 h-11 rounded-xl bg-[#7F1D1D]/10 text-[#7F1D1D] flex items-center justify-center shrink-0">
-              <Compass className="w-5 h-5" />
-            </span>
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20 space-y-16">
+        
+        {/* Core Student Life Pillars */}
+        <div>
+          <div className="pb-4 border-b border-stone-200 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <h3 className="font-serif text-xl text-[#14291D] font-bold mb-1.5">
-                Explore the Swat Valley
-              </h3>
-              <p className="text-sm text-stone-500 leading-[1.65] max-w-2xl">
-                From the ancient stupas of Butkara to alpine meadows and rivers, the valley is an
-                extension of the classroom. The Department of Archaeology and heritage centres
-                run guided field excursions each semester.
+              <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold block mb-1">
+                Campus Facilities
+              </span>
+              <h2 className="font-serif text-3xl font-bold text-stone-900">
+                Pillars of the Student Experience
+              </h2>
+            </div>
+            <p className="text-sm text-stone-500 max-w-md font-sans">
+              Dedicated infrastructure supporting physical fitness, academic research, creative expression, and inclusive empowerment.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {campusHighlights.map((item, idx) => (
+              <div
+                key={idx}
+                className="p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs flex flex-col justify-between group hover:border-[#153B27]/40 hover:shadow-md transition-all"
+              >
+                <div>
+                  <div className="relative w-full aspect-16/9 rounded-2xl overflow-hidden mb-6 bg-stone-100 border border-stone-200">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-102 transition-transform duration-500"
+                    />
+                  </div>
+
+                  <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-stone-100 text-stone-700 border border-stone-200 mb-2 inline-block">
+                    {item.tag}
+                  </span>
+                  <h3 className="font-serif text-2xl font-bold text-stone-900 mb-3 group-hover:text-[#153B27] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="font-sans text-xs sm:text-sm text-stone-600 leading-relaxed mb-6">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                  <Link
+                    href={item.link}
+                    className="text-xs font-semibold text-[#153B27] hover:underline flex items-center gap-1.5"
+                  >
+                    <span>{item.linkText}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Student Welfare & Transportation */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+          <div className="pb-4 border-b border-stone-100 mb-8">
+            <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold block mb-1">
+              Welfare &amp; Services
+            </span>
+            <h2 className="font-serif text-3xl font-bold text-stone-900">
+              Health, Mobility &amp; Student Safety
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
+              <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#153B27] mb-4">
+                <Bus className="w-5 h-5" />
+              </div>
+              <h4 className="font-serif text-base font-bold text-stone-900 mb-2">
+                University Shuttle Fleet
+              </h4>
+              <p className="font-sans text-xs text-stone-600 leading-relaxed">
+                Daily bus shuttles connect Mingora, Saidu Sharif, Barikot, and Matta with Charbagh Main Campus and Women Campus at subsidized student fares.
               </p>
             </div>
-            <Link
-              href="/research"
-              className="sm:ml-auto inline-flex items-center gap-1.5 text-sm font-semibold text-[#153B27] hover:text-[#14291D] transition-colors"
-            >
-              Research & heritage
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </section>
+
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
+              <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#7F1D1D] mb-4">
+                <HeartPulse className="w-5 h-5" />
+              </div>
+              <h4 className="font-serif text-base font-bold text-stone-900 mb-2">
+                Campus Health Dispensary
+              </h4>
+              <p className="font-sans text-xs text-stone-600 leading-relaxed">
+                On-campus medical officers provide free basic healthcare, emergency triage, and prescription medicines for enrolled students and resident staff.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
+              <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#B48A3E] mb-4">
+                <Shield className="w-5 h-5" />
+              </div>
+              <h4 className="font-serif text-base font-bold text-stone-900 mb-2">
+                Proctorial Board &amp; Security
+              </h4>
+              <p className="font-sans text-xs text-stone-600 leading-relaxed">
+                The Proctorial Board guarantees a peaceful scholastic environment, enforces anti-harassment regulations, and maintains 24/7 gated security.
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
-    </>
+
+      </div>
+    </div>
   );
 }

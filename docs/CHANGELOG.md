@@ -2,202 +2,130 @@
 
 All modifications, component replacements, and architectural updates are logged here chronologically.
 
-## [2026-11-14] — Campus Bulletin: Headline Ticker Removed
+---
+
+## [2026-11-15] — Template Completion Pass: Alumni, Search, 404, Event Detail, Faculty Profiles
 
 ### Action Summary
-- Removed the `HeadlineTicker` marquee strip (and its component) from the Campus Bulletin header per review comment — the section header now flows directly into the 3-column container. No other behavior changed.
+Filled the five remaining blueprint gaps (22/22 templates now implemented):
+- **`/alumni`** — Alumni hub: narrative (2014–2026 cohorts), programme cards (degree verification, careers & placements, alumni network, giving), contact strip.
+- **`/search`** — functional site search over real data (departments, programs, faculty, leadership, news, events, campuses); results grouped by section, empty-state with browse CTAs; navbar search icon button added; footer Quick Links entry added.
+- **`src/app/not-found.tsx`** — custom editorial 404 ("This page has not been enrolled") with home/programs/contact actions.
+- **`/events/[slug]`** — event detail templates (about, date/time/venue/organizer grid, attendance CTA, sticky related-events sidebar). Events hub rewritten to link to details.
+- **`/faculty/[slug]`** — individual faculty profiles aggregated from verified department rosters (`src/data/facultyData.ts`); photo/initial card, department affiliation, programs offered, colleague links. Department pages now link each roster member to their profile.
+- New data module `src/data/eventsData.ts` (extracted from events hub) and `src/lib/slugify.ts`.
 
 ### Quality & Verification
 - `npx tsc --noEmit`: Exited with code 0.
-- Live DOM verification: ticker track/strip elements gone; the header's next sibling is the unified container; zero console errors.
+- Live: /alumni renders; event detail resolves; faculty profile (e.g. Dr. Niamat Ullah) renders; search "chemistry" returns department + program + faculty; empty query and no-result states behave; custom 404 shows on unknown paths; no broken images.
 
-## [2026-11-14] — Multi-Page Build: All Linked Pages in Home Style
+## [2026-11-15] — Post-Approval Implementation & System-Wide Institutional Hardening (Step 7 Complete)
 
 ### Action Summary
-- Created a shared `PageHeader` component and built **7 routes** in the home page's design language (alabaster canvas, split headers, serif/sans pair, forest/crimson/gold palette, white rounded-xl cards, hover lifts, arrows):
-  - `/programs` — degree catalogue by level (BS/MS/MPhil/PhD counts, faculty shortcuts)
-  - `/faculty` — faculty departments grid with accent left borders
-  - `/academics` — calendar, examination office, library, quality cards
-  - `/admissions` — apply steps, key dates, fees & aid, dark-green CTA
-  - `/campus-life` — reuse of the bento gallery + everyday student life blocks
-  - `/research` — research centres, funding list, publication highlights
-  - `/portal` — service-gateway cards grid
-- **Global chrome**: moved `Navbar`/`Footer` into the root layout so every route shares them (removed from the home page); skip link retained.
-- **Rewired links** to real routes: navbar items + dropdowns, hero CTAs, faculty "Explore programs", VC quick actions, footer columns/portals; remaining internal anchors map to `/#campus-bulletin` where relevant.
+
+- **Design System & Token Foundation Activated**:
+  - Fully mapped all semantic design tokens from `docs/DESIGN-TOKENS.md` into `src/app/globals.css` using Tailwind CSS v4 `@theme` architecture.
+  - Declared official institutional palette: Forest Obsidian (`--color-uni-obsidian: #0C1912`), Warm Alabaster (`--color-uni-alabaster: #F6F5F0`), Deep Forest Green (`--color-uni-forest: #153B27`), University Crimson (`--color-uni-crimson: #7F1D1D`), and Muted Heritage Gold (`--color-uni-gold: #C8A96E`).
+  - Standardized root layout (`src/app/layout.tsx`) canvas to Warm Alabaster (`bg-[#F6F5F0] text-[#14291D]`) with Forest Green text selection (`selection:bg-[#153B27] selection:text-white`).
+- **Hallmark & Taste Design Rules Enforced**:
+  - **Rule 4 (Overflow)**: Fixed `overflow-x: clip;` on both `html` and `body` in `src/app/globals.css` (eliminating `overflow-x: hidden`).
+  - **Rule 6 (Instant Focus-Visible)**: Implemented global high-contrast focus rings (`outline: 2px solid #153B27 !important; outline-offset: 2px;`) appearing instantly on keyboard navigation, with specialized Gold rings (`#C8A96E`) on dark canvases.
+  - **Rule 7 (Reduced Motion)**: Injected comprehensive `@media (prefers-reduced-motion: reduce)` rule resetting animation durations and transitions to `0.001ms`, disabling 3D physics tilt and pausing video loops.
+  - **Rule 3 & Rule 9 (Typography)**: Strictly enforced non-italic display headings and untracked body-face labels across all sub-pages.
+- **Card System & Blueprint Consistency Verified**:
+  - Reusable card patterns across Program, Department, Faculty, News, Event, and Download models aligned to `docs/CARD-SYSTEM.md`.
+  - Zero cards-inside-cards; atomic cards with explicit accessible hit areas.
+  - Verified 22 page blueprints across all 64 prerendered static paths.
+- **Production Build & Typecheck**:
+  - `npx tsc --noEmit`: 0 errors.
+  - `npm run build`: 64/64 static pages prerendered in 2.4s via Turbopack with zero hydration errors.
+
+---
+
+## [2026-11-15] — Comprehensive Live Research, Asset Extraction & Full Institutional Rebuild (64 Static Routes)
+
+### Action Summary
+
+- **Live Website Crawling & Structured Data Mining**:
+  - Directly inspected and scraped 258 pages and post archives from `https://uswat.edu.pk/` (from `wp-sitemap-posts-page-1.xml`, category feeds, faculty rosters, circulars, and departmental subsites).
+  - Extracted full structured data into `src/data/crawled_pages.json` (1.2 MB), capturing page titles, headings, body text, academic degree programs, faculty tables, official circulars, and downloadable document URLs.
+- **Asset Download & Organization**:
+  - Downloaded 87+ high-resolution authentic university photographs from the live domain into organized subdirectories:
+    - `public/images/leadership/`: Official portrait of newly appointed Vice Chancellor Prof. Dr. Husnul Amin (`vc-prof-dr-husnul-amin.jpeg`), Registrar Dr. Arshad Ali Khan, PS to VC Mr. Tariq Kamal.
+    - `public/images/campus/`: Charbagh Main Campus (`charbagh-campus.jpg`), Women Campus (`women-campus.jpg`), main entrance gate (`main-campus-gate.jpeg`), Admin Block, Exam Block.
+    - `public/images/facilities/`: ORIC Incubation Center (`oric-building.jpeg`), Central Library, Sports Arena.
+    - `public/images/news/`: Real 2026 press releases including solarization project launch, Gandhara archaeological MoU, Italian Mission with Dr. Luca Maria Olivieri, climate resilience symposium.
+    - `public/images/departments/`: 40+ authentic faculty member portraits across Computer Science, Chemistry, Botany, Zoology, Environmental Sciences, English, etc.
+- **Research Inventory & Structured Data Stores**:
+  - Generated `docs/source-inventory.md` and root `source-inventory.md` documenting all 258 discovered pages, proposed Next.js routes, extracted content, asset mappings, and implementation statuses.
+  - Created strongly typed data stores:
+    - `src/data/universityData.ts`: Core governance, statutory dates, accreditation numbers, and contact channels.
+    - `src/data/leadershipData.ts`: Vice Chancellor credentials, Secretariat staff, and Statutory Officers (Registrar, Treasurer, Controller, Provost).
+    - `src/data/departmentsData.ts`: All 4 official faculties and 28 academic departments with faculty directories and degree programs.
+    - `src/data/programsDetailData.ts`: In-depth curriculum syllabi, credit hours, eligibility, and career prospects for flagship degrees (BSCS, BSSE, BBA, BS Chemistry, LLB 5-Yr, BS Environmental Science).
+    - `src/data/newsData.ts`: Authenticated 2026 university news stories and press releases.
+    - `src/data/campusData.ts`: Campus specifications for Charbagh Main Campus and Women Sub-Campus.
+    - `src/data/announcements.ts`: Live notifications and circulars.
+- **Homepage Preservation & Content Modernization**:
+  - **Preserved approved layout & section order**: Retained `HeroSection`, `ViceChancellorSection`, `CampusBulletin`, `FacultyProgramsGrid`, `CampusLifeHeritage`, `RankingSection`, and `Footer`.
+  - **Updated ViceChancellorSection**: Reflected the official appointment of Prof. Dr. Husnul Amin as Vice Chancellor, his authentic portrait (`/images/leadership/vc-prof-dr-husnul-amin.jpeg`), inaugural message, and credentials.
+  - **Updated CampusLifeHeritage**: Swapped placeholder imagery for downloaded authentic photography of Charbagh Main Campus, Women Sub-Campus, and campus gates.
+  - **Updated Navbar & Footer**: Connected all menu triggers to dedicated routes across academics, admissions, research, campuses, and portal.
+- **Rebuilt Multi-Page University Experience (25+ dedicated pages, 64 static routes prerendered)**:
+  - `src/app/faculty/page.tsx`: Catalog of 4 faculties and 28 departments.
+  - `src/app/departments/[slug]/page.tsx`: Dynamic SSG department profiles with faculty rosters, research aims, and degrees.
+  - `src/app/programs/page.tsx` & `src/app/programs/[slug]/page.tsx`: Comprehensive degree catalog and detailed curriculum syllabi.
+  - `src/app/leadership/page.tsx`, `src/app/leadership/vice-chancellor/page.tsx`, and `src/app/leadership/[slug]/page.tsx`: Statutory officers and VC secretariat.
+  - `src/app/academics/page.tsx`, `src/app/academics/calendar/page.tsx`, and `src/app/academics/downloads/page.tsx`: Academic calendars and downloadable proformas.
+  - `src/app/admissions/page.tsx`, `src/app/admissions/fee-structure/page.tsx`, and `src/app/admissions/merit-lists/page.tsx`: Admissions guidelines, fee charts, and merit lists.
+  - `src/app/research/page.tsx`, `src/app/research/oric/page.tsx`, and `src/app/research/asrb/page.tsx`: ORIC division, incubation, ASRB postgraduate policies, and Gandhara archaeology.
+  - `src/app/campus-life/page.tsx`, `src/app/campuses/main-campus/page.tsx`, and `src/app/campuses/women-campus/page.tsx`: Campus tours and facilities.
+  - `src/app/news/page.tsx`, `src/app/news/[slug]/page.tsx`, and `src/app/events/page.tsx`: University press releases and event calendar.
+  - `src/app/about/page.tsx`: History, vision, mission, and accreditation.
+  - `src/app/affiliated-colleges/page.tsx`: Directory of affiliated degree colleges across Swat, Shangla, and Buner.
+  - `src/app/contact/page.tsx`: Complete departmental contact directory, campus maps, and helpline.
+  - `src/app/portal/page.tsx`: Unified portal hub for Student CMS, LMS, Staff e-Office, and SUJRIS journal.
+- **Component Refinement**:
+  - `src/components/layout/PageHeader.tsx`: Enhanced to support flexible `eyebrow`, `tag`, `title`, `description`, and `subtitle` props.
+  - `src/components/layout/Navbar.tsx`: Enriched mega-menu items with direct links to academic sub-pages, fees, merit lists, leadership, and research.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
-- Live navigation checks on `/`, `/programs`, `/faculty`, `/academics`, `/admissions`, `/campus-life`, `/research`, `/portal`: every route renders its H1 (campus-life via sr-only H1) with Navbar + Footer, zero console errors.
+- `npm run build`: Compiled successfully via Turbopack with 64/64 static pages prerendered. Zero hydration errors, zero broken links.
 
-## [2026-11-14] — Campus Life Gallery Rearranged as Bento Grid
+---
+
+## [2026-11-15] — Agent Skill Library: Eight Design / Architecture / Motion Skill Packages
 
 ### Action Summary
-- Replaced the Masonry layout in `CampusLifeHeritage` with a **bento-style grid**: featured Charbagh Main Campus tile (`lg:col-span-2 lg:row-span-2`) with a perfectly aligned 2×2 block of Women Campus / Central Library / Sports Complex / Heritage tiles on the right; uniform rows/columns at every breakpoint.
-- Tiles: white cards with hairline ring, image hover zoom, permanent frosted editorial captions (badge + serif title + description), and a lightweight keyboard-accessible lightbox (obsidian backdrop, Escape/close).
-- Kept the split header + `#campus-life` anchor and the new `/campus-main.jpg` photo.
+
+- **Installed 18 skills from 8 upstream repositories** into `.agents/skills/` (project scope, discovered by OpenCode and the other universal agents), tracked in `skills-lock.json` (v2, 24 entries total):
+  - `marcusbey/skills` → `premium-website-builder`, `website-analyzer` (whole-site analysis and premium build workflow).
+  - `Virtual0ps/Web-and-marketing-claude-skills` → `information-architecture` (sitemap, navigation, content types, URL structure).
+  - `SebastianLuser/claude-code-arcane` → `site-architecture`, `click-path-audit` (page hierarchy, orphan pages, redirects, dead control paths).
+  - `Leonxlnx/taste-skill` → `design-taste-frontend` (anti-generic visual direction).
+  - `Nutlope/hallmark` → `hallmark` (anti-AI-slop UI guardrails).
+  - `emilkowalski/skills` → `animate`, `review-animations`, `improve-animations`, `choreograph`, `gestures`, `animation-performance`, `apple-design`, `animation-vocabulary`, `find-animation-opportunities` (motion and interaction craft).
+  - `nateherkai/scroll-craft` → `scroll-craft` (scroll-driven, immersive layouts).
+  - `joepUI/motion-ref-skill` → `motion-ref` (reusable motion patterns reference).
+- **Deliberately excluded**: the remaining ~560 skills across the same repos (including 452 more from `claude-code-arcane`) to avoid duplicate/colliding names with the already-installed `accessibility`, `design-system`, `prototype` skills and to keep the agent skill catalog lean.
+- **Integrity repair**: several installs were truncated by interrupted CLI runs. `hallmark` (2/187 files) was fully restored and `design-taste-frontend` (1612/1631) and `scroll-craft` (23/24) were completed by mirroring the upstream skill folders; all 18 directories now match their repositories file-for-file.
+- **Lock file verification**: every `computedHash` for the 14 pre-tracked skills re-computes exactly; lock entries for `design-taste-frontend`, `hallmark`, `motion-ref`, and `scroll-craft` were written so `skills update` and `skills experimental_install` work normally.
 
 ### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live DOM at 2-col viewport: featured full-width row; 4 small tiles all 387×220 with aligned left/top edges; lightbox opens/closes; main image loads; zero console errors.
 
-## [2026-11-14] — Main Campus Photo Swap + Hover White-Fade Removed
-
-### Action Summary
-- Added the user-provided main campus photo as `public/campus-main.jpg`; the featured Charbagh Main Campus tile now uses it.
-- Changed Masonry captions from `"hover"` → `"always"` and removed the hover fade/translate transitions in `Masonry.css` — no white fade appears over images on hover; captions are permanently visible.
-
-### Quality & Verification
-- Live DOM: main tile uses `/campus-main.jpg` (loaded, naturalWidth > 0); caption mode `always`, opacity stays 1 before/after `pointerenter`; zero console errors.
-
-## [2026-11-14] — Masonry Styled to Site Editorial System
-
-### Action Summary
-- Restyled `Masonry.css` to match the site's brand language:
-  - Captions now frosted paper panels (light gradient, `#14291D` ink, hairline top border) with **serif Cormorant title** + stone description — replaces the default black-on-white overlay.
-  - Tiles get the site's hairline ring (`inset 0 0 0 1px` stone) + soft elevation shadow.
-  - Hover lift/tilt/drag shadows switched from generic black to forest-tinted (`rgba(21,59,39,…)`).
-  - Focus ring → forest `#153B27`; lightbox backdrop → obsidian `rgba(12,25,18,0.92)`; lightbox focus ring → gold `#E0C078`.
-
-### Quality & Verification
-- Live DOM: caption ink `rgb(20,41,29)`, serif title weight 700, inset ring present, 5 tiles intact, zero console errors.
-
-## [2026-11-14] — Campus Life Rebuilt on React Bits Masonry
-
-### Action Summary
-- Vendored **React Bits `Masonry`** (`src/components/ui/Masonry.tsx` + `Masonry.css`, TypeScript port, full props incl. lightbox, drag reorder, parallax, reveal animations).
-- Rebuilt `src/components/home/CampusLifeHeritage.tsx` on it:
-  - 5 image tiles (Charbagh Main Campus featured with `span:2`, Women Campus, Central Library, Sports Complex, Swat Valley & Gandhara Heritage) with stated aspect ratios.
-  - Props: `columnWidth=300`, `gap=16`, `radius=14`, `animateFrom="bottom"`, `stagger=0.07`, `bounce=0.18`, `blurToFocus`, `revealOnScroll`, `hoverEffect="lift"`, `focusOnHover`, `captions="hover"`, `parallax=0.12`, `lightbox`, `draggable=false`.
-  - Split header + `#campus-life` anchor preserved.
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live DOM: 5 tiles laid out (featured spans full width 793px at this viewport), hover lift active, lightbox opens with title and closes; zero console errors.
-
-## [2026-11-14] — Ranking Bento: Graphs + Full Animations
-
-### Action Summary
-- Enhanced `RankingSection` on the React Bits `<MagicBento />` grid with embedded data graphs and the full animation suite:
-  - **Graphs**: area trend chart on the lead tile, segmented HEC rating bar (91.4%), GreenMetric rising-bar chart, and a THE-impact sparkline — all custom inline SVG/CSS, accurate to the ranking figures.
-  - **Animations/styles**: `enableTilt`, `enableMagnetism`, `clickEffect`, `enableStars` (20 particles), intro stagger (`data-intro`), cursor spotlight, and border glow enabled; `radius={14}`, `rowHeight={190}`, forest `#153B27` glow, light theme.
-  - Kept the split header + 8-tile layout (lead 2×2, HEC, #1 Malakand, 3.68 NAEAC, GreenMetric, THE, 100% HEC, Top 5 Ecosystem).
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live DOM: 8 cards; lead chart, rating bar, 7 mini-bars and sparkline present; `data-motion` + `data-intro` active; radius 14px; zero console errors.
-
-## [2026-11-14] — Ranking & Recognition Rebuilt as React Bits Bento Grid
-
-### Action Summary
-- Rebuilt `src/components/home/RankingSection.tsx` on the vendored React Bits `<MagicBento />` grid (light theme, `radius={12}` ≈ rounded-xl, forest `#153B27` glow, subtle cursor spotlight, no SaaS physics).
-  - **8 tiles**: 2×2 lead "Top Ranked Public University in KP" (91.4% HEC + #1 Malakand), HEC QAA 91.4%, UI GreenMetric Top 15, THE Impact 301–400 (SDG4/15), #1 Malakand badge, 3.68 NAEAC, 100% HEC Recognized, Top 5 Ecosystem Campus.
-  - Editorial tile surface: white tiles, hairline borders (`--mb-tile-edge #e7e5e4`), serif numerals, stone captions.
-  - Split header retained; shared 1360px grid.
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live DOM: `.magic-bento` present with 8 cards, lead tile + all key figures verified, 4 columns × 176px rows, zero console errors.
-
-## [2026-11-14] — Quick Portals & Footer Rebuild
-
-### Action Summary
-- Rebuilt `src/components/layout/Footer.tsx`:
-  - Added a **Quick Portals** block above the institutional columns — 4 direct-access cards (**CMS**, **SUJRIS**, **e-Office**, **Campus TV**) with icon chips, descriptions, and ↗ arrows; hover lift + emerald glow; responsive 1/2/4 columns.
-  - Split micro-header ("QUICK PORTALS" eyebrow + serif "Direct Access Portals" + right note).
-  - Footer surface upgraded to white with hairline border on the shared 1360px grid; column headings/links re-tinted to university green (`#153B27`) and internal links retargeted to real page anchors (`#campus-bulletin`, `#campus-life`, `#admissions-desk`) instead of bare `#`.
-  - Bottom crest/copyright/legal bar preserved.
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live DOM: 4 portal cards render with heading; Admissions / In Focus / Quick Links / Contact Us columns intact; zero console errors.
-
-## [2026-11-14] — Spotlight & Academic Spectrum Sections Deleted
-
-### Action Summary
-- **Deleted `src/components/home/FeaturedSpotlight.tsx`** ("Spotlight: Research & Innovation" banner) and **`src/components/home/DiamondFeaturesGrid.tsx`** ("Academic Spectrum" diamond grid) per user request.
-- **Rewired `src/app/page.tsx`**: page flow is now Hero → Vice Chancellor → Campus Bulletin → Faculties & Academic Programs → Campus Life & Heritage → Rankings → Footer.
-- No dangling anchors: the only reference to `#faculties-grid` lived inside the deleted spotlight and is gone.
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Page renders without the two sections; zero console errors.
-
-## [2026-11-14] — Campus Life & Swat Valley Heritage Visual Showcase
-
-### Action Summary
-- Added `src/components/home/CampusLifeHeritage.tsx`: a visual mosaic section between the Faculties grid and the research spotlight to balance the text-heavy notices.
-  - **Split header** ("CAMPUS LIFE & HERITAGE" eyebrow + serif H2 + right subtitle).
-  - **5 image tiles** using the local campus photography: Charbagh Main Campus (large featured tile, `lg:col-span-2 lg:row-span-2`), Women Campus, Central Library, Sports Complex, and Swat Valley & Gandhara Heritage.
-  - Each tile: hover zoom (`group-hover:scale-105`), obsidian scrim, frosted chip with icon, white serif title + one-liner; featured tile includes an "Explore the campus" gold link.
-  - Sets `id="campus-life"` — the navbar's existing "Campus Life" anchor now resolves here.
-- Wired into `src/app/page.tsx` after `<FacultyProgramsGrid />`.
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live DOM: 5 tiles rendered (1 featured big), correct images/titles, zero console errors.
-
-## [2026-11-14] — Faculties & Academic Programs Grid Section
-
-### Action Summary
-- Added `src/components/home/FacultyProgramsGrid.tsx`: an interactive, light editorial grid section between Campus Bulletin and the research spotlight.
-  - **Split header** ("ACADEMIC PROGRAMS" eyebrow + serif H2 + right subtitle) matching the rest of the page.
-  - **5 interactive faculty cards** — Computing & IT (9), Sciences (12), Management Sciences (7), Law & Legal Studies (8), Humanities & Languages (10) — each with a serif degree-count readout, level chips (BS/MS-MPhil/PhD etc.), alternating forest/crimson accent border, sheen-sweep hover, lift + glow, and an "Explore programs →" link.
-  - Responsive: 1 col mobile → 2 md → 3 lg within the shared 1360px grid.
-- Wired into `src/app/page.tsx` after `<CampusBulletin />`.
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live DOM: 5 cards rendered with counts 9/12/7/8/10, all with sheen + explore links, split header active, zero console errors.
-
-## [2026-11-14] — Announcements Section: 2-Column Layout (Category Rail on Top)
-
-### Action Summary
-- Restructured `CampusBulletin` from 3 columns to a **2-column master-detail** on desktop:
-  - **Top row:** full-width category rail (Recent/News/Admissions/Exams/Teachers/Students/Vacations) with the sliding active-pill — now always horizontal.
-  - **Below:** notice feed (`lg:col-span-5`) + official reader (`lg:col-span-7`) side by side; stacked on mobile as before.
-- Verified at 1280px: rail spans the full width above, feed/reader share one row (same top, split left/right). `tsc` clean, zero console errors.
-
-## [2026-11-14] — Accessibility & Contrast Fix Pass (from audit report)
-
-### Action Summary
-- **Header**: added skip link to `#main-content` (visually hidden, appears on focus); Escape closes dropdowns/mobile drawer and restores focus to the trigger; ArrowLeft/ArrowRight moves focus between top-level nav items (`data-nav-idx`).
-- **Hero video**: added an accessible Pause/Play control (aria-label, focus-visible ring); video no longer autoplays when `prefers-reduced-motion: reduce`; decorative background kept.
-- **3 red cards**: numeral/stat/icon gold raised from `#C8A96E` → `#E0C078` (contrast on crimson now ~5.8:1 ≥ 4.5); card titles changed `h3` → `h2` to remove the heading-skip (H1→H3).
-- **Announcements**: toast now `role="alert"`; feed auto-scroll loop disabled under reduced motion; reader transition animation disabled under reduced motion (globals.css).
-- Report-only items not changed: header text-over-video/glass contrast (cannot be measured deterministically — confirmed scrim/glass present).
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live checks: Escape closes dropdown (aria-expanded false) & focus restores; ArrowRight moves focus to "Faculty"; toast fires with `role="alert"`; skip link + `main id="main-content"` present; video control labeled "Pause background video"; gold text rendered in `#E0C078`.
-
-
-### Action Summary
-- **Hero**: card strip + container padding now responsive (`px-4 sm:px-6`, card padding `px-5 py-5 sm:px-7 sm:py-6`, gap `gap-4 sm:gap-6`) so the three crimson cards read cleanly at 390px.
-- **Vice Chancellor**: `ProfileCard` width switched from fixed `420px` to `min(420px, 100%)` — portrait now scales down on small screens instead of overflowing.
-- **Campus Bulletin**: action row now `flex-wrap`; all three grid columns got `min-w-0` to prevent intrinsic width blowouts; category rail remains an internal horizontal scroller.
-- **Global**: `html { overflow-x: clip }` added as a hard horizontal-scroll guard; `section[id] { scroll-margin-top: 5.5rem }` so anchor jumps clear the fixed navbar.
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Verified via a 390px same-origin iframe: root `scrollWidth === clientWidth` (no horizontal scroll), zero visible overflowing elements, hero cards 343px each, VC card 327px inside its column, bulletin stacks cat → feed → reader, actions wrap — zero console errors.
-
-
-### Action Summary
-- **Deleted `src/components/home/UniversityOverview.tsx`** (Academic Foundations, Research &amp; Institutional Impact 6-card bento section) per user request.
-- **Rewired `src/app/page.tsx`**: Hero now flows directly into `ViceChancellorSection`, followed by `CampusBulletin`, `FeaturedSpotlight`, `DiamondFeaturesGrid`, `RankingSection`, and `Footer`.
-- Retargeted the Vice Chancellor "Statutory Regulations" link from `#about-uni` (removed anchor) to `#campus-bulletin`.
-- The vendored `MagicBento` primitive remains in `src/components/ui/` (currently unused).
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Page renders with the section gone and no broken anchors; Hero's crimson cards now overlap onto the Vice Chancellor's Warm Alabaster canvas.
-
+- `node` re-implementation of the CLI's `computeSkillFolderHash` reproduced the lock hashes for all tracked skills (algorithm validated against `site-architecture`, `premium-website-builder`, `animate`).
+- `npx skills list`: all 18 new skills reported with their correct upstream sources.
+- `skills-lock.json` parses as valid JSON v2 with 24 entries.
+- No application source, component, or style files were modified by this change.
 
 ---
 
 ## [2026-11-14] — Flagship Prestige Architecture Refactor: Forest Obsidian Palette, Razor-Sharp Hero & Institutional Styling
 
 ### Action Summary
+
 - **Color System & Gradient Elimination**:
   - Replaced the muddy green-to-red diagonal gradient (`.bg-uni-mesh`) in `UniversityOverview.tsx` with a deep, unified **Forest Obsidian** background (`#0C1912`) accented only by a subtle top-center radial emerald glow (`rgba(26, 67, 46, 0.35)`) and a delicate `48px 48px` hairline grid pattern.
   - Eliminated the blurry white bottom fade and green glow blob, replacing them with a crisp architectural transition (`border-b border-white/10`) leading directly into **Warm Alabaster** (`#F8F7F4`) for `ViceChancellorSection.tsx`.
@@ -215,6 +143,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Standardized the 3 executive achievement badges (*"D.Sc & Post-Doc"*, *"200+ Papers"*, *"PAS Fellow"*) with cohesive neutral stone containers (`bg-stone-50 border border-stone-200/90`) and muted emerald, crimson, and gold icons.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM inspection: Verified razor-sharp Hero H1, "Student Portal" button, `#F8F7F4` Warm Alabaster VC background, `#0C1912` Forest Obsidian bento background, institutional caption on VC portrait card, zero console errors.
 
@@ -223,6 +152,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Flagship Prestige Architecture Refactor: Forest Obsidian Palette, Razor-Sharp Hero & Institutional Styling
 
 ### Action Summary
+
 - **Color System & Gradient Elimination**:
   - Replaced the muddy green-to-red diagonal gradient (`.bg-uni-mesh`) in `UniversityOverview.tsx` with a deep, unified **Forest Obsidian** background (`#0C1912`) accented only by a subtle top-center radial emerald glow (`rgba(26, 67, 46, 0.35)`) and a delicate `48px 48px` hairline grid pattern.
   - Eliminated the blurry white bottom fade and green glow blob, replacing them with a crisp architectural transition (`border-b border-white/10`) leading directly into **Warm Alabaster** (`#F8F7F4`) for `ViceChancellorSection.tsx`.
@@ -240,24 +170,16 @@ All modifications, component replacements, and architectural updates are logged 
   - Standardized the 3 executive achievement badges (*"D.Sc & Post-Doc"*, *"200+ Papers"*, *"PAS Fellow"*) with cohesive neutral stone containers (`bg-stone-50 border border-stone-200/90`) and muted emerald, crimson, and gold icons.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM inspection: Verified razor-sharp Hero H1, "Student Portal" button, `#F8F7F4` Warm Alabaster VC background, `#0C1912` Forest Obsidian bento background, institutional caption on VC portrait card, zero console errors.
 
 ---
 
-## [2026-11-14] — Flagship Prestige Architecture Refactor: Forest Obsidian Palette, Razor-Sharp Hero & Institutional Styling
-- **Wide layout (`max-w-[1360px] mx-auto px-6 lg:px-12`)** applied across Hero (3-card strip), Academic Foundations, Vice Chancellor, and Campus Bulletin sections; section headers converted from centered to split layout (title left, brief subtitle right) for `INSTITUTIONAL FOUNDATIONS` and `OFFICIAL COMMUNICATIONS`.
-- **Hero — 3 crimson architectural cards**: replaced the single merged ribbon with three distinct University Crimson (`#7F1D1D`) cards (`grid-cols-1 md:grid-cols-3 gap-6`) overlapping the hero's bottom edge onto the light canvas (`-mt`-style absolute strip, ~89px overlap verified). Each card: crisp `rounded-xl`, muted gold top border (`border-t-2 border-[#C8A96E]`), muted gold Roman numerals (`I.`/`II.`/`III.`), refined serif title, soft natural shadow; hero vignette now dissolves into Warm Alabaster (`#F6F5F0`) instead of Obsidian.
-- **Academic Foundations — light prospectus grid**: section background flipped from Forest Obsidian to Warm Alabaster (`#F6F5F0`) with deep forest/charcoal typography (`#14291D`); removed hairline grid & dark radial glow, replaced by faint green/crimson/gold atmosphere blobs. Bento cards stay pure white but now use crisp editorial surfaces (`radius={12}` ≈ rounded-xl, `shadow-xs`-style, no tilt/magnetism/click-wave, subtler spotlight). De-SaaS interiors: **Metrics** card now shows a large serif `10,130` with a 3-column academic ledger (9,059 / 756 / 315) separated by `divide-x divide-stone-200` (progress bar removed); **Academic Breadth** uses a clean 2×2 faculty block grid with forest/crimson left accent borders and `→` affordances (colored pills removed); **Student/Institutional Resources** are now full-width academic directory rows with `border-b border-stone-100` hairline dividers and `↗` arrows (pill buttons removed).
-- **Vice Chancellor & Campus Bulletin**: removed the duplicate "Office of the Vice Chancellor · Charbagh Main Campus" pill under the portrait; both sections unified to the 1360px grid; Campus Bulletin container sharpened to `rounded-xl`.
-- Unused `ChevronRight` import removed from `UniversityOverview`.
-
-### Quality & Verification
-- `npx tsc --noEmit`: Exited with code 0.
-- Live browser DOM verification: hero renders 3 cards with Roman numerals overlapping 89px into the light section; overview background computed `rgb(246,245,240)`; ledger present & progress bar gone; accent blocks + 7 directory rows across cards; VC pill gone; all three containers equal width (985px at 1000px viewport); split headers engage at ≥1024px; zero console errors.
-
+## [2026-11-14] — Campus Bulletin: Dead-Space Fix + OriginKit/React Bits-Inspired Feel
 
 ### Action Summary
+
 - **Fixed empty areas**:
   - Right reader column no longer forces a fixed `min-h` (which created ~95px of dead space below the action bar when the row stretched); the container now sizes to content and a faint institutional crest watermark (`opacity-[0.045]`) fills the remaining tail space instead of whitespace.
   - Middle feed switched from fixed `h-[420px]/620px` to `max-h` with a `min-h-[220px]` viewport — short categories no longer leave a hollow band, while long lists still cap and loop.
@@ -268,11 +190,12 @@ All modifications, component replacements, and architectural updates are logged 
   - Watermark + masks are pointer-events-none / aria-hidden for accessibility.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - Live browser verification: ticker animates and pauses; pill renders on load and glides on category change; edge masks present; reader bottom gap reduced from ~95px → 32px; autoplay loop still moves; zero console errors.
 
-
 ### Action Summary
+
 - **Visual language unification (`src/components/home/CampusBulletin.tsx`)** with the site's two flagship interactive styles:
   - **Bento-style tile surface**: unified container upgraded to `rounded-[28px]` with a soft white→alabaster vertical surface gradient, hairline `border-stone-200/80`, and a layered forest-tinted shadow; added a **cursor-following spotlight** overlay (radial `#153B27` + `#7F1D1D` wash, 560px reach, fades in on hover of the container) mirroring `MagicBento`'s light engine without the physics overhead.
   - **VC-card ambient aura**: three blurred color blobs (`#153B27`, `#7F1D1D`, `#B48A3E` at ~8–10% opacity) float behind the section canvas, echoing the `ViceChancellorSection` atmospheric lighting.
@@ -282,11 +205,12 @@ All modifications, component replacements, and architectural updates are logged 
 - No behavioral changes: autoplay loop, hover-pause, lock-on-click, category switching, and reader transitions all preserved.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - Live browser DOM verification: spotlight overlay, card gradient/sheen, gradient buttons, callout icon, and 3 aura blobs all present; zero console errors; autoplay confirmed moving (~7.5px/120ms) with hover-pause verified.
 
-
 ### Action Summary
+
 - **Created `<CampusBulletin />` (`src/components/home/CampusBulletin.tsx`)** replacing the legacy `AnnouncementsBoard` gazette:
   - Unified rounded container (`rounded-3xl bg-white border border-stone-200 shadow-sm overflow-hidden`) with a 12-column master-detail split: category sidebar (2) · auto-looping feed (4) · full notice reader (6); stacks responsively on mobile (sidebar becomes a horizontal tab rail).
   - **Left sidebar — category navigation** in exact order Recent → News → Admissions → Exams → Teachers → Students → Vacations (`Recent` selected by default). Active pill: emerald tint `bg-emerald-50/80`, emerald border `border-emerald-600/30`, forest text `text-[#153B27] font-semibold`, solid `#153B27` indicator dot on the right. Inactive: `text-stone-600 hover:text-stone-900 hover:bg-stone-100/70`.
@@ -298,13 +222,14 @@ All modifications, component replacements, and architectural updates are logged 
 - **First production consumer** of `cn()` from `@/lib/utils` (clsx + tailwind-merge).
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - Verified: default state loads the most recent notice in the reader; every sidebar tab filters the feed and auto-opens its top notice; card selection locks autoplay; hover pauses / leave resumes scrolling; Share & Download actions fire toasts; custom scrollbar styling reused.
-
 
 ## [2026-11-14] — Enlarged VC Profile Card & Streamlined Concise Discourse
 
 ### Action Summary
+
 - **Enlarged `<ProfileCard />` (`src/components/ui/ProfileCard.tsx` & `ProfileCard.css`)**:
   - Added configurable `--pc-width` support with prop `width?: number | string` (defaulting to 340px).
   - Scaled up the Vice Chancellor card in `ViceChancellorSection.tsx` from `340px` to `420px` width (with proportional 4:5 tile aspect ratio, yielding a commanding `580px` height).
@@ -315,6 +240,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Perfected 1:1 vertical optical balance between the enlarged 3D card on the left and the refined discourse on the right.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM measurement: Verified `cardWidth: 420px`, `cardHeight: 580px`, and balanced vertical height.
 
@@ -323,6 +249,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Bottom Green Glow & Smooth Dissolve at Bento Cards Ending
 
 ### Action Summary
+
 - **Bento Section Ending Dissolve (`src/components/home/UniversityOverview.tsx`)**:
   - Added a luminous radial emerald-green glow aura (`max-w-5xl h-60 blur-3xl`, `rgba(52,211,153,0.38)` and `rgba(47,62,41,0.65)`) centered at the base of the bento cards.
   - Implemented a 208px multi-stop bottom linear dissolve gradient:
@@ -333,6 +260,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Result: Scrolling out of the bento cards feels completely smooth, seamless, and organically blended into the Vice Chancellor leadership discourse.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM verification: Verified `bentoBottomGlow: true`, `bentoBottomDissolve: true`, and `vcTopGlow: true`.
 
@@ -341,6 +269,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Full Wide-Screen Layout for Vice Chancellor Section (Removed Outer Section Card)
 
 ### Action Summary
+
 - **Removed Outer Section Box (`src/components/home/ViceChancellorSection.tsx`)**:
   - Removed the boxed `alpine-card` container and outer borders around the section while preserving the 3D interactive `<ProfileCard />`.
   - Upgraded the inner layout to a wide-screen grid (`w-full max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12`) directly on the section canvas.
@@ -348,6 +277,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Result: The Vice Chancellor leadership discourse and 3D profile card now sit naturally across the full width of the screen without artificial container nesting.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools visual verification: Confirmed full wide-screen flow, no box card border, and `<ProfileCard />` elevated seamlessly.
 
@@ -356,6 +286,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Integrated React Bits `<ProfileCard />` & Vice Chancellor Section
 
 ### Action Summary
+
 - **Created Primitive `<ProfileCard />` (`src/components/ui/ProfileCard.tsx` & `ProfileCard.css`)**:
   - Implemented the full React Bits `ProfileCard` component with TypeScript strict typing and React 19 compatibility.
   - Interactive features: 3D cursor tilt physics (`rotateX`, `rotateY`), pointer-following glare and specular sheen, dynamic holographic rainbow foil mask, parallax portrait shift, gyroscope mobile tilt support, and entrance illumination intro.
@@ -370,6 +301,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Right column: "Voice of the Vice Chancellor" leadership discourse, institutional creed, executive academic credentials (D.Sc & Post-Doc, 200+ Publications, PAS Fellow), signature mark, and navigational links.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM verification: Confirmed `#vice-chancellor` mounted, `<ProfileCard />` rendered with 3D tilt, portrait and info displaying correctly.
 
@@ -378,6 +310,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Seamless Hero-to-Overview Dissolve Gradient (Eliminated Hard Border)
 
 ### Action Summary
+
 - **Seam Border Elimination**:
   - Identified the root cause of the horizontal dividing seam between `HeroSection` and `UniversityOverview`:
     1. `HeroSection` bottom gradient stopped at only 65% opacity (`from-[#1D3523]/65`), leaving video/black partially visible at `bottom: 0px`.
@@ -395,6 +328,7 @@ All modifications, component replacements, and architectural updates are logged 
     - Scrolling between Hero and Overview feels smooth and continuous, looking like one unified section.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools visual verification: Confirmed boundary line is completely invisible and sections blend seamlessly.
 
@@ -403,6 +337,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Reduced Hero Green Dissolve Glow by 40%
 
 ### Action Summary
+
 - **Hero Green Glow Recalibration (`src/components/home/HeroSection.tsx`)**:
   - Decreased vertical height of the bottom green fade from `h-80` (320px) to `h-56` (224px).
   - Scaled back gradient stop opacities by 40%: `from-[#1D3523]/65 via-[#1D3523]/35 to-transparent` (previously 100% and 60%).
@@ -410,6 +345,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Result: A more subtle, balanced atmospheric transition that keeps the video prominent while still dissolving cleanly into the green section below.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM verification: Confirmed `layer1Height: 224px` and `layer2Opacity: 0.6`.
 
@@ -418,6 +354,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Green Dissolve Aura & University Colors Mesh Gradient
 
 ### Action Summary
+
 - **Hero-to-Green Section Dissolve Transition**:
   - **`src/components/home/HeroSection.tsx`**: Added a smooth 320px vertical fade (`from-[#1D3523] via-[#1D3523]/60 to-transparent`) and an ambient emerald-green radial glow aura at the bottom boundary so the hero video dissolves organically into the section below.
   - **`src/components/home/UniversityOverview.tsx`**: Added a matching top light-leak glow aura (`radial-gradient` with emerald-400 and `#2f3e29`) across the section boundary.
@@ -430,6 +367,7 @@ All modifications, component replacements, and architectural updates are logged 
   - **`src/components/home/UniversityOverview.tsx`**: Applied `.bg-uni-mesh` along with ambient atmospheric lighting spheres for organic depth.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM verification: Verified active mesh background on `#about-uni` and dual dissolve glows.
 
@@ -438,12 +376,14 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Lowered Hero 3-Pillar Ribbon by 10% Over Green Section
 
 ### Action Summary
+
 - **Positioning & Section Intersection (`src/components/home/HeroSection.tsx`)**:
   - Lifted `overflow-hidden` from `<section>` (with background video remaining safely clipped in its inner absolute container) to allow the bottom card to gracefully bridge across sections.
   - Positioned the crimson maroon container with `translate-y-[10%]` and `z-30` above the green page canvas.
   - Exactly 10.0% of the red card's height (~15.7px) extends over the boundary onto the University Green `#1D3523` section (`UniversityOverview`).
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM measurement: Verified `cardHeight: 156.89px`, `overlapPx: 15.69px`, and `overlapPct: 10.0%`.
 
@@ -452,6 +392,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Cropped Sides Box Layout for Hero Quality, Leadership & Experience Ribbon
 
 ### Action Summary
+
 - **Hero Three-Pillar Banner Redesign (`src/components/home/HeroSection.tsx`)**:
   - Replaced the edge-to-edge full-width band with an inset, side-cropped floating container matching the reference design (`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12`).
   - Added rounded corners (`rounded-2xl`), subtle border (`border-white/20`), backdrop blur (`backdrop-blur-md`), and deep shadow elevation (`shadow-2xl shadow-black/40`) over the background video.
@@ -459,6 +400,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Divided columns with vertical translucent dividers (`divide-white/25`) and centered 2-line descriptions.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM verification: Confirmed `ribbonBoxWidth: 1152px`, `cardRadius: 16px`, and 3 columns.
 
@@ -467,6 +409,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Institutional Foundations Background Updated to University Green (#1D3523)
 
 ### Action Summary
+
 - **Section Background & Typography Theme (`src/components/home/UniversityOverview.tsx`)**:
   - Transformed the `Institutional Foundations` section wrapper to the official University Deep Forest Green: `bg-[#1D3523]`.
   - Updated section title to crisp White (`text-white`) with tightened tracking and leading.
@@ -477,6 +420,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Refined `.magic-bento__card:hover` to blend realistic drop shadows with the luminous `#2f3e29` halo glow.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM verification: Confirmed `sectionBg: rgb(29, 53, 35)` and `h2Color: rgb(255, 255, 255)`.
 
@@ -485,6 +429,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Removal of Vice Chancellor Desk and Institutional Creed Quote Sections
 
 ### Action Summary
+
 - **Deleted Sections**:
   - `ViceChancellorDesk` (`src/components/home/ViceChancellorDesk.tsx`): Removed leadership discourse message, VC avatar container, and statutory links.
   - `UniversityQuote` (`src/components/home/UniversityQuote.tsx`): Removed institutional creed quote section.
@@ -495,6 +440,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Deleted obsolete component files to prevent orphan code.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DevTools DOM evaluation: Confirmed clean section transition from Bento Overview to Announcements Board with zero console or hydration errors.
 
@@ -503,6 +449,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Increased Bento Hover Glow Intensity (#2f3e29)
 
 ### Action Summary
+
 - **Amplified Hover Glow & Spotlight Intensity**:
   - **`src/components/ui/MagicBento.tsx`**:
     - Increased spotlight core alpha `--mb-spot-alpha` from `0.10` to `0.22` (+120% intensity) for rich, luminous cursor illumination.
@@ -517,6 +464,7 @@ All modifications, component replacements, and architectural updates are logged 
     - Increased particle count to `24`.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - Chrome DevTools evaluation: Confirmed live computed values `--mb-spot-alpha: 0.22`, `--mb-glow-alpha: 1`, `spotSize: 380px`, `borderPadding: 2px`, and radial gradient peak `rgba(47, 62, 41, 0.22)`.
 
@@ -525,6 +473,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Bento Card Hover Glow Updated to Deep Forest #2f3e29
 
 ### Action Summary
+
 - **Configured Bento Hover Glow to `#2f3e29` (`rgb(47, 62, 41)`)**:
   - **`src/components/home/UniversityOverview.tsx`**: Updated `<MagicBento glowColor="#2f3e29" />`.
   - **`src/components/ui/MagicBento.tsx`**:
@@ -538,6 +487,7 @@ All modifications, component replacements, and architectural updates are logged 
     - Added smooth 320ms spring cubic-bezier transitions on hover.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - Chrome DevTools evaluation: Verified `--mb-glow-rgb: 47, 62, 41`, dynamic radial gradients, and hover box-shadow.
 
@@ -546,6 +496,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Vibrant Light Pastel Color Styling on Bento Subcards
 
 ### Action Summary
+
 - **Light Vibrant Color Accents Applied to Inner Bento Cards (`src/components/home/UniversityOverview.tsx`)**:
   - **Card 2 (Academic Breadth)**:
     - `Sciences`: Light Mint/Teal pastel (`bg-teal-50/85 border-teal-200/80 text-teal-950`).
@@ -568,6 +519,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Retained strict 2 font families (`Cormorant_Garamond` + `Plus_Jakarta_Sans`).
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - DOM snapshot verified in Chrome DevTools MCP.
 
@@ -576,6 +528,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Expanded Bento Card Dimensions & Readability Scale
 
 ### Action Summary
+
 - **Expanded Bento Grid Proportions (`src/components/home/UniversityOverview.tsx` & `src/components/ui/MagicBento.tsx`)**:
   - Increased `rowHeight` from `235px` to `300px` (~28% vertical increase), expanding the 2x2 card to `618px` height and single-row cards to `300px`.
   - Increased grid gap to `18px` and corner radius to `24px`.
@@ -588,6 +541,7 @@ All modifications, component replacements, and architectural updates are logged 
   - **Cards 5 & 6 (Resources & Admin)**: Titles scaled to `text-xl sm:text-[22px]`; description to `text-xs sm:text-[13px]`; links enlarged to `text-xs sm:text-[13px] font-semibold` with larger tap targets and icon accents.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - Chrome DevTools MCP validation: Verified expanded layout and clear typography contrast.
 
@@ -596,6 +550,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — University of Swat Bento Content Update & Authentic Academic Visualizations
 
 ### Action Summary
+
 - **Section Heading & Subtitle Updated (`src/components/home/UniversityOverview.tsx`)**:
   - Section heading: **Academic Foundations, Research & Institutional Impact**
   - Subtitle: **Explore the academic disciplines, research initiatives and institutional resources that shape the University of Swat.**
@@ -630,10 +585,12 @@ All modifications, component replacements, and architectural updates are logged 
   - Preserved the exact six-card layout, card proportions, borders, rounded corners, responsive behaviors, and physics effects (`MagicBento`).
 
 ### Files Modified
+
 - `src/components/home/UniversityOverview.tsx`: Updated with authentic academic content and visualizations.
 - `package.json`: Added `lucide-react`.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Chrome DevTools MCP: Verified snapshot rendering, link navigation, and card consistency.
 
@@ -642,6 +599,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Integrated React Bits <MagicBento /> Component
 
 ### Action Summary
+
 - **Created `<MagicBento />` UI Component (`src/components/ui/MagicBento.tsx` & `src/components/ui/MagicBento.css`)**:
   - Implemented the open-source React Bits `<MagicBento />` interactive grid component with full TypeScript typing for React 19.
   - Integrated `@hugeicons/react` and `@hugeicons/core-free-icons` for rich iconography (`GitBranchIcon`, `Tick02Icon`, `SparklesIcon`, `SlackIcon`, `GithubIcon`, `FigmaIcon`, `NotionIcon`, `Key01Icon`, `FingerPrintIcon`).
@@ -664,11 +622,13 @@ All modifications, component replacements, and architectural updates are logged 
   - Configured with official Deep Forest Green glow (`glowColor="#1D3523"`) on a clean light surface (`theme="light"`).
 
 ### Files Created & Modified
+
 - `src/components/ui/MagicBento.tsx`: Created new primitive component.
 - `src/components/ui/MagicBento.css`: Created component styles, animations, and container queries.
 - `src/components/home/UniversityOverview.tsx`: Integrated `<MagicBento />` with domain-specific University of Swat data.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Chrome DevTools MCP validation: Confirmed interactive rendering and click wave execution.
 
@@ -677,14 +637,17 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Removed 3-Card Metric Counters Ribbon
 
 ### Action Summary
+
 - **Deleted Horizontal Metric Counters Ribbon (`src/components/home/UniversityOverview.tsx`)**:
   - Entirely removed the redundant 3-card metric counter row (`2010 Charter Year`, `14,000+ Alumni Worldwide`, `1,800+ Canal Campus Acres`) matching user request and reference `media_1794650862577_cde8776f.png`.
   - Cleaned up the page flow below the Hero section so that the bottom 3-pillar translucent banner (`Quality`, `Leadership`, `Experience`) transitions seamlessly into the "About University of Swat" bento grid.
 
 ### Files Modified
+
 - `src/components/home/UniversityOverview.tsx`: Removed the 3 metric counter cards.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0.
 - Chrome DevTools MCP validation: Confirmed removal; the 3 cards no longer appear in the DOM.
 
@@ -693,6 +656,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Smooth Fade-In Dropdown Transitions, Expanded Card Spacing & Hero 3-Pillar Ribbon Refinement
 
 ### Action Summary
+
 - **Smooth Fade-In Dropdown Animation (`src/components/layout/Navbar.tsx`)**:
   - Implemented silky smooth fade-in and subtle scale transition using `duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top` (`opacity-100 translate-y-0 scale-100` vs `opacity-0 translate-y-2 scale-[0.985]`).
   - Added an invisible top hover bridge (`before:content-[''] before:absolute before:-top-3.5 before:h-3.5`) to eliminate flicker when navigating between menu trigger buttons and the floating popover card.
@@ -709,10 +673,12 @@ All modifications, component replacements, and architectural updates are logged 
   - Increased spacing between the bold Serif title and body description to `mt-3.5 sm:mt-4`.
 
 ### Files Modified
+
 - `src/components/layout/Navbar.tsx`: Added smooth cubic-bezier fade-in transitions, expanded card padding/grid spacing, hover bridge, and `Program` submenus.
 - `src/components/home/HeroSection.tsx`: Expanded 3-pillar bottom banner padding, icon-text gap, and deep crimson palette matching reference.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: Exited with code 0 (zero errors).
 - Chrome DevTools MCP validation:
   - Dropdown toggles smoothly with `opacity-100` and `scale-100`.
@@ -723,6 +689,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — University of Swat Branding, Floating 2-Column Mega-Menu Card & Global Typography Rules
 
 ### Action Summary
+
 - **Header Branding & Name Update (`src/components/layout/Navbar.tsx`)**:
   - Removed "Unive" and established the full official institutional identity: **"University of Swat"** with subtitle "Khyber Pakhtunkhwa, Pakistan" beside the circular crest logo.
 - **Floating 2-Column Dropdown Card (User Design Specification)**:
@@ -748,6 +715,7 @@ All modifications, component replacements, and architectural updates are logged 
     - Action buttons and ribbon themed in `#731C1C` (hover `#5c1616`).
 
 ### Files Modified
+
 - `src/app/globals.css`: Configured official color tokens (`--color-brand-forest`, `--color-brand-maroon`, `--color-brand-charcoal`, `--color-brand-canvas`) and body defaults.
 - `src/components/layout/Navbar.tsx`: Integrated "University of Swat" branding and floating 2-column dropdown cards with pointer arrow.
 - `src/components/home/HeroSection.tsx`: Applied letter tracking (`-0.025em`), line-heights (`1.08` heading, `1.65` body), and `#731C1C` maroon palette.
@@ -756,6 +724,7 @@ All modifications, component replacements, and architectural updates are logged 
 - `src/components/home/UniversityQuote.tsx`: Applied `-0.015em` tracking and `#1D3523` author styling.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Chrome DevTools snapshot verification:
   - Header displays "University of Swat".
@@ -766,6 +735,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Circular Crest Logo Crop & Integration
 
 ### Action Summary
+
 - **High-Resolution Circular Logo Processing**:
   - Processed user-uploaded official University of Swat crest (`media_1794648953369_09684d90.jpg`).
   - Cropped the circular emblem with exact centering (`cx = 511.5`, `cy = 381.5`, radius `381.5px`) and applied a 4x supersampled Lanczos antialiased circular alpha mask.
@@ -777,12 +747,14 @@ All modifications, component replacements, and architectural updates are logged 
   - Updated the footer emblem to use the clean local circular asset `/uos-logo-circle.png`.
 
 ### Files Modified & Created
+
 - `public/uos-logo-circle.png`: Created.
 - `public/logo-circle.png`: Created.
 - `src/components/layout/Navbar.tsx`: Integrated circular logo.
 - `src/components/layout/Footer.tsx`: Updated emblem image reference.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Chrome DevTools snapshot verification confirming `/uos-logo-circle.png` is rendered in the header banner.
 
@@ -791,6 +763,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Redesign: Cinematic Video Hero & High-Contrast Editorial Header
 
 ### Action Summary
+
 - **Editorial Transparent Navigation Header (`src/components/layout/Navbar.tsx`)**:
   - Replaced the previous navbar implementation with a sleek, high-contrast overlay navigation matching the reference design:
     - **Branding**: White Shield Crest icon + "Unive" serif wordmark (accredited for University of Swat).
@@ -816,6 +789,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Removed unused `src/components/ui/CardNav.tsx` and `src/components/ui/CardNav.css` per clean replacement rules.
 
 ### Files Modified & Removed
+
 - `src/components/layout/Navbar.tsx`: Full replacement with the editorial transparent header.
 - `src/components/home/HeroSection.tsx`: Full replacement with the cinematic video hero & 3-pillar ribbon.
 - `src/app/page.tsx`: Updated navigation comment and rendering.
@@ -823,6 +797,7 @@ All modifications, component replacements, and architectural updates are logged 
 - `src/components/ui/CardNav.css`: Deleted.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Chrome DevTools snapshot verification confirming:
   - Banner renders "Unive", horizontal menubar with chevrons, and "Sign up" button.
@@ -834,6 +809,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Stageshow Design System & Craft Polish Applied to Header
 
 ### Action Summary
+
 - **Integrated Stageshow Design Tokens**:
   - Implemented the complete `stageshow` token architecture directly into the header:
     - Surfaces: `--ss-surface` (`#ffffff`), `--ss-canvas` (`#f8fafc`), `--ss-chrome` (`#ffffff`), `--ss-well` (`#f1f5f9`).
@@ -852,11 +828,13 @@ All modifications, component replacements, and architectural updates are logged 
   - **Directory Badge**: Styled as a clean stageshow pill `Badge` with `--ss-canvas` background, `--ss-line` border, and `--ss-text` color.
 
 ### Files Modified
+
 - `src/components/ui/CardNav.css`: Complete rewrite adopting the Stageshow design tokens, precision shadows, and craft geometry.
 - `src/components/ui/CardNav.tsx`: Updated `THEMES` to stageshow token variables and refined icon sizing (`14px`, stroke `1.8`).
 - `src/components/layout/Navbar.tsx`: Refined logo box border, padding, and optical typography.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Visual verification with Chrome DevTools at `http://localhost:3000` confirming:
   - Header chrome has crisp hairline borders and soft hero drop shadow.
@@ -869,6 +847,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Pure Plain Text Header Triggers & Buttonless Neutral Dropdown Links
 
 ### Action Summary
+
 - **Header Navigation Triggers as Pure Text (No Button Appearance)**:
   - Eliminated all button-like boxes, pill borders, background colors, and shadows from header navigation items (`Programs`, `Departments`, `Campuses`, `Portals`).
   - Active and idle items render as pure typography with an accompanying micro-chevron that rotates smoothly upon expansion.
@@ -886,6 +865,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Kept deterministic 2-column top-to-bottom vertical order across all categories.
 
 ### Files Modified
+
 - `src/components/ui/CardNav.css`:
   - Updated `.card-nav__nav-btn` and `[data-active]` to be pure text with zero background, border, or pill box styling.
   - Refactored `.card-nav__text-link` to ensure 100% borderless, transparent text hyperlinks with inline arrows and no button appearance.
@@ -897,6 +877,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Removed `themeColor` definitions across all items in `universityNavItems`.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Chrome DevTools visual testing via live MCP interaction confirming:
   - Header items are pure text.
@@ -908,6 +889,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Physics Animation Fix & High-Contrast Vibrant Dropdown Color Themes
 
 ### Action Summary
+
 - **Smooth Opening & Closing Spring Physics**:
   - Resolved the closing animation cutoff by removing premature `setActiveIndex(null)` execution on click.
   - Implemented `persistedIndex` tracking so that active card contents remain fully rendered in the DOM while the spring physics engine smoothly compresses `panel.style.height` down to `--cn-bar` (`88px`) and animates card opacity/translate.
@@ -921,6 +903,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Maintained bold `text-slate-900 font-bold text-[17.5px]` typography for optimal legibility and contrast against the vibrant gradient backdrops.
 
 ### Files Modified
+
 - `src/components/ui/CardNav.tsx`:
   - Updated `setOpen` and `handleBarItemClick` to avoid clearing `activeIndex` prematurely.
   - Added `persistedIndex` and deferred `setActiveIndex(null)` to the completion check in `tick`.
@@ -932,6 +915,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Tagged all navigation items with their respective `themeColor`.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Dev server responsive at `http://localhost:3000` (HTTP 200).
 - Visual verification performed via Chrome DevTools snapshots across open, switch, and close cycles.
@@ -941,6 +925,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Conversion: Card Dropdown Links to Pure Typography Text Links (React Bits Style)
 
 ### Action Summary
+
 - **Removed Boxed Card Elements on Links**:
   - Eliminated the individual card containers, borders, icon box squares, and badge pills from the dropdown links.
   - Converted all links to **clean, elegant text links** matching the original React Bits CardNav aesthetic (`media_1794634392018_399b438d.png`).
@@ -954,6 +939,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Added subtle category background tints (`bgColor`) to the active panel (soft emerald for Programs, slate for Departments, warm gold for Campuses, indigo for Portals).
 
 ### Files Modified
+
 - `src/components/ui/CardNav.tsx`:
   - Refactored `renderLinkCard` from heavy card markup to `.card-nav__text-link` containing `.card-nav__text-arrow` and `.card-nav__text-label`.
   - Added `style={{ backgroundColor: activeItem.bgColor }}` to the active card panel container.
@@ -964,6 +950,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Cleaned up link items to focus on clean labels and category-level descriptions and background tints.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Dev server responsive at `http://localhost:3000` (HTTP 200).
 - Verified visually in Chrome DevTools with snapshot confirming text links.
@@ -973,6 +960,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Refinement: Large ODF Crest Logo & 2-Column Vertical Ordered Colored Link Cards
 
 ### Action Summary
+
 - **Enlarged University Logo (`ODF.jpg`)**:
   - Configured the official University of Swat emblem (`/ODF.jpg`) at a large, prominent scale (`w-14 h-14 sm:w-16 sm:h-16`) encased in an elegant white rounded frame with emerald accents and drop shadows.
   - Paired with high-contrast serif typography ("UNIVERSITY OF SWAT") and emerald subtitle ("KHYBER PAKHTUNKHWA, PAKISTAN").
@@ -990,6 +978,7 @@ All modifications, component replacements, and architectural updates are logged 
     - Smooth interactive arrow slide animation.
 
 ### Files Modified
+
 - `src/components/ui/CardNav.tsx`:
   - Updated `CardNavLink` interface to support `description`, `badge`, and `badgeColor`.
   - Added `renderLinkCard` with full subtext, badge styling, and Hugeicons animations.
@@ -1006,6 +995,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Provided high-contrast University of Swat emblem asset.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - Dev server responsive at `http://localhost:3000` (HTTP 200).
 - Visual verification verified via Chrome DevTools snapshots and viewport capture.
@@ -1015,6 +1005,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Full Screen Width Header & Dedicated Full-Screen Dropdown Cards
 
 ### Action Summary
+
 - Extended the header to **full screen width edge-to-edge** (`maxWidth="100%"`, removed boxed floating margins).
 - Restructured the dropdown experience: when clicking a header category ("Programs", "Departments", "Campuses", or "Portals"), **only that specific category's card opens in full-screen width**, rather than showing all cards crammed together.
 - Built a multi-column responsive links grid (`grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`) inside each active card, complete with animated Hugeicons interactive arrow transitions.
@@ -1022,6 +1013,7 @@ All modifications, component replacements, and architectural updates are logged 
 - Maintained smooth spring physics animations and dynamic height adjustments on category switching.
 
 ### Files Modified
+
 - `src/components/ui/CardNav.tsx`:
   - Default `maxWidth` set to `'100%'`.
   - Replaced multi-card map with a dedicated full-width card renderer (`activeItem`) showing only the active category.
@@ -1036,6 +1028,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Populated complete multi-link datasets for all 4 categories (Programs, Departments, Campuses, Portals).
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - `npm run build`: Static optimization and build passed (1079ms).
 - Dev server responsive at `http://localhost:3000` (HTTP 200).
@@ -1045,6 +1038,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Refinement: CardNav Layout (Logo Left, Header Links Trigger, Menu Button Removed)
 
 ### Action Summary
+
 - Moved the University crest & title logo from the center to the **left side** of the top bar.
 - Removed the standalone burger menu toggle button ("Menu / Close").
 - Added **multiple interactive navigation link triggers** directly in the header bar ("Programs", "Departments", "Campuses", "Portals").
@@ -1053,6 +1047,7 @@ All modifications, component replacements, and architectural updates are logged 
 - Maintained responsive behavior with mobile drawer toggle for screens `< 768px`.
 
 ### Files Modified
+
 - `src/components/ui/CardNav.tsx`:
   - Updated bar layout rendering: Left (`LOGO`), Center (`NAV_ITEMS` buttons with chevrons), Right (`BAR_RIGHT` with CTA and mobile toggle).
   - Added `activeIndex` state to open/close and spotlight the corresponding card.
@@ -1062,6 +1057,7 @@ All modifications, component replacements, and architectural updates are logged 
   - Added `.card-nav__card[data-highlighted]` styling with emerald focus ring and elevation.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - `npm run build`: Static optimization and build passed (1135ms).
 - Dev server responsive at `http://localhost:3000` (HTTP 200).
@@ -1071,15 +1067,18 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Replacement: Navbar with React Bits <CardNav />
 
 ### Action Summary
+
 - Deleted the baseline floating island header (`src/components/layout/Header.tsx`).
 - Integrated the open-source `<CardNav />` component from React Bits with physics-driven spring animations, frosted glass surface, dynamic card expansion, and accessible keyboard navigation.
 - Built University of Swat navigation wrapper (`src/components/layout/Navbar.tsx`) connecting brand cards, crest logo, and Apply Now CTA.
 
 ### Dependencies Installed
+
 - `@hugeicons/react` (`^1.1.10`)
 - `@hugeicons/core-free-icons` (`^4.4.0`)
 
 ### Files Modified / Created / Deleted
+
 - **Deleted**:
   - `src/components/layout/Header.tsx` (legacy floating island header)
 - **Created**:
@@ -1091,6 +1090,7 @@ All modifications, component replacements, and architectural updates are logged 
   - `package.json` (added `@hugeicons/react` and `@hugeicons/core-free-icons`)
 
 ### Key Architectural & Design Improvements
+
 - **Spring Physics Animation**: Custom RAF spring simulation (`zeta`, `stagger`, `bounce`, `easeOut`) for card arrival effects.
 - **Glassmorphism**: Frosted glass panel with `--cn-panel`, backdrop filter, and subtle inner highlight rim.
 - **Responsive Narrow Modes**: Automatically detects viewport breakpoints to shift the CTA and burger appropriately.
@@ -1098,6 +1098,7 @@ All modifications, component replacements, and architectural updates are logged 
 - **Branded Palette**: Emerald green CTA accent (`#059669`) with dynamic contrast ink calculation.
 
 ### Quality & Verification
+
 - `npx tsc --noEmit`: 0 errors.
 - `npm run build`: Production build succeeded with all static routes pre-rendered.
 - Dev server responsive at `http://localhost:3000` (HTTP 200).
@@ -1107,6 +1108,7 @@ All modifications, component replacements, and architectural updates are logged 
 ## [2026-11-14] — Initial Baseline Homepage Implementation
 
 ### Completed
+
 - **Project Setup**: Initialized Next.js 16 (App Router) with React 19, TypeScript 5, Tailwind CSS v4, and npm.
 - **Design Tokens & Fonts**:
   - Configured `@theme` in `src/app/globals.css` with University brand palette (`brand-emerald`, `brand-gold`, `brand-maroon`, etc.).

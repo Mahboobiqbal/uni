@@ -87,12 +87,12 @@ export default function FacultyProgramsGrid() {
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
-              Faculties &amp; Academic Programs
+              Program Areas &amp; Academic Programs
             </h2>
           </div>
           <p className="font-sans text-sm sm:text-base text-stone-500 max-w-md lg:text-right leading-[1.68]">
-            Interactive overview of the university&rsquo;s five academic families — with the degree
-            programs each faculty offers across undergraduate, graduate and doctoral levels.
+            An overview of the university&rsquo;s five program areas — delivered through four
+            faculties and 28 departments.
           </p>
         </div>
 
@@ -112,7 +112,7 @@ export default function FacultyProgramsGrid() {
               {/* Top row: icon + degree count */}
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div
-                  className={`w-11 h-11 rounded-xl bg-[#153B27]/8 text-[#153B27] border border-l-2 ${faculty.accent} border-l-[#153B27]/0 flex items-center justify-center shrink-0`}
+                  className={`w-11 h-11 rounded-xl bg-[#153B27]/8 text-[#153B27] border ${faculty.accent} flex items-center justify-center shrink-0`}
                 >
                   {faculty.icon}
                 </div>

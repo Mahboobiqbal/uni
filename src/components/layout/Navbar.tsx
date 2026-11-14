@@ -25,8 +25,8 @@ const navItems: NavItem[] = [
     hasDropdown: true,
     submenu: [
       {
-        label: 'BS Computer Science & SE',
-        href: '/programs',
+        label: 'BS Computer Science',
+        href: '/programs/bs-computer-science',
         description: 'Artificial Intelligence, Software Systems & Data Networks',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -35,18 +35,18 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Doctor of Pharmacy (Pharm-D)',
-        href: '/programs',
-        description: '5-Year Clinical, Hospital & Industrial Pharmacy',
+        label: 'BS Software Engineering',
+        href: '/programs/bs-software-engineering',
+        description: 'Full-Stack Architecture, Cloud & Software Engineering',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
           </svg>
         )
       },
       {
-        label: 'BBA & Management Sciences',
-        href: '/programs',
+        label: 'BBA (Honors) Business Admin',
+        href: '/programs/bba-honors',
         description: 'Strategic Leadership, Corporate Finance & HR Analytics',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -55,8 +55,18 @@ const navItems: NavItem[] = [
         )
       },
       {
+        label: 'BS Chemistry (4-Year)',
+        href: '/programs/bs-chemistry',
+        description: 'Organic, Inorganic, Physical & Analytical Chemistry',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+        )
+      },
+      {
         label: 'BS Environmental Sciences',
-        href: '/programs',
+        href: '/programs/bs-environmental-sciences',
         description: 'Alpine Ecology, Mountain Hydrology & Climate Change',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -65,24 +75,12 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'M.Phil & MS Research',
-        href: '/programs',
-        description: 'Archaeology, Mathematics, Applied Analytics & IT',
+        label: 'Bachelor of Laws (LLB 5-Yr)',
+        href: '/programs/llb-5-years',
+        description: 'Constitutional, Criminal & Corporate Jurisprudence',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-        )
-      },
-      {
-        label: 'Ph.D. Doctoral Studies',
-        href: '/programs',
-        description: 'Computer Science, High-Altitude Botany & Zoology',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path d="M12 14l9-5-9-5-9 5 9 5z" />
-            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 14v7" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
           </svg>
         )
       }
@@ -95,9 +93,9 @@ const navItems: NavItem[] = [
     hasDropdown: true,
     submenu: [
       {
-        label: 'Faculties & Institutes',
+        label: 'Faculties & Departments',
         href: '/faculty',
-        description: 'Specialized research institutes & faculties',
+        description: 'All 4 faculties & 28 academic departments',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -105,40 +103,8 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Undergraduate Degrees',
-        href: '/programs',
-        description: '4-Year BS Computer Science, SE & BBA',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path d="M12 14l9-5-9-5-9 5 9 5z" />
-            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 14v7" />
-          </svg>
-        )
-      },
-      {
-        label: 'Graduate & Ph.D.',
-        href: '/programs',
-        description: 'MS, M.Phil & Doctoral research programs',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-        )
-      },
-      {
-        label: 'ORIC Research Cell',
-        href: '/research',
-        description: 'High-altitude ecology & Gandharan studies',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-          </svg>
-        )
-      },
-      {
         label: 'Academic Calendar',
-        href: '/#campus-bulletin',
+        href: '/academics/calendar',
         description: 'Semester schedules, gazettes & date sheets',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -147,12 +113,42 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Digital Scholarly Library',
-        href: '/faculty',
-        description: 'HEC digital repository & research papers',
+        label: 'Official Downloads & Forms',
+        href: '/academics/downloads',
+        description: 'Proformas, examination forms & regulations',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+        )
+      },
+      {
+        label: 'University Leadership',
+        href: '/leadership',
+        description: 'Statutory officers & administrative directory',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        )
+      },
+      {
+        label: 'Vice Chancellor\'s Office',
+        href: '/leadership/vice-chancellor',
+        description: 'Prof. Dr. Husnul Amin\'s vision & secretariat',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        )
+      },
+      {
+        label: 'Affiliated Colleges',
+        href: '/affiliated-colleges',
+        description: 'Registered public and private degree colleges',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
           </svg>
         )
       }
@@ -166,7 +162,7 @@ const navItems: NavItem[] = [
       {
         label: 'Admissions 2026',
         href: '/admissions',
-        description: 'Fall application criteria & deadlines',
+        description: 'Application criteria, timeline & procedures',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -174,19 +170,9 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Merit Lists',
-        href: '/#campus-bulletin',
-        description: 'Departmental admission notifications',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )
-      },
-      {
         label: 'Fee Structure',
-        href: '/admissions',
-        description: 'Semester dues & online challan generator',
+        href: '/admissions/fee-structure',
+        description: 'Semester dues for BS, MS, PhD & Self-Finance',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
@@ -194,9 +180,19 @@ const navItems: NavItem[] = [
         )
       },
       {
+        label: 'Merit Lists & Quotas',
+        href: '/admissions/merit-lists',
+        description: 'Departmental provisional & final merit lists',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        )
+      },
+      {
         label: 'Scholarships & Aid',
         href: '/admissions',
-        description: 'HEC Need-Based & Ehsaas scholarships',
+        description: 'HEC Need-Based, Ehsaas & KPEF scholarships',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
@@ -204,9 +200,9 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Online Application Portal',
-        href: '/admissions',
-        description: 'Direct student enrollment gateway',
+        label: 'Student CMS Portal',
+        href: '/portal',
+        description: 'Enrollment, course registration & grades',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -214,9 +210,9 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Admissions Desk',
-        href: '/admissions',
-        description: 'Directorate guidance & counseling support',
+        label: 'Contact Admissions Desk',
+        href: '/contact',
+        description: 'Directorate guidance & helpline support',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -231,9 +227,29 @@ const navItems: NavItem[] = [
     hasDropdown: true,
     submenu: [
       {
-        label: 'Sports Complex',
+        label: 'Charbagh Main Campus',
+        href: '/campuses/main-campus',
+        description: 'Flagship academic and administrative grounds',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        )
+      },
+      {
+        label: 'Women Sub-Campus',
+        href: '/campuses/women-campus',
+        description: 'Dedicated center for women\'s higher education',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        )
+      },
+      {
+        label: 'Campus Life & Facilities',
         href: '/campus-life',
-        description: 'Cricket stadium, gymnasium & athletic arena',
+        description: 'Hostels, sports complex & student societies',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -241,58 +257,76 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Varsity Teams',
-        href: '/campus-life',
-        description: 'KPK regional tournament squads & trials',
+        label: 'News & Press Releases',
+        href: '/news',
+        description: 'Official university notifications & press',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
           </svg>
         )
       },
       {
-        label: 'Adventure & Hiking',
-        href: '/campus-life',
-        description: 'Alpine mountaineering & Swat valley youth',
+        label: 'Events & Conferences',
+        href: '/events',
+        description: 'Symposia, sports tournaments & workshops',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 21l8-16 4 8 3-4 3 12H3z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         )
       },
       {
-        label: 'Fitness & Recreation',
-        href: '/campus-life',
-        description: 'Indoor courts, badminton & health suites',
+        label: 'About University of Swat',
+        href: '/about',
+        description: 'Heritage, vision, mission & governance',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Student Societies & Clubs',
-        href: '/campus-life',
-        description: 'Literary, Debating & Environmental Societies',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Hostels & Campus Services',
-        href: '/campus-life',
-        description: 'Residential dormitories, transport & dining',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         )
       }
     ]
   },
-  { label: 'Research', href: '/research' }
+  {
+    label: 'Research',
+    href: '/research',
+    hasDropdown: true,
+    submenu: [
+      {
+        label: 'Research & Innovation (ORIC)',
+        href: '/research/oric',
+        description: 'Commercialization, grants & industry liaison',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+        )
+      },
+      {
+        label: 'Advanced Studies (ASRB)',
+        href: '/research/asrb',
+        description: 'Postgraduate thesis policies & oversight',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 14v7" />
+          </svg>
+        )
+      },
+      {
+        label: 'Research Overview',
+        href: '/research',
+        description: 'Focus areas, patents & Gandhara archaeology',
+        icon: (
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+        )
+      }
+    ]
+  }
 ];
 
 export default function Navbar() {
@@ -495,7 +529,17 @@ export default function Navbar() {
         </nav>
 
         {/* Right Action Button: "Student Portal" in Official University Crimson #7F1D1D */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            href="/search"
+            aria-label="Search the university"
+            className="w-10 h-10 rounded-full flex items-center justify-center text-white/90 hover:text-white hover:bg-white/10 border border-white/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          >
+            <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </Link>
           <Link
             href="/portal"
             className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-black/20 focus:outline-none"

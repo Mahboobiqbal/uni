@@ -105,7 +105,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   avatarUrl = '',
   iconUrl,
   miniAvatarUrl,
-  name = 'Prof. Dr. Hassan Sher',
+  name = 'Prof. Dr. Husnul Amin',
   title = 'Vice Chancellor',
   handle = 'vc_uoswat',
   status = 'Online',
@@ -379,7 +379,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           <div className="profile-card__footer">
             {miniAvatarUrl && (
               <span className="profile-card__avatar">
-                <img src={miniAvatarUrl} alt="" loading="lazy" draggable={false} />
+                <img src={miniAvatarUrl} alt="" aria-hidden="true" loading="lazy" draggable={false} />
               </span>
             )}
             <div className="profile-card__meta">

@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import MagicBento, { type MagicBentoItem } from '@/components/ui/MagicBento';
 
 /* ─── Mini charts (inline SVG) ─────────────────────────────────────────────── */
@@ -282,7 +284,7 @@ export default function RankingSection() {
           </p>
         </div>
 
-        {/* React Bits MagicBento — graphs, lights and motion */}
+        {/* React Bits MagicBento — editorial graphs, restrained motion */}
         <MagicBento
           columns={4}
           rowHeight={190}
@@ -293,14 +295,32 @@ export default function RankingSection() {
           enableBorderGlow={true}
           enableSpotlight={true}
           spotlightRadius={320}
-          enableStars={true}
-          particleCount={20}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
+          enableStars={false}
+          particleCount={0}
+          enableTilt={false}
+          enableMagnetism={false}
+          clickEffect={false}
           textAutoHide={false}
           items={rankingItems}
         />
+
+        {/* Source & reassurance line — gives the metrics provenance and closes the journey with a next step */}
+        <div className="mt-8 flex flex-col lg:flex-row lg:items-center gap-4 justify-between p-6 rounded-xl bg-white border border-stone-200/90 shadow-xs">
+          <p className="text-xs sm:text-[13px] text-stone-500 leading-[1.65] max-w-2xl">
+            <span className="font-bold text-stone-700">What these numbers mean:</span> HEC awards its
+            W-Category to institutions scoring 91.4% on quality-assurance audits; GreenMetric ranks
+            world campuses by sustainability; the Times Higher Education Impact table scores progress
+            on the UN SDGs. For prospective students and families, this is independent confirmation
+            that degrees are recognized nationally and abroad.
+          </p>
+          <Link
+            href="/admissions"
+            className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#153B27] text-white text-sm font-semibold hover:bg-[#14291D] transition-colors"
+          >
+            See how to apply
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );

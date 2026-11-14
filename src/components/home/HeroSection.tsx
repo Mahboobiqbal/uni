@@ -27,7 +27,7 @@ const heroPillars = [
     title: 'Leadership',
     description: 'Guided by visionary leadership, inspires growth, and shapes future leaders',
     stats: [
-      { label: 'Vice Chancellor', value: 'Prof. Dr. Hassan Sher' },
+      { label: 'Vice Chancellor', value: 'Prof. Dr. Husnul Amin' },
       { label: 'Research Output', value: '200+ High-Impact Papers' },
     ],
     icon: (
@@ -113,7 +113,7 @@ export default function HeroSection() {
           type="button"
           onClick={() => setVideoPaused((p) => !p)}
           aria-label={videoPaused ? 'Play background video' : 'Pause background video'}
-          className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/25 text-white flex items-center justify-center hover:bg-black/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          className="w-11 h-11 rounded-full bg-black/40 backdrop-blur-md border border-white/25 text-white flex items-center justify-center hover:bg-black/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
         >
           {videoPaused ? (
             <svg className="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -153,7 +153,7 @@ export default function HeroSection() {
             href="/campus-life"
             className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 active:bg-white/15 text-white backdrop-blur-md border border-white/20 font-semibold text-sm sm:text-base px-7 py-3.5 rounded-lg transition-all shadow-md shadow-black/20 hover:scale-[1.02] active:scale-100"
           >
-            Virtual Campus Tour
+            Explore Campus Life
           </Link>
         </div>
       </div>
@@ -161,23 +161,23 @@ export default function HeroSection() {
       {/* Three Architectural Crimson Pillars — overlapping the bottom edge onto Warm Alabaster */}
       <div className="absolute bottom-0 inset-x-0 z-30 pointer-events-none">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 translate-y-[45%] pointer-events-auto">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-6 translate-y-[35%] md:translate-y-[45%] pointer-events-auto">
             {heroPillars.map((pillar) => (
               <article
                 key={pillar.title}
-                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] px-5 py-5 sm:px-7 sm:py-6 flex flex-col gap-3 transition-transform duration-300 hover:-translate-y-1"
+                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] px-3 py-4 sm:px-7 sm:py-6 flex flex-col gap-2 sm:gap-3 transition-transform duration-300 hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-serif italic text-lg text-[#E0C078]">{pillar.numeral}</span>
+                  <span className="font-serif italic text-base sm:text-lg text-[#E0C078]">{pillar.numeral}</span>
                   {pillar.icon}
                 </div>
-                <h2 className="font-serif text-xl font-bold tracking-tight">{pillar.title}</h2>
-                <p className="font-sans text-sm text-white/85 leading-[1.62]">{pillar.description}</p>
+                <h2 className="font-serif text-sm sm:text-xl font-bold tracking-tight">{pillar.title}</h2>
+                <p className="font-sans text-white/85 leading-[1.62] text-[11px] sm:text-sm hidden sm:block">{pillar.description}</p>
 
                 {/* Key institutional facts */}
-                <div className="mt-1 border-t border-white/15 pt-3 flex flex-col gap-2">
+                <div className="hidden sm:flex mt-1 border-t border-white/15 pt-3 flex-col gap-2">
                   {pillar.stats.map((stat) => (
-                    <div key={stat.label} className="flex items-center justify-between gap-3 text-[11px]">
+                    <div key={stat.label} className="flex items-center justify-between gap-3 text-[13px]">
                       <span className="text-white/70 uppercase tracking-wider font-medium">{stat.label}</span>
                       <span className="text-[#E0C078] font-bold text-right">{stat.value}</span>
                     </div>

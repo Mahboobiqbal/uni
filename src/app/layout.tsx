@@ -64,7 +64,7 @@ import "./globals.css";
       lang = { siteConfig.locale }
       className = {`${plusJakartaSans.variable} ${cormorantGaramond.variable} scroll-smooth`}
   >
-    <body className="bg-alpine-mesh text-slate-700 selection:bg-brand-emerald selection:text-white min-h-screen">
+    <body className="bg-[#F6F5F0] text-[#14291D] selection:bg-[#153B27] selection:text-white min-h-screen">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-[#153B27] focus:text-white focus:px-4 focus:py-2.5 focus:rounded-lg focus:text-sm focus:font-semibold"
