@@ -301,6 +301,29 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
+  const desktopNavRef = useRef<HTMLElement>(null);
+  const lastTriggerRef = useRef<HTMLElement | null>(null);
+
+  const focusNavItem = (dir: number, current: number) => {
+    const nav = desktopNavRef.current;
+    if (!nav) return;
+    const triggers = Array.from(nav.querySelectorAll('[data-nav-idx]')) as HTMLElement[];
+    if (!triggers.length) return;
+    const next = (current + dir + triggers.length) % triggers.length;
+    triggers[next].focus();
+  };
+
+  const handleHeaderKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === 'Escape') {
+      if (activeDropdown || mobileMenuOpen) {
+        e.preventDefault();
+        const restoreFocus = activeDropdown != null;
+        setActiveDropdown(null);
+        setMobileMenuOpen(false);
+        if (restoreFocus && lastTriggerRef.current) lastTriggerRef.current.focus();
+      }
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -330,13 +353,14 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
+      onKeyDown={handleHeaderKeyDown}
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#111827]/90 backdrop-blur-md border-b border-white/10 shadow-lg py-3.5'
+          ? 'bg-[#0C1912]/55 backdrop-blur-xl border-b border-white/15 shadow-lg py-3.5'
           : 'bg-gradient-to-b from-black/60 via-black/25 to-transparent py-4 sm:py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
+      <div className="w-full pl-3 sm:pl-4 pr-4 sm:pr-6 flex items-center justify-between">
         {/* Left Branding: Circular Crest Logo + "University of Swat" */}
         <Link
           href="/"
@@ -361,8 +385,8 @@ export default function Navbar() {
         </Link>
 
         {/* Middle Navigation Links (Desktop) */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8" role="menubar">
-          {navItems.map((item) => {
+        <nav ref={desktopNavRef} className="hidden md:flex items-center gap-6 lg:gap-8" role="menubar">
+          {navItems.map((item, index) => {
             const isDropdownOpen = activeDropdown === item.label;
 
             if (item.hasDropdown) {
@@ -370,12 +394,25 @@ export default function Navbar() {
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={() => setActiveDropdown(item.label)}
+                  onMouseEnter={(e) => {
+                    lastTriggerRef.current = e.currentTarget as HTMLElement;
+                    setActiveDropdown(item.label);
+                  }}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <button
                     type="button"
-                    onClick={() => setActiveDropdown(isDropdownOpen ? null : item.label)}
+                    data-nav-idx={index}
+                    onClick={(e) => {
+                      lastTriggerRef.current = e.currentTarget as HTMLElement;
+                      setActiveDropdown(isDropdownOpen ? null : item.label);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        focusNavItem(e.key === 'ArrowRight' ? 1 : -1, index);
+                      }
+                    }}
                     aria-expanded={isDropdownOpen}
                     className="flex items-center gap-1.5 text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer py-2 focus:outline-none"
                   >
@@ -448,6 +485,7 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
+                data-nav-idx={index}
                 className="text-sm font-semibold text-white/90 hover:text-white transition-colors py-1.5"
               >
                 {item.label}
@@ -492,7 +530,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#111827]/98 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all">
+        <div className="md:hidden bg-[#0C1912]/80 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all">
           <div className="flex flex-col gap-3">
             {navItems.map((item) => {
               if (item.hasDropdown) {

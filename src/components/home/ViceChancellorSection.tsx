@@ -1,28 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import ProfileCard from '@/components/ui/ProfileCard';
-import { Award, Building2, FileText, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Award, Building2, FileText, ArrowUpRight } from 'lucide-react';
 
 export default function ViceChancellorSection() {
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  const showToast = (msg: string) => {
-    setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 3500);
-  };
-
-  const handleContactClick = () => {
-    if (typeof window !== 'undefined') {
-      window.location.href = 'mailto:vc@uswat.edu.pk';
-      showToast('Opening email client for: vc@uswat.edu.pk');
-    }
-  };
-
   return (
     <section
-      className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
+      className="pt-28 sm:pt-36 pb-20 sm:pb-28 bg-[#F6F5F0] relative overflow-hidden"
       data-purpose="vice-chancellor-section"
       id="vice-chancellor"
     >
@@ -30,13 +16,20 @@ export default function ViceChancellorSection() {
       <div className="absolute top-10 right-10 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
-      {/* Toast Notification */}
-      {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#0C1912] text-white text-xs px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 border border-white/10 animate-in fade-in slide-in-from-bottom-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-          <span>{toastMessage}</span>
+      {/* Editorial bridge between Hero's crimson cards and the VC portrait */}
+      <div className="text-center mb-12 lg:mb-16">
+        <div className="flex items-center justify-center gap-2.5 mb-4">
+          <span className="h-px w-10 bg-[#7F1D1D]/40" />
+          <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+            University Leadership
+          </span>
+          <span className="h-px w-10 bg-[#7F1D1D]/40" />
         </div>
-      )}
+        <p className="font-serif italic text-xl sm:text-2xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
+          A message from the Office of the Vice Chancellor &mdash; the values that guide the
+          University of Swat.
+        </p>
+      </div>
 
       <div className="w-full max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -53,12 +46,13 @@ export default function ViceChancellorSection() {
                 miniAvatarUrl="/uos-logo-circle.png"
                 name="Prof. Dr. Hassan Sher"
                 title="Vice Chancellor · University of Swat"
-                caption="Prof. Dr. Hassan Sher — Vice Chancellor, University of Swat"
-                contactText="Email VC"
+                caption="Prof. Dr. Hassan Sher"
+                captionClassName="text-[#153B27] font-semibold"
+                contactText=""
                 showUserInfo={true}
                 theme="light"
                 backdropColor="#153B27"
-                width={420}
+                width="min(420px, 100%)"
                 radius={22}
                 holo={0.85}
                 glare={0.65}
@@ -66,7 +60,6 @@ export default function ViceChancellorSection() {
                 parallax={10}
                 enableTilt={true}
                 intro={true}
-                onContactClick={handleContactClick}
                 className="mx-auto shadow-md"
               />
             </div>
@@ -150,7 +143,7 @@ export default function ViceChancellorSection() {
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
                 <Link
-                  href="#about-uni"
+                  href="#campus-bulletin"
                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-700 hover:bg-stone-50 transition-colors shadow-xs"
                 >
                   <span>Statutory Regulations</span>

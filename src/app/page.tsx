@@ -1,11 +1,10 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
-import UniversityOverview from "@/components/home/UniversityOverview";
-import ViceChancellorSection from "@/components/home/ViceChancellorSection";
 import CampusBulletin from "@/components/home/CampusBulletin";
-import FeaturedSpotlight from "@/components/home/FeaturedSpotlight";
-import DiamondFeaturesGrid from "@/components/home/DiamondFeaturesGrid";
+import FacultyProgramsGrid from "@/components/home/FacultyProgramsGrid";
+import CampusLifeHeritage from "@/components/home/CampusLifeHeritage";
+import ViceChancellorSection from "@/components/home/ViceChancellorSection";
 import RankingSection from "@/components/home/RankingSection";
 
 export default function HomePage() {
@@ -15,13 +14,12 @@ export default function HomePage() {
       <Navbar />
 
       {/* Main Content Sections */}
-      <main>
+      <main id="main-content">
         <HeroSection />
-        <UniversityOverview />
         <ViceChancellorSection />
         <CampusBulletin />
-        <FeaturedSpotlight />
-        <DiamondFeaturesGrid />
+        <FacultyProgramsGrid />
+        <CampusLifeHeritage />
         <RankingSection />
       </main>
 

@@ -46,6 +46,7 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
   }
 
   body {
@@ -54,6 +55,11 @@
     font-family: var(--font-sans);
     line-height: 1.65;
     overflow-x: hidden;
+  }
+
+  /* Anchored sections clear the fixed navbar on jump */
+  section[id] {
+    scroll-margin-top: 5.5rem;
   }
 
 
@@ -173,4 +179,11 @@
 
         .animate-notice-rise {
           animation: notice-rise 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .animate-notice-rise {
+            animation: none;
+          }
         }

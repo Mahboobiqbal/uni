@@ -2,6 +2,179 @@
 
 All modifications, component replacements, and architectural updates are logged here chronologically.
 
+## [2026-11-14] — Campus Bulletin: Headline Ticker Removed
+
+### Action Summary
+- Removed the `HeadlineTicker` marquee strip (and its component) from the Campus Bulletin header per review comment — the section header now flows directly into the 3-column container. No other behavior changed.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live DOM verification: ticker track/strip elements gone; the header's next sibling is the unified container; zero console errors.
+
+## [2026-11-14] — Campus Life Gallery Rearranged as Bento Grid
+
+### Action Summary
+- Replaced the Masonry layout in `CampusLifeHeritage` with a **bento-style grid**: featured Charbagh Main Campus tile (`lg:col-span-2 lg:row-span-2`) with a perfectly aligned 2×2 block of Women Campus / Central Library / Sports Complex / Heritage tiles on the right; uniform rows/columns at every breakpoint.
+- Tiles: white cards with hairline ring, image hover zoom, permanent frosted editorial captions (badge + serif title + description), and a lightweight keyboard-accessible lightbox (obsidian backdrop, Escape/close).
+- Kept the split header + `#campus-life` anchor and the new `/campus-main.jpg` photo.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live DOM at 2-col viewport: featured full-width row; 4 small tiles all 387×220 with aligned left/top edges; lightbox opens/closes; main image loads; zero console errors.
+
+## [2026-11-14] — Main Campus Photo Swap + Hover White-Fade Removed
+
+### Action Summary
+- Added the user-provided main campus photo as `public/campus-main.jpg`; the featured Charbagh Main Campus tile now uses it.
+- Changed Masonry captions from `"hover"` → `"always"` and removed the hover fade/translate transitions in `Masonry.css` — no white fade appears over images on hover; captions are permanently visible.
+
+### Quality & Verification
+- Live DOM: main tile uses `/campus-main.jpg` (loaded, naturalWidth > 0); caption mode `always`, opacity stays 1 before/after `pointerenter`; zero console errors.
+
+## [2026-11-14] — Masonry Styled to Site Editorial System
+
+### Action Summary
+- Restyled `Masonry.css` to match the site's brand language:
+  - Captions now frosted paper panels (light gradient, `#14291D` ink, hairline top border) with **serif Cormorant title** + stone description — replaces the default black-on-white overlay.
+  - Tiles get the site's hairline ring (`inset 0 0 0 1px` stone) + soft elevation shadow.
+  - Hover lift/tilt/drag shadows switched from generic black to forest-tinted (`rgba(21,59,39,…)`).
+  - Focus ring → forest `#153B27`; lightbox backdrop → obsidian `rgba(12,25,18,0.92)`; lightbox focus ring → gold `#E0C078`.
+
+### Quality & Verification
+- Live DOM: caption ink `rgb(20,41,29)`, serif title weight 700, inset ring present, 5 tiles intact, zero console errors.
+
+## [2026-11-14] — Campus Life Rebuilt on React Bits Masonry
+
+### Action Summary
+- Vendored **React Bits `Masonry`** (`src/components/ui/Masonry.tsx` + `Masonry.css`, TypeScript port, full props incl. lightbox, drag reorder, parallax, reveal animations).
+- Rebuilt `src/components/home/CampusLifeHeritage.tsx` on it:
+  - 5 image tiles (Charbagh Main Campus featured with `span:2`, Women Campus, Central Library, Sports Complex, Swat Valley & Gandhara Heritage) with stated aspect ratios.
+  - Props: `columnWidth=300`, `gap=16`, `radius=14`, `animateFrom="bottom"`, `stagger=0.07`, `bounce=0.18`, `blurToFocus`, `revealOnScroll`, `hoverEffect="lift"`, `focusOnHover`, `captions="hover"`, `parallax=0.12`, `lightbox`, `draggable=false`.
+  - Split header + `#campus-life` anchor preserved.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live DOM: 5 tiles laid out (featured spans full width 793px at this viewport), hover lift active, lightbox opens with title and closes; zero console errors.
+
+## [2026-11-14] — Ranking Bento: Graphs + Full Animations
+
+### Action Summary
+- Enhanced `RankingSection` on the React Bits `<MagicBento />` grid with embedded data graphs and the full animation suite:
+  - **Graphs**: area trend chart on the lead tile, segmented HEC rating bar (91.4%), GreenMetric rising-bar chart, and a THE-impact sparkline — all custom inline SVG/CSS, accurate to the ranking figures.
+  - **Animations/styles**: `enableTilt`, `enableMagnetism`, `clickEffect`, `enableStars` (20 particles), intro stagger (`data-intro`), cursor spotlight, and border glow enabled; `radius={14}`, `rowHeight={190}`, forest `#153B27` glow, light theme.
+  - Kept the split header + 8-tile layout (lead 2×2, HEC, #1 Malakand, 3.68 NAEAC, GreenMetric, THE, 100% HEC, Top 5 Ecosystem).
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live DOM: 8 cards; lead chart, rating bar, 7 mini-bars and sparkline present; `data-motion` + `data-intro` active; radius 14px; zero console errors.
+
+## [2026-11-14] — Ranking & Recognition Rebuilt as React Bits Bento Grid
+
+### Action Summary
+- Rebuilt `src/components/home/RankingSection.tsx` on the vendored React Bits `<MagicBento />` grid (light theme, `radius={12}` ≈ rounded-xl, forest `#153B27` glow, subtle cursor spotlight, no SaaS physics).
+  - **8 tiles**: 2×2 lead "Top Ranked Public University in KP" (91.4% HEC + #1 Malakand), HEC QAA 91.4%, UI GreenMetric Top 15, THE Impact 301–400 (SDG4/15), #1 Malakand badge, 3.68 NAEAC, 100% HEC Recognized, Top 5 Ecosystem Campus.
+  - Editorial tile surface: white tiles, hairline borders (`--mb-tile-edge #e7e5e4`), serif numerals, stone captions.
+  - Split header retained; shared 1360px grid.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live DOM: `.magic-bento` present with 8 cards, lead tile + all key figures verified, 4 columns × 176px rows, zero console errors.
+
+## [2026-11-14] — Quick Portals & Footer Rebuild
+
+### Action Summary
+- Rebuilt `src/components/layout/Footer.tsx`:
+  - Added a **Quick Portals** block above the institutional columns — 4 direct-access cards (**CMS**, **SUJRIS**, **e-Office**, **Campus TV**) with icon chips, descriptions, and ↗ arrows; hover lift + emerald glow; responsive 1/2/4 columns.
+  - Split micro-header ("QUICK PORTALS" eyebrow + serif "Direct Access Portals" + right note).
+  - Footer surface upgraded to white with hairline border on the shared 1360px grid; column headings/links re-tinted to university green (`#153B27`) and internal links retargeted to real page anchors (`#campus-bulletin`, `#campus-life`, `#admissions-desk`) instead of bare `#`.
+  - Bottom crest/copyright/legal bar preserved.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live DOM: 4 portal cards render with heading; Admissions / In Focus / Quick Links / Contact Us columns intact; zero console errors.
+
+## [2026-11-14] — Spotlight & Academic Spectrum Sections Deleted
+
+### Action Summary
+- **Deleted `src/components/home/FeaturedSpotlight.tsx`** ("Spotlight: Research & Innovation" banner) and **`src/components/home/DiamondFeaturesGrid.tsx`** ("Academic Spectrum" diamond grid) per user request.
+- **Rewired `src/app/page.tsx`**: page flow is now Hero → Vice Chancellor → Campus Bulletin → Faculties & Academic Programs → Campus Life & Heritage → Rankings → Footer.
+- No dangling anchors: the only reference to `#faculties-grid` lived inside the deleted spotlight and is gone.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Page renders without the two sections; zero console errors.
+
+## [2026-11-14] — Campus Life & Swat Valley Heritage Visual Showcase
+
+### Action Summary
+- Added `src/components/home/CampusLifeHeritage.tsx`: a visual mosaic section between the Faculties grid and the research spotlight to balance the text-heavy notices.
+  - **Split header** ("CAMPUS LIFE & HERITAGE" eyebrow + serif H2 + right subtitle).
+  - **5 image tiles** using the local campus photography: Charbagh Main Campus (large featured tile, `lg:col-span-2 lg:row-span-2`), Women Campus, Central Library, Sports Complex, and Swat Valley & Gandhara Heritage.
+  - Each tile: hover zoom (`group-hover:scale-105`), obsidian scrim, frosted chip with icon, white serif title + one-liner; featured tile includes an "Explore the campus" gold link.
+  - Sets `id="campus-life"` — the navbar's existing "Campus Life" anchor now resolves here.
+- Wired into `src/app/page.tsx` after `<FacultyProgramsGrid />`.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live DOM: 5 tiles rendered (1 featured big), correct images/titles, zero console errors.
+
+## [2026-11-14] — Faculties & Academic Programs Grid Section
+
+### Action Summary
+- Added `src/components/home/FacultyProgramsGrid.tsx`: an interactive, light editorial grid section between Campus Bulletin and the research spotlight.
+  - **Split header** ("ACADEMIC PROGRAMS" eyebrow + serif H2 + right subtitle) matching the rest of the page.
+  - **5 interactive faculty cards** — Computing & IT (9), Sciences (12), Management Sciences (7), Law & Legal Studies (8), Humanities & Languages (10) — each with a serif degree-count readout, level chips (BS/MS-MPhil/PhD etc.), alternating forest/crimson accent border, sheen-sweep hover, lift + glow, and an "Explore programs →" link.
+  - Responsive: 1 col mobile → 2 md → 3 lg within the shared 1360px grid.
+- Wired into `src/app/page.tsx` after `<CampusBulletin />`.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live DOM: 5 cards rendered with counts 9/12/7/8/10, all with sheen + explore links, split header active, zero console errors.
+
+## [2026-11-14] — Announcements Section: 2-Column Layout (Category Rail on Top)
+
+### Action Summary
+- Restructured `CampusBulletin` from 3 columns to a **2-column master-detail** on desktop:
+  - **Top row:** full-width category rail (Recent/News/Admissions/Exams/Teachers/Students/Vacations) with the sliding active-pill — now always horizontal.
+  - **Below:** notice feed (`lg:col-span-5`) + official reader (`lg:col-span-7`) side by side; stacked on mobile as before.
+- Verified at 1280px: rail spans the full width above, feed/reader share one row (same top, split left/right). `tsc` clean, zero console errors.
+
+## [2026-11-14] — Accessibility & Contrast Fix Pass (from audit report)
+
+### Action Summary
+- **Header**: added skip link to `#main-content` (visually hidden, appears on focus); Escape closes dropdowns/mobile drawer and restores focus to the trigger; ArrowLeft/ArrowRight moves focus between top-level nav items (`data-nav-idx`).
+- **Hero video**: added an accessible Pause/Play control (aria-label, focus-visible ring); video no longer autoplays when `prefers-reduced-motion: reduce`; decorative background kept.
+- **3 red cards**: numeral/stat/icon gold raised from `#C8A96E` → `#E0C078` (contrast on crimson now ~5.8:1 ≥ 4.5); card titles changed `h3` → `h2` to remove the heading-skip (H1→H3).
+- **Announcements**: toast now `role="alert"`; feed auto-scroll loop disabled under reduced motion; reader transition animation disabled under reduced motion (globals.css).
+- Report-only items not changed: header text-over-video/glass contrast (cannot be measured deterministically — confirmed scrim/glass present).
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live checks: Escape closes dropdown (aria-expanded false) & focus restores; ArrowRight moves focus to "Faculty"; toast fires with `role="alert"`; skip link + `main id="main-content"` present; video control labeled "Pause background video"; gold text rendered in `#E0C078`.
+
+
+### Action Summary
+- **Hero**: card strip + container padding now responsive (`px-4 sm:px-6`, card padding `px-5 py-5 sm:px-7 sm:py-6`, gap `gap-4 sm:gap-6`) so the three crimson cards read cleanly at 390px.
+- **Vice Chancellor**: `ProfileCard` width switched from fixed `420px` to `min(420px, 100%)` — portrait now scales down on small screens instead of overflowing.
+- **Campus Bulletin**: action row now `flex-wrap`; all three grid columns got `min-w-0` to prevent intrinsic width blowouts; category rail remains an internal horizontal scroller.
+- **Global**: `html { overflow-x: clip }` added as a hard horizontal-scroll guard; `section[id] { scroll-margin-top: 5.5rem }` so anchor jumps clear the fixed navbar.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Verified via a 390px same-origin iframe: root `scrollWidth === clientWidth` (no horizontal scroll), zero visible overflowing elements, hero cards 343px each, VC card 327px inside its column, bulletin stacks cat → feed → reader, actions wrap — zero console errors.
+
+
+### Action Summary
+- **Deleted `src/components/home/UniversityOverview.tsx`** (Academic Foundations, Research &amp; Institutional Impact 6-card bento section) per user request.
+- **Rewired `src/app/page.tsx`**: Hero now flows directly into `ViceChancellorSection`, followed by `CampusBulletin`, `FeaturedSpotlight`, `DiamondFeaturesGrid`, `RankingSection`, and `Footer`.
+- Retargeted the Vice Chancellor "Statutory Regulations" link from `#about-uni` (removed anchor) to `#campus-bulletin`.
+- The vendored `MagicBento` primitive remains in `src/components/ui/` (currently unused).
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Page renders with the section gone and no broken anchors; Hero's crimson cards now overlap onto the Vice Chancellor's Warm Alabaster canvas.
+
+
 ---
 
 ## [2026-11-14] — Flagship Prestige Architecture Refactor: Forest Obsidian Palette, Razor-Sharp Hero & Institutional Styling

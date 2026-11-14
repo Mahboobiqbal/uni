@@ -76,6 +76,7 @@ export interface ProfileCardProps {
   status?: string;
   statusColor?: string;
   caption?: string;
+  captionClassName?: string;
   contactText?: string;
   showUserInfo?: boolean;
   onContactClick?: () => void;
@@ -110,6 +111,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   status = 'Online',
   statusColor = '#22c55e',
   caption,
+  captionClassName,
   contactText = 'Contact',
   showUserInfo = true,
   onContactClick,
@@ -381,8 +383,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               </span>
             )}
             <div className="profile-card__meta">
-              {caption ? (
-                <span className="profile-card__caption">{caption}</span>
+              {caption !== undefined ? (
+                <span className={`profile-card__caption ${captionClassName ?? ''}`.trim()}>{caption}</span>
               ) : (
                 <>
                   {handle && <span className="profile-card__handle">@{handle}</span>}

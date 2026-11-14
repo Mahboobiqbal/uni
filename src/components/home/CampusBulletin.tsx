@@ -50,6 +50,7 @@ function AutoScrollingFeed({ items, selectedId, onSelect, lockOnLeave }: AutoScr
   useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
     let prev = performance.now();
     let raf = 0;
 
@@ -127,66 +128,6 @@ function AutoScrollingFeed({ items, selectedId, onSelect, lockOnLeave }: AutoScr
         {renderFeed(false)}
         {items.length > 1 && renderFeed(true)}
       </div>
-    </div>
-  );
-}
-
-/* ─── Header ticker — React Bits / OriginKit-style infinite marquee ────────── */
-
-function HeadlineTicker({ items }: { items: Announcement[] }) {
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    const el = viewportRef.current;
-    if (!el) return;
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-    let prev = performance.now();
-    let raf = 0;
-    const step = (now: number) => {
-      const dt = Math.min(0.05, (now - prev) / 1000);
-      prev = now;
-      const track = trackRef.current;
-      const half = track ? track.scrollWidth / 2 : 0;
-      if (!hovered && half > el.clientWidth) {
-        el.scrollLeft += 26 * dt;
-        if (el.scrollLeft >= half) el.scrollLeft -= half;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [items, hovered]);
-
-  if (!items.length) return null;
-
-  return (
-    <div
-      ref={viewportRef}
-      className="relative mt-6 w-full overflow-hidden rounded-xl border border-stone-200/80 bg-white/70 backdrop-blur-sm"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      aria-hidden="true"
-    >
-      <div
-        ref={trackRef}
-        className="flex w-max items-center gap-6 px-4 py-2.5 text-xs font-medium text-stone-500"
-      >
-        {[items, items].map((group, gi) => (
-          <div key={gi} className="flex items-center gap-6">
-            {group.map((item) => (
-              <span key={`${gi}-${item.id}`} className="flex items-center gap-2 whitespace-nowrap">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#153B27]/40" />
-                <span className="font-semibold text-[#153B27]">{item.date}</span>
-                <span>{item.title}</span>
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent" />
     </div>
   );
 }
@@ -341,9 +282,6 @@ export default function CampusBulletin() {
           </p>
         </div>
 
-        {/* Latest-headline ticker (infinite marquee) */}
-        <HeadlineTicker items={announcementsForCategory('Recent').slice(0, 6)} />
-
         {/* Unified 3-Column Master-Detail Container — bento tile surface + spotlight */}
         <div
           className="group relative rounded-xl bg-gradient-to-b from-white to-[#FBF9F6] border border-stone-200/80 shadow-[0_24px_70px_-28px_rgba(21,59,39,0.16),0_2px_6px_rgba(21,59,39,0.05)] overflow-hidden"
@@ -365,12 +303,12 @@ export default function CampusBulletin() {
             style={{ opacity: 0 }}
           />
 
-          <div className="relative z-10 grid grid-cols-12">
-            {/* ── Left Column — Category Navigation Sidebar ── */}
-            <div className="col-span-12 lg:col-span-2 border-b lg:border-b-0 lg:border-r border-stone-200 bg-[#FAF9F6] p-4">
+          <div className="relative z-10">
+            {/* ── Top Row — Full-Width Category Rail ── */}
+            <div className="border-b border-stone-200 bg-[#FAF9F6] p-4 min-w-0">
               <div
                 ref={railRef}
-                className="relative flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible pb-1 lg:pb-0"
+                className="relative flex gap-1.5 overflow-x-auto pb-1"
               >
                 {/* Sliding active pill (Origin Tabs-style) */}
                 <div
@@ -394,7 +332,7 @@ export default function CampusBulletin() {
                       onClick={() => handleCategoryClick(cat)}
                       aria-pressed={isActive}
                       className={cn(
-                        'group relative z-10 flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50 shrink-0 lg:shrink lg:w-full',
+                        'group relative z-10 flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50 shrink-0',
                         isActive
                           ? 'text-[#153B27]'
                           : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/70 hover:-translate-y-px'
@@ -415,21 +353,23 @@ export default function CampusBulletin() {
               </div>
             </div>
 
-            {/* ── Middle Column — Scrollable Auto-Looping Notice Feed ── */}
-            <div className="col-span-12 lg:col-span-4 border-b lg:border-b-0 lg:border-r border-stone-200 p-4 max-h-[420px] lg:max-h-[620px] relative overflow-hidden bg-white">
-              <AutoScrollingFeed
-                items={feedItems}
-                selectedId={selectedId}
-                onSelect={handleSelect}
-                lockOnLeave={lockOnLeave}
-              />
-              {/* Scroll-hint edge fades */}
-              <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-0 h-8 bg-gradient-to-b from-white to-transparent z-10" />
-              <div aria-hidden="true" className="pointer-events-none absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-white to-transparent z-10" />
-            </div>
+            {/* ── Two-Column Master-Detail ── */}
+            <div className="grid grid-cols-12">
+              {/* ── Left Column — Scrollable Auto-Looping Notice Feed ── */}
+              <div className="col-span-12 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-stone-200 p-4 max-h-[420px] lg:max-h-[620px] relative overflow-hidden bg-white min-w-0">
+                <AutoScrollingFeed
+                  items={feedItems}
+                  selectedId={selectedId}
+                  onSelect={handleSelect}
+                  lockOnLeave={lockOnLeave}
+                />
+                {/* Scroll-hint edge fades */}
+                <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-0 h-8 bg-gradient-to-b from-white to-transparent z-10" />
+                <div aria-hidden="true" className="pointer-events-none absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-white to-transparent z-10" />
+              </div>
 
             {/* ── Right Column — Full Official Notice Reader ── */}
-            <div className="col-span-12 lg:col-span-6 relative overflow-hidden p-6 sm:p-8 flex flex-col justify-between bg-white">
+            <div className="col-span-12 lg:col-span-7 relative overflow-hidden p-6 sm:p-8 flex flex-col justify-between bg-white min-w-0">
               {/* Faint institutional watermark filling the reader's tail space */}
               <div aria-hidden="true" className="pointer-events-none absolute -bottom-10 -right-8 w-64 h-64 opacity-[0.045] select-none">
                 <img src="/uos-logo-circle.png" alt="" className="w-full h-full object-contain rounded-full" />
@@ -488,7 +428,7 @@ export default function CampusBulletin() {
               </div>
 
               {/* Bottom Action Bar */}
-              <div className="border-t border-stone-100 pt-5 mt-6 flex items-center justify-end gap-3">
+              <div className="border-t border-stone-100 pt-5 mt-6 flex flex-wrap items-center justify-end gap-3">
                 <button
                   type="button"
                   onClick={handleShare}
@@ -508,12 +448,13 @@ export default function CampusBulletin() {
               </div>
             </div>
           </div>
+          </div>
         </div>
       </div>
 
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#0C1912] text-white text-xs px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 border border-white/10 animate-in fade-in slide-in-from-bottom-2">
+        <div role="alert" className="fixed bottom-6 right-6 z-50 bg-[#0C1912] text-white text-xs px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 border border-white/10 animate-in fade-in slide-in-from-bottom-2">
           <CheckCircle2 className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
