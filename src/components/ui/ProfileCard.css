@@ -266,6 +266,14 @@
   min-width: 0;
 }
 
+.profile-card__caption {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--pc-ink);
+  letter-spacing: -0.01em;
+}
+
 .profile-card__handle {
   overflow: hidden;
   font-size: 13.5px;

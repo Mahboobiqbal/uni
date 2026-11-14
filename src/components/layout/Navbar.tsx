@@ -20,7 +20,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Home', href: '#' },
   {
-    label: 'Program',
+    label: 'Programs',
     href: '#programs',
     hasDropdown: true,
     submenu: [
@@ -88,7 +88,7 @@ const navItems: NavItem[] = [
       }
     ]
   },
-  { label: 'Teacher', href: '#faculty' },
+  { label: 'Faculty', href: '#faculty' },
   {
     label: 'Academics',
     href: '#academics',
@@ -226,8 +226,8 @@ const navItems: NavItem[] = [
     ]
   },
   {
-    label: 'Athletic',
-    href: '#athletic',
+    label: 'Campus Life',
+    href: '#campus-life',
     hasDropdown: true,
     submenu: [
       {
@@ -271,9 +271,9 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Championship Honors',
-        href: '#sports',
-        description: 'National trophies & athletic scholarship',
+        label: 'Student Societies & Clubs',
+        href: '#campus-life',
+        description: 'Literary, Debating & Environmental Societies',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -281,9 +281,9 @@ const navItems: NavItem[] = [
         )
       },
       {
-        label: 'Annual Sports Gala',
-        href: '#announcements-section',
-        description: 'Inter-departmental fixtures & tournaments',
+        label: 'Hostels & Campus Services',
+        href: '#campus-life',
+        description: 'Residential dormitories, transport & dining',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -292,7 +292,7 @@ const navItems: NavItem[] = [
       }
     ]
   },
-  { label: 'Course', href: '#courses' }
+  { label: 'Research', href: '#research' }
 ];
 
 export default function Navbar() {
@@ -456,13 +456,13 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Action Button: "Sign up" in Official Crimson Maroon #731C1C */}
+        {/* Right Action Button: "Student Portal" in Official University Crimson #7F1D1D */}
         <div className="hidden md:flex items-center">
           <Link
-            href="#signup"
-            className="inline-flex items-center justify-center bg-[#731C1C] hover:bg-[#5c1616] active:bg-[#481010] text-white text-sm font-semibold px-5 py-2 rounded-sm transition-colors shadow-sm focus:outline-none"
+            href="#portal"
+            className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-black/20 focus:outline-none"
           >
-            Sign up
+            Student Portal
           </Link>
         </div>
 
@@ -551,11 +551,11 @@ export default function Navbar() {
 
             <div className="pt-3">
               <Link
-                href="#signup"
+                href="#portal"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center bg-[#731C1C] hover:bg-[#5c1616] text-white text-base font-semibold py-3 rounded-sm transition-colors"
+                className="w-full inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] text-white text-base font-semibold py-3 rounded-lg transition-colors shadow-md"
               >
-                Sign up
+                Student Portal
               </Link>
             </div>
           </div>

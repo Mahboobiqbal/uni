@@ -3,37 +3,33 @@
 
   /* ─── Tailwind v4 Theme Tokens ────────────────────────────────────────────── */
   @theme {
-    /* Official Crest Colors */
-    --color-brand-forest: #1D3523;
-    --color-brand-maroon: #731C1C;
-    --color-brand-maroon-dark: #5c1616;
+    /* Official Flagship Palette */
+    --color-brand-forest: #153B27;
+    --color-brand-forest-obsidian: #0C1912;
+    --color-brand-maroon: #7F1D1D;
+    --color-brand-crimson: #7F1D1D;
+    --color-brand-gold: #B48A3E;
     --color-brand-charcoal: #111827;
-    --color-brand-canvas: #F9FAFB;
+    --color-brand-canvas: #F8F7F4;
+    --color-brand-alabaster: #F8F7F4;
 
     /* Theme Aliases */
-    --color-brand-emerald: #1D3523;
-    --color-brand-emeraldDark: #142518;
-    --color-brand-emerald-dark: #142518;
+    --color-brand-emerald: #153B27;
+    --color-brand-emeraldDark: #0C1912;
+    --color-brand-emerald-dark: #0C1912;
     --color-brand-emeraldLight: #f0fdf4;
     --color-brand-emerald-light: #f0fdf4;
-    --color-brand-jade: #22543d;
-    --color-brand-obsidian: #111827;
+    --color-brand-jade: #1a432e;
+    --color-brand-obsidian: #0C1912;
     --color-brand-slateCard: #1f2937;
     --color-brand-slate-card: #1f2937;
-    --color-brand-gold: #b45309;
-    --color-brand-goldLight: #d97706;
-    --color-brand-gold-light: #d97706;
-    --color-brand-goldWarm: #fef3c7;
-    --color-brand-gold-warm: #fef3c7;
     --color-brand-surface: #ffffff;
-    --color-brand-mist: #F9FAFB;
-    --color-brand-slateTint: #f3f4f6;
-    --color-brand-slate-tint: #f3f4f6;
-    --color-brand-borderLight: #e5e7eb;
-    --color-brand-border-light: #e5e7eb;
+    --color-brand-mist: #F8F7F4;
+    --color-brand-borderLight: #e7e5e4;
+    --color-brand-border-light: #e7e5e4;
 
     --shadow-alpine: 0 20px 40px -15px rgba(17, 24, 39, 0.05), 0 0 1px 1px rgba(17, 24, 39, 0.04);
-    --shadow-alpine-hover: 0 25px 50px -12px rgba(29, 53, 35, 0.15), 0 0 0 1px rgba(29, 53, 35, 0.25);
+    --shadow-alpine-hover: 0 25px 50px -12px rgba(21, 59, 39, 0.15), 0 0 0 1px rgba(21, 59, 39, 0.25);
     --shadow-floating: 0 30px 60px -20px rgba(17, 24, 39, 0.08), 0 0 0 1px rgba(229, 231, 235, 0.8);
 
     --font-serif: var(--font-serif), "Cormorant Garamond", Georgia, serif;
@@ -73,18 +69,13 @@
       background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
     }
 
-    /* University Heritage Mesh Gradient (Forest Green #1D3523, Crimson Maroon #731C1C, Alpine Green #2f3e29, Crest Gold #D4AF37) */
-    .bg-uni-mesh {
-      background-color: #1D3523;
+    /* Forest Obsidian Background with Subtle Architectural Grid */
+    .bg-forest-obsidian {
+      background-color: #0C1912;
       background-image:
-        radial-gradient(at 0% 0%, rgba(47, 62, 41, 0.95) 0px, transparent 52%),
-        radial-gradient(at 100% 4%, rgba(115, 28, 28, 0.48) 0px, transparent 48%),
-        radial-gradient(at 50% 12%, rgba(35, 74, 46, 0.85) 0px, transparent 60%),
-        radial-gradient(at 95% 62%, rgba(47, 62, 41, 0.75) 0px, transparent 52%),
-        radial-gradient(at 4% 78%, rgba(115, 28, 28, 0.42) 0px, transparent 50%),
-        radial-gradient(at 58% 88%, rgba(212, 175, 55, 0.12) 0px, transparent 46%),
-        radial-gradient(at 28% 100%, rgba(35, 74, 46, 0.92) 0px, transparent 56%),
-        linear-gradient(180deg, #132418 0%, #1D3523 45%, #15271a 100%);
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
     }
 
 
@@ -166,4 +157,20 @@
 
         .custom-scroll::-webkit-scrollbar-thumb:hover {
           background: #059669;
+        }
+
+        /* Campus Bulletin — Official Notice Reader Transition */
+        @keyframes notice-rise {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-notice-rise {
+          animation: notice-rise 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
         }

@@ -4,6 +4,78 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Flagship Prestige Architecture Refactor: Forest Obsidian Palette, Razor-Sharp Hero & Institutional Styling
+
+### Action Summary
+- **Color System & Gradient Elimination**:
+  - Replaced the muddy green-to-red diagonal gradient (`.bg-uni-mesh`) in `UniversityOverview.tsx` with a deep, unified **Forest Obsidian** background (`#0C1912`) accented only by a subtle top-center radial emerald glow (`rgba(26, 67, 46, 0.35)`) and a delicate `48px 48px` hairline grid pattern.
+  - Eliminated the blurry white bottom fade and green glow blob, replacing them with a crisp architectural transition (`border-b border-white/10`) leading directly into **Warm Alabaster** (`#F8F7F4`) for `ViceChancellorSection.tsx`.
+  - Standardized all brand accents across cards and badges to strictly use **Deep Forest Green** (`#153B27`), **University Crimson** (`#7F1D1D`), and **Warm Muted Gold** (`#B48A3E`). Completely eradicated generic SaaS blue, purple, and orange pastel badges inside Academic Breadth, Student Resources, and Vice Chancellor cards, replacing them with cohesive neutral stone/emerald/crimson/gold tinted pills.
+- **Hero & Video Overlay Upgrade**:
+  - Implemented multi-stop cinematic vignette overlay (`linear-gradient(to bottom, rgba(8,15,11,0.75) 0%, rgba(8,15,11,0.45) 45%, #0C1912 100%)`) over the background video, ensuring razor-sharp typography contrast regardless of video brightness and seamless continuity with the Forest Obsidian section below.
+  - Upgraded Hero H1 to authoritative institutional typography: *"Shaping Scholars & Innovators in the Heart of Swat"* (`font-serif font-extrabold tracking-tight leading-[1.08]`).
+  - Implemented dual-button CTA layout: primary University Crimson button (*"Explore Programs"*, `#7F1D1D`) and secondary glassmorphic button (*"Virtual Campus Tour"*).
+  - Standardized navbar links to academic terminology: *"Programs"*, *"Faculty"*, *"Academics"*, *"Admissions"*, *"Campus Life"*, *"Research"*, with primary CTA updated to *"Student Portal"*.
+- **Elevated 3-Pillar Feature Strip & Bento Cards**:
+  - Restyled the 3-column maroon feature bar ("Quality", "Leadership", "Experience") as a sleek, elevated architectural bar (`bg-[#6B1818]/95 backdrop-blur-md border border-white/15 shadow-2xl`) bridging the bottom of the hero video into the dark section below with reduced vertical padding.
+  - In `MagicBento.tsx` and `MagicBento.css`, replaced heavy drop shadows with crisp `1px` borders (`border-stone-200` in light mode, `border-white/10` in dark mode) and consistent `p-7` (`28px`) internal padding.
+- **Vice Chancellor Section Polish**:
+  - In `ProfileCard.tsx` and `ProfileCard.css`, added `caption` support to replace the social-media style `@handle` and green status dot with an authoritative institutional caption: *"Prof. Dr. Hassan Sher — Vice Chancellor, University of Swat"*.
+  - Standardized the 3 executive achievement badges (*"D.Sc & Post-Doc"*, *"200+ Papers"*, *"PAS Fellow"*) with cohesive neutral stone containers (`bg-stone-50 border border-stone-200/90`) and muted emerald, crimson, and gold icons.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM inspection: Verified razor-sharp Hero H1, "Student Portal" button, `#F8F7F4` Warm Alabaster VC background, `#0C1912` Forest Obsidian bento background, institutional caption on VC portrait card, zero console errors.
+
+---
+
+## [2026-11-14] — Campus Bulletin: Dead-Space Fix + OriginKit/React Bits-Inspired Feel
+
+### Action Summary
+- **Fixed empty areas**:
+  - Right reader column no longer forces a fixed `min-h` (which created ~95px of dead space below the action bar when the row stretched); the container now sizes to content and a faint institutional crest watermark (`opacity-[0.045]`) fills the remaining tail space instead of whitespace.
+  - Middle feed switched from fixed `h-[420px]/620px` to `max-h` with a `min-h-[220px]` viewport — short categories no longer leave a hollow band, while long lists still cap and loop.
+- **OriginKit / React Bits-inspired polish**:
+  - **Latest-headline ticker** (React Bits-style infinite marquee) under the section subtitle: the 6 most recent notice titles scroll horizontally at ~26px/s in a frosted pill strip with edge fades; pauses on hover and respects `prefers-reduced-motion`.
+  - **Sliding active-tab pill** (OriginKit Tabs pattern) in the category sidebar: an emerald gradient pill glides between buttons (measured geometry, cubic-bezier 300ms, re-measured on resize), replacing the static active background.
+  - **Scroll-hint edge fades** on the notice feed (top/bottom white gradients over the custom scrollbar area).
+  - Watermark + masks are pointer-events-none / aria-hidden for accessibility.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live browser verification: ticker animates and pauses; pill renders on load and glides on category change; edge masks present; reader bottom gap reduced from ~95px → 32px; autoplay loop still moves; zero console errors.
+
+
+### Action Summary
+- **Visual language unification (`src/components/home/CampusBulletin.tsx`)** with the site's two flagship interactive styles:
+  - **Bento-style tile surface**: unified container upgraded to `rounded-[28px]` with a soft white→alabaster vertical surface gradient, hairline `border-stone-200/80`, and a layered forest-tinted shadow; added a **cursor-following spotlight** overlay (radial `#153B27` + `#7F1D1D` wash, 560px reach, fades in on hover of the container) mirroring `MagicBento`'s light engine without the physics overhead.
+  - **VC-card ambient aura**: three blurred color blobs (`#153B27`, `#7F1D1D`, `#B48A3E` at ~8–10% opacity) float behind the section canvas, echoing the `ViceChancellorSection` atmospheric lighting.
+  - **Feed cards**: upgraded to `rounded-2xl` bento tiles with a white→stone-50 gradient surface, hover lift (`-translate-y-0.5`), forest border glow + deep shadow, selected state now emerald-ringed with a pastel gradient wash, and a **VC-style sheen sweep** (diagonal white light passes across the card on hover).
+  - **Sidebar pills**: active pill refined to an emerald→white gradient with a soft forest shadow; indicator dot gains `scale-110` + emerald halo.
+  - **Reader**: callout box upgraded to emerald gradient with an icon chip; crest frame now a gradient stone surface; secondary `Share` button gained lift + shadow; primary `Download` now a `#065F46 → #153B27` gradient with deep forest glow and micro-lift.
+- No behavioral changes: autoplay loop, hover-pause, lock-on-click, category switching, and reader transitions all preserved.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Live browser DOM verification: spotlight overlay, card gradient/sheen, gradient buttons, callout icon, and 3 aura blobs all present; zero console errors; autoplay confirmed moving (~7.5px/120ms) with hover-pause verified.
+
+
+### Action Summary
+- **Created `<CampusBulletin />` (`src/components/home/CampusBulletin.tsx`)** replacing the legacy `AnnouncementsBoard` gazette:
+  - Unified rounded container (`rounded-3xl bg-white border border-stone-200 shadow-sm overflow-hidden`) with a 12-column master-detail split: category sidebar (2) · auto-looping feed (4) · full notice reader (6); stacks responsively on mobile (sidebar becomes a horizontal tab rail).
+  - **Left sidebar — category navigation** in exact order Recent → News → Admissions → Exams → Teachers → Students → Vacations (`Recent` selected by default). Active pill: emerald tint `bg-emerald-50/80`, emerald border `border-emerald-600/30`, forest text `text-[#153B27] font-semibold`, solid `#153B27` indicator dot on the right. Inactive: `text-stone-600 hover:text-stone-900 hover:bg-stone-100/70`.
+  - **Middle column — auto-looping feed**: seamless infinite vertical marquee (duplicated render + rAF translate) at ~42px/s, paused on `onMouseEnter`, free mouse-wheel scrolling via a thin `.custom-scroll` bar, and gentle resume on `onMouseLeave` *unless* the user clicked a card (`lockOnLeave`). Cards feature date (amber-700 active / stone-400 inactive), tone-based badge pills (solid crimson `#7F1D1D` for Important; outlined emerald/amber/blue/purple/stone for others), bold 2-line title, 1-line truncated snippet, and a selected state with `border-emerald-600 ring-emerald-600/20 bg-emerald-50/20`.
+  - **Right column — official notice reader**: renders the most recent announcement by default; category clicks auto-open that category's top notice; card clicks open the specific notice with a smooth rise/fade transition (`.animate-notice-rise` keyframe added to `src/app/globals.css`). Header row pairs the badge + `Reference: UOS/… • date` with the framed crest (`/uos-logo-circle.png`); body uses clean serif headline + stone paragraphs + optional emerald callout box; bottom action bar has `Share` (secondary, Web Share API → clipboard fallback) and `Download Notice (PDF)` (primary `#065F46` → hover `#153B27`), both with toast feedback.
+- **Data upgrade (`src/data/announcements.ts`)**: replaced the 5-item HTML-string dataset with a structured, typed dataset of 13 notices covering all 7 tabs (News ×3, Admissions ×2, Exams ×2, Teachers ×2, Students ×2, Vacations ×2), each with official reference numbers (`UOS/REG/…`, `UOS/ADM/…`, `UOS/EXAM/…`, `UOS/COE/…`, `UOS/ORIC/…`, `UOS/RECT/…`, `UOS/TRANS/…`, `UOS/LIB/…`, `UOS/ESTATE/…`), Charbagh/Mingora/Kanju/Shangla details, `ts` sort timestamps, structured paragraph arrays, and optional callout boxes. Removed `dangerouslySetInnerHTML` (no more raw HTML injection).
+- **Rewired `src/app/page.tsx`**: `<CampusBulletin />` now renders directly below `<ViceChancellorSection />` (above `FeaturedSpotlight`).
+- **Deleted** `src/components/home/AnnouncementsBoard.tsx` (no orphans).
+- **First production consumer** of `cn()` from `@/lib/utils` (clsx + tailwind-merge).
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Verified: default state loads the most recent notice in the reader; every sidebar tab filters the feed and auto-opens its top notice; card selection locks autoplay; hover pauses / leave resumes scrolling; Share & Download actions fire toasts; custom scrollbar styling reused.
+
+
 ## [2026-11-14] — Enlarged VC Profile Card & Streamlined Concise Discourse
 
 ### Action Summary

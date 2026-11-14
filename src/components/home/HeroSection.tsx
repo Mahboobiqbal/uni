@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <section className="relative z-20 w-full min-h-screen flex flex-col justify-between bg-black text-white">
-      {/* Background Video with Poster Fallback & Dark Vignette Overlay */}
+    <section className="relative z-20 w-full min-h-screen flex flex-col justify-between bg-[#0C1912] text-white">
+      {/* Background Video with Poster Fallback & Multi-stop Cinematic Vignette Overlay */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <video
           autoPlay
@@ -20,53 +20,54 @@ export default function HeroSection() {
           <source src="/1114.mp4" type="video/mp4" />
           <source src="/swat-university.mp4" type="video/mp4" />
         </video>
-        {/* Dark Vignette Overlay for Ultra Contrast */}
-        <div className="absolute inset-0 bg-black/45 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/60 z-10" />
 
-        {/* Seamless Green Gradient Dissolve into University Overview Section (Eliminates hard seam/border) */}
+        {/* Multi-stop Cinematic Vignette Overlay: Razor-sharp Contrast into Forest Obsidian #0C1912 */}
         <div
-          className="absolute inset-x-0 bottom-0 h-80 sm:h-96 z-15 pointer-events-none"
+          className="absolute inset-0 z-10 pointer-events-none"
           style={{
             background:
-              'linear-gradient(to top, #1D3523 0%, #1D3523 40px, rgba(29, 53, 35, 0.92) 100px, rgba(29, 53, 35, 0.6) 210px, rgba(29, 53, 35, 0.2) 290px, transparent 100%)'
+              'linear-gradient(to bottom, rgba(8,15,11,0.75) 0%, rgba(8,15,11,0.45) 45%, #0C1912 100%)'
           }}
         />
-        {/* Soft Ambient Glow bridging into the green section below */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-40 bg-[radial-gradient(ellipse_at_center,rgba(47,62,41,0.45),transparent_70%)] blur-3xl z-15 pointer-events-none" />
       </div>
 
       {/* Main Center Content */}
-      <div className="relative z-20 max-w-4xl mx-auto px-5 sm:px-6 text-center my-auto pt-36 sm:pt-40 pb-16">
-        {/* Hero Headline: Cormorant Garamond, Ultra-Bold, Tracking -0.025em, Leading 1.08 */}
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold tracking-[-0.025em] text-white leading-[1.08] drop-shadow-md">
-          Good Education to Build A Better Future
+      <div className="relative z-20 max-w-4xl mx-auto px-5 sm:px-6 text-center my-auto pt-32 sm:pt-36 pb-8 sm:pb-10">
+        {/* Hero Headline: Authoritative Institutional Display Serif */}
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-extrabold tracking-tight text-white leading-[1.08] drop-shadow-md">
+          Shaping Scholars &amp; Innovators in the Heart of Swat
         </h1>
 
-        {/* Hero Paragraph: Plus Jakarta Sans, Weight 400, Leading 1.65 */}
-        <p className="font-sans text-sm sm:text-base md:text-lg text-white/85 max-w-2xl mx-auto mt-6 leading-[1.65] font-normal drop-shadow-sm">
-          We offer a quality education that provides not only lessons but also real experience
-          in every field. Embrace the future with our quality education, where lessons come to
-          life through immersive.
+        {/* Hero Paragraph */}
+        <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto mt-6 leading-[1.65] font-normal drop-shadow-sm">
+          Rooted in ancient Gandharan heritage and energized by modern academic zeal, the
+          University of Swat provides world-class education, transformative scientific inquiry,
+          and regional leadership.
         </p>
 
-        {/* Hero Action Button: Crimson Maroon #731C1C, Weight 600 */}
-        <div className="mt-8 sm:mt-10">
+        {/* Dual-Action CTA: Primary University Crimson & Secondary Glassmorphic Button */}
+        <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="#programs"
+            className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-lg shadow-lg shadow-black/40 hover:scale-[1.02] active:scale-100 transition-all"
+          >
+            Explore Programs
+          </Link>
           <Link
             href="#explore"
-            className="inline-flex items-center justify-center bg-[#731C1C] hover:bg-[#5c1616] active:bg-[#481010] text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-sm transition-all shadow-lg shadow-black/30 hover:scale-[1.02] active:scale-100"
+            className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 active:bg-white/15 text-white backdrop-blur-md border border-white/20 font-semibold text-sm sm:text-base px-7 py-3.5 rounded-lg transition-all shadow-md shadow-black/20 hover:scale-[1.02] active:scale-100"
           >
-            Take a Tour
+            Virtual Campus Tour
           </Link>
         </div>
       </div>
 
-      {/* Bottom Translucent Crimson Maroon 3-Pillar Ribbon: Lowered so it touches/overlaps the green section by 10% */}
-      <div className="relative z-30 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 translate-y-[10%]">
-        <div className="w-full bg-[#731C1C]/92 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl shadow-black/40 overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/25">
+      {/* Bottom Architectural 3-Pillar Feature Strip: Sleek #6B1818/95 bar cleanly bridging into Forest Obsidian */}
+      <div className="relative z-30 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 translate-y-[8%]">
+        <div className="w-full bg-[#6B1818]/95 backdrop-blur-md rounded-2xl border border-white/15 shadow-2xl shadow-black/50 overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
             {/* Pillar 1: Quality */}
-            <div className="py-7 sm:py-8 md:py-9 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
+            <div className="py-6 sm:py-7 md:py-8 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
               <div className="flex items-center justify-center gap-2.5 text-white mb-2.5">
                 {/* Star in Circle Badge */}
                 <svg
@@ -90,7 +91,7 @@ export default function HeroSection() {
             </div>
 
             {/* Pillar 2: Leadership */}
-            <div className="py-7 sm:py-8 md:py-9 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
+            <div className="py-6 sm:py-7 md:py-8 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
               <div className="flex items-center justify-center gap-2.5 text-white mb-2.5">
                 {/* Leadership Group Icon */}
                 <svg
@@ -115,7 +116,7 @@ export default function HeroSection() {
             </div>
 
             {/* Pillar 3: Experience */}
-            <div className="py-7 sm:py-8 md:py-9 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
+            <div className="py-6 sm:py-7 md:py-8 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
               <div className="flex items-center justify-center gap-2.5 text-white mb-2.5">
                 {/* Document Certificate Icon */}
                 <svg

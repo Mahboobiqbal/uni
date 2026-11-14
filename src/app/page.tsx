@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import UniversityOverview from "@/components/home/UniversityOverview";
 import ViceChancellorSection from "@/components/home/ViceChancellorSection";
-import AnnouncementsBoard from "@/components/home/AnnouncementsBoard";
+import CampusBulletin from "@/components/home/CampusBulletin";
 import FeaturedSpotlight from "@/components/home/FeaturedSpotlight";
 import DiamondFeaturesGrid from "@/components/home/DiamondFeaturesGrid";
 import RankingSection from "@/components/home/RankingSection";
@@ -19,7 +19,7 @@ export default function HomePage() {
         <HeroSection />
         <UniversityOverview />
         <ViceChancellorSection />
-        <AnnouncementsBoard />
+        <CampusBulletin />
         <FeaturedSpotlight />
         <DiamondFeaturesGrid />
         <RankingSection />
