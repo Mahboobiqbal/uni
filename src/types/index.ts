@@ -18,3 +18,4 @@ export interface ContactInfo {
   phone: string;
   address: string;
 }
+

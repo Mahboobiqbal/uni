@@ -1,86 +1,147 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens ──────────────────────────────────────────────────────── */
-:root {
-  /* Brand palette — University of Swat (deep green + gold) */
-  --color-primary:        #1a4731; /* Deep Forest Green  */
-  --color-primary-light:  #2d6a4f;
-  --color-primary-dark:   #0f2d1e;
 
-  --color-accent:         #c9a84c; /* University Gold    */
-  --color-accent-light:   #e0be77;
-  --color-accent-dark:    #a07c2e;
+  /* ─── Tailwind v4 Theme Tokens ────────────────────────────────────────────── */
+  @theme {
+    --color-brand-emerald: #059669;
+    --color-brand-emeraldDark: #047857;
+    --color-brand-emerald-dark: #047857;
+    --color-brand-emeraldLight: #ecfdf5;
+    --color-brand-emerald-light: #ecfdf5;
+    --color-brand-jade: #10b981;
+    --color-brand-obsidian: #0f172a;
+    --color-brand-slateCard: #1e293b;
+    --color-brand-slate-card: #1e293b;
+    --color-brand-gold: #f59e0b;
+    --color-brand-goldLight: #fbbf24;
+    --color-brand-gold-light: #fbbf24;
+    --color-brand-goldWarm: #fef3c7;
+    --color-brand-gold-warm: #fef3c7;
+    --color-brand-surface: #ffffff;
+    --color-brand-mist: #f8fafc;
+    --color-brand-slateTint: #f1f5f9;
+    --color-brand-slate-tint: #f1f5f9;
+    --color-brand-borderLight: #e2e8f0;
+    --color-brand-border-light: #e2e8f0;
+    --color-brand-maroon: #991b1b;
 
-  /* Neutrals */
-  --color-background:     #ffffff;
-  --color-surface:        #f8f9fa;
-  --color-border:         #e2e8f0;
-  --color-foreground:     #1a1a1a;
-  --color-muted:          #64748b;
+    --shadow-alpine: 0 20px 40px -15px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(15, 23, 42, 0.04);
+    --shadow-alpine-hover: 0 25px 50px -12px rgba(5, 150, 105, 0.15), 0 0 0 1px rgba(16, 185, 129, 0.25);
+    --shadow-floating: 0 30px 60px -20px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.8);
 
-  /* Typography */
-  --font-sans:   var(--font-inter),    ui-sans-serif,  system-ui, sans-serif;
-  --font-serif:  var(--font-merriweather), ui-serif, Georgia, serif;
+    --font-serif: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+    --font-sans: var(--font-sans), "Plus Jakarta Sans", sans-serif;
+  }
 
-  /* Spacing scale (8-pt grid) */
-  --spacing-section: clamp(3rem, 6vw, 6rem);
-}
+  /* ─── Base Styles ────────────────────────────────────────────────────────── */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-/* ─── Tailwind Theme Extension ───────────────────────────────────────────── */
-@theme inline {
-  --color-primary:       var(--color-primary);
-  --color-primary-light: var(--color-primary-light);
-  --color-primary-dark:  var(--color-primary-dark);
-  --color-accent:        var(--color-accent);
-  --color-accent-light:  var(--color-accent-light);
-  --color-accent-dark:   var(--color-accent-dark);
-  --color-background:    var(--color-background);
-  --color-surface:       var(--color-surface);
-  --color-border:        var(--color-border);
-  --color-foreground:    var(--color-foreground);
-  --color-muted:         var(--color-muted);
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-  --font-sans:  var(--font-sans);
-  --font-serif: var(--font-serif);
-}
+  body {
+    background-color: #ffffff;
+    color: #334155;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
 
-/* ─── Base Styles ────────────────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+    /* ─── Custom Layout & Component Utilities ────────────────────────────────── */
+    /* Alpine Mist Micro-Grid */
+    .bg-alpine-mesh {
+      background-color: #ffffff;
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(5, 150, 105, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.03) 0%, transparent 45%),
+        linear-gradient(to right, rgba(241, 245, 249, 0.6) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(241, 245, 249, 0.6) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans);
-  font-feature-settings: "rlig" 1, "calt" 1;
-  line-height: 1.6;
-}
 
-/* Focus styles — accessible & branded */
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
+      /* Dynamic Floating Bento Cards */
+      .alpine-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-/* Images */
-img,
-video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+      .alpine-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px -15px rgba(5, 150, 105, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.3);
+        border-color: rgba(16, 185, 129, 0.4);
+      }
 
-/* Links */
-a {
-  color: inherit;
-  text-decoration: none;
-}
+
+        /* Interlocking Diamond Component with Halo */
+        .diamond-cell {
+          width: 132px;
+          height: 132px;
+          transform: rotate(45deg);
+          border-radius: 1.5rem;
+          background: #ffffff;
+          border: 1.5px solid #e2e8f0;
+          box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+
+        .diamond-cell::before {
+          content: '';
+          position: absolute;
+          inset: -6px;
+          border-radius: 1.75rem;
+          background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          z-index: -1;
+        }
+
+        .diamond-cell:hover {
+          transform: rotate(45deg) scale(1.08);
+          border-color: #059669;
+          box-shadow: 0 20px 35px -10px rgba(5, 150, 105, 0.25);
+          background: #ffffff;
+        }
+
+        .diamond-cell:hover::before {
+          opacity: 1;
+        }
+
+        .diamond-content {
+          transform: rotate(-45deg);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* Smooth Slim Scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+          background: #f8fafc;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 9999px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+          background: #059669;
+        }
