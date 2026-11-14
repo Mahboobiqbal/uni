@@ -4,6 +4,245 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Reduced Hero Green Dissolve Glow by 40%
+
+### Action Summary
+- **Hero Green Glow Recalibration (`src/components/home/HeroSection.tsx`)**:
+  - Decreased vertical height of the bottom green fade from `h-80` (320px) to `h-56` (224px).
+  - Scaled back gradient stop opacities by 40%: `from-[#1D3523]/65 via-[#1D3523]/35 to-transparent` (previously 100% and 60%).
+  - Reduced radial glow peak and applied `opacity-60` to the ambient emerald aura (`max-w-5xl h-36 blur-3xl`).
+  - Result: A more subtle, balanced atmospheric transition that keeps the video prominent while still dissolving cleanly into the green section below.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM verification: Confirmed `layer1Height: 224px` and `layer2Opacity: 0.6`.
+
+---
+
+## [2026-11-14] — Green Dissolve Aura & University Colors Mesh Gradient
+
+### Action Summary
+- **Hero-to-Green Section Dissolve Transition**:
+  - **`src/components/home/HeroSection.tsx`**: Added a smooth 320px vertical fade (`from-[#1D3523] via-[#1D3523]/60 to-transparent`) and an ambient emerald-green radial glow aura at the bottom boundary so the hero video dissolves organically into the section below.
+  - **`src/components/home/UniversityOverview.tsx`**: Added a matching top light-leak glow aura (`radial-gradient` with emerald-400 and `#2f3e29`) across the section boundary.
+- **University Colors Heritage Mesh Gradient (`.bg-uni-mesh`)**:
+  - **`src/app/globals.css`**: Created `.bg-uni-mesh` incorporating official university palette:
+    - Primary Forest Green (`#1D3523`)
+    - Crimson Maroon blooms (`#731C1C`) at 48% and 42% opacity
+    - Alpine Green radiance (`#2f3e29` / `#234a2e`)
+    - Subtle antique Crest Gold warm highlights (`#D4AF37`) at 12% opacity
+  - **`src/components/home/UniversityOverview.tsx`**: Applied `.bg-uni-mesh` along with ambient atmospheric lighting spheres for organic depth.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM verification: Verified active mesh background on `#about-uni` and dual dissolve glows.
+
+---
+
+## [2026-11-14] — Lowered Hero 3-Pillar Ribbon by 10% Over Green Section
+
+### Action Summary
+- **Positioning & Section Intersection (`src/components/home/HeroSection.tsx`)**:
+  - Lifted `overflow-hidden` from `<section>` (with background video remaining safely clipped in its inner absolute container) to allow the bottom card to gracefully bridge across sections.
+  - Positioned the crimson maroon container with `translate-y-[10%]` and `z-30` above the green page canvas.
+  - Exactly 10.0% of the red card's height (~15.7px) extends over the boundary onto the University Green `#1D3523` section (`UniversityOverview`).
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM measurement: Verified `cardHeight: 156.89px`, `overlapPx: 15.69px`, and `overlapPct: 10.0%`.
+
+---
+
+## [2026-11-14] — Cropped Sides Box Layout for Hero Quality, Leadership & Experience Ribbon
+
+### Action Summary
+- **Hero Three-Pillar Banner Redesign (`src/components/home/HeroSection.tsx`)**:
+  - Replaced the edge-to-edge full-width band with an inset, side-cropped floating container matching the reference design (`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12`).
+  - Added rounded corners (`rounded-2xl`), subtle border (`border-white/20`), backdrop blur (`backdrop-blur-md`), and deep shadow elevation (`shadow-2xl shadow-black/40`) over the background video.
+  - Aligned icons inline with titles: `(★) Quality`, Leadership 3-figure silhouette, and Experience certificate document with seal.
+  - Divided columns with vertical translucent dividers (`divide-white/25`) and centered 2-line descriptions.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM verification: Confirmed `ribbonBoxWidth: 1152px`, `cardRadius: 16px`, and 3 columns.
+
+---
+
+## [2026-11-14] — Institutional Foundations Background Updated to University Green (#1D3523)
+
+### Action Summary
+- **Section Background & Typography Theme (`src/components/home/UniversityOverview.tsx`)**:
+  - Transformed the `Institutional Foundations` section wrapper to the official University Deep Forest Green: `bg-[#1D3523]`.
+  - Updated section title to crisp White (`text-white`) with tightened tracking and leading.
+  - Formatted subtitle to soft light emerald (`text-emerald-100/80`) for optimal contrast and readability.
+  - Adjusted section tag badge ("Institutional Foundations") with emerald accent text and maroon flanking rules.
+- **Card Depth & Hover Elevation (`src/components/ui/MagicBento.tsx` & `MagicBento.css`)**:
+  - Calibrated `--mb-shadow` to `0 24px 48px -28px rgba(0, 0, 0, 0.45)` so white cards float cleanly over the dark green canvas.
+  - Refined `.magic-bento__card:hover` to blend realistic drop shadows with the luminous `#2f3e29` halo glow.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM verification: Confirmed `sectionBg: rgb(29, 53, 35)` and `h2Color: rgb(255, 255, 255)`.
+
+---
+
+## [2026-11-14] — Removal of Vice Chancellor Desk and Institutional Creed Quote Sections
+
+### Action Summary
+- **Deleted Sections**:
+  - `ViceChancellorDesk` (`src/components/home/ViceChancellorDesk.tsx`): Removed leadership discourse message, VC avatar container, and statutory links.
+  - `UniversityQuote` (`src/components/home/UniversityQuote.tsx`): Removed institutional creed quote section.
+- **Updated Page Hierarchy (`src/app/page.tsx`)**:
+  - Removed `ViceChancellorDesk` and `UniversityQuote` imports and renderings.
+  - Streamlined flow: `<HeroSection />` -> `<UniversityOverview />` -> `<AnnouncementsBoard />` -> `<FeaturedSpotlight />` -> `<DiamondFeaturesGrid />` -> `<RankingSection />`.
+- **Cleaned Up Files**:
+  - Deleted obsolete component files to prevent orphan code.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM evaluation: Confirmed clean section transition from Bento Overview to Announcements Board with zero console or hydration errors.
+
+---
+
+## [2026-11-14] — Increased Bento Hover Glow Intensity (#2f3e29)
+
+### Action Summary
+- **Amplified Hover Glow & Spotlight Intensity**:
+  - **`src/components/ui/MagicBento.tsx`**:
+    - Increased spotlight core alpha `--mb-spot-alpha` from `0.10` to `0.22` (+120% intensity) for rich, luminous cursor illumination.
+    - Maximized border perimeter glow alpha `--mb-glow-alpha` from `0.85` to `1.0` (100% full opacity).
+    - Boosted canvas star particle brightness and twinkle factor by 1.5x.
+  - **`src/components/ui/MagicBento.css`**:
+    - Doubled the border glow thickness (`padding: 2px` on `.magic-bento__border`).
+    - Heightened card `:hover` box-shadow and ambient perimeter halo:
+      `box-shadow: 0 24px 50px -15px rgba(var(--mb-glow-rgb), 0.42), 0 0 0 2px rgba(var(--mb-glow-rgb), 0.65), 0 0 28px 4px rgba(var(--mb-glow-rgb), 0.35), 0 8px 24px -6px rgba(var(--mb-glow-rgb), 0.22)`.
+  - **`src/components/home/UniversityOverview.tsx`**:
+    - Expanded `spotlightRadius` from `340px` to `380px`.
+    - Increased particle count to `24`.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Chrome DevTools evaluation: Confirmed live computed values `--mb-spot-alpha: 0.22`, `--mb-glow-alpha: 1`, `spotSize: 380px`, `borderPadding: 2px`, and radial gradient peak `rgba(47, 62, 41, 0.22)`.
+
+---
+
+## [2026-11-14] — Bento Card Hover Glow Updated to Deep Forest #2f3e29
+
+### Action Summary
+- **Configured Bento Hover Glow to `#2f3e29` (`rgb(47, 62, 41)`)**:
+  - **`src/components/home/UniversityOverview.tsx`**: Updated `<MagicBento glowColor="#2f3e29" />`.
+  - **`src/components/ui/MagicBento.tsx`**:
+    - Replaced white rim highlight (`--mb-highlight`) with `rgba(47, 62, 41, 0.12)`.
+    - Tuned `--mb-spot-alpha` to `0.10` so the cursor spotlight is clearly visible as an elegant `#2f3e29` green light.
+    - Set `--mb-glow-alpha` to `0.85` for high-definition border perimeter glow.
+    - Updated `--mb-cursor-stroke`, `--mb-ring`, and tile edge tokens to `#2f3e29`.
+  - **`src/components/ui/MagicBento.css`**:
+    - Added responsive `:hover` box-shadow and border highlight on `.magic-bento__card`:
+      `box-shadow: 0 24px 50px -20px rgba(var(--mb-glow-rgb), 0.28), 0 0 0 1.5px rgba(var(--mb-glow-rgb), 0.38), 0 8px 24px -10px rgba(var(--mb-glow-rgb), 0.16)`.
+    - Added smooth 320ms spring cubic-bezier transitions on hover.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Chrome DevTools evaluation: Verified `--mb-glow-rgb: 47, 62, 41`, dynamic radial gradients, and hover box-shadow.
+
+---
+
+## [2026-11-14] — Vibrant Light Pastel Color Styling on Bento Subcards
+
+### Action Summary
+- **Light Vibrant Color Accents Applied to Inner Bento Cards (`src/components/home/UniversityOverview.tsx`)**:
+  - **Card 2 (Academic Breadth)**:
+    - `Sciences`: Light Mint/Teal pastel (`bg-teal-50/85 border-teal-200/80 text-teal-950`).
+    - `Computing`: Light Indigo pastel (`bg-indigo-50/85 border-indigo-200/80 text-indigo-950`).
+    - `Management`: Light Orange/Peach pastel (`bg-orange-50/85 border-orange-200/80 text-orange-950`).
+    - `Humanities`: Light Purple/Lavender pastel (`bg-purple-50/85 border-purple-200/80 text-purple-950`).
+  - **Card 4 (Research & Innovation / ORIC Linkages)**:
+    - `Academic Linkages & Research Partnerships` card: Soft light Indigo/Cyan (`bg-indigo-50/80 border-indigo-200/80 text-indigo-950`) with an `indigo-100` icon pill and subtle hover elevation.
+  - **Card 5 (Student Resources)**:
+    - Transformed link list into compact, polished, light vibrant card rows:
+      - `Admissions`: Light Pink pastel (`bg-pink-50/85 border-pink-200/75 text-pink-950`, pink bullet and chevron).
+      - `Student Portal`: Light Sky/Blue pastel (`bg-sky-50/85 border-sky-200/75 text-sky-950`, sky bullet and chevron).
+      - `Enrollment & Registration`: Light Purple pastel (`bg-purple-50/85 border-purple-200/75 text-purple-950`, purple bullet and chevron).
+      - `Examinations`: Light Amber/Yellow pastel (`bg-amber-50/85 border-amber-200/75 text-amber-950`, amber bullet and chevron).
+  - **Card 6 (Institutional Resources)**:
+    - `University Directory`: Light Blue pastel (`bg-blue-50/85 border-blue-200/75 text-blue-950`, blue library icon).
+    - `Official Contacts`: Light Orange/Peach pastel (`bg-orange-50/85 border-orange-200/75 text-orange-950`, orange scroll icon).
+- **Legibility & Strict Accessibility Compliance**:
+  - Ensured all text uses deep, high-contrast dark tones (`-950` / `-900`) against light pastel backgrounds.
+  - Retained strict 2 font families (`Cormorant_Garamond` + `Plus_Jakarta_Sans`).
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DOM snapshot verified in Chrome DevTools MCP.
+
+---
+
+## [2026-11-14] — Expanded Bento Card Dimensions & Readability Scale
+
+### Action Summary
+- **Expanded Bento Grid Proportions (`src/components/home/UniversityOverview.tsx` & `src/components/ui/MagicBento.tsx`)**:
+  - Increased `rowHeight` from `235px` to `300px` (~28% vertical increase), expanding the 2x2 card to `618px` height and single-row cards to `300px`.
+  - Increased grid gap to `18px` and corner radius to `24px`.
+  - Updated internal card padding ceiling `--mb-pad` in `MagicBento.tsx` to `clamp(corner * 1.05, 18, 28)px` for spacious breathing room.
+- **Enhanced Typography Hierarchy & Readability**:
+  - **Card 1 (Heritage)**: Title scaled to `text-3xl sm:text-4xl lg:text-[38px]`; body paragraph 1 scaled to `text-[15px] sm:text-base lg:text-[16.5px] leading-[1.72]`; paragraph 2 scaled to `text-sm sm:text-[15px] leading-[1.7]`. Crest enlarged to `11x11`.
+  - **Card 2 (Academic Breadth)**: Title scaled to `text-2xl sm:text-[26px]`; description to `text-sm sm:text-[14.5px]`; discipline matrix cards enlarged with `text-sm sm:text-[14.5px] font-bold` titles and `text-xs` subtitles.
+  - **Card 3 (Metrics)**: Large historical metric scaled to `text-4xl sm:text-5xl font-bold`; title scaled to `text-xl sm:text-2xl`; degree breakdown bar height increased to `2.5` with high-contrast `text-xs sm:text-[13px] font-semibold` labels.
+  - **Card 4 (Research / ORIC)**: Title scaled to `text-2xl sm:text-[26px]`; description to `text-sm sm:text-[14.5px]`; partnership visual card enlarged with `w-10 h-10` icon container, `text-sm sm:text-[14.5px]` title, and `text-xs sm:text-[12.5px]` subtitle.
+  - **Cards 5 & 6 (Resources & Admin)**: Titles scaled to `text-xl sm:text-[22px]`; description to `text-xs sm:text-[13px]`; links enlarged to `text-xs sm:text-[13px] font-semibold` with larger tap targets and icon accents.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Chrome DevTools MCP validation: Verified expanded layout and clear typography contrast.
+
+---
+
+## [2026-11-14] — University of Swat Bento Content Update & Authentic Academic Visualizations
+
+### Action Summary
+- **Section Heading & Subtitle Updated (`src/components/home/UniversityOverview.tsx`)**:
+  - Section heading: **Academic Foundations, Research & Institutional Impact**
+  - Subtitle: **Explore the academic disciplines, research initiatives and institutional resources that shape the University of Swat.**
+- **Replaced Placeholder Content Across the 6-Card Bento Grid**:
+  - **Card 1 — Institutional Heritage (2x2 Card)**:
+    - Title: "About University of Swat"
+    - Description: "The University of Swat is a public-sector higher education institution established on 7 July 2010 by the Government of Khyber Pakhtunkhwa. Located in the Swat Valley, the university provides undergraduate, postgraduate and doctoral education across a range of academic disciplines."
+    - Footer: "Established 2010 · Public-sector university · HEC recognized."
+  - **Card 2 — Academic Programs (Academic Breadth)**:
+    - Title: "Academic Breadth"
+    - Description: "Discover diverse fields of study across sciences, computing, management, social sciences, law, languages and humanities."
+    - Replaced fictional business chart with subtle academic disciplines visualization (Sciences, Computing, Management, Humanities).
+  - **Card 3 — Institutional Metrics**:
+    - Metric: **10,130**
+    - Title: "Students Across Degree Levels"
+    - Description: "9,059 BS students, 756 MPhil/MS students and 315 PhD scholars, reported for the 2023–24 academic year."
+    - Clearly labeled with historical badge: **Historical Figures · 2023–24** (explicitly distinguishing from current enrollment), accompanied by degree breakdown proportion indicators.
+  - **Card 4 — Research & Innovation (ORIC)**:
+    - Title: "Interdisciplinary Research"
+    - Description: "The Office of Research, Innovation and Commercialization (ORIC) supports research activities, institutional collaboration and research partnerships."
+    - Replaced fake development interface with an elegant research collaboration visualization (Academic Linkages & Partnerships, regional field laboratories and interdisciplinary research clusters).
+  - **Card 5 — Student Resources (Your University Journey)**:
+    - Title: "Your University Journey"
+    - Description: "Access essential university resources, academic information, admission services and student support."
+    - Integrated compact functional links: Admissions (`#admissions-desk`), Student Portal (`#portal`), Enrollment & Registration (`#programs`), Examinations (`#announcements-section`).
+  - **Card 6 — Institutional Resources**:
+    - Title: "University Administration & Information"
+    - Description: "Find important university information, administrative resources, institutional contacts and official services."
+    - Integrated compact functional links: University Directory (`#faculty`), Official Contacts (`#locations-mega`).
+- **Dependencies & Icons**:
+  - Installed and integrated `lucide-react` for clean academic iconography (`BookOpen`, `Users`, `Compass`, `Building2`, `FlaskConical`, `Library`, `ScrollText`, `Network`, `ArrowUpRight`, `ChevronRight`).
+  - Preserved the exact six-card layout, card proportions, borders, rounded corners, responsive behaviors, and physics effects (`MagicBento`).
+
+### Files Modified
+- `src/components/home/UniversityOverview.tsx`: Updated with authentic academic content and visualizations.
+- `package.json`: Added `lucide-react`.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- Chrome DevTools MCP: Verified snapshot rendering, link navigation, and card consistency.
+
+---
+
 ## [2026-11-14] — Integrated React Bits <MagicBento /> Component
 
 ### Action Summary

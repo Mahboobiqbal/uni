@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden bg-black text-white">
+    <section className="relative z-20 w-full min-h-screen flex flex-col justify-between bg-black text-white">
       {/* Background Video with Poster Fallback & Dark Vignette Overlay */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <video
@@ -23,6 +23,17 @@ export default function HeroSection() {
         {/* Dark Vignette Overlay for Ultra Contrast */}
         <div className="absolute inset-0 bg-black/45 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/60 z-10" />
+
+        {/* Seamless Green Gradient Dissolve into University Overview Section (Eliminates hard seam/border) */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-80 sm:h-96 z-15 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to top, #1D3523 0%, #1D3523 40px, rgba(29, 53, 35, 0.92) 100px, rgba(29, 53, 35, 0.6) 210px, rgba(29, 53, 35, 0.2) 290px, transparent 100%)'
+          }}
+        />
+        {/* Soft Ambient Glow bridging into the green section below */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-40 bg-[radial-gradient(ellipse_at_center,rgba(47,62,41,0.45),transparent_70%)] blur-3xl z-15 pointer-events-none" />
       </div>
 
       {/* Main Center Content */}
@@ -50,87 +61,87 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom Translucent Crimson Maroon 3-Pillar Ribbon: #5D1616 */}
-      <div className="relative z-20 w-full bg-[#5D1616]/92 backdrop-blur-md border-t border-white/15 shadow-2xl">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
-          {/* Pillar 1: Quality */}
-          <div className="py-10 sm:py-12 md:py-14 px-8 sm:px-12 text-center flex flex-col items-center justify-center group transition-colors hover:bg-white/[0.03]">
-            <div className="flex items-center justify-center gap-2.5 text-white">
-              {/* Star Circle / Quality Icon */}
-              <svg
-                className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white shrink-0"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-              >
-                <circle cx="12" cy="12" r="9.5" />
-                <polygon
-                  points="12 6.5 13.5 10 17.5 10.4 14.5 13.1 15.3 17 12 15 8.7 17 9.5 13.1 6.5 10.4 10.5 10 12 6.5"
+      {/* Bottom Translucent Crimson Maroon 3-Pillar Ribbon: Lowered so it touches/overlaps the green section by 10% */}
+      <div className="relative z-30 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 translate-y-[10%]">
+        <div className="w-full bg-[#731C1C]/92 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl shadow-black/40 overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/25">
+            {/* Pillar 1: Quality */}
+            <div className="py-7 sm:py-8 md:py-9 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
+              <div className="flex items-center justify-center gap-2.5 text-white mb-2.5">
+                {/* Star in Circle Badge */}
+                <svg
+                  className="w-5 h-5 text-white shrink-0"
+                  viewBox="0 0 24 24"
                   fill="currentColor"
-                  stroke="none"
-                />
-              </svg>
-              <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-[-0.015em] text-white">
-                Quality
-              </h3>
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3.75l1.88 3.81 4.21.61-3.05 2.97.72 4.19L12 15.35l-3.76 1.98.72-4.19-3.05-2.97 4.21-.61L12 5.75z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <h3 className="font-serif text-xl sm:text-[22px] font-bold tracking-tight text-white">
+                  Quality
+                </h3>
+              </div>
+              <p className="font-sans text-xs sm:text-[13px] text-white/90 leading-[1.62] max-w-xs mx-auto">
+                Experience a world-class education and unlock your potential at our university
+              </p>
             </div>
-            <p className="font-sans text-xs sm:text-[13.5px] text-white/85 leading-[1.65] max-w-sm mx-auto mt-3.5 sm:mt-4">
-              Experience a world-class education and unlock your potential at our university
-            </p>
-          </div>
 
-          {/* Pillar 2: Leadership */}
-          <div className="py-10 sm:py-12 md:py-14 px-8 sm:px-12 text-center flex flex-col items-center justify-center group transition-colors hover:bg-white/[0.03]">
-            <div className="flex items-center justify-center gap-2.5 text-white">
-              {/* Mortarboard / Leadership Icon */}
-              <svg
-                className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white shrink-0"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-              </svg>
-              <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-[-0.015em] text-white">
-                Leadership
-              </h3>
+            {/* Pillar 2: Leadership */}
+            <div className="py-7 sm:py-8 md:py-9 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
+              <div className="flex items-center justify-center gap-2.5 text-white mb-2.5">
+                {/* Leadership Group Icon */}
+                <svg
+                  className="w-5 h-5 text-white shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <circle cx="12" cy="6" r="2.2" />
+                  <path d="M12 9.5c-2.2 0-4 1.1-4.4 2.8.5 1.5 2.3 2.4 4.4 2.4s3.9-.9 4.4-2.4c-.4-1.7-2.2-2.8-4.4-2.8z" />
+                  <circle cx="6" cy="8" r="1.8" opacity="0.8" />
+                  <path d="M6 11c-1.6 0-3 .8-3.4 2 .4 1.1 1.7 1.8 3.4 1.8.7 0 1.3-.1 1.8-.4-.3-.7-.3-1.4 0-2.1-.5-.8-1.2-1.3-1.8-1.3z" opacity="0.8" />
+                  <circle cx="18" cy="8" r="1.8" opacity="0.8" />
+                  <path d="M18 11c1.6 0 3 .8 3.4 2-.4 1.1-1.7 1.8-3.4 1.8-.7 0-1.3-.1-1.8-.4.3-.7.3-1.4 0-2.1.5-.8 1.2-1.3 1.8-1.3z" opacity="0.8" />
+                </svg>
+                <h3 className="font-serif text-xl sm:text-[22px] font-bold tracking-tight text-white">
+                  Leadership
+                </h3>
+              </div>
+              <p className="font-sans text-xs sm:text-[13px] text-white/90 leading-[1.62] max-w-xs mx-auto">
+                Guided by visionary leadership, inspires growth, and shapes future leaders
+              </p>
             </div>
-            <p className="font-sans text-xs sm:text-[13.5px] text-white/85 leading-[1.65] max-w-sm mx-auto mt-3.5 sm:mt-4">
-              Guided by visionary leadership, inspires growth, and shapes future leaders
-            </p>
-          </div>
 
-          {/* Pillar 3: Experience */}
-          <div className="py-10 sm:py-12 md:py-14 px-8 sm:px-12 text-center flex flex-col items-center justify-center group transition-colors hover:bg-white/[0.03]">
-            <div className="flex items-center justify-center gap-2.5 text-white">
-              {/* Document / Certificate Experience Icon */}
-              <svg
-                className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white shrink-0"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <polyline points="10 9 9 9 8 9" />
-              </svg>
-              <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-[-0.015em] text-white">
-                Experience
-              </h3>
+            {/* Pillar 3: Experience */}
+            <div className="py-7 sm:py-8 md:py-9 px-6 sm:px-8 text-center flex flex-col items-center justify-center transition-colors hover:bg-white/[0.04]">
+              <div className="flex items-center justify-center gap-2.5 text-white mb-2.5">
+                {/* Document Certificate Icon */}
+                <svg
+                  className="w-5 h-5 text-white shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <circle cx="8" cy="8" r="2.2" fill="currentColor" stroke="none" />
+                  <path d="M7 10.2l-.8 3 1.8-.6 1.8.6-.8-3" fill="currentColor" stroke="none" />
+                  <line x1="10" y1="13.5" x2="16" y2="13.5" />
+                  <line x1="8" y1="17" x2="16" y2="17" />
+                </svg>
+                <h3 className="font-serif text-xl sm:text-[22px] font-bold tracking-tight text-white">
+                  Experience
+                </h3>
+              </div>
+              <p className="font-sans text-xs sm:text-[13px] text-white/90 leading-[1.62] max-w-xs mx-auto">
+                Embark on a transformative journey of personal and professional growth
+              </p>
             </div>
-            <p className="font-sans text-xs sm:text-[13.5px] text-white/85 leading-[1.65] max-w-sm mx-auto mt-3.5 sm:mt-4">
-              Embark on a transformative journey of personal and professional growth
-            </p>
           </div>
         </div>
       </div>

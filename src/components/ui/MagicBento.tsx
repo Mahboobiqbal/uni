@@ -85,26 +85,26 @@ const THEMES = {
   },
   light: {
     '--mb-surface': 'linear-gradient(180deg, #ffffff 0%, #f7f7f9 100%)',
-    '--mb-edge': 'rgba(24, 24, 27, 0.08)',
-    '--mb-highlight': 'rgba(255, 255, 255, 1)',
-    '--mb-shadow': '0 24px 48px -30px rgba(24, 24, 27, 0.28), 0 8px 18px -14px rgba(24, 24, 27, 0.16)',
+    '--mb-edge': 'rgba(47, 62, 41, 0.10)',
+    '--mb-highlight': 'rgba(47, 62, 41, 0.12)',
+    '--mb-shadow': '0 24px 48px -28px rgba(0, 0, 0, 0.45), 0 8px 18px -12px rgba(0, 0, 0, 0.3)',
     '--mb-tile': 'linear-gradient(180deg, #ffffff 0%, #f6f6f8 100%)',
-    '--mb-tile-edge': 'rgba(24, 24, 27, 0.08)',
-    '--mb-tile-highlight': 'rgba(255, 255, 255, 1)',
-    '--mb-tile-shadow': '0 4px 10px -5px rgba(24, 24, 27, 0.22)',
-    '--mb-well': 'rgba(24, 24, 27, 0.025)',
-    '--mb-well-edge': 'rgba(24, 24, 27, 0.06)',
+    '--mb-tile-edge': 'rgba(47, 62, 41, 0.08)',
+    '--mb-tile-highlight': 'rgba(47, 62, 41, 0.12)',
+    '--mb-tile-shadow': '0 4px 10px -5px rgba(47, 62, 41, 0.14)',
+    '--mb-well': 'rgba(47, 62, 41, 0.025)',
+    '--mb-well-edge': 'rgba(47, 62, 41, 0.06)',
     '--mb-ink': '#18181b',
     '--mb-muted': 'rgba(24, 24, 27, 0.6)',
     '--mb-faint': 'rgba(24, 24, 27, 0.3)',
-    '--mb-line': 'rgba(24, 24, 27, 0.08)',
+    '--mb-line': 'rgba(47, 62, 41, 0.08)',
     '--mb-secondary': '#71717a',
     '--mb-secondary-ink': '#ffffff',
-    '--mb-cursor-stroke': '#ffffff',
-    '--mb-ring': '#ffffff',
-    '--mb-focus': 'rgba(24, 24, 27, 0.4)',
-    '--mb-glow-alpha': 0.5,
-    '--mb-spot-alpha': 0.035
+    '--mb-cursor-stroke': '#2f3e29',
+    '--mb-ring': '#2f3e29',
+    '--mb-focus': 'rgba(47, 62, 41, 0.4)',
+    '--mb-glow-alpha': 1.0,
+    '--mb-spot-alpha': 0.22
   }
 };
 
@@ -522,7 +522,7 @@ export const MagicBento: React.FC<MagicBentoProps> = ({
   gap = 12,
   radius = 20,
   theme = 'dark',
-  glowColor,
+  glowColor = '#2f3e29',
   textAutoHide = true,
   enableBorderGlow = true,
   enableSpotlight = true,
@@ -683,7 +683,7 @@ export const MagicBento: React.FC<MagicBentoProps> = ({
         if (distance >= 1) continue;
         const falloff = 1 - distance * distance * (3 - 2 * distance);
         const twinkle = 0.55 + 0.45 * Math.sin(now * 0.001 * particle.rate + particle.phase);
-        const alpha = state.stars * falloff * twinkle;
+        const alpha = Math.min(1, state.stars * falloff * twinkle * 1.5);
         if (alpha < 0.01) continue;
         context.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
         context.beginPath();
@@ -1073,8 +1073,8 @@ export const MagicBento: React.FC<MagicBentoProps> = ({
           '--mb-accent-rgb': accent.join(', '),
           '--mb-accent-ink': inkFor(accent),
           '--mb-radius': `${corner}px`,
-          '--mb-inner-radius': `${Math.round(clamp(corner * 0.5, 6, 12))}px`,
-          '--mb-pad': `${Math.round(clamp(corner * 0.85, 14, 20))}px`,
+          '--mb-inner-radius': `${Math.round(clamp(corner * 0.5, 6, 14))}px`,
+          '--mb-pad': `${Math.round(clamp(corner * 1.05, 18, 28))}px`,
           '--mb-spot-size': `${Math.max(40, spotlightRadius)}px`,
           '--mb-border-size': `${Math.round(Math.max(40, spotlightRadius) * 0.75)}px`
         }),

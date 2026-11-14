@@ -73,6 +73,20 @@
       background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
     }
 
+    /* University Heritage Mesh Gradient (Forest Green #1D3523, Crimson Maroon #731C1C, Alpine Green #2f3e29, Crest Gold #D4AF37) */
+    .bg-uni-mesh {
+      background-color: #1D3523;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(47, 62, 41, 0.95) 0px, transparent 52%),
+        radial-gradient(at 100% 4%, rgba(115, 28, 28, 0.48) 0px, transparent 48%),
+        radial-gradient(at 50% 12%, rgba(35, 74, 46, 0.85) 0px, transparent 60%),
+        radial-gradient(at 95% 62%, rgba(47, 62, 41, 0.75) 0px, transparent 52%),
+        radial-gradient(at 4% 78%, rgba(115, 28, 28, 0.42) 0px, transparent 50%),
+        radial-gradient(at 58% 88%, rgba(212, 175, 55, 0.12) 0px, transparent 46%),
+        radial-gradient(at 28% 100%, rgba(35, 74, 46, 0.92) 0px, transparent 56%),
+        linear-gradient(180deg, #132418 0%, #1D3523 45%, #15271a 100%);
+    }
+
 
       /* Dynamic Floating Bento Cards */
       .alpine-card {
