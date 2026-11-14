@@ -29,13 +29,13 @@ export default function ViceChancellorDesk() {
                   />
                 </svg>
                 <div className="text-center z-10 bg-white/95 backdrop-blur-sm p-3.5 rounded-xl border border-slate-200 w-full shadow-sm">
-                  <span className="inline-block px-3 py-1 bg-brand-maroon text-white text-[11px] font-semibold uppercase tracking-wider rounded-md mb-1 shadow-sm">
+                  <span className="inline-block px-3 py-1 bg-[#731C1C] text-white text-[11px] font-semibold uppercase tracking-wider rounded-md mb-1 shadow-sm">
                     Office of the Vice Chancellor
                   </span>
-                  <h4 className="font-serif text-xl font-bold text-slate-900">
+                  <h4 className="font-serif text-xl font-bold text-[#111827] tracking-tight">
                     Prof. Dr. Hassan Sher
                   </h4>
-                  <p className="text-xs text-brand-gold font-sans font-medium">
+                  <p className="text-xs text-[#731C1C] font-sans font-semibold">
                     D.Sc, Post-Doc, Meritorious Professor
                   </p>
                 </div>
@@ -46,15 +46,15 @@ export default function ViceChancellorDesk() {
           {/* Right: Leadership Message */}
           <div className="lg:col-span-8">
             <div className="flex items-center gap-3 mb-4">
-              <span className="h-0.5 w-8 bg-brand-emerald" />
-              <span className="text-xs uppercase tracking-widest text-brand-emerald font-bold">
+              <span className="h-0.5 w-8 bg-[#1D3523]" />
+              <span className="text-xs uppercase tracking-widest text-[#1D3523] font-semibold">
                 Leadership Discourse
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-slate-900 font-bold mb-6">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#111827] font-bold tracking-[-0.02em] leading-[1.12] mb-6">
               Voice of the Vice Chancellor
             </h2>
-            <div className="space-y-4 text-slate-700 text-base leading-relaxed">
+            <div className="space-y-4 text-slate-700 text-base sm:text-[16.5px] leading-[1.68] font-normal">
               <p>
                 “Welcome to the University of Swat, an academy steeped in historical
                 veneration and energized by modern academic zeal. Our institutional
@@ -62,7 +62,7 @@ export default function ViceChancellorDesk() {
                 thinkers who illuminate solutions for climate resilience, digital
                 technologies, and societal harmony.”
               </p>
-              <p className="text-slate-600 text-sm">
+              <p className="text-slate-600 text-[15px] leading-[1.68]">
                 “With our sprawling new Charbagh main campus, modern laboratories, and
                 collaborative research linkages across the globe, we are positioned to offer
                 student generations an empowering space where intellect transforms into
@@ -72,7 +72,7 @@ export default function ViceChancellorDesk() {
 
             {/* Signature & Quick Links */}
             <div className="mt-8 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
-              <div className="font-serif italic text-2xl text-brand-emerald font-semibold">
+              <div className="font-serif italic text-2xl text-[#1D3523] font-bold">
                 Prof. Dr. Hassan Sher
               </div>
               <div className="flex items-center gap-4 text-xs font-semibold">

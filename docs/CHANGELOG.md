@@ -4,6 +4,163 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Removed 3-Card Metric Counters Ribbon
+
+### Action Summary
+- **Deleted Horizontal Metric Counters Ribbon (`src/components/home/UniversityOverview.tsx`)**:
+  - Entirely removed the redundant 3-card metric counter row (`2010 Charter Year`, `14,000+ Alumni Worldwide`, `1,800+ Canal Campus Acres`) matching user request and reference `media_1794650862577_cde8776f.png`.
+  - Cleaned up the page flow below the Hero section so that the bottom 3-pillar translucent banner (`Quality`, `Leadership`, `Experience`) transitions seamlessly into the "About University of Swat" bento grid.
+
+### Files Modified
+- `src/components/home/UniversityOverview.tsx`: Removed the 3 metric counter cards.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- Chrome DevTools MCP validation: Confirmed removal; the 3 cards no longer appear in the DOM.
+
+---
+
+## [2026-11-14] — Smooth Fade-In Dropdown Transitions, Expanded Card Spacing & Hero 3-Pillar Ribbon Refinement
+
+### Action Summary
+- **Smooth Fade-In Dropdown Animation (`src/components/layout/Navbar.tsx`)**:
+  - Implemented silky smooth fade-in and subtle scale transition using `duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top` (`opacity-100 translate-y-0 scale-100` vs `opacity-0 translate-y-2 scale-[0.985]`).
+  - Added an invisible top hover bridge (`before:content-[''] before:absolute before:-top-3.5 before:h-3.5`) to eliminate flicker when navigating between menu trigger buttons and the floating popover card.
+- **Generously Increased Dropdown Spacing**:
+  - Expanded mega-menu container width to `w-[740px] lg:w-[760px] max-w-[95vw]`.
+  - Increased internal card padding to `p-9 sm:p-10 lg:p-11`.
+  - Widened horizontal column gap (`gap-x-12 sm:gap-x-14`) and vertical row gap (`gap-y-7 sm:gap-y-8`).
+  - Upgraded icon container dimensions to `w-12 h-12 rounded-xl` with enhanced padding and subtle scale-up on hover.
+  - Added full 2-column degree pathways to the **`Program`** dropdown (BS Computer Science, Pharm-D, BBA, BS Environmental Sciences, M.Phil/MS, and Ph.D. Studies).
+- **Hero Bottom 3-Pillar Translucent Crimson Ribbon (`src/components/home/HeroSection.tsx`)**:
+  - Refined the 3 pillars (`Quality`, `Leadership`, `Experience`) strictly matching user reference `media_1794650318386_5213cb9a.png`.
+  - Increased vertical padding to `py-10 sm:py-12 md:py-14` and horizontal gutter padding to `px-8 sm:px-12`.
+  - Set background to rich translucent Crimson Maroon `#5D1616`/92 with backdrop blur and subtle white column dividers (`divide-white/20`).
+  - Increased spacing between the bold Serif title and body description to `mt-3.5 sm:mt-4`.
+
+### Files Modified
+- `src/components/layout/Navbar.tsx`: Added smooth cubic-bezier fade-in transitions, expanded card padding/grid spacing, hover bridge, and `Program` submenus.
+- `src/components/home/HeroSection.tsx`: Expanded 3-pillar bottom banner padding, icon-text gap, and deep crimson palette matching reference.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0 (zero errors).
+- Chrome DevTools MCP validation:
+  - Dropdown toggles smoothly with `opacity-100` and `scale-100`.
+  - Tested clicking `Program` and `Admissions` triggers; both expanded cleanly with all sub-routes rendered.
+
+---
+
+## [2026-11-14] — University of Swat Branding, Floating 2-Column Mega-Menu Card & Global Typography Rules
+
+### Action Summary
+- **Header Branding & Name Update (`src/components/layout/Navbar.tsx`)**:
+  - Removed "Unive" and established the full official institutional identity: **"University of Swat"** with subtitle "Khyber Pakhtunkhwa, Pakistan" beside the circular crest logo.
+- **Floating 2-Column Dropdown Card (User Design Specification)**:
+  - Rebuilt the header dropdowns matching the reference image (`media_1794649586566_532901f7.png`):
+    - White floating popover card (`bg-white rounded-2xl shadow-2xl p-6 sm:p-7 border border-slate-100`).
+    - Top centered triangular caret/arrow pointing to the navigation trigger.
+    - 2-column layout (`grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5`).
+    - Each item features a custom line icon container on the left, bold title (`text-[#111827] font-semibold text-[14.5px]`), and descriptive subtitle in muted gray.
+    - Configured across `Academics`, `Admissions`, and `Athletic` menus with rich domain-specific pathways.
+- **Global Typography & Color Rules Applied Across Entire Website**:
+  - **Font Family Restriction**: Limited strictly to two font families:
+    - Display/Header: `Cormorant_Garamond` (`font-serif`)
+    - Body/UI: `Plus_Jakarta_Sans` (`font-sans`)
+  - **Letter-Spacing (Tracking)**: Tightened ultra-bold headings (Hero & H1/H2) to `-0.025em` (`tracking-[-0.025em]`) for cohesive typography.
+  - **Line-Height Proportions**:
+    - Headings: Tightened to `1.08` (`leading-[1.08]`).
+    - Body Copy: Set to `1.65 – 1.68` (`leading-[1.65]`), applied to paragraphs, Hero, and Vice Chancellor's Message.
+  - **Weight Rules Below 20px**: Prohibited ultra-bold (800/900) below 20px; standardized on `600` (SemiBold) for navigation links, buttons, and submenus.
+  - **Official Crest Color Palette**:
+    - **Deep Forest Green**: `#1D3523`
+    - **Crimson Maroon**: `#731C1C`
+    - **Charcoal Text on Off-White**: `#111827` on `#F9FAFB` (canvas) avoiding pure black on white.
+    - Action buttons and ribbon themed in `#731C1C` (hover `#5c1616`).
+
+### Files Modified
+- `src/app/globals.css`: Configured official color tokens (`--color-brand-forest`, `--color-brand-maroon`, `--color-brand-charcoal`, `--color-brand-canvas`) and body defaults.
+- `src/components/layout/Navbar.tsx`: Integrated "University of Swat" branding and floating 2-column dropdown cards with pointer arrow.
+- `src/components/home/HeroSection.tsx`: Applied letter tracking (`-0.025em`), line-heights (`1.08` heading, `1.65` body), and `#731C1C` maroon palette.
+- `src/components/home/ViceChancellorDesk.tsx`: Standardized body line-height to `1.68` and updated color accents to `#1D3523` and `#731C1C`.
+- `src/components/home/UniversityOverview.tsx`: Updated heading tracking, line-heights, and maroon accents.
+- `src/components/home/UniversityQuote.tsx`: Applied `-0.015em` tracking and `#1D3523` author styling.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- Chrome DevTools snapshot verification:
+  - Header displays "University of Swat".
+  - Clicking "Academics" opens the 2-column card dropdown with caret arrow.
+
+---
+
+## [2026-11-14] — Circular Crest Logo Crop & Integration
+
+### Action Summary
+- **High-Resolution Circular Logo Processing**:
+  - Processed user-uploaded official University of Swat crest (`media_1794648953369_09684d90.jpg`).
+  - Cropped the circular emblem with exact centering (`cx = 511.5`, `cy = 381.5`, radius `381.5px`) and applied a 4x supersampled Lanczos antialiased circular alpha mask.
+  - Exported as transparent PNG assets: `public/uos-logo-circle.png` and `public/logo-circle.png` (763x763 resolution).
+- **Navigation Branding Integration (`src/components/layout/Navbar.tsx`)**:
+  - Replaced the placeholder SVG shield in the top navigation with the official circular crest image.
+  - Framed in a sleek translucent glass pill (`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20`) alongside the "Unive" wordmark.
+- **Footer Integration (`src/components/layout/Footer.tsx`)**:
+  - Updated the footer emblem to use the clean local circular asset `/uos-logo-circle.png`.
+
+### Files Modified & Created
+- `public/uos-logo-circle.png`: Created.
+- `public/logo-circle.png`: Created.
+- `src/components/layout/Navbar.tsx`: Integrated circular logo.
+- `src/components/layout/Footer.tsx`: Updated emblem image reference.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- Chrome DevTools snapshot verification confirming `/uos-logo-circle.png` is rendered in the header banner.
+
+---
+
+## [2026-11-14] — Redesign: Cinematic Video Hero & High-Contrast Editorial Header
+
+### Action Summary
+- **Editorial Transparent Navigation Header (`src/components/layout/Navbar.tsx`)**:
+  - Replaced the previous navbar implementation with a sleek, high-contrast overlay navigation matching the reference design:
+    - **Branding**: White Shield Crest icon + "Unive" serif wordmark (accredited for University of Swat).
+    - **Navigation Links**: Clean horizontal items (`Home`, `Program`, `Teacher`, `Academics ▾`, `Admissions ▾`, `Athletic ▾`, `Course`) in high-contrast white text.
+    - **Interactive Submenus**: Interactive dropdowns for Academics, Admissions, and Athletic with frosted backdrop panels (`bg-[#161618]/95 backdrop-blur-xl border border-white/15`).
+    - **Action Button**: Primary "Sign up" button styled in rich brick red (`#8B1E1E` / `hover:bg-[#721818]`).
+    - **Dynamic Scroll Adaptation**: Floats transparently over the video hero at the top; transitions into a frosted glass bar (`bg-black/85 backdrop-blur-md border-b border-white/10`) upon scrolling.
+    - **Mobile Responsive Drawer**: Full-screen collapsible drawer with interactive accordion submenus.
+- **Cinematic Video Hero Section (`src/components/home/HeroSection.tsx`)**:
+  - Rebuilt the hero section to match the provided architectural design:
+    - **Video Background**: Full-screen background `<video autoPlay loop muted playsInline poster="/campus-shot-1.jpg">` connected to `/swat-university.mp4` with poster fallback and dual-layer dark vignette overlay (`bg-black/45` + `bg-gradient-to-t from-black/80 via-black/25 to-black/60`).
+    - **Central Editorial Typography**:
+      - Large headline: *"Good Education to Build A Better Future"* (`font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium text-white tracking-tight leading-[1.14]`).
+      - Centered lead paragraph: *"We offer a quality education that provides not only lessons but also real experience in every field. Embrace the future with our quality education, where lessons come to life through immersive."*
+      - Centered action button: *"Take a Tour"* in brick red `#8B1E1E` with subtle hover scaling and shadow.
+    - **Translucent Crimson 3-Pillar Ribbon**:
+      - Pinned across the bottom of the hero in translucent brick-red glass (`bg-[#8B1E1E]/80 backdrop-blur-md border-t border-white/10`).
+      - Divided into 3 columns by hairline vertical dividers (`divide-x divide-white/20`):
+        1. **Quality**: Star badge icon + *"Experience a world-class education and unlock your potential at our university"*.
+        2. **Leadership**: 3-people leadership icon + *"Guided by visionary leadership, inspires growth, and shapes future leaders"*.
+        3. **Experience**: Diploma document icon + *"Embark on a transformative journey of personal and professional growth"*.
+- **Orphan File Cleanup**:
+  - Removed unused `src/components/ui/CardNav.tsx` and `src/components/ui/CardNav.css` per clean replacement rules.
+
+### Files Modified & Removed
+- `src/components/layout/Navbar.tsx`: Full replacement with the editorial transparent header.
+- `src/components/home/HeroSection.tsx`: Full replacement with the cinematic video hero & 3-pillar ribbon.
+- `src/app/page.tsx`: Updated navigation comment and rendering.
+- `src/components/ui/CardNav.tsx`: Deleted.
+- `src/components/ui/CardNav.css`: Deleted.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- Chrome DevTools snapshot verification confirming:
+  - Banner renders "Unive", horizontal menubar with chevrons, and "Sign up" button.
+  - Hero displays headline, lead paragraph, "Take a Tour" button, and 3 pillars (Quality, Leadership, Experience).
+  - Dropdown menus expand cleanly on click/hover.
+
+---
+
 ## [2026-11-14] — Stageshow Design System & Craft Polish Applied to Header
 
 ### Action Summary

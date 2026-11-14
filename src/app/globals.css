@@ -3,31 +3,38 @@
 
   /* ─── Tailwind v4 Theme Tokens ────────────────────────────────────────────── */
   @theme {
-    --color-brand-emerald: #059669;
-    --color-brand-emeraldDark: #047857;
-    --color-brand-emerald-dark: #047857;
-    --color-brand-emeraldLight: #ecfdf5;
-    --color-brand-emerald-light: #ecfdf5;
-    --color-brand-jade: #10b981;
-    --color-brand-obsidian: #0f172a;
-    --color-brand-slateCard: #1e293b;
-    --color-brand-slate-card: #1e293b;
-    --color-brand-gold: #f59e0b;
-    --color-brand-goldLight: #fbbf24;
-    --color-brand-gold-light: #fbbf24;
+    /* Official Crest Colors */
+    --color-brand-forest: #1D3523;
+    --color-brand-maroon: #731C1C;
+    --color-brand-maroon-dark: #5c1616;
+    --color-brand-charcoal: #111827;
+    --color-brand-canvas: #F9FAFB;
+
+    /* Theme Aliases */
+    --color-brand-emerald: #1D3523;
+    --color-brand-emeraldDark: #142518;
+    --color-brand-emerald-dark: #142518;
+    --color-brand-emeraldLight: #f0fdf4;
+    --color-brand-emerald-light: #f0fdf4;
+    --color-brand-jade: #22543d;
+    --color-brand-obsidian: #111827;
+    --color-brand-slateCard: #1f2937;
+    --color-brand-slate-card: #1f2937;
+    --color-brand-gold: #b45309;
+    --color-brand-goldLight: #d97706;
+    --color-brand-gold-light: #d97706;
     --color-brand-goldWarm: #fef3c7;
     --color-brand-gold-warm: #fef3c7;
     --color-brand-surface: #ffffff;
-    --color-brand-mist: #f8fafc;
-    --color-brand-slateTint: #f1f5f9;
-    --color-brand-slate-tint: #f1f5f9;
-    --color-brand-borderLight: #e2e8f0;
-    --color-brand-border-light: #e2e8f0;
-    --color-brand-maroon: #991b1b;
+    --color-brand-mist: #F9FAFB;
+    --color-brand-slateTint: #f3f4f6;
+    --color-brand-slate-tint: #f3f4f6;
+    --color-brand-borderLight: #e5e7eb;
+    --color-brand-border-light: #e5e7eb;
 
-    --shadow-alpine: 0 20px 40px -15px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(15, 23, 42, 0.04);
-    --shadow-alpine-hover: 0 25px 50px -12px rgba(5, 150, 105, 0.15), 0 0 0 1px rgba(16, 185, 129, 0.25);
-    --shadow-floating: 0 30px 60px -20px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.8);
+    --shadow-alpine: 0 20px 40px -15px rgba(17, 24, 39, 0.05), 0 0 1px 1px rgba(17, 24, 39, 0.04);
+    --shadow-alpine-hover: 0 25px 50px -12px rgba(29, 53, 35, 0.15), 0 0 0 1px rgba(29, 53, 35, 0.25);
+    --shadow-floating: 0 30px 60px -20px rgba(17, 24, 39, 0.08), 0 0 0 1px rgba(229, 231, 235, 0.8);
 
     --font-serif: var(--font-serif), "Cormorant Garamond", Georgia, serif;
     --font-sans: var(--font-sans), "Plus Jakarta Sans", sans-serif;
@@ -46,9 +53,10 @@
   }
 
   body {
-    background-color: #ffffff;
-    color: #334155;
+    background-color: #F9FAFB;
+    color: #111827;
     font-family: var(--font-sans);
+    line-height: 1.65;
     overflow-x: hidden;
   }
 

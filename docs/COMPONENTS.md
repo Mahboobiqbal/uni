@@ -4,11 +4,9 @@ This file tracks every component in the University of Swat project, its source l
 
 | Component | Path | Type | Status | Description |
 |---|---|---|---|---|
-| `Navbar` | `src/components/layout/Navbar.tsx` | Client | **Active (Stageshow Craft Polish)** | Edge-to-edge top navigation with calibrated logo nested insets, clean text category triggers, and stageshow design tokens |
-| `CardNav` | `src/components/ui/CardNav.tsx` | Client | **Active (Stageshow Tokens & Spring Physics)** | Card navbar with full-width spring physics, stageshow design tokens (`--ss-*`), restrained text links with micro-animated arrows, and clean 2-column layout |
-| `Footer` | `src/components/layout/Footer.tsx` | Server | Baseline | 4-column directory, campus contacts, social links, legal bar |
-| `HeroSection` | `src/components/home/HeroSection.tsx` | Server | Baseline | Split hero with ancient/modern headline, quick portal gateway, campus card |
-| `UniversityOverview` | `src/components/home/UniversityOverview.tsx` | Server | Baseline | 3-item metrics ribbon + 2-column bento card (About, Disciplines, Analytics) |
+| `Navbar` | `src/components/layout/Navbar.tsx` | Client | **Active (Smooth Fade-In & Expanded 2-Col Mega Menu)** | Transparent-to-frosted top navigation with circular crest, "University of Swat" branding, smooth cubic-bezier fade-in 2-column floating mega-menu card with top caret, expanded padding/grid spacing, and #731C1C button |
+| `HeroSection` | `src/components/home/HeroSection.tsx` | Client | **Active (Cinematic Video & Expanded 3-Pillar Ribbon)** | Full-screen background video hero with tightened typography (-0.025em tracking, 1.08 leading), "Take a Tour" CTA, and expanded translucent #5D1616 crimson ribbon (Quality, Leadership, Experience) |
+| `UniversityOverview` | `src/components/home/UniversityOverview.tsx` | Server | **Active (Bento Grid)** | 2-column bento card (About, Disciplines, Analytics); top metric counter cards removed |
 | `ViceChancellorDesk` | `src/components/home/ViceChancellorDesk.tsx` | Server | Baseline | VC Prof. Dr. Hassan Sher message and credentials |
 | `UniversityQuote` | `src/components/home/UniversityQuote.tsx` | Server | Baseline | Institutional creed quote |
 | `AnnouncementsBoard` | `src/components/home/AnnouncementsBoard.tsx` | Client | Baseline | Interactive gazette with category tabs, notice list, and live bulletin preview |
@@ -23,6 +21,8 @@ This file tracks every component in the University of Swat project, its source l
 | Legacy Component | Previous Path | Replaced By | Date | Reason |
 |---|---|---|---|---|
 | `Header` | `src/components/layout/Header.tsx` | `Navbar` (`CardNav`) | 2026-11-14 | Replaced with modern React Bits `<CardNav />` component |
+| `CardNav` | `src/components/ui/CardNav.tsx` | `Navbar` (Editorial Header) | 2026-11-14 | Replaced with high-contrast editorial navigation overlay matching design |
+| `HeroSection` (v1) | `src/components/home/HeroSection.tsx` | `HeroSection` (v2) | 2026-11-14 | Replaced with cinematic video background hero and translucent crimson 3-pillar ribbon |
 
 ---
 

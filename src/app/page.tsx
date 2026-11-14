@@ -12,7 +12,7 @@ import RankingSection from "@/components/home/RankingSection";
 export default function HomePage() {
   return (
     <>
-      {/* Modern CardNav Top Navigation */}
+      {/* Modern Transparent Overlay Top Navigation */}
       <Navbar />
 
       {/* Main Content Sections */}

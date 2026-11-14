@@ -76,10 +76,9 @@ uni/
 
 ## 4. Current Component Registry
 
-- **`Navbar`** (`src/components/layout/Navbar.tsx`): Full-screen width edge-to-edge navigation bar powered by `<CardNav />` with calibrated ODF crest logo nested insets, left-aligned branding, and stageshow craft-polished pure text category triggers (`Programs`, `Departments`, `Campuses`, `Portals`).
-- **`CardNav`** (`src/components/ui/CardNav.tsx`, `CardNav.css`): React Bits spring physics animated navigation built with Stageshow design tokens (`--ss-*`), restrained pure text links with optical reading-edge alignment, micro-animated arrows, and deterministic 2-column vertical layout.
-- **`HeroSection`** (`src/components/home/HeroSection.tsx`): Split hero with quick portal utilities.
-- **`UniversityOverview`** (`src/components/home/UniversityOverview.tsx`): Metric ribbon + 2-column bento card.
+- **`Navbar`** (`src/components/layout/Navbar.tsx`): High-contrast editorial navigation overlay with official circular University crest (`/uos-logo-circle.png`), "University of Swat" branding, horizontal menu triggers with smooth cubic-bezier fade-in 2-column floating mega-menu cards (with top caret and expanded spacing) matching the reference design, and Crimson Maroon (`#731C1C`) "Sign up" button.
+- **`HeroSection`** (`src/components/home/HeroSection.tsx`): Full-viewport cinematic video background hero with tightened headline typography (-0.025em tracking, 1.08 leading), loose body copy (1.65 leading), "Take a Tour" CTA button, and bottom translucent Crimson Maroon (`#5D1616`) expanded ribbon (`Quality`, `Leadership`, `Experience`).
+- **`UniversityOverview`** (`src/components/home/UniversityOverview.tsx`): 2-column bento card (Institutional Heritage, Academic Breadth, and Institutional Metrics) with the top metric counter ribbon removed.
 - **`ViceChancellorDesk`** (`src/components/home/ViceChancellorDesk.tsx`): Leadership desk message and portrait.
 - **`UniversityQuote`** (`src/components/home/UniversityQuote.tsx`): Institutional creed section.
 - **`AnnouncementsBoard`** (`src/components/home/AnnouncementsBoard.tsx`): 3-column interactive gazette with bulletin preview.

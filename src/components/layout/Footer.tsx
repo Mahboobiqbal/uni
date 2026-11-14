@@ -190,11 +190,11 @@ export default function Footer() {
         {/* Bottom Logo, Copyright, and Legal Bar */}
         <div className="pt-8 flex flex-col items-center justify-center text-center">
           {/* Logo centered */}
-          <div className="w-12 h-12 rounded-2xl overflow-hidden p-1 border border-slate-200 bg-white mb-3 shadow-sm flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full overflow-hidden p-0.5 border border-slate-200 bg-white mb-3 shadow-sm flex items-center justify-center">
             <img
               alt="University of Swat Crest"
-              className="w-full h-full object-contain"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgzmIrs6_MC6GpfwvkgSo_JupG-LjrQP4YFhvV_KC8w9GKo2DAIn1mG3OqCS3OZN-dN5MWw6fpljvGNRf_56iQDSMseGC-OSbMsDJQ9A_gbskmgYvTVoAGKVijz-CRqm-TEHQ_AufIH9gVAFruEl_-0PdJSEryeaqSooM2Xc57DfimRbyL6weSr0igSXt28CrlHQp7a4bcXFIsSxUTwnYhsYPMk5ciXNccP2kV9x4302tD4FYIX44e"
+              className="w-full h-full object-contain rounded-full"
+              src="/uos-logo-circle.png"
             />
           </div>
           <span className="font-serif text-lg font-bold text-slate-900 tracking-wide">
