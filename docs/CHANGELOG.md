@@ -4,6 +4,24 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Enlarged VC Profile Card & Streamlined Concise Discourse
+
+### Action Summary
+- **Enlarged `<ProfileCard />` (`src/components/ui/ProfileCard.tsx` & `ProfileCard.css`)**:
+  - Added configurable `--pc-width` support with prop `width?: number | string` (defaulting to 340px).
+  - Scaled up the Vice Chancellor card in `ViceChancellorSection.tsx` from `340px` to `420px` width (with proportional 4:5 tile aspect ratio, yielding a commanding `580px` height).
+  - Expanded ambient background blur aura from `-inset-3` to `-inset-4` with enhanced luminosity.
+- **Content & Text Streamlining (`src/components/home/ViceChancellorSection.tsx`)**:
+  - Replaced dense multi-paragraph text with a single, high-impact, inspiring leadership quote styled with a delicate emerald left accent border (`text-base sm:text-lg lg:text-[19px] leading-[1.68]`).
+  - Streamlined executive credentials into 3 concise, compact badge cells (`D.Sc & Post-Doc`, `200+ Papers`, `PAS Fellow`).
+  - Perfected 1:1 vertical optical balance between the enlarged 3D card on the left and the refined discourse on the right.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM measurement: Verified `cardWidth: 420px`, `cardHeight: 580px`, and balanced vertical height.
+
+---
+
 ## [2026-11-14] — Bottom Green Glow & Smooth Dissolve at Bento Cards Ending
 
 ### Action Summary

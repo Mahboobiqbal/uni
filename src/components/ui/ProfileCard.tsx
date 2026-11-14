@@ -89,6 +89,7 @@ export interface ProfileCardProps {
   enableMobileTilt?: boolean;
   mobileTiltSensitivity?: number;
   intro?: boolean;
+  width?: number | string;
   className?: string;
 }
 
@@ -121,6 +122,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   enableMobileTilt = false,
   mobileTiltSensitivity = 5,
   intro = true,
+  width,
   className = ''
 }) => {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -332,6 +334,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         {
           ...THEMES[palette],
           ...FOILS[foil],
+          '--pc-width': width ? (typeof width === 'number' ? `${width}px` : width) : '340px',
           '--pc-radius': `${Math.max(0, radius)}px`,
           '--pc-backdrop': backdrop,
           '--pc-holo': clamp(holo, 0, 1),
