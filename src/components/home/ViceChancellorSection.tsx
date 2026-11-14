@@ -26,6 +26,9 @@ export default function ViceChancellorSection() {
       data-purpose="vice-chancellor-section"
       id="vice-chancellor"
     >
+      {/* Top Ambient Green Glow Spillover from Bento Section */}
+      <div className="absolute inset-x-0 top-0 h-44 bg-[radial-gradient(ellipse_75%_120px_at_50%_0%,rgba(52,211,153,0.18),rgba(47,62,41,0.08),transparent_75%)] blur-2xl pointer-events-none" />
+
       {/* Subtle Background Accent Lighting */}
       <div className="absolute top-10 right-10 w-96 h-96 rounded-full bg-[#1D3523]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-[#731C1C]/5 blur-3xl pointer-events-none" />

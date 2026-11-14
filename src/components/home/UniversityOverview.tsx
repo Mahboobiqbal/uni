@@ -415,6 +415,18 @@ export default function UniversityOverview() {
       <div className="absolute bottom-10 right-10 w-[400px] h-[400px] rounded-full bg-[#731C1C]/20 blur-3xl pointer-events-none z-0" />
       <div className="absolute -bottom-20 left-1/3 w-[500px] h-[500px] rounded-full bg-emerald-500/10 blur-3xl pointer-events-none z-0" />
 
+      {/* Bottom Luminous Green Glow Aura: Smooths the ending of the Bento Cards */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-4/5 max-w-5xl h-60 bg-[radial-gradient(ellipse_at_center,rgba(52,211,153,0.38),rgba(47,62,41,0.65),transparent_70%)] blur-3xl pointer-events-none z-0" />
+
+      {/* Bottom Seamless Dissolve Gradient into Canvas */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-52 pointer-events-none z-0"
+        style={{
+          background:
+            'linear-gradient(to bottom, transparent 0%, rgba(29, 53, 35, 0.25) 30%, rgba(249, 250, 251, 0.65) 65%, #F9FAFB 84%, #F9FAFB 100%)'
+        }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12 sm:mb-16">

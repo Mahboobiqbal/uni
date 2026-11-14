@@ -4,6 +4,24 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-14] — Bottom Green Glow & Smooth Dissolve at Bento Cards Ending
+
+### Action Summary
+- **Bento Section Ending Dissolve (`src/components/home/UniversityOverview.tsx`)**:
+  - Added a luminous radial emerald-green glow aura (`max-w-5xl h-60 blur-3xl`, `rgba(52,211,153,0.38)` and `rgba(47,62,41,0.65)`) centered at the base of the bento cards.
+  - Implemented a 208px multi-stop bottom linear dissolve gradient:
+    `linear-gradient(to bottom, transparent 0%, rgba(29, 53, 35, 0.25) 30%, rgba(249, 250, 251, 0.65) 65%, #F9FAFB 84%, #F9FAFB 100%)`.
+  - The bottom 35px reaches 100% solid `#F9FAFB`, eliminating any hard edge or color discrepancy against the section below.
+- **Top Green Light Spill on Next Section (`src/components/home/ViceChancellorSection.tsx`)**:
+  - Added a matching top ambient green glow aura (`rgba(52,211,153,0.18)` / `rgba(47,62,41,0.08)`) spilling over the top of the Vice Chancellor section.
+  - Result: Scrolling out of the bento cards feels completely smooth, seamless, and organically blended into the Vice Chancellor leadership discourse.
+
+### Quality & Verification
+- `npx tsc --noEmit`: Exited with code 0.
+- DevTools DOM verification: Verified `bentoBottomGlow: true`, `bentoBottomDissolve: true`, and `vcTopGlow: true`.
+
+---
+
 ## [2026-11-14] — Full Wide-Screen Layout for Vice Chancellor Section (Removed Outer Section Card)
 
 ### Action Summary
