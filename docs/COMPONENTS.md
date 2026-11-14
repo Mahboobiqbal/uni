@@ -4,7 +4,8 @@ This file tracks every component in the University of Swat project, its source l
 
 | Component | Path | Type | Status | Description |
 |---|---|---|---|---|
-| `Header` | `src/components/layout/Header.tsx` | Client | Baseline | Floating island nav with Programs, Departments, Locations & Portals mega menus |
+| `Navbar` | `src/components/layout/Navbar.tsx` | Client | **Active (Full-Width Text Triggers)** | Edge-to-edge top navigation with large ODF crest logo, clean text category triggers (Programs, Departments, Campuses, Portals), and neutral white panel |
+| `CardNav` | `src/components/ui/CardNav.tsx` | Client | **Active (Text Links & Spring Physics)** | Card navbar with full-width spring physics open/close animations, pure text links with inline arrows (no button boxes), and clean 2-column vertical reading order |
 | `Footer` | `src/components/layout/Footer.tsx` | Server | Baseline | 4-column directory, campus contacts, social links, legal bar |
 | `HeroSection` | `src/components/home/HeroSection.tsx` | Server | Baseline | Split hero with ancient/modern headline, quick portal gateway, campus card |
 | `UniversityOverview` | `src/components/home/UniversityOverview.tsx` | Server | Baseline | 3-item metrics ribbon + 2-column bento card (About, Disciplines, Analytics) |
@@ -14,6 +15,14 @@ This file tracks every component in the University of Swat project, its source l
 | `FeaturedSpotlight` | `src/components/home/FeaturedSpotlight.tsx` | Server | Baseline | Alpine Biodiversity & Gandhara Heritage Studies research banner |
 | `DiamondFeaturesGrid` | `src/components/home/DiamondFeaturesGrid.tsx` | Server | Baseline | 6 interlocking 45° diamond cells for faculty centers |
 | `RankingSection` | `src/components/home/RankingSection.tsx` | Server | Baseline | HEC W-category 91.4% rating, GreenMetric, THE rankings + 4 visual badges |
+
+---
+
+## Deprecated & Replaced Components
+
+| Legacy Component | Previous Path | Replaced By | Date | Reason |
+|---|---|---|---|---|
+| `Header` | `src/components/layout/Header.tsx` | `Navbar` (`CardNav`) | 2026-11-14 | Replaced with modern React Bits `<CardNav />` component |
 
 ---
 

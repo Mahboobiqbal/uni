@@ -1,4 +1,4 @@
-import Header from "@/components/layout/Header";
+import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import UniversityOverview from "@/components/home/UniversityOverview";
@@ -12,8 +12,8 @@ import RankingSection from "@/components/home/RankingSection";
 export default function HomePage() {
   return (
     <>
-      {/* Floating Island Navigation Header */}
-      <Header />
+      {/* Modern CardNav Top Navigation */}
+      <Navbar />
 
       {/* Main Content Sections */}
       <main>

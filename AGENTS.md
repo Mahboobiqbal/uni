@@ -45,6 +45,7 @@ Whenever the user provides new component code, markup, or design specifications:
 - **Runtime & Language**: React 19, TypeScript 5, Node.js 26
 - **Styling**: Tailwind CSS v4 (`@theme` tokens in `src/app/globals.css`)
 - **Fonts**: `Cormorant_Garamond` (`font-serif`) & `Plus_Jakarta_Sans` (`font-sans`) via `next/font/google`
+- **Iconography**: Hugeicons (`@hugeicons/react`, `@hugeicons/core-free-icons`)
 - **Package Manager**: npm
 
 ---
@@ -59,9 +60,9 @@ uni/
 ├── src/
 │   ├── app/                  # App Router pages, layout, and global CSS
 │   ├── components/
-│   │   ├── layout/           # Header, Footer, Site chrome
+│   │   ├── layout/           # Navbar, Footer, Site chrome
 │   │   ├── home/             # Home page modular sections
-│   │   └── ui/               # Reusable primitive UI components
+│   │   └── ui/               # Reusable primitive UI components (CardNav, etc.)
 │   ├── config/               # Site configuration (siteConfig)
 │   ├── data/                 # Static data stores (navigation, announcements)
 │   ├── hooks/                # Custom React hooks
@@ -75,7 +76,8 @@ uni/
 
 ## 4. Current Component Registry
 
-- **`Header`** (`src/components/layout/Header.tsx`): Floating island header with 4 mega-menu drawers.
+- **`Navbar`** (`src/components/layout/Navbar.tsx`): Full-screen width edge-to-edge navigation bar powered by `<CardNav />` with enlarged official ODF crest logo (`w-14 h-14 sm:w-16 sm:h-16`), left-aligned branding, and pure text category triggers (`Programs`, `Departments`, `Campuses`, `Portals`) without button boxes.
+- **`CardNav`** (`src/components/ui/CardNav.tsx`, `CardNav.css`): React Bits spring physics animated navigation opening dedicated single-card dropdowns full screen width across a 2-column vertical ordered layout of pure text links with inline arrows (no button cards, no outlines, no extraneous colors) and smooth open/close physics.
 - **`HeroSection`** (`src/components/home/HeroSection.tsx`): Split hero with quick portal utilities.
 - **`UniversityOverview`** (`src/components/home/UniversityOverview.tsx`): Metric ribbon + 2-column bento card.
 - **`ViceChancellorDesk`** (`src/components/home/ViceChancellorDesk.tsx`): Leadership desk message and portrait.
