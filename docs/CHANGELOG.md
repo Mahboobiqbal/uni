@@ -4,6 +4,246 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-15] — Hero Section Redesigned with Frosted-Glass News & Events Widget
+
+### Action Summary
+Redesigned the HeroSection into a full-bleed, full-screen continuous background video with bottom-aligned editorial content (headline + CTAs on the left, compact frosted-glass News & Events widget on the right), and removed all pause/play controls.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx` (rewritten)**:
+   - Full-screen video background (autoPlay, loop, muted, playsInline) with no pause/play controls.
+   - Bottom-left: eyebrow pill, headline with italic gold "Innovators" + hand-drawn gold SVG underline, subtext, two CTAs (Explore Programs in crimson, Explore Campus Life in frosted glass).
+   - Bottom-right: compact frosted-glass widget (bg-black/30 backdrop-blur-xl, border-white/20, rounded-2xl) with pulsing green dot + "Latest News & Events" header, "All Updates →" link, and 3 scannable items (Admissions, Event, News) with colored pills and dates.
+   - Click handlers: announcement items smooth-scroll to #announcements and select the matching CampusBulletin tab + open the notice; event items scroll to #events.
+2. **`src/components/home/CampusBulletin.tsx`**: Changed section id from "campus-bulletin" to "announcements". Added custom event listener for hero widget announcement selection.
+3. **`src/components/home/UpcomingEvents.tsx`**: Changed section id from "campus-events" to "events".
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `src/components/home/CampusBulletin.tsx`
+- `src/components/home/UpcomingEvents.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Hero Crimson Cards z-index Stacking Fix (CSS Only)
+
+### Action Summary
+Fixed z-index stacking context so the 3 crimson hero cards render on top of the Warm Alabaster Vice Chancellor section below, without changing any card coordinates or positions.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx`**:
+   - Removed `overflow-hidden` from the outer `<section>` wrapper (kept only on the inner `<video>` background wrapper).
+   - Set `relative z-30` on the Hero `<section>` (was `relative z-20`).
+   - Ensured `relative z-30` is on the 3-cards grid container.
+   - Card positions, margins, translate values, top/bottom/left/right all untouched.
+2. **`src/components/home/ViceChancellorSection.tsx`**:
+   - Added `relative z-10` so the Warm Alabaster background renders behind the crimson cards instead of covering them.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `src/components/home/ViceChancellorSection.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Hero Crimson Cards Reverted to Original
+
+### Action Summary
+Reverted the 3 crimson hero cards to their original positioning (absolute bottom with translate-y overlap) and restored overflow-hidden on the hero section.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx`**:
+   - Restored `overflow-hidden` on the outer `<section>` wrapper.
+   - Reverted cards wrapper from `relative z-30 -mt-24 lg:-mt-28 pb-16 lg:pb-20` back to `absolute bottom-0 inset-x-0 z-30`.
+   - Restored `translate-y-[78%] md:translate-y-[82%]` on the cards grid.
+2. **`src/components/home/ViceChancellorSection.tsx`**: Reverted `relative z-10` back to original (removed z-10).
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `src/components/home/ViceChancellorSection.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Hero Crimson Cards z-index & Clipping Fix
+
+### Action Summary
+Fixed z-index layering and clipping issues with the 3 crimson hero cards that were being covered by the Warm Alabaster section below.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx`**:
+   - Removed `overflow-hidden` from the outer `<section>` wrapper (kept only on the inner `<video>` background wrapper).
+   - Changed 3-column crimson cards wrapper from `absolute bottom-0 inset-x-0 z-30` to `relative z-30 -mt-24 lg:-mt-28 pb-16 lg:pb-20`.
+   - Removed `translate-y-[78%] md:translate-y-[82%]` from the cards grid (replaced with negative margin approach).
+2. **`src/components/home/ViceChancellorSection.tsx`**:
+   - Added `relative z-10` to ensure the Warm Alabaster section sits below the crimson cards in layer order.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `src/components/home/ViceChancellorSection.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Hero Frosted-Glass Card Organic Multi-Lobe Mesh Blur (Full Coverage)
+
+### Action Summary
+Replaced the 3-blob organic mesh blur with a 4-layer multi-lobe approach that provides full, consistent coverage behind all text while maintaining organic, borderless edges.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx`**:
+   - Expanded backdrop wrapper from `-inset-24` to `-inset-20` so the fade-out zone happens outside the text area.
+   - Replaced 3 blobs with 4 layers:
+     - Layer 1 (Full-Text Consistent Core): `absolute inset-4 rounded-full bg-black/50 backdrop-blur-xl` with `radial-gradient(closest-side, black 62%, rgba(0,0,0,0.6) 80%, transparent 98%)` — covers 100% of text evenly.
+     - Layer 2 (Top-Right Organic Extension): `absolute top-2 right-2 w-[78%] h-[65%]` with `radial-gradient(closest-side, black 55%, rgba(0,0,0,0.4) 78%, transparent 96%)` — covers "All Updates →".
+     - Layer 3 (Bottom-Right Organic Extension): `absolute bottom-2 right-4 w-[80%] h-[65%]` with same gradient.
+     - Layer 4 (Left-Edge Organic Softener): `absolute top-6 left-2 w-[75%] h-[82%]` with `radial-gradient(closest-side, black 55%, rgba(0,0,0,0.35) 78%, transparent 96%)`.
+   - Every word sits on a uniform, consistent frosted-dark blur for readability, while the perimeter flows outward into an irregular, smooth feather.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Hero Frosted-Glass Card Organic 3-Blob Mesh Blur
+
+### Action Summary
+Replaced the single rectangular backdrop blur layer with an irregular 3-blob organic mesh blur cluster that has zero rectangular edges or corners.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx`**:
+   - Removed the single backdrop blur layer (`absolute -inset-8`) with elliptical radial mask that still showed a faint rectangular box outline.
+   - Replaced with a 3-blob organic mesh blur cluster (`absolute -inset-24 -z-10 pointer-events-none`) containing 3 overlapping, off-center organic radial blur clouds:
+     - Blob 1 (Upper-Left Dense Core): `absolute top-4 left-6 w-[85%] h-[65%] rounded-full bg-black/55 backdrop-blur-2xl` with `radial-gradient(closest-side, black 30%, rgba(0,0,0,0.4) 60%, transparent 95%)`
+     - Blob 2 (Center-Right Organic Drift): `absolute top-1/4 right-2 w-[80%] h-[70%] rounded-full bg-black/45 backdrop-blur-xl` with `radial-gradient(closest-side, black 25%, rgba(0,0,0,0.35) 55%, transparent 92%)`
+     - Blob 3 (Lower-Left Soft Tail): `absolute bottom-4 left-10 w-[75%] h-[60%] rounded-full bg-black/50 backdrop-blur-xl` with `radial-gradient(closest-side, black 25%, rgba(0,0,0,0.3) 55%, transparent 90%)`
+   - Text wrapper has no background, backdrop-filter, border, or box-shadow — fully transparent.
+   - Each blob uses `rounded-full` + `radial-gradient(closest-side, ... transparent 90-95%)` so the blur reaches 0% opacity inside the circle before touching the bounding box edge, eliminating all straight lines or square corners.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Hero Frosted-Glass Card Dissolved into Organic Blur Backdrop
+
+### Action Summary
+Refined the "Latest News & Events" card to dissolve organically into the background video with no hard edges, borders, or card outlines, and repositioned further right.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx`**:
+   - Removed `border`, `border-white/20`, `rounded-2xl`, and `shadow-2xl` from the news/events container — zero hard edges or card outlines.
+   - Added a dedicated backdrop blur layer (`absolute -inset-8 -z-10 pointer-events-none`) with `bg-black/40 backdrop-blur-xl` and an elliptical radial CSS mask (`radial-gradient(ellipse 75% 70% at 50% 50%, black 45%, rgba(0,0,0,0.6) 70%, transparent 100%)`) so the frosted blur gently fades outward in all directions with an organic, borderless cloud-like falloff.
+   - Moved the widget further right: `lg:right-4 xl:right-8` (was `lg:right-6 xl:right-10`).
+   - Kept the top-and-bottom vertical fade mask on the scrolling text list itself for smooth item entry/exit.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Hero Frosted-Glass Card Repositioned & Resized
+
+### Action Summary
+Refined the "Latest News & Events" frosted-glass card with desktop absolute positioning (far-right edge, vertically centered), increased height, and clean mobile responsive placement.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx`**:
+   - Card detached from inner text container; on desktop (`lg+`) it is absolutely positioned at `lg:right-6 xl:right-10 lg:top-1/2 lg:-translate-y-1/2 z-20` near the outermost right edge.
+   - Width: `lg:w-[400px] xl:w-[420px]`. Height: `lg:h-[48vh] min-h-[380px] max-h-[480px]` with `flex flex-col`.
+   - Scroll viewport changed from fixed `h-[250px]` to `flex-1 overflow-hidden relative` to fill the taller card.
+   - Mobile (`below lg`): card stays in normal flow below CTAs with `relative w-full mt-8 h-[240px] lg:mt-0`, with proportional bottom padding.
+   - Preserved frosted-glass aesthetic, auto-scroll loop, pause-on-hover, and direct deep-link navigation.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Hero Frosted-Glass Widget Refined with Auto-Scroll Loop
+
+### Action Summary
+Refined the "Latest News & Events" frosted-glass card in the Hero section with vertical center alignment, larger scale, seamless auto-scroll loop, and expanded feed data.
+
+### Key Changes
+1. **`src/components/home/HeroSection.tsx`**:
+   - Vertically centered the frosted-glass card alongside the headline block (`lg:items-center` instead of `lg:items-end`).
+   - Increased card size to `w-full sm:w-[420px] lg:w-[440px] p-6`.
+   - Converted items list to a fixed-height viewport (`h-[250px] overflow-hidden`) with seamless vertical auto-scroll loop (duplicated items + CSS keyframe `translateY(-50%)`).
+   - Added top/bottom fade masks via `mask-image` linear gradient.
+   - Pause on hover via `.hero-widget-card:hover .hero-widget-scroll-track { animation-play-state: paused; }`.
+   - Expanded feed data to 5 items (Admissions, Event, News, Admissions, News).
+   - Preserved direct deep-link navigation (announcement items → #announcements tab/notice, event items → #events).
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Navbar Updated to "Departments" & Faculty Page Breadcrumb Fixed
+
+### Action Summary
+Updated the navbar label from "Faculties" to "Departments" and the /faculty page breadcrumb to "Departments" for consistency with the department page breadcrumbs.
+
+### Key Changes
+1. **Navbar** (`src/data/navigation.ts`): Changed nav item label from "Faculties" to "Departments".
+2. **Faculty page** (`src/app/faculty/page.tsx`): Changed breadcrumb from "Faculties" to "Departments".
+3. **HeroSection.tsx**: Reverted an unintended modification (fragment wrapper) that was causing build failures.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/data/navigation.ts`
+- `src/app/faculty/page.tsx`
+- `src/components/home/HeroSection.tsx` (reverted)
+- `docs/CHANGELOG.md`
+
+---
+
 ## [2026-11-15] — Sitewide Card Surface System: Brand-Colored Surfaces + Light-Card Strengthening
 
 ### Action Summary

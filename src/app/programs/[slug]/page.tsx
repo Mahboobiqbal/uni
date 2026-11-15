@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-/** Real departmental photography — only where an authentic subject image exists. */
+/** Real departmental photography â€” only where an authentic subject image exists. */
 const PROGRAM_PHOTO: Record<string, { src: string; alt: string }> = {
   'bs-chemistry': {
     src: '/images/departments/department-of-chemistry_1_img.jpg',
@@ -47,7 +47,7 @@ const PROGRAM_PHOTO: Record<string, { src: string; alt: string }> = {
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'] as const;
 
 const accreditedBy = (prog: { slug: string }) =>
-  prog.slug.includes('llb') ? 'PBC · HEC' : 'NCEAC / HEC';
+  prog.slug.includes('llb') ? 'PBC Â· HEC' : 'NCEAC / HEC';
 
 const termType = (prog: { slug: string }, term: string) =>
   prog.slug.includes('llb') ? term.replace('Year', 'Year of Study') : term;
@@ -79,7 +79,7 @@ const careerDomain = (title: string): string => {
   return 'Industry Practice';
 };
 
-/** Compact bullet overview — minimal text, story-hierarchy style. */
+/** Compact bullet overview â€” minimal text, story-hierarchy style. */
 const academicOverview = (prog: { name: string; facultyGroup: string; degreeLevel: string; slug: string }) => {
   const isComputing = prog.slug.includes('computer') || prog.slug.includes('software');
   const isLaw = prog.slug.includes('llb');
@@ -91,13 +91,13 @@ const academicOverview = (prog: { name: string; facultyGroup: string; degreeLeve
   } else if (isLaw) {
     bullets.push('Core: constitutional jurisprudence, criminal & civil procedure, Islamic jurisprudence.');
     bullets.push('Practice: moot courtroom, legal clinics, structured final-year internship.');
-    bullets.push('Accreditation: PBC · HEC recognized; pathway to LLM & PhD.');
+    bullets.push('Accreditation: PBC Â· HEC recognized; pathway to LLM & PhD.');
   } else {
     bullets.push(`Core: theoretical foundations + hands-on lab/field practice across ${prog.facultyGroup}.`);
     bullets.push('Facilities: dedicated labs, seminar rooms, and research spaces (Charbagh).');
     bullets.push('Accreditation: HEC recognized; pathway to MS & PhD programs.');
   }
-  bullets.push(`Format: semester-based · ${prog.degreeLevel} · medium English.`);
+  bullets.push(`Format: semester-based Â· ${prog.degreeLevel} Â· medium English.`);
   return bullets;
 };
 
@@ -155,17 +155,17 @@ export default async function ProgramDetailPage({ params }: PageProps) {
         </dl>
       </PageHeader>
 
-      {/* ─── Main content ───────────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ Main content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* ─── Main Column ─── */}
+          {/* â”€â”€â”€ Main Column â”€â”€â”€ */}
           <main className="lg:col-span-8 space-y-12 sm:space-y-14">
             {/* 01. About the Program + Snapshot + Eligibility */}
             <section aria-labelledby="about-heading">
               <div className="flex items-center gap-2.5 mb-4">
                 <span className="h-0.5 w-7 bg-[#153B27]" />
                 <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
-                  01 · Curricular Scope
+                  01 Â· Curricular Scope
                 </span>
               </div>
               <h2
@@ -205,7 +205,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                         className="w-full h-auto object-cover aspect-[16/10]"
                       />
                       <figcaption className="px-4 py-2.5 text-xs text-stone-500 font-medium border-t border-stone-200">
-                        {prog.departmentName} · Charbagh Main Campus
+                        {prog.departmentName} Â· Charbagh Main Campus
                       </figcaption>
                     </figure>
                   )}
@@ -244,8 +244,11 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                     </dl>
                   </div>
 
-                  {/* Eligibility & Admission Criteria Card */}
-                  <div className="bg-white border border-stone-200 border-l-4 border-l-[#7F1D1D] rounded-xl p-6">
+                </div>
+              </div>
+
+              {/* Eligibility & Admission Criteria — full width below the overview */}
+<div className="bg-white border border-stone-200 border-l-4 border-l-[#7F1D1D] rounded-xl p-6">
                     <div className="flex items-center gap-2.5 mb-4">
                       <GraduationCap className="w-5 h-5 text-[#7F1D1D]" aria-hidden="true" />
                       <h3 className="font-serif text-lg font-bold text-[#14291D] tracking-[-0.01em]">
@@ -278,7 +281,6 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                       </li>
                     </ul>
                   </div>
-                </div>
               </div>
             </section>
 
@@ -289,14 +291,14 @@ export default async function ProgramDetailPage({ params }: PageProps) {
               </h2>
             </section>
 
-            {/* 03. Key Learning Outcomes — 2x2 grid */}
+            {/* 03. Key Learning Outcomes â€” 2x2 grid */}
             <section aria-labelledby="outcomes-heading" className="border-t border-stone-200 pt-12 sm:pt-14">
               <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
                 <div>
                   <div className="flex items-center gap-2.5 mb-3">
                     <span className="h-0.5 w-7 bg-[#153B27]" />
                     <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
-                      03 · Curricular Objectives
+                      03 Â· Curricular Objectives
                     </span>
                   </div>
                   <h2
@@ -331,14 +333,14 @@ export default async function ProgramDetailPage({ params }: PageProps) {
               </div>
             </section>
 
-            {/* 04. Semester scheme — 2-column grid */}
+            {/* 04. Semester scheme â€” 2-column grid */}
             <section aria-labelledby="scheme-heading" className="border-t border-stone-200 pt-12 sm:pt-14">
               <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
                 <div>
                   <div className="flex items-center gap-2.5 mb-3">
                     <span className="h-0.5 w-7 bg-[#B48A3E]" />
                     <span className="text-xs uppercase tracking-widest text-[#7A5A1E] font-bold">
-                      04 · Academic Roadmap
+                      04 Â· Academic Roadmap
                     </span>
                   </div>
                   <h2
@@ -349,7 +351,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                   </h2>
                 </div>
                 <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-bold tabular-nums">
-                  {String(prog.semesterOutline.length).padStart(2, '0')} Terms · {prog.creditHours} Cr. Hrs
+                  {String(prog.semesterOutline.length).padStart(2, '0')} Terms Â· {prog.creditHours} Cr. Hrs
                 </span>
               </div>
 
@@ -399,12 +401,12 @@ export default async function ProgramDetailPage({ params }: PageProps) {
               </div>
             </section>
 
-            {/* 05. Career Prospects — 3-column grid */}
+            {/* 05. Career Prospects â€” 3-column grid */}
             <section aria-labelledby="careers-heading" className="border-t border-stone-200 pt-12 sm:pt-14">
               <div className="flex items-center gap-2.5 mb-4">
                 <span className="h-0.5 w-7 bg-[#153B27]" />
                 <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
-                  05 · Professional Pathways
+                  05 Â· Professional Pathways
                 </span>
               </div>
               <h2
@@ -432,13 +434,13 @@ export default async function ProgramDetailPage({ params }: PageProps) {
               </div>
             </section>
 
-            {/* 06. Apply — full-width CTA banner */}
+            {/* 06. Apply â€” full-width CTA banner */}
             <section aria-labelledby="apply-heading" className="border-t border-stone-200 pt-12 sm:pt-14">
               <div className="bg-[#153B27] text-white rounded-2xl p-8 lg:p-10 border-t-4 border-[#7F1D1D]">
                 <div className="flex items-center gap-2.5 mb-3">
                   <span className="h-0.5 w-7 bg-[#C8A96E]" />
                   <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
-                    06 · Next Steps
+                    06 Â· Next Steps
                   </span>
                 </div>
                 <h2
@@ -475,7 +477,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
             </section>
           </main>
 
-          {/* ─── Sidebar (sticky) ─── */}
+          {/* â”€â”€â”€ Sidebar (sticky) â”€â”€â”€ */}
           <aside
             className="lg:col-span-4 space-y-8 sticky top-28 self-start"
             aria-label="Enrollment quick facts"
@@ -519,7 +521,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                     Scholarships
                   </dt>
                   <dd className="font-sans text-sm text-stone-700 leading-snug">
-                    HEC Need-Based · KPEF · Ehsaas · University Merit
+                    HEC Need-Based Â· KPEF Â· Ehsaas Â· University Merit
                   </dd>
                 </div>
               </dl>

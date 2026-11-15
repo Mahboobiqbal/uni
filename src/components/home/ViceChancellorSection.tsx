@@ -8,7 +8,7 @@ import { Award, Building2, FileText, ArrowUpRight } from 'lucide-react';
 export default function ViceChancellorSection() {
   return (
     <section
-      className="pt-36 sm:pt-44 lg:pt-48 pb-20 sm:pb-28 bg-[#F6F5F0] relative overflow-hidden"
+      className="pt-36 sm:pt-44 lg:pt-48 pb-20 sm:pb-28 bg-[#F6F5F0] relative z-10 overflow-hidden"
       data-purpose="vice-chancellor-section"
       id="vice-chancellor"
     >

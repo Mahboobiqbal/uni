@@ -90,7 +90,7 @@ export default function UpcomingEvents() {
 
   return (
     <section
-      id="campus-events"
+      id="events"
       data-purpose="upcoming-events"
       className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
     >

@@ -225,6 +225,29 @@ export default function CampusBulletin() {
     setLockOnLeave(true);
   };
 
+  /* Listen for hero widget announcement selection */
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (!detail) return;
+      const { category, announcementId } = detail;
+      if (category && announcementCategories.includes(category as CategoryView)) {
+        const view = category as CategoryView;
+        if (view !== activeCategory) {
+          const list = announcementsForCategory(view);
+          setActiveCategory(view);
+          setSelectedId(announcementId ?? list[0]?.id ?? 0);
+          setLockOnLeave(true);
+        } else {
+          setSelectedId(announcementId ?? 0);
+          setLockOnLeave(true);
+        }
+      }
+    };
+    window.addEventListener('hero-announcement-select', handler);
+    return () => window.removeEventListener('hero-announcement-select', handler);
+  }, [activeCategory]);
+
   const handleShare = async () => {
     const shareData = {
       title: selectedAnnouncement.title,
@@ -282,7 +305,7 @@ export default function CampusBulletin() {
 
   return (
     <section
-      id="campus-bulletin"
+      id="announcements"
       data-purpose="campus-bulletin"
       className="relative overflow-hidden py-16 sm:py-20 bg-[#F6F5F0]"
     >
