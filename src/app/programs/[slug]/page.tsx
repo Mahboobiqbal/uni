@@ -281,7 +281,6 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                       </li>
                     </ul>
                   </div>
-              </div>
             </section>
 
             {/* 02. Eligibility (legacy anchor kept for deep links) */}
