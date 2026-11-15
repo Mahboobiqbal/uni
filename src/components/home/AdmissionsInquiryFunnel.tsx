@@ -47,7 +47,7 @@ export default function AdmissionsInquiryFunnel() {
     >
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-2xl border border-stone-200/90">
-          
+
           {/* Left Column: Forest Obsidian Authority & Contacts (5 cols) */}
           <div className="lg:col-span-5 bg-[#0C1912] text-white p-8 sm:p-12 lg:p-14 flex flex-col justify-between relative">
             {/* Watermark Crest */}
@@ -283,11 +283,10 @@ export default function AdmissionsInquiryFunnel() {
                           key={t.id}
                           type="button"
                           onClick={() => setFormData({ ...formData, applicantType: t.id })}
-                          className={`py-2 px-2 text-center rounded-lg text-xs font-medium border active:scale-[0.985] active:translate-y-px transition-all duration-150 ${
-                            formData.applicantType === t.id
-                              ? 'bg-[#153B27] text-white border-[#153B27]'
-                              : 'bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100'
-                          }`}
+                          className={`py-2 px-2 text-center rounded-lg text-xs font-medium border active:scale-[0.985] active:translate-y-px transition-all duration-150 ${formData.applicantType === t.id
+                            ? 'bg-[#153B27] text-white border-[#153B27]'
+                            : 'bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100'
+                            }`}
                         >
                           {t.label}
                         </button>

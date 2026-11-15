@@ -33,13 +33,13 @@ export default function ViceChancellorSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left: React Bits <ProfileCard /> with 3D Tilt & Holographic Foil */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
             <div className="relative group w-full flex justify-center">
               {/* Subtle ambient shadow behind card */}
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#153B27]/15 via-[#7F1D1D]/10 to-[#B48A3E]/10 blur-2xl opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none" />
-              
+
               <ProfileCard
                 avatarUrl="/images/leadership/vc-prof-dr-husnul-amin.jpeg"
                 iconUrl="/pattern-crest.svg"

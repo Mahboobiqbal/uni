@@ -397,86 +397,86 @@ export default function CampusBulletin() {
                 <div aria-hidden="true" className="pointer-events-none absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-white to-transparent z-10" />
               </div>
 
-            {/* ── Right Column — Full Official Notice Reader ── */}
-            <div className="col-span-12 lg:col-span-7 relative overflow-hidden p-6 sm:p-8 flex flex-col justify-between bg-white min-w-0">
-              {/* Faint institutional watermark filling the reader's tail space */}
-              <div aria-hidden="true" className="pointer-events-none absolute -bottom-10 -right-8 w-64 h-64 opacity-[0.045] select-none">
-                <img src="/uos-logo-circle.png" alt="" aria-hidden="true" className="w-full h-full object-contain rounded-full" />
-              </div>
-
-              <div key={selectedAnnouncement.id} className="animate-notice-rise relative">
-                {/* Header Metadata Row */}
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <span className={cn(BADGE_BASE, BADGE_TONES[selectedAnnouncement.tone])}>
-                      {selectedAnnouncement.badge}
-                    </span>
-                    <span className="text-xs text-stone-500 font-medium">
-                      Reference: {selectedAnnouncement.reference} &bull; {selectedAnnouncement.date}
-                    </span>
-                  </div>
-                  <div className="w-10 h-10 rounded-xl border border-stone-200/80 p-1 bg-gradient-to-b from-stone-50 to-white shadow-[0_2px_6px_rgba(28,25,23,0.06)] shrink-0">
-                    <img
-                      alt="University of Swat Crest"
-                      src="/uos-logo-circle.png"
-                      className="w-full h-full object-contain rounded-md"
-                    />
-                  </div>
+              {/* ── Right Column — Full Official Notice Reader ── */}
+              <div className="col-span-12 lg:col-span-7 relative overflow-hidden p-6 sm:p-8 flex flex-col justify-between bg-white min-w-0">
+                {/* Faint institutional watermark filling the reader's tail space */}
+                <div aria-hidden="true" className="pointer-events-none absolute -bottom-10 -right-8 w-64 h-64 opacity-[0.045] select-none">
+                  <img src="/uos-logo-circle.png" alt="" aria-hidden="true" className="w-full h-full object-contain rounded-full" />
                 </div>
 
-                {/* Divider */}
-                <div className="border-t border-stone-100 my-5" />
-
-                {/* Main Content Body */}
-                <h3 className="font-serif text-2xl lg:text-3xl font-bold text-stone-900 leading-tight tracking-[-0.015em]">
-                  {selectedAnnouncement.title}
-                </h3>
-
-                <div className="space-y-4 mt-4 text-stone-600 text-sm lg:text-base leading-relaxed">
-                  {selectedAnnouncement.paragraphs.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
-                </div>
-
-                {/* Highlighted Callout Box */}
-                {selectedAnnouncement.callout && (
-                  <div className="bg-gradient-to-b from-emerald-50/80 to-white border border-emerald-200/80 rounded-xl p-4 mt-6 shadow-[0_2px_10px_-4px_rgba(21,59,39,0.06)] flex gap-3">
-                    <span className="w-8 h-8 rounded-lg bg-emerald-100/80 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Info className="w-4 h-4" />
-                    </span>
-                    <div>
-                      <p className="text-[11px] uppercase tracking-widest font-bold text-emerald-700 mb-1">
-                        {selectedAnnouncement.callout.title}
-                      </p>
-                      <p className="text-sm text-emerald-950 leading-relaxed font-medium">
-                        {selectedAnnouncement.callout.text}
-                      </p>
+                <div key={selectedAnnouncement.id} className="animate-notice-rise relative">
+                  {/* Header Metadata Row */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                      <span className={cn(BADGE_BASE, BADGE_TONES[selectedAnnouncement.tone])}>
+                        {selectedAnnouncement.badge}
+                      </span>
+                      <span className="text-xs text-stone-500 font-medium">
+                        Reference: {selectedAnnouncement.reference} &bull; {selectedAnnouncement.date}
+                      </span>
+                    </div>
+                    <div className="w-10 h-10 rounded-xl border border-stone-200/80 p-1 bg-gradient-to-b from-stone-50 to-white shadow-[0_2px_6px_rgba(28,25,23,0.06)] shrink-0">
+                      <img
+                        alt="University of Swat Crest"
+                        src="/uos-logo-circle.png"
+                        className="w-full h-full object-contain rounded-md"
+                      />
                     </div>
                   </div>
-                )}
-              </div>
 
-              {/* Bottom Action Bar */}
-              <div className="border-t border-stone-100 pt-5 mt-6 flex flex-wrap items-center justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={handleShare}
-                  className="inline-flex items-center gap-2 border border-stone-200 bg-white hover:bg-stone-50 text-stone-700 px-4 py-2.5 rounded-xl text-sm font-medium shadow-[0_1px_2px_rgba(28,25,23,0.04)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
-                >
-                  <Share2 className="w-4 h-4 text-stone-500" />
-                  Share
-                </button>
-                <button
-                  type="button"
-                  onClick={handleDownload}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-[#065F46] to-[#153B27] text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_-12px_rgba(21,59,39,0.5)] hover:shadow-[0_16px_34px_-12px_rgba(21,59,39,0.6)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
-                >
-                  <Download className="w-4 h-4" />
-                  Download Notice (PDF)
-                </button>
+                  {/* Divider */}
+                  <div className="border-t border-stone-100 my-5" />
+
+                  {/* Main Content Body */}
+                  <h3 className="font-serif text-2xl lg:text-3xl font-bold text-stone-900 leading-tight tracking-[-0.015em]">
+                    {selectedAnnouncement.title}
+                  </h3>
+
+                  <div className="space-y-4 mt-4 text-stone-600 text-sm lg:text-base leading-relaxed">
+                    {selectedAnnouncement.paragraphs.map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+
+                  {/* Highlighted Callout Box */}
+                  {selectedAnnouncement.callout && (
+                    <div className="bg-gradient-to-b from-emerald-50/80 to-white border border-emerald-200/80 rounded-xl p-4 mt-6 shadow-[0_2px_10px_-4px_rgba(21,59,39,0.06)] flex gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-emerald-100/80 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Info className="w-4 h-4" />
+                      </span>
+                      <div>
+                        <p className="text-[11px] uppercase tracking-widest font-bold text-emerald-700 mb-1">
+                          {selectedAnnouncement.callout.title}
+                        </p>
+                        <p className="text-sm text-emerald-950 leading-relaxed font-medium">
+                          {selectedAnnouncement.callout.text}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Bottom Action Bar */}
+                <div className="border-t border-stone-100 pt-5 mt-6 flex flex-wrap items-center justify-end gap-3">
+                  <button
+                    type="button"
+                    onClick={handleShare}
+                    className="inline-flex items-center gap-2 border border-stone-200 bg-white hover:bg-stone-50 text-stone-700 px-4 py-2.5 rounded-xl text-sm font-medium shadow-[0_1px_2px_rgba(28,25,23,0.04)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
+                  >
+                    <Share2 className="w-4 h-4 text-stone-500" />
+                    Share
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleDownload}
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#065F46] to-[#153B27] text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_-12px_rgba(21,59,39,0.5)] hover:shadow-[0_16px_34px_-12px_rgba(21,59,39,0.6)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download Notice (PDF)
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>

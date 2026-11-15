@@ -192,7 +192,7 @@ const navItems: NavItem[] = [
       },
       {
         label: 'Scholarships & Aid',
-        href: '/admissions',
+        href: '/admissions#scholarships-heading',
         description: 'HEC Need-Based, Ehsaas & KPEF scholarships',
         icon: (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -339,6 +339,8 @@ export default function Navbar() {
   const desktopNavRef = useRef<HTMLElement>(null);
   const lastTriggerRef = useRef<HTMLElement | null>(null);
 
+  const activeNavItem = navItems.find((item) => item.label === activeDropdown) ?? null;
+
   const focusNavItem = (dir: number, current: number) => {
     const nav = desktopNavRef.current;
     if (!nav) return;
@@ -452,7 +454,10 @@ export default function Navbar() {
                       }
                     }}
                     aria-expanded={isDropdownOpen}
-                    className="flex items-center gap-1.5 text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer py-2 focus:outline-none"
+                    aria-haspopup="menu"
+                    className={`flex items-center gap-1.5 text-sm font-semibold transition-colors cursor-pointer py-2 focus:outline-none ${
+                      isDropdownOpen ? 'text-white' : 'text-white/90 hover:text-white'
+                    }`}
                   >
                     <span>{item.label}</span>
                     <svg
@@ -470,48 +475,88 @@ export default function Navbar() {
                     </svg>
                   </button>
 
-                  {/* Dropdown Menu Card (Smooth Fade In with Generously Increased Spacing) */}
+                  {/* Dropdown Menu Card (Premium mega menu) */}
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 pt-3.5 z-50 w-[740px] lg:w-[760px] max-w-[95vw] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top before:content-[''] before:absolute before:-top-3.5 before:left-0 before:right-0 before:h-3.5 ${
+                    className={`absolute top-full left-1/2 -translate-x-1/2 pt-3.5 z-50 w-[760px] lg:w-[820px] max-w-[95vw] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top before:content-[''] before:absolute before:-top-3.5 before:left-0 before:right-0 before:h-3.5 ${
                       isDropdownOpen
                         ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
                         : 'opacity-0 translate-y-2 scale-[0.985] pointer-events-none invisible'
                     }`}
                   >
-                    {/* Top Centered Pointer Arrow/Caret */}
                     <div className="relative">
+                      {/* Top centered pointer caret */}
                       <div
-                        className="absolute -top-2 left-1/2 -translate-x-1/2 w-4.5 h-4.5 bg-white rotate-45 border-t border-l border-slate-200/80 rounded-tl-[3px] shadow-[-2px_-2px_4px_rgba(0,0,0,0.03)] z-20"
+                        className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-t border-l border-stone-200 rounded-tl-[2px] z-20"
                         aria-hidden="true"
                       />
 
-                      {/* Card Content Surface with Generously Increased Spacing */}
-                      <div className="relative bg-white rounded-2xl shadow-[0_25px_60px_-15px_rgba(15,23,42,0.18),0_0_0_1px_rgba(15,23,42,0.06)] border border-slate-100 p-9 sm:p-10 lg:p-11 text-left z-10">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 sm:gap-x-14 gap-y-7 sm:gap-y-8">
-                          {item.submenu?.map((sub) => (
-                            <Link
-                              key={sub.label}
-                              href={sub.href}
-                              onClick={() => setActiveDropdown(null)}
-                              className="group flex items-start gap-4 sm:gap-4.5 p-3 -m-3 rounded-xl hover:bg-[#F9FAFB] transition-all duration-200"
-                            >
-                              {/* Left Line Icon */}
-                              <div className="w-11.5 h-11.5 sm:w-12 sm:h-12 rounded-xl bg-slate-50 border border-slate-200/75 flex items-center justify-center shrink-0 text-[#1D3523] group-hover:bg-[#1D3523]/10 group-hover:text-[#1D3523] group-hover:scale-105 transition-all">
-                                {sub.icon}
-                              </div>
-
-                              {/* Right Text Stack */}
-                              <div className="flex flex-col">
-                                <span className="text-[15.5px] sm:text-[16px] font-semibold text-[#111827] group-hover:text-[#1D3523] transition-colors leading-snug">
-                                  {sub.label}
-                                </span>
-                                <span className="text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed mt-1.5">
-                                  {sub.description}
-                                </span>
-                              </div>
-                            </Link>
-                          ))}
+                      {/* Premium card surface */}
+                      <div className="relative bg-white rounded-2xl shadow-[0_30px_70px_-20px_rgba(12,25,18,0.28),0_0_0_1px_rgba(20,41,29,0.06)] border border-stone-200/90 overflow-hidden text-left z-10">
+                        {/* Category header */}
+                        <div className="flex items-center justify-between gap-4 px-7 sm:px-8 py-4 border-b border-stone-100 bg-[#FBFAF7]">
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <span className="h-0.5 w-5 bg-[#C8A96E] shrink-0" aria-hidden="true" />
+                            <span className="text-[10px] uppercase tracking-[0.18em] text-[#7F1D1D] font-bold truncate">
+                              {item.label}
+                            </span>
+                            <span className="text-[11px] text-stone-500 font-medium truncate">
+                              University of Swat
+                            </span>
+                          </div>
+                          <Link
+                            href={item.href}
+                            onClick={() => setActiveDropdown(null)}
+                            className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#153B27] hover:text-[#7F1D1D] transition-colors shrink-0"
+                          >
+                            <span>View {item.label}</span>
+                            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                              <path d="M7 17L17 7M7 7h10v10" />
+                            </svg>
+                          </Link>
                         </div>
+
+                        {/* Links grid */}
+                        <div className="p-6 sm:p-7 lg:p-8">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                            {item.submenu?.map((sub) => (
+                              <Link
+                                key={`${item.label}-${sub.label}-${sub.href}`}
+                                href={sub.href}
+                                onClick={() => setActiveDropdown(null)}
+                                className="group relative flex items-start gap-4 p-3.5 rounded-xl border border-transparent hover:border-stone-200/90 hover:bg-[#FBFAF7] hover:-translate-y-[1px] transition-all duration-200 ease-out focus-visible:outline-none"
+                              >
+                                <div className="w-11 h-11 rounded-xl bg-stone-50 border border-stone-200/80 flex items-center justify-center shrink-0 text-[#153B27] group-hover:bg-[#153B27] group-hover:text-white group-hover:border-[#153B27] transition-all duration-200">
+                                  {sub.icon}
+                                </div>
+
+                                <div className="flex flex-col min-w-0 pt-0.5">
+                                  <span className="text-[15px] font-semibold text-[#14291D] group-hover:text-[#153B27] transition-colors leading-snug">
+                                    {sub.label}
+                                  </span>
+                                  <span className="text-[12.5px] text-stone-500 leading-relaxed mt-1">
+                                    {sub.description}
+                                  </span>
+                                </div>
+
+                                <svg
+                                  className="w-4 h-4 text-stone-300 group-hover:text-[#7F1D1D] ml-auto mt-1 shrink-0 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  aria-hidden="true"
+                                >
+                                  <path d="M5 12h14M13 5l7 7-7 7" />
+                                </svg>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Bottom accent rule */}
+                        <div className="h-[3px] w-full bg-gradient-to-r from-[#153B27] via-[#C8A96E]/70 to-transparent" aria-hidden="true" />
                       </div>
                     </div>
                   </div>
@@ -578,74 +623,108 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0C1912]/80 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all">
-          <div className="flex flex-col gap-3">
-            {navItems.map((item) => {
-              if (item.hasDropdown) {
-                const isOpen = mobileSubmenu === item.label;
-                return (
-                  <div key={item.label} className="border-b border-white/10 pb-2">
-                    <button
-                      type="button"
-                      onClick={() => setMobileSubmenu(isOpen ? null : item.label)}
-                      className="w-full flex items-center justify-between text-base font-semibold text-white py-1"
-                    >
-                      <span>{item.label}</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </button>
-                    {isOpen && (
-                      <div className="mt-2 pl-3 flex flex-col gap-2.5 border-l border-white/20">
-                        {item.submenu?.map((sub) => (
-                          <Link
-                            key={sub.label}
-                            href={sub.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="flex items-center gap-2.5 py-1 text-sm text-white/80 hover:text-white"
-                          >
-                            <span className="text-[#1D3523] bg-white/20 p-1 rounded-md">{sub.icon}</span>
-                            <div className="flex flex-col">
-                              <span className="font-semibold text-white">{sub.label}</span>
-                              <span className="text-[11px] text-white/60">{sub.description}</span>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-
+      <div className="md:hidden bg-[#0C1912]/95 backdrop-blur-2xl border-t border-white/10 px-5 sm:px-6 py-5 pb-7 max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="flex flex-col gap-1">
+          {navItems.map((item) => {
+            if (item.hasDropdown) {
+              const isOpen = mobileSubmenu === item.label;
               return (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-white/90 hover:text-white py-1 border-b border-white/10"
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+                <div key={item.label} className="border-b border-white/10">
+                  <button
+                    type="button"
+                    onClick={() => setMobileSubmenu(isOpen ? null : item.label)}
+                    aria-expanded={isOpen}
+                    className="w-full flex items-center justify-between text-[15px] font-semibold text-white py-3.5 min-h-[48px]"
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <span className={`h-1.5 w-1.5 rounded-full ${isOpen ? 'bg-[#C8A96E]' : 'bg-white/30'}`} aria-hidden="true" />
+                      {item.label}
+                    </span>
+                    <svg
+                      className={`w-4 h-4 text-white/70 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#C8A96E]' : ''}`}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
 
-            <div className="pt-3">
+                  {isOpen && (
+                    <div className="mb-3 ml-1 pl-3 border-l border-[#C8A96E]/30 flex flex-col gap-1">
+                      <Link
+                        href={item.href}
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          setMobileSubmenu(null);
+                        }}
+                        className="flex items-center justify-between gap-2 py-2.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-[13px] font-semibold text-[#C8A96E]"
+                      >
+                        <span>View all {item.label}</span>
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                      {item.submenu?.map((sub) => (
+                        <Link
+                          key={`${item.label}-${sub.label}-${sub.href}`}
+                          href={sub.href}
+                          onClick={() => {
+                            setMobileMenuOpen(false);
+                            setMobileSubmenu(null);
+                          }}
+                          className="flex items-start gap-3 py-2.5 px-2 rounded-lg text-white/85 hover:text-white hover:bg-white/5 transition-colors"
+                        >
+                          <span className="mt-0.5 w-8 h-8 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center shrink-0 text-[#C8A96E]">
+                            {sub.icon}
+                          </span>
+                          <span className="flex flex-col min-w-0">
+                            <span className="text-[14px] font-semibold text-white leading-snug">{sub.label}</span>
+                            <span className="text-[11.5px] text-white/55 leading-relaxed mt-0.5">{sub.description}</span>
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
               <Link
-                href="/portal"
+                key={item.label}
+                href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] text-white text-base font-semibold py-3 rounded-lg transition-colors shadow-md"
+                className="text-[15px] font-semibold text-white/90 hover:text-white py-3.5 border-b border-white/10 min-h-[48px] flex items-center"
               >
-                Student Portal
+                {item.label}
               </Link>
-            </div>
+            );
+          })}
+
+          <div className="pt-4 flex flex-col gap-2.5">
+            <Link
+              href="/search"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 text-white text-[15px] font-semibold py-3 rounded-xl transition-colors"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <span>Search University</span>
+            </Link>
+            <Link
+              href="/portal"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] text-white text-[15px] font-semibold py-3 rounded-xl transition-colors shadow-md"
+            >
+              Student Portal
+            </Link>
           </div>
         </div>
+      </div>
       )}
     </header>
   );

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# tasteskill chrome profiles + local audit scratch
+.taste-skill/
+.detect-out*.json

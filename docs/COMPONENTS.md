@@ -3,7 +3,7 @@
 This file tracks every component in the University of Swat project, its source location, dependencies, status, and replacement history.
 
 | Component | Path | Type | Status | Description |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `TopNoticeRibbon` | `src/components/layout/TopNoticeRibbon.tsx` | Client | **Active (Live Announcement Ticker)** | Topmost sticky ribbon with rotating admissions, merit list, and scholarship notices, direct CTA links, ticker controls, and dismiss trigger |
 | `Navbar` | `src/components/layout/Navbar.tsx` | Client | **Active (Flagship Academic Nav & Portal CTA)** | Transparent-to-frosted top navigation with circular crest, "University of Swat" branding, smooth cubic-bezier fade-in 2-column floating mega-menu cards, academic taxonomy (Programs, Faculty, Academics, Admissions, Campus Life, Research), and University Crimson (#7F1D1D) "Student Portal" button |
 | `HeroSection` | `src/components/home/HeroSection.tsx` | Client | **Active (Cinematic Video, 3 Architectural Crimson Cards)** | Full-screen background video hero with multi-stop vignette dissolving into Warm Alabaster (`#F6F5F0`), authoritative display serif H1, dual CTA, and three distinct University Crimson (`#7F1D1D`) architectural cards (Quality, Leadership, Experience) with muted gold top border + Roman numerals, overlapping the hero's bottom edge onto the light section below |
@@ -29,12 +29,12 @@ This file tracks every component in the University of Swat project, its source l
 ## Page Route Directory & Prerendered Templates
 
 | Route Pattern | File Path | Type | Status | Description |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `/` | `src/app/page.tsx` | Static / Client | **Active (Flagship Homepage)** | Approved full homepage (Hero, VC discourse, Campus Bulletin, Faculty Grid, Bento Heritage, Ranking Scorecard, Footer) |
 | `/faculty` | `src/app/faculty/page.tsx` | Static | **Active** | Catalog of all 4 faculties and 28 academic departments with direct links to dynamic profiles |
 | `/departments/[slug]` | `src/app/departments/[slug]/page.tsx` | SSG (Dynamic) | **Active (18+ Paths)** | Detailed department page with faculty directory, research aims, programs offered, and contact proforma |
-| `/programs` | `src/app/programs/page.tsx` | Client | **Active (Premium Program Finder & Syllabus Drawer)** | Redesigned academic program finder with shared `PageHeader` + fact strip, search & degree-level pills (`/` shortcut), 3x2 flagship spec cards (Roman numerals, gold top-rule), hairline directory rows (3-tier degree tags), and full-screen slide-over syllabus drawer (forest spec sheet, numbered semester roadmap, focus trap, Escape/return focus) |
-| `/programs/[slug]` | `src/app/programs/[slug]/page.tsx` | SSG (Dynamic) | **Active (6 Paths)** | Curricula syllabi, 8-semester course outlines, credit hours, and eligibility (BSCS, BSSE, BBA, BS Chemistry, LLB, BS Env Sci) |
+| `/programs` | `src/app/programs/page.tsx` | Client | **Active (Interactive Program Finder & Syllabus Drawer)** | Redesigned academic program finder with top clearance breadcrumb, search & degree-level segmented pills, 3x2 flagship cards with interactive slide-over syllabus drawer, horizontal faculty tabs, and unified 3-column architectural department directory container |
+| `/programs/[slug]` | `src/app/programs/[slug]/page.tsx` | SSG (Dynamic) | **Active (6 Paths) — Premium Editorial Template** | Breadcrumbed `PageHeader` with fact strip (Duration / Credit / Accreditation / Fee), editorial scope split with real departmental photography (Chemistry, Env Sci) or forest type-panel, numbered serif learning-outcome index, ruled semester/LLB-year timeline with auto Capstone chips, Roman-numeral career rows, forest-header Enrollment Overview sidebar, and index-style other-programs directory (BSCS, BSSE, BBA, BS Chemistry, LLB, BS Env Sci) |
 | `/leadership` | `src/app/leadership/page.tsx` | Static | **Active** | Statutory university leadership catalog and administrative council |
 | `/leadership/vice-chancellor` | `src/app/leadership/vice-chancellor/page.tsx` | Static | **Active** | Full discourse, vision, curriculum vitae, and secretariat of Prof. Dr. Husnul Amin |
 | `/leadership/[slug]` | `src/app/leadership/[slug]/page.tsx` | SSG (Dynamic) | **Active (4 Paths)** | Administrative profiles for Registrar, Treasurer, Controller of Examinations, and Provost |
@@ -63,7 +63,7 @@ This file tracks every component in the University of Swat project, its source l
 ## Deprecated & Replaced Components
 
 | Legacy Component | Previous Path | Replaced By | Date | Reason |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `ViceChancellorDesk` | `src/components/home/ViceChancellorDesk.tsx` | *(Removed)* | 2026-11-14 | Section removed per user design request |
 | `UniversityQuote` | `src/components/home/UniversityQuote.tsx` | *(Removed)* | 2026-11-14 | Section removed per user design request |
 | `Header` | `src/components/layout/Header.tsx` | `Navbar` (`CardNav`) | 2026-11-14 | Replaced with modern React Bits `<CardNav />` component |
@@ -79,7 +79,7 @@ This file tracks every component in the University of Swat project, its source l
 ## Data Models & Utilities
 
 | Module | Path | Description |
-|---|---|---|
+| --- | --- | --- |
 | Navigation Data | `src/data/navigation.ts` | Mega menu links, categories, campus details |
 | Announcements Data | `src/data/announcements.ts` | Structured typed notices (13 items, all 7 tabs), tone-based badges, official references, callout boxes |
 | University Data | `src/data/universityData.ts` | Statutory history, governance, accreditation metrics, official email/phone directory |

@@ -4,6 +4,36 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-15] — Program Detail Pages (`/programs/[slug]`) Design-Taste Audit & Premium Overhaul
+
+### Action Summary
+Applied `design-taste-frontend` rules to `src/app/programs/[slug]/page.tsx` (6 prerendered paths: BSCS, BSSE, BBA, BS Chemistry, LLB, BS Env Sci) bringing the sub-pages up to the same premium editorial standard as the `/programs` flagship page while preserving 100% of functionality (static params, metadata, `notFound`, department/admissions links, all curriculum data).
+
+### Key Changes
+1. **Header integration** (House Rule 4): Replaced the standalone "Back to All Programs" row and the old `tag`/`subtitle` header usage with the full breadcrumb trail `Home > Academics > Degrees & Curricula > [Program]` and a verified fact strip in the `PageHeader` children slot (Duration / Credit Hours / Accreditation / Open Merit Fee), matching the `/programs` header language (hairline dividers, gold serif values, `tabular-nums`).
+2. **Palette discipline**: Removed all off-palette chips (`emerald-50`/`rose-50`/`amber-50` icon boxes) — the page now uses only the institutional tokens (forest `#153B27`, crimson `#7F1D1D`, gold `#C8A96E`/`#B48A3E`, alabaster, stone neutrals).
+3. **Curricular scope section**: Editorial split — program description + department line on the left; on the right, a real departmental photograph (Chemistry / Environmental Sciences only, where authentic subject photos exist; no caption, immersive alt text) or a forest type-panel with crest watermark and gold rule for programs without subject photography (BSCS, BSSE, BBA, LLB).
+4. **Eligibility**: Replaced the grey box paragraph with a gold-ruled callout (matching the syllabus drawer's eligibility pattern).
+5. **Learning outcomes**: Check-icon list replaced with a numbered serif index (01–04) in hairline `divide-y` rows with hover background.
+6. **Semester scheme**: The repetitive 2-column grey-box grid replaced with a ruled index timeline — serif term numerals with a connecting vertical line, term label + course count, gold-dash course lists, and an automatic `Capstone` chip (word-bounded matching, e.g. `Research Project / Thesis` or `Final Year Project`, with no false positives from "Organic **Synthesis**"), plus `Year of Study` labels for the 5-year LLB roadmap.
+7. **Career prospects**: Identical grey boxes replaced with Roman-numeral (I–V) hairline rows with hover color transitions.
+8. **Sidebar**: Enrollment Overview rebuilt with a forest header band (gold top rule, crest watermark), hairline `dl` fact rows (Duration / Credits / Fee / Scholarships / Accreditation chip), and the system CTA pair — crimson "Apply Fall 2026" + forest-outline "Department Faculty & Labs". "Other Degree Programs" is now an index directory (01–05) with arrow-translate hover and a "Browse All Degrees" crimson micro-CTA.
+9. **Motion & interaction**: Consistent hover language added site-wide within the page — card lift/photo zoom (1.02), arrow translate, row background transitions, `active:scale` presses; all respect the global `prefers-reduced-motion` rule.
+
+### Technical Notes
+- Typecheck: `npx tsc --noEmit` clean.
+- Verified rendered DOM for BSCS (semester-based, no photo), LLB (year-based, PBC accreditation, 5 terms), and BS Chemistry (photo variant, 8 terms) via the dev server (`localhost:3001`).
+- Capstone detection regex hardened with `\b` word boundaries (`/\b(final year|capstone|thesis|internship)\b/i`).
+- Content facts untouched; nothing invented. Photos are the university's own real departmental assets and only used for programs with a matching subject department.
+
+### Files Modified
+- `src/app/programs/[slug]/page.tsx`
+- `docs/CHANGELOG.md`
+- `docs/COMPONENTS.md` (registry status)
+- `AGENTS.md` (registry note)
+
+---
+
 ## [2026-11-15] — Programs Page (`/programs`) Design-Taste Audit & Premium Overhaul
 
 ### Action Summary
