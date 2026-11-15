@@ -4,6 +4,80 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-15] — Homepage Design-Taste Audit & Polish (tasteskill 2.5 Compliance)
+
+### Action Summary
+Conducted a systematic audit and visual quality upgrade of the University of Swat homepage (`src/app/page.tsx` and all 12 constituent modular sections in `src/components/home/`) following `design-taste-frontend` rules while strictly preserving 100% of functional logic:
+
+1. **House Rule 1 & 6 (Authentic Imagery & Zero Sub-Captions)**:
+   - Verified all photography features authentic University of Swat assets (Charbagh 350-canal alpine campus, VC Prof. Dr. Husnul Amin portrait, Gandhara Buddhist heritage excavations, Academic blocks, sports pavilions).
+   - Removed any separate stock-caption lines; all metadata is cleanly integrated into frosted editorial overlays inside the frame.
+   - Added `loading="lazy"` across all below-the-fold photo elements.
+
+2. **House Rule 4 (Equal Left and Right Content Edges)**:
+   - Unified content boundaries across all 12 sections strictly to `max-w-[1360px] mx-auto px-6 lg:px-12`.
+   - Fixed the `ViceChancellorSection` leadership discourse bridge header, which previously sat outside the container without mobile gutters.
+   - Fixed `CampusPhotoRibbon`, wrapping the 6-photo grid inside the standard 1360px boundary to ensure precise edge alignment with the header above.
+
+3. **House Rule 3 (Rhythm & Generous Clearance)**:
+   - Increased top clearance in `ViceChancellorSection` to `pt-36 sm:pt-44 lg:pt-48` so the 3 translated crimson pillars from `HeroSection` breathe comfortably above the leadership headline without vertical crowding or collision on mobile and desktop viewports.
+
+4. **House Rule 5 (Hover Micro-interactions & Tactile States)**:
+   - **2px Card Lift**: Unified linked cards across `HeroSection`, `FacultyProgramsGrid`, `FlagshipDegreeSpotlight`, `CampusBulletin`, `UpcomingEvents`, `CampusLifeHeritage`, `StudentAlumniSuccess`, `AdmissionsInquiryFunnel`, and `CampusPhotoRibbon` to the standard `hover:-translate-y-[2px] transition-all duration-200 ease-out`.
+   - **1.025 Photo Zoom**: Calibrated image zoom on hover to `group-hover:scale-[1.025] transition-transform duration-500 ease-out` (replacing excessive 1.05-1.10 zooms).
+   - **Tactile Button Press States**: Added `active:scale-[0.985] active:translate-y-px transition-all duration-150` on all primary buttons, secondary outlines, category filter pills, slider controls, and form submit actions.
+
+5. **Brand Color System 60-30-10 Enforcement**:
+   - Anchored palette in Deep Forest Green (`#153B27`), University Crimson (`#7F1D1D`), Muted Gold (`#C8A96E` / `#E0C078`), Warm Alabaster (`#F6F5F0`), and Deep Charcoal ink (`#14291D`), completely eliminating AI-slop gradients.
+
+### Files Modified
+- `src/components/home/HeroSection.tsx`
+- `src/components/home/ViceChancellorSection.tsx`
+- `src/components/home/EditorialStorytelling.tsx`
+- `src/components/home/FacultyProgramsGrid.tsx`
+- `src/components/home/FlagshipDegreeSpotlight.tsx`
+- `src/components/home/CampusBulletin.tsx`
+- `src/components/home/CampusTourBanner.tsx`
+- `src/components/home/UpcomingEvents.tsx`
+- `src/components/home/RankingSection.tsx`
+- `src/components/home/CampusLifeHeritage.tsx`
+- `src/components/home/StudentAlumniSuccess.tsx`
+- `src/components/home/AdmissionsInquiryFunnel.tsx`
+- `src/components/home/CampusPhotoRibbon.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — University of Swat High-Contrast Brand Color System & Architectural Sub-Page Upgrade
+
+### Action Summary
+Implemented the high-contrast 60-30-10 Brand Color System across global layouts and inner sub-pages:
+- **Primary Brand Green (`#153B27` / `#0F291B`)**: Architectural hero banners, faculty headers, HoD badges, active filter tabs, and the site footer.
+- **Secondary Brand Red (`#7F1D1D`)**: Primary CTAs, 4-stat overlapping top borders, card top accents, and "Profile & Faculty →" links.
+- **Accent Gold (`#C8A96E`)**: Eyebrows, divider rules, and dark-surface highlights.
+- **Canvas & Cards (`#F6F5F0` + `#FFFFFF`)**: Body background with crisp white card interiors and high-contrast charcoal (`#111827`) typography.
+
+Key upgrades deployed:
+1. **`PageHeader` Architectural Overhaul (`src/components/layout/PageHeader.tsx`)**:
+   - Replaced pale grey banner with rich Deep Forest Green (`bg-[#153B27]`) architectural canvas, Muted Gold (`#C8A96E`) eyebrow with accent bar, crisp Pure White serif H1, and soft stone-200 description.
+   - Fixed the navbar overlap bug by removing the floating back link and adding an integrated breadcrumb trail with full `pt-32 sm:pt-40` clearance.
+2. **`Faculties & Teaching Departments` (`src/app/faculty/page.tsx`)**:
+   - Pulled the 4-column summary stat bar up (`-mt-10 sm:-mt-12 relative z-20`) to overlap the green hero banner with a bold **University Crimson top border (`border-t-4 border-[#7F1D1D]`)**, sharp borders, and high-contrast numbers.
+   - Enhanced Faculty group headers with solid Forest Green icon badges (`bg-[#153B27] text-white`) and bottom divider rules (`border-b border-stone-300 pb-4`).
+   - Upgraded all 28 Department Cards with `border-t-[3px] border-t-[#153B27] hover:border-t-[#7F1D1D] hover:border-[#7F1D1D]`, HoD badge in Forest Green tint (`bg-[#153B27]/10 text-[#153B27]`), and bold Crimson `"Profile & Faculty →"` links.
+3. **`Degrees & Curricula` (`src/app/programs/page.tsx`)**:
+   - Aligned hero banner to Deep Forest Green (`bg-[#153B27]`) with Muted Gold eyebrow and overlapping Crimson-accented Program Finder bar (`-mt-10 sm:-mt-12`).
+   - Added `border-t-[3px] border-t-[#153B27]` to flagship degree cards and bold Crimson `Dept. Profile →` links.
+4. **Commanding Deep Forest Green Footer (`src/components/layout/Footer.tsx`)**:
+   - Re-anchored the global footer in **Deep Forest Green (`bg-[#0F291B] text-stone-200`)** with a **University Crimson (`border-t-4 border-[#7F1D1D]`)** top border and Crimson newsletter action button.
+   - Replaced all placeholder links with authentic University of Swat programs, departments, and statutory bodies (*BS Computer Science*, *Doctor of Physical Therapy (DPT)*, *BS Environmental Sciences*, *LLB 5-Year*, *ORIC Research*, *QEC*, *Tenders & Procurement*).
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 103/103 static pages prerendered successfully with Turbopack.
+
+---
+
 ## [2026-11-15] — Clean Architectural Redesign of Global Footer (`Footer.tsx`)
 
 ### Action Summary

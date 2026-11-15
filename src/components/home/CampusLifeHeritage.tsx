@@ -125,8 +125,8 @@ export default function CampusLifeHeritage() {
               key={tile.id}
               className={
                 tile.featured
-                  ? 'group relative min-h-[260px] sm:min-h-[380px] lg:col-span-2 lg:row-span-2 lg:min-h-[520px] rounded-xl border border-stone-200/90 bg-white shadow-xs overflow-hidden'
-                  : 'group relative min-h-[220px] rounded-xl border border-stone-200/90 bg-white shadow-xs overflow-hidden'
+                  ? 'group relative min-h-[260px] sm:min-h-[380px] lg:col-span-2 lg:row-span-2 lg:min-h-[520px] rounded-xl border border-stone-200/90 bg-white shadow-xs overflow-hidden hover:-translate-y-[2px] transition-all duration-200 ease-out'
+                  : 'group relative min-h-[220px] rounded-xl border border-stone-200/90 bg-white shadow-xs overflow-hidden hover:-translate-y-[2px] transition-all duration-200 ease-out'
               }
             >
               <button
@@ -138,7 +138,8 @@ export default function CampusLifeHeritage() {
                 <img
                   src={tile.image}
                   alt={tile.alt}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
                 />
 
                 {/* Hairline ring */}

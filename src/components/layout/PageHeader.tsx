@@ -1,5 +1,11 @@
+import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
 
 interface PageHeaderProps {
   eyebrow: string;
@@ -9,6 +15,7 @@ interface PageHeaderProps {
   tag?: string;
   backHref?: string;
   backLabel?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 export default function PageHeader({
@@ -18,38 +25,75 @@ export default function PageHeader({
   subtitle,
   tag,
   backHref = '/',
-  backLabel = 'Home',
+  backLabel,
+  breadcrumbs,
 }: PageHeaderProps) {
   const displayDescription = description || subtitle;
   const displayEyebrow = tag || eyebrow;
+
+  // Build breadcrumb items if not explicitly passed
+  const crumbs: BreadcrumbItem[] = breadcrumbs || [
+    { label: 'Home', href: '/' },
+    ...(backLabel && backHref !== '/' ? [{ label: backLabel, href: backHref }] : []),
+    { label: title },
+  ];
+
   return (
-    <div className="relative overflow-hidden bg-[#F6F5F0] border-b border-stone-200/80">
-      <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/8 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
+    <div className="relative overflow-hidden bg-[#153B27] text-white border-b border-[#0C1912]/40 pt-32 sm:pt-40 pb-16 sm:pb-20">
+      {/* Subtle atmospheric ambient glow */}
+      <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/12 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#0C1912]/50 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-14 lg:py-20 relative z-10">
-        <Link
-          href={backHref}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-500 hover:text-[#153B27] transition-colors mb-5"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          {backLabel}
-        </Link>
+      {/* Decorative Crest Watermark */}
+      <div className="absolute right-6 -bottom-10 w-72 h-72 opacity-[0.04] pointer-events-none hidden lg:block">
+        <img src="/uos-logo-circle.png" alt="" className="w-full h-full object-contain invert" />
+      </div>
 
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+        {/* Clean Integrated Breadcrumb Trail (inside container, below navbar) */}
+        <nav aria-label="Breadcrumb" className="mb-6">
+          <ol className="flex items-center gap-2 text-xs font-medium text-stone-300 flex-wrap">
+            {crumbs.map((crumb, idx) => {
+              const isLast = idx === crumbs.length - 1;
+              return (
+                <React.Fragment key={idx}>
+                  {idx > 0 && <ChevronRight className="w-3.5 h-3.5 text-stone-400 shrink-0" />}
+                  <li>
+                    {isLast || !crumb.href ? (
+                      <span className="text-amber-300 font-semibold" aria-current="page">
+                        {crumb.label}
+                      </span>
+                    ) : (
+                      <Link
+                        href={crumb.href}
+                        className="hover:text-white transition-colors"
+                      >
+                        {crumb.label}
+                      </Link>
+                    )}
+                  </li>
+                </React.Fragment>
+              );
+            })}
+          </ol>
+        </nav>
+
+        {/* Section Header Content */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <div>
-            <div className="flex items-center gap-2.5 mb-3">
-              <span className="h-0.5 w-7 bg-[#7F1D1D]" />
-              <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+            <div className="flex items-center gap-2.5 mb-3.5">
+              <span className="h-0.5 w-7 bg-[#C8A96E]" />
+              <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
                 {displayEyebrow}
               </span>
             </div>
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-[52px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.08]">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-bold tracking-tight leading-[1.12]">
               {title}
             </h1>
           </div>
+
           {displayDescription && (
-            <p className="font-sans text-sm sm:text-base text-stone-500 max-w-md lg:text-right leading-[1.68]">
+            <p className="font-sans text-sm sm:text-base text-stone-200 max-w-lg lg:text-right leading-relaxed">
               {displayDescription}
             </p>
           )}

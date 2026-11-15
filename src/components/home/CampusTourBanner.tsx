@@ -46,7 +46,7 @@ export default function CampusTourBanner() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/campuses/main-campus"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#7F1D1D] hover:bg-[#681818] text-white text-base font-semibold shadow-lg transition-all duration-200 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#7F1D1D] hover:bg-[#681818] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-base font-semibold shadow-lg transition-all duration-150 group"
           >
             <span>Plan an On-Campus Visit</span>
             <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
@@ -55,9 +55,9 @@ export default function CampusTourBanner() {
           <button
             type="button"
             onClick={() => setIsVideoModalOpen(true)}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white text-base font-semibold backdrop-blur-md border border-white/20 transition-all duration-200 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-base font-semibold backdrop-blur-md border border-white/20 transition-all duration-150 group"
           >
-            <span className="w-6 h-6 rounded-full bg-emerald-500/30 flex items-center justify-center text-emerald-300 group-hover:scale-110 transition-transform">
+            <span className="w-6 h-6 rounded-full bg-emerald-500/30 flex items-center justify-center text-emerald-300 group-hover:scale-105 transition-transform">
               <Play className="w-3.5 h-3.5 fill-current" />
             </span>
             <span>Watch Campus Video Tour</span>

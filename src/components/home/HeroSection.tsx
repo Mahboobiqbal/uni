@@ -145,13 +145,13 @@ export default function HeroSection() {
         <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/programs"
-            className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-lg shadow-lg shadow-black/40 hover:scale-[1.02] active:scale-100 transition-all"
+            className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] active:scale-[0.985] active:translate-y-px text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-lg shadow-lg shadow-black/40 hover:-translate-y-[2px] transition-all duration-150"
           >
             Explore Programs
           </Link>
           <Link
             href="/campus-life"
-            className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 active:bg-white/15 text-white backdrop-blur-md border border-white/20 font-semibold text-sm sm:text-base px-7 py-3.5 rounded-lg transition-all shadow-md shadow-black/20 hover:scale-[1.02] active:scale-100"
+            className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 active:bg-white/15 active:scale-[0.985] active:translate-y-px text-white backdrop-blur-md border border-white/20 font-semibold text-sm sm:text-base px-7 py-3.5 rounded-lg transition-all duration-150 shadow-md shadow-black/20 hover:-translate-y-[2px]"
           >
             Explore Campus Life
           </Link>
@@ -160,12 +160,12 @@ export default function HeroSection() {
 
       {/* Three Architectural Crimson Pillars — overlapping the bottom edge onto Warm Alabaster */}
       <div className="absolute bottom-0 inset-x-0 z-30 pointer-events-none">
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-6 translate-y-[35%] md:translate-y-[45%] pointer-events-auto">
+        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 translate-y-[35%] md:translate-y-[45%] pointer-events-auto">
             {heroPillars.map((pillar) => (
               <article
                 key={pillar.title}
-                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] px-3 py-4 sm:px-7 sm:py-6 flex flex-col gap-2 sm:gap-3 transition-transform duration-300 hover:-translate-y-1"
+                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] px-3 py-4 sm:px-7 sm:py-6 flex flex-col gap-2 sm:gap-3 transition-all duration-200 ease-out hover:-translate-y-[2px]"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-serif italic text-base sm:text-lg text-[#E0C078]">{pillar.numeral}</span>

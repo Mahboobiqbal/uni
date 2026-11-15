@@ -291,17 +291,17 @@ export default function ProgramsPage() {
 
   return (
     <div className="bg-[#F6F5F0] min-h-screen text-[#14291D]">
-      {/* ─── Hero Header & Clean Breadcrumb (Fixed overlap, high clearance) ─── */}
-      <section className="relative overflow-hidden bg-[#F6F5F0] border-b border-stone-200/80 pt-32 sm:pt-40 pb-14 sm:pb-18">
-        <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/10 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#153B27]/8 blur-3xl pointer-events-none" />
+      {/* ─── Hero Header & Clean Breadcrumb in Deep Forest Green (#153B27) ─── */}
+      <section className="relative overflow-hidden bg-[#153B27] text-white border-b border-[#0C1912]/40 pt-32 sm:pt-40 pb-20 sm:pb-24">
+        <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/12 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#0C1912]/50 blur-3xl pointer-events-none" />
 
         <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
           {/* Clean Integrated Breadcrumb (Inside container, strictly below navbar) */}
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-xs font-medium text-stone-500 flex-wrap">
+            <ol className="flex items-center gap-2 text-xs font-medium text-stone-300 flex-wrap">
               <li>
-                <Link href="/" className="hover:text-[#153B27] transition-colors">
+                <Link href="/" className="hover:text-white transition-colors">
                   Home
                 </Link>
               </li>
@@ -309,114 +309,115 @@ export default function ProgramsPage() {
                 <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
               </li>
               <li>
-                <Link href="/academics" className="hover:text-[#153B27] transition-colors">
+                <Link href="/academics" className="hover:text-white transition-colors">
                   Academics
                 </Link>
               </li>
               <li>
                 <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
               </li>
-              <li className="text-[#153B27] font-semibold" aria-current="page">
+              <li className="text-amber-300 font-semibold" aria-current="page">
                 Degrees &amp; Curricula
               </li>
             </ol>
           </nav>
 
           {/* Section Eyebrow + Title */}
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
-              <div className="flex items-center gap-2.5 mb-3">
-                <span className="h-0.5 w-7 bg-[#7F1D1D]" />
-                <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+              <div className="flex items-center gap-2.5 mb-3.5">
+                <span className="h-0.5 w-7 bg-[#C8A96E]" />
+                <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
                   Academic Programs &amp; Schemes of Study
                 </span>
               </div>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#14291D] font-bold tracking-tight leading-[1.08]">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-[1.08]">
                 Degrees &amp; Curricula
               </h1>
             </div>
-            <p className="font-sans text-sm sm:text-base text-stone-600 max-w-lg lg:text-right leading-relaxed">
+            <p className="font-sans text-sm sm:text-base text-stone-200 max-w-lg lg:text-right leading-relaxed">
               Explore our accredited undergraduate, master&rsquo;s, and doctoral programs designed for
               academic rigor, alpine field research, and career distinction.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* ─── Program Finder Bar (Bridges header & content) ─── */}
-          <div className="bg-white border border-stone-200/90 rounded-2xl p-3 sm:p-4 shadow-sm flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
-            {/* Left: Instant Search Input */}
-            <div className="relative flex-1">
-              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search degree programs, departments, or disciplines (e.g., Software, DPT, Law, Chemistry)..."
-                className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-stone-50 border border-stone-200/80 text-xs sm:text-sm text-[#14291D] placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:bg-white transition-all"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery('')}
-                  aria-label="Clear search"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700 rounded-full"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
-            </div>
-
-            {/* Right: Segmented Degree-Level Filter Pills */}
-            <div className="flex items-center gap-1.5 p-1 bg-stone-100/90 rounded-xl overflow-x-auto shrink-0 scrollbar-none">
-              {[
-                { id: 'all', label: 'All Levels' },
-                { id: 'undergraduate', label: 'Undergraduate (BS / LLB)' },
-                { id: 'graduate', label: 'Graduate (MS / MPhil / MBA)' },
-                { id: 'doctorate', label: 'Doctorate (PhD)' },
-              ].map((lvl) => {
-                const isActive = selectedLevel === lvl.id;
-                return (
-                  <button
-                    key={lvl.id}
-                    type="button"
-                    onClick={() => setSelectedLevel(lvl.id as DegreeLevelFilter)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
-                      isActive
-                        ? 'bg-[#153B27] text-white shadow-xs'
-                        : 'text-stone-600 hover:text-[#14291D] hover:bg-white/60'
-                    }`}
-                  >
-                    {lvl.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Quick Metrics & Results Readout */}
-          <div className="mt-3.5 flex items-center justify-between text-xs text-stone-500 px-1">
-            <span className="font-medium">
-              Showing{' '}
-              <strong className="text-[#14291D] font-bold">{filteredDepartments.length}</strong>{' '}
-              departments &bull;{' '}
-              <strong className="text-[#153B27] font-bold">{totalProgramsCount}</strong> degree
-              tracks
-            </span>
-            {(searchQuery || selectedLevel !== 'all' || selectedFaculty !== 'all') && (
+      {/* ─── Program Finder Bar (Overlaps header with Crimson top accent) ─── */}
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 -mt-10 sm:-mt-12 relative z-20">
+        <div className="bg-white border border-stone-200/90 border-t-4 border-t-[#7F1D1D] rounded-2xl p-4 sm:p-5 shadow-xl flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
+          {/* Left: Instant Search Input */}
+          <div className="relative flex-1">
+            <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search degree programs, departments, or disciplines (e.g., Software, DPT, Law, Chemistry)..."
+              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-stone-50 border border-stone-200/80 text-xs sm:text-sm text-[#14291D] placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:bg-white transition-all"
+            />
+            {searchQuery && (
               <button
                 type="button"
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedLevel('all');
-                  setSelectedFaculty('all');
-                }}
-                className="text-[#7F1D1D] hover:underline font-semibold"
+                onClick={() => setSearchQuery('')}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700 rounded-full"
               >
-                Reset All Filters
+                <X className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
+
+          {/* Right: Segmented Degree-Level Filter Pills */}
+          <div className="flex items-center gap-1.5 p-1 bg-stone-100/90 rounded-xl overflow-x-auto shrink-0 scrollbar-none">
+            {[
+              { id: 'all', label: 'All Levels' },
+              { id: 'undergraduate', label: 'Undergraduate (BS / LLB)' },
+              { id: 'graduate', label: 'Graduate (MS / MPhil / MBA)' },
+              { id: 'doctorate', label: 'Doctorate (PhD)' },
+            ].map((lvl) => {
+              const isActive = selectedLevel === lvl.id;
+              return (
+                <button
+                  key={lvl.id}
+                  type="button"
+                  onClick={() => setSelectedLevel(lvl.id as DegreeLevelFilter)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                    isActive
+                      ? 'bg-[#153B27] text-white shadow-xs'
+                      : 'text-stone-600 hover:text-[#14291D] hover:bg-white/60'
+                  }`}
+                >
+                  {lvl.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </section>
+
+        {/* Quick Metrics & Results Readout */}
+        <div className="mt-3.5 flex items-center justify-between text-xs text-stone-500 px-1">
+          <span className="font-medium">
+            Showing{' '}
+            <strong className="text-[#14291D] font-bold">{filteredDepartments.length}</strong>{' '}
+            departments &bull;{' '}
+            <strong className="text-[#153B27] font-bold">{totalProgramsCount}</strong> degree tracks
+          </span>
+          {(searchQuery || selectedLevel !== 'all' || selectedFaculty !== 'all') && (
+            <button
+              type="button"
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedLevel('all');
+                setSelectedFaculty('all');
+              }}
+              className="text-[#7F1D1D] hover:underline font-semibold"
+            >
+              Reset All Filters
+            </button>
+          )}
+        </div>
+      </div>
 
       {/* Main Content Area */}
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20 space-y-20">
@@ -448,7 +449,7 @@ export default function ProgramsPage() {
               {filteredFlagship.map((prog) => (
                 <article
                   key={prog.slug}
-                  className="group relative flex flex-col justify-between p-7 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-[#153B27]/40 hover:shadow-xl transition-all duration-300"
+                  className="group relative flex flex-col justify-between p-7 rounded-2xl bg-white border border-stone-200/90 border-t-[3px] border-t-[#153B27] shadow-xs hover:border-[#7F1D1D] hover:border-t-[#7F1D1D] hover:shadow-xl transition-all duration-300"
                 >
                   <div>
                     {/* Top Row: Duration & Credits */}
@@ -658,11 +659,11 @@ export default function ProgramsPage() {
                         })}
                       </div>
 
-                      {/* Right Column (15%): Dept Profile Link */}
+                      {/* Right Column (15%): Dept Profile Link in University Crimson */}
                       <div className="lg:w-[15%] lg:text-right shrink-0 pt-2 lg:pt-0">
                         <Link
                           href={`/departments/${dept.id}`}
-                          className="inline-flex items-center gap-1 text-xs font-bold text-[#153B27] hover:text-[#7F1D1D] transition-colors group/link"
+                          className="inline-flex items-center gap-1 text-xs font-bold text-[#7F1D1D] hover:text-[#991B1B] hover:underline transition-colors group/link"
                         >
                           <span>Dept. Profile</span>
                           <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />

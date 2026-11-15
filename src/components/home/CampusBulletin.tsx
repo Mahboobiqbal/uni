@@ -88,7 +88,7 @@ function AutoScrollingFeed({ items, selectedId, onSelect, lockOnLeave }: AutoScr
               'group/bullet relative w-full text-left p-4 rounded-2xl border transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50 overflow-hidden',
               active
                 ? 'border-emerald-600/70 ring-1 ring-emerald-600/20 bg-gradient-to-b from-emerald-50/50 to-white shadow-[0_10px_28px_-14px_rgba(21,59,39,0.22)]'
-                : 'border-stone-200/90 bg-gradient-to-b from-white to-stone-50/60 shadow-[0_1px_2px_rgba(28,25,23,0.04)] hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_16px_34px_-16px_rgba(21,59,39,0.25)]'
+                : 'border-stone-200/90 bg-gradient-to-b from-white to-stone-50/60 shadow-[0_1px_2px_rgba(28,25,23,0.04)] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px hover:border-emerald-500/40 hover:shadow-[0_16px_34px_-16px_rgba(21,59,39,0.25)]'
             )}
           >
             {/* VC-card sheen sweep on hover */}
@@ -461,7 +461,7 @@ export default function CampusBulletin() {
                 <button
                   type="button"
                   onClick={handleShare}
-                  className="inline-flex items-center gap-2 border border-stone-200 bg-white hover:bg-stone-50 text-stone-700 px-4 py-2.5 rounded-xl text-sm font-medium shadow-[0_1px_2px_rgba(28,25,23,0.04)] transition-all duration-200 cursor-pointer hover:-translate-y-px active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
+                  className="inline-flex items-center gap-2 border border-stone-200 bg-white hover:bg-stone-50 text-stone-700 px-4 py-2.5 rounded-xl text-sm font-medium shadow-[0_1px_2px_rgba(28,25,23,0.04)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
                 >
                   <Share2 className="w-4 h-4 text-stone-500" />
                   Share
@@ -469,7 +469,7 @@ export default function CampusBulletin() {
                 <button
                   type="button"
                   onClick={handleDownload}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-[#065F46] to-[#153B27] text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_-12px_rgba(21,59,39,0.5)] hover:shadow-[0_16px_34px_-12px_rgba(21,59,39,0.6)] transition-all duration-200 cursor-pointer hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-[#065F46] to-[#153B27] text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_-12px_rgba(21,59,39,0.5)] hover:shadow-[0_16px_34px_-12px_rgba(21,59,39,0.6)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
                 >
                   <Download className="w-4 h-4" />
                   Download Notice (PDF)

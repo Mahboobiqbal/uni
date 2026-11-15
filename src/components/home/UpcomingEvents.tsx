@@ -124,7 +124,7 @@ export default function UpcomingEvents() {
                 type="button"
                 onClick={scrollLeft}
                 aria-label="Previous events"
-                className="w-10 h-10 rounded-full border border-stone-300 bg-white hover:bg-[#153B27] hover:text-white hover:border-[#153B27] flex items-center justify-center text-stone-700 shadow-xs transition-colors"
+                className="w-10 h-10 rounded-full border border-stone-300 bg-white hover:bg-[#153B27] hover:text-white hover:border-[#153B27] active:scale-95 flex items-center justify-center text-stone-700 shadow-xs transition-all duration-150"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -132,7 +132,7 @@ export default function UpcomingEvents() {
                 type="button"
                 onClick={scrollRight}
                 aria-label="Next events"
-                className="w-10 h-10 rounded-full border border-stone-300 bg-white hover:bg-[#153B27] hover:text-white hover:border-[#153B27] flex items-center justify-center text-stone-700 shadow-xs transition-colors"
+                className="w-10 h-10 rounded-full border border-stone-300 bg-white hover:bg-[#153B27] hover:text-white hover:border-[#153B27] active:scale-95 flex items-center justify-center text-stone-700 shadow-xs transition-all duration-150"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -148,14 +148,15 @@ export default function UpcomingEvents() {
           {events.map((event) => (
             <article
               key={event.id}
-              className="group relative flex-none w-[310px] sm:w-[350px] lg:w-[390px] rounded-2xl border border-stone-200/90 bg-white shadow-xs overflow-hidden snap-start transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="group relative flex-none w-[310px] sm:w-[350px] lg:w-[390px] rounded-2xl border border-stone-200/90 bg-white shadow-xs overflow-hidden snap-start transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-xl"
             >
               {/* Event Image Banner */}
               <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
                 <img
                   src={event.image}
                   alt={event.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 

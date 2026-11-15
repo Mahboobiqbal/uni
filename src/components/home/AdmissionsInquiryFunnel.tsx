@@ -112,7 +112,7 @@ export default function AdmissionsInquiryFunnel() {
             <div className="relative z-10 mt-8 pt-6 border-t border-white/10">
               <Link
                 href="/admissions/fee-structure"
-                className="group flex items-center justify-between p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 backdrop-blur-md transition-all duration-200"
+                className="group flex items-center justify-between p-4 rounded-xl bg-white/10 hover:bg-white/15 hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px border border-white/15 backdrop-blur-md transition-all duration-150"
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center shrink-0 text-emerald-300">
@@ -283,7 +283,7 @@ export default function AdmissionsInquiryFunnel() {
                           key={t.id}
                           type="button"
                           onClick={() => setFormData({ ...formData, applicantType: t.id })}
-                          className={`py-2 px-2 text-center rounded-lg text-xs font-medium border transition-all ${
+                          className={`py-2 px-2 text-center rounded-lg text-xs font-medium border active:scale-[0.985] active:translate-y-px transition-all duration-150 ${
                             formData.applicantType === t.id
                               ? 'bg-[#153B27] text-white border-[#153B27]'
                               : 'bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100'
@@ -300,7 +300,7 @@ export default function AdmissionsInquiryFunnel() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#7F1D1D] hover:bg-[#681818] text-white text-sm font-semibold shadow-md transition-all duration-200 group disabled:opacity-70"
+                      className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#7F1D1D] hover:bg-[#681818] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-md transition-all duration-150 group disabled:opacity-70"
                     >
                       {loading ? (
                         <span>Registering Inquiry...</span>

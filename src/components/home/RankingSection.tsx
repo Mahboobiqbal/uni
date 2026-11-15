@@ -315,7 +315,7 @@ export default function RankingSection() {
           </p>
           <Link
             href="/admissions"
-            className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#153B27] text-white text-sm font-semibold hover:bg-[#14291D] transition-colors"
+            className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#153B27] text-white text-sm font-semibold hover:bg-[#14291D] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px transition-all duration-150"
           >
             See how to apply
             <ArrowUpRight className="w-4 h-4" />

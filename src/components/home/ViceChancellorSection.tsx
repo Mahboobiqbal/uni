@@ -8,7 +8,7 @@ import { Award, Building2, FileText, ArrowUpRight } from 'lucide-react';
 export default function ViceChancellorSection() {
   return (
     <section
-      className="pt-28 sm:pt-36 pb-20 sm:pb-28 bg-[#F6F5F0] relative overflow-hidden"
+      className="pt-36 sm:pt-44 lg:pt-48 pb-20 sm:pb-28 bg-[#F6F5F0] relative overflow-hidden"
       data-purpose="vice-chancellor-section"
       id="vice-chancellor"
     >
@@ -16,22 +16,22 @@ export default function ViceChancellorSection() {
       <div className="absolute top-10 right-10 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
-      {/* Editorial bridge between Hero's crimson cards and the VC portrait */}
-      <div className="text-center mb-12 lg:mb-16">
-        <div className="flex items-center justify-center gap-2.5 mb-4">
-          <span className="h-px w-10 bg-[#7F1D1D]/40" />
-          <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
-            University Leadership
-          </span>
-          <span className="h-px w-10 bg-[#7F1D1D]/40" />
-        </div>
-        <p className="font-serif italic text-xl sm:text-2xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
-          A message from the Office of the Vice Chancellor &mdash; the values that guide the
-          University of Swat.
-        </p>
-      </div>
-
       <div className="w-full max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+        {/* Editorial bridge between Hero's crimson cards and the VC portrait */}
+        <div className="text-center mb-12 lg:mb-16">
+          <div className="flex items-center justify-center gap-2.5 mb-4">
+            <span className="h-px w-10 bg-[#7F1D1D]/40" />
+            <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+              University Leadership
+            </span>
+            <span className="h-px w-10 bg-[#7F1D1D]/40" />
+          </div>
+          <p className="font-serif italic text-xl sm:text-2xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            A message from the Office of the Vice Chancellor &mdash; the values that guide the
+            University of Swat.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left: React Bits <ProfileCard /> with 3D Tilt & Holographic Foil */}
@@ -91,7 +91,7 @@ export default function ViceChancellorSection() {
 
               {/* Executive Academic Credentials (Clean, Unified Stone & Brand Accents) */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 transition-colors flex items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-[#153B27]/10 text-[#153B27] shrink-0">
                     <Award className="w-4 h-4" />
                   </div>
@@ -101,7 +101,7 @@ export default function ViceChancellorSection() {
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 transition-colors flex items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-[#7F1D1D]/10 text-[#7F1D1D] shrink-0">
                     <Building2 className="w-4 h-4" />
                   </div>
@@ -111,7 +111,7 @@ export default function ViceChancellorSection() {
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 transition-colors flex items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-[#B48A3E]/10 text-[#B48A3E] shrink-0">
                     <FileText className="w-4 h-4" />
                   </div>
@@ -138,14 +138,14 @@ export default function ViceChancellorSection() {
               <div className="flex flex-wrap items-center gap-2.5 text-xs font-semibold">
                 <Link
                   href="/leadership/vice-chancellor"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#153B27] text-white hover:bg-[#153B27]/90 transition-colors shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#153B27] text-white hover:bg-[#153B27]/90 active:scale-[0.985] active:translate-y-px transition-all duration-150 shadow-xs"
                 >
                   <span>Full Message &amp; Secretariat</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-700 hover:bg-stone-50 transition-colors shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-700 hover:bg-stone-50 active:scale-[0.985] active:translate-y-px transition-all duration-150 shadow-xs"
                 >
                   <span>About University</span>
                 </Link>

@@ -88,7 +88,7 @@ export default function StudentAlumniSuccess() {
           {testimonials.map((item, idx) => (
             <article
               key={item.id}
-              className="relative flex flex-col rounded-2xl bg-white border border-stone-200/90 p-8 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+              className="relative flex flex-col rounded-2xl bg-white border border-stone-200/90 p-8 shadow-xs hover:shadow-xl transition-all duration-200 ease-out hover:-translate-y-[2px] group"
             >
               {/* Quote icon watermark */}
               <div className="absolute top-6 right-6 text-stone-200 group-hover:text-[#153B27]/15 transition-colors">
@@ -113,7 +113,8 @@ export default function StudentAlumniSuccess() {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-300 ease-out"
                   />
                 </div>
                 <div>

@@ -1,7 +1,21 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowUpRight, Cpu, FlaskConical, Briefcase, Scale, GraduationCap, Building, Mail } from 'lucide-react';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Briefcase,
+  Building,
+  ChevronRight,
+  Cpu,
+  FlaskConical,
+  GraduationCap,
+  HeartPulse,
+  Mail,
+  MapPin,
+  Scale,
+  Sparkles,
+} from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import { facultiesCatalog, allDepartments } from '@/data/departmentsData';
 
@@ -11,89 +25,141 @@ export const metadata: Metadata = {
 };
 
 const facultyIcons: Record<string, React.ReactNode> = {
-  'physical-computational-sciences': <Cpu className="w-5 h-5 text-[#153B27]" />,
-  'chemical-life-sciences': <FlaskConical className="w-5 h-5 text-[#7F1D1D]" />,
-  'allied-health-sciences': <FlaskConical className="w-5 h-5 text-[#153B27]" />,
-  'management-social-sciences': <Briefcase className="w-5 h-5 text-[#B48A3E]" />,
-  'languages-humanities-law': <Scale className="w-5 h-5 text-stone-700" />,
-  'humanities-legal-studies': <Scale className="w-5 h-5 text-stone-700" />,
+  'physical-computational-sciences': <Cpu className="w-5 h-5 text-white" />,
+  'chemical-life-sciences': <FlaskConical className="w-5 h-5 text-white" />,
+  'allied-health-sciences': <HeartPulse className="w-5 h-5 text-white" />,
+  'management-social-sciences': <Briefcase className="w-5 h-5 text-white" />,
+  'languages-humanities-law': <Scale className="w-5 h-5 text-white" />,
+  'humanities-legal-studies': <Scale className="w-5 h-5 text-white" />,
 };
 
 export default function FacultyPage() {
   return (
-    <div className="bg-[#F6F5F0] min-h-screen">
+    <div className="bg-[#F6F5F0] min-h-screen text-[#14291D]">
+      {/* ─── 1. Deep Forest Green (#153B27) Architectural Hero Banner ─── */}
       <PageHeader
-        tag="Academic Structure"
+        tag="ACADEMIC STRUCTURE"
         title="Faculties & Teaching Departments"
-        subtitle="The University of Swat is organized into 4 major academic faculties encompassing 28 specialized teaching departments and research institutes."
-        eyebrow="Scholastic Excellence in the Valley of Swat"
+        subtitle="The University of Swat is organized into specialized academic faculties encompassing 28 teaching departments, research institutes, and regional sub-campuses."
+        eyebrow="ACADEMIC STRUCTURE"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Academics', href: '/academics' },
+          { label: 'Faculties' },
+        ]}
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20">
-        
-        {/* Quick Stats Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs mb-16">
-          <div>
-            <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#153B27]">4</span>
-            <span className="text-xs uppercase tracking-wider text-stone-500 font-medium">Academic Faculties</span>
-          </div>
-          <div>
-            <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#7F1D1D]">28</span>
-            <span className="text-xs uppercase tracking-wider text-stone-500 font-medium">Teaching Departments</span>
-          </div>
-          <div>
-            <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#B48A3E]">60+</span>
-            <span className="text-xs uppercase tracking-wider text-stone-500 font-medium">Degree Programs</span>
-          </div>
-          <div>
-            <span className="block font-serif text-3xl sm:text-4xl font-bold text-stone-900">250+</span>
-            <span className="text-xs uppercase tracking-wider text-stone-500 font-medium">Scholarly Faculty</span>
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 pb-20 sm:pb-28">
+        {/* ─── 2. Overlapping 4-Stat Summary Bar with Bold Crimson Top Border (#7F1D1D) ─── */}
+        <div className="-mt-10 sm:-mt-12 relative z-20 rounded-2xl bg-white border border-stone-200 border-t-4 border-t-[#7F1D1D] shadow-xl p-6 sm:p-8 mb-16 lg:mb-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-stone-100">
+            <div className="text-center sm:text-left sm:pr-4">
+              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#153B27]">
+                5
+              </span>
+              <span className="text-xs uppercase tracking-wider text-stone-600 font-bold mt-1 block">
+                Academic Faculties
+              </span>
+              <span className="text-[11px] text-stone-400 mt-0.5 block">
+                Approved by Academic Council
+              </span>
+            </div>
+
+            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:px-6">
+              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#7F1D1D]">
+                28
+              </span>
+              <span className="text-xs uppercase tracking-wider text-stone-600 font-bold mt-1 block">
+                Teaching Departments
+              </span>
+              <span className="text-[11px] text-stone-400 mt-0.5 block">
+                Undergraduate &amp; Postgrad
+              </span>
+            </div>
+
+            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:px-6">
+              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#B48A3E]">
+                60+
+              </span>
+              <span className="text-xs uppercase tracking-wider text-stone-600 font-bold mt-1 block">
+                Degree Programs
+              </span>
+              <span className="text-[11px] text-stone-400 mt-0.5 block">
+                BS, MS, MPhil &amp; PhD Tracks
+              </span>
+            </div>
+
+            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:pl-6">
+              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14291D]">
+                250+
+              </span>
+              <span className="text-xs uppercase tracking-wider text-stone-600 font-bold mt-1 block">
+                Scholarly Faculty
+              </span>
+              <span className="text-[11px] text-stone-400 mt-0.5 block">
+                PhD Professors &amp; Researchers
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Faculties & Departments */}
-        <div className="space-y-16">
-          {facultiesCatalog.map((faculty, fIdx) => (
-            <div key={faculty.slug} id={faculty.slug} className="scroll-mt-28">
-              {/* Faculty Group Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-stone-200 mb-8 gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-stone-100 border border-stone-200">
-                    {facultyIcons[faculty.slug] ?? <GraduationCap className="w-5 h-5 text-stone-700" />}
+        {/* ─── 3. Faculties & Departments with Forest Green & Crimson Contrast ─── */}
+        <div className="space-y-20">
+          {facultiesCatalog.map((faculty) => (
+            <section
+              key={faculty.slug}
+              id={faculty.slug}
+              className="scroll-mt-32"
+              aria-labelledby={`heading-${faculty.slug}`}
+            >
+              {/* Faculty Group Header with Forest Green Badge (#153B27) & Subtle Bottom Divider Rule */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-stone-300 mb-8 gap-4">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-xl bg-[#153B27] flex items-center justify-center shrink-0 shadow-sm">
+                    {facultyIcons[faculty.slug] ?? <GraduationCap className="w-5 h-5 text-white" />}
                   </div>
                   <div>
-                    <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
+                    <h2
+                      id={`heading-${faculty.slug}`}
+                      className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D] tracking-tight"
+                    >
                       {faculty.name}
                     </h2>
-                    <span className="text-xs text-stone-500 uppercase tracking-widest font-medium">
+                    <span className="text-xs text-stone-500 uppercase tracking-widest font-semibold mt-0.5 block">
                       {faculty.departments.length} Departments &amp; Research Centers
                     </span>
                   </div>
                 </div>
+
+                <div className="text-xs font-semibold text-[#153B27] hidden sm:block">
+                  <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200">
+                    Active Faculty Group
+                  </span>
+                </div>
               </div>
 
-              {/* Department Cards Grid */}
+              {/* Department Cards Grid with 3px Forest Green / Crimson Top Accent Bar */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {faculty.departments.map((dept) => (
-                  <div
+                  <article
                     key={dept.id}
-                    className="p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-[#153B27]/40 hover:shadow-md transition-all flex flex-col justify-between group"
+                    className="p-6 rounded-2xl bg-white border border-stone-200/90 border-t-[3px] border-t-[#153B27] shadow-xs hover:border-[#7F1D1D] hover:border-t-[#7F1D1D] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div>
-                      <div className="flex items-start justify-between gap-3 mb-3">
-                        <span className="inline-block px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide bg-stone-100 text-stone-700 border border-stone-200">
+                      {/* Top Row: HoD Badge in Forest Green Tint */}
+                      <div className="flex items-start justify-between gap-3 mb-3.5">
+                        <span className="inline-block px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide bg-[#153B27]/10 text-[#153B27] border border-[#153B27]/20">
                           {dept.headOfDepartment ? `HoD: ${dept.headOfDepartment}` : 'University Dept.'}
                         </span>
-                        <Link
-                          href={`/departments/${dept.id}`}
-                          className="text-stone-400 group-hover:text-[#153B27] transition-colors"
-                          aria-label={`View ${dept.name}`}
-                        >
-                          <ArrowUpRight className="w-4 h-4" />
-                        </Link>
+
+                        <div className="flex items-center gap-1 text-[11px] text-stone-500">
+                          <MapPin className="w-3 h-3 text-emerald-700 shrink-0" />
+                          <span>{dept.campus.split(' ')[0]}</span>
+                        </div>
                       </div>
 
-                      <h3 className="font-serif text-xl font-bold text-stone-900 group-hover:text-[#153B27] transition-colors mb-2.5">
+                      {/* Department Title */}
+                      <h3 className="font-serif text-xl font-bold text-[#14291D] group-hover:text-[#153B27] transition-colors mb-2.5 leading-snug">
                         <Link href={`/departments/${dept.id}`}>
                           {dept.name}
                         </Link>
@@ -103,7 +169,7 @@ export default function FacultyPage() {
                         {dept.aims || dept.description}
                       </p>
 
-                      {/* Programs Chips */}
+                      {/* Programs Offered Chips */}
                       <div className="space-y-1.5 mb-6">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
                           Offered Degrees:
@@ -118,7 +184,7 @@ export default function FacultyPage() {
                             </span>
                           ))}
                           {dept.programsOffered.length > 3 && (
-                            <span className="text-[11px] font-semibold text-stone-400 self-center">
+                            <span className="text-[11px] font-semibold text-stone-500 self-center">
                               +{dept.programsOffered.length - 3} more
                             </span>
                           )}
@@ -126,25 +192,27 @@ export default function FacultyPage() {
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
-                      <span className="text-stone-400 font-mono text-[11px] flex items-center gap-1">
-                        <Mail className="w-3 h-3" />
-                        {dept.contactEmail}
+                    {/* Bottom Row: Contact Email & Bold Crimson "Profile & Faculty →" Link */}
+                    <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs mt-auto">
+                      <span className="text-stone-500 font-mono text-[11px] flex items-center gap-1">
+                        <Mail className="w-3 h-3 text-stone-400 shrink-0" />
+                        <span className="truncate max-w-[130px]">{dept.contactEmail}</span>
                       </span>
+
                       <Link
                         href={`/departments/${dept.id}`}
-                        className="font-semibold text-[#153B27] hover:underline flex items-center gap-1"
+                        className="font-semibold text-[#7F1D1D] hover:text-[#991B1B] hover:underline flex items-center gap-1 transition-colors"
                       >
-                        Profile &amp; Faculty
+                        <span>Profile &amp; Faculty</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
-            </div>
+            </section>
           ))}
         </div>
-
       </div>
     </div>
   );

@@ -91,7 +91,7 @@ export default function FlagshipDegreeSpotlight() {
         </div>
         <Link
           href="/programs"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#153B27] hover:text-[#0C1912] transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#153B27] hover:text-[#0C1912] active:scale-[0.985] active:translate-y-px transition-all duration-150"
         >
           <span>Explore All 28 Degree Syllabi</span>
           <ArrowUpRight className="w-4 h-4" />
@@ -103,14 +103,15 @@ export default function FlagshipDegreeSpotlight() {
         {flagshipPrograms.map((program) => (
           <article
             key={program.id}
-            className="group relative flex flex-col rounded-2xl border border-stone-200/90 bg-white shadow-xs overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-stone-300"
+            className="group relative flex flex-col rounded-2xl border border-stone-200/90 bg-white shadow-xs overflow-hidden transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-xl hover:border-stone-300"
           >
             {/* Card Image with duration pill */}
             <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
               <img
                 src={program.image}
                 alt={program.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
@@ -151,7 +152,7 @@ export default function FlagshipDegreeSpotlight() {
               {/* CTA link */}
               <Link
                 href={`/programs/${program.slug}`}
-                className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-lg bg-stone-50 hover:bg-[#153B27] hover:text-white text-[#14291D] text-xs font-semibold border border-stone-200/80 transition-all duration-200 group/btn"
+                className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-lg bg-stone-50 hover:bg-[#153B27] hover:text-white active:scale-[0.985] active:translate-y-px text-[#14291D] text-xs font-semibold border border-stone-200/80 transition-all duration-150 group/btn"
               >
                 <span>View Full Syllabus</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/btn:text-white transition-colors" />

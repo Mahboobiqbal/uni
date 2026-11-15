@@ -102,7 +102,7 @@ export default function FacultyProgramsGrid() {
           {faculties.map((faculty) => (
             <article
               key={faculty.id}
-              className="group relative flex flex-col rounded-xl border border-stone-200/90 bg-white shadow-xs p-7 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-[0_20px_44px_-18px_rgba(21,59,39,0.28)]"
+              className="group relative flex flex-col rounded-xl border border-stone-200/90 bg-white shadow-xs p-7 overflow-hidden transition-all duration-200 ease-out hover:-translate-y-[2px] hover:border-emerald-500/40 hover:shadow-[0_20px_44px_-18px_rgba(21,59,39,0.28)]"
             >
               {/* VC-card sheen sweep on hover */}
               <span
@@ -149,7 +149,7 @@ export default function FacultyProgramsGrid() {
               {/* Explore link */}
               <Link
                 href="/programs"
-                className="group/link relative mt-auto flex items-center justify-between pt-4 border-t border-stone-100 text-sm font-semibold text-[#14291D] hover:text-[#153B27] transition-colors"
+                className="group/link relative mt-auto flex items-center justify-between pt-4 border-t border-stone-100 text-sm font-semibold text-[#14291D] hover:text-[#153B27] active:scale-[0.985] active:translate-y-px transition-all duration-150"
               >
                 Explore programs
                 <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/link:text-[#153B27] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />

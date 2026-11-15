@@ -42,7 +42,7 @@ export default function EditorialStorytelling() {
 
             {/* Value checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out">
                 <SunMedium className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs text-[#14291D]">100% Solar-Powered</p>
@@ -50,7 +50,7 @@ export default function EditorialStorytelling() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out">
                 <Leaf className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs text-[#14291D]">Top 15 UI GreenMetric</p>
@@ -58,7 +58,7 @@ export default function EditorialStorytelling() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out">
                 <BookOpenCheck className="w-5 h-5 text-[#7F1D1D] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs text-[#14291D]">Central Scholar Halls</p>
@@ -66,7 +66,7 @@ export default function EditorialStorytelling() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out">
                 <Compass className="w-5 h-5 text-[#7F1D1D] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs text-[#14291D]">Scenic Valley Location</p>
@@ -78,7 +78,7 @@ export default function EditorialStorytelling() {
             <div className="pt-3">
               <Link
                 href="/campuses/main-campus"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#153B27] hover:bg-[#0F291C] text-white text-sm font-semibold shadow-sm transition-all duration-200 group"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#153B27] hover:bg-[#0F291C] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-sm transition-all duration-150 group"
               >
                 <span>Explore Charbagh Main Campus</span>
                 <ArrowUpRight className="w-4 h-4 text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -96,7 +96,8 @@ export default function EditorialStorytelling() {
                 <img
                   src="/images/campus/charbagh-campus.jpg"
                   alt="University of Swat Charbagh Main Campus in Swat Valley"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 
@@ -130,7 +131,8 @@ export default function EditorialStorytelling() {
                 <img
                   src="/images/campus/heritage-swat.jpg"
                   alt="Swat Valley Buddhist Heritage & Archaeological Research"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent pointer-events-none" />
 
@@ -197,14 +199,14 @@ export default function EditorialStorytelling() {
             <div className="pt-2 flex flex-wrap gap-4 items-center">
               <Link
                 href="/research/oric"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#7F1D1D] hover:bg-[#681818] text-white text-sm font-semibold shadow-sm transition-all duration-200 group"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#7F1D1D] hover:bg-[#681818] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-sm transition-all duration-150 group"
               >
                 <span>Discover Research &amp; ORIC</span>
                 <ArrowUpRight className="w-4 h-4 text-amber-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
                 href="/research"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-700 hover:text-[#153B27] transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-700 hover:text-[#153B27] active:scale-[0.985] active:translate-y-px transition-all duration-150"
               >
                 <span>View Publications Directory</span>
                 <ArrowUpRight className="w-4 h-4 text-stone-400" />
