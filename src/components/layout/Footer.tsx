@@ -75,7 +75,7 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your official email..."
-                    className="w-full px-3.5 py-2.5 rounded-l-lg border border-r-0 border-white/20 bg-white/10 text-xs text-white placeholder:text-stone-400 focus:outline-none focus:border-[#C8A96E] transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-l-lg border border-r-0 border-white/20 bg-white/10 text-xs text-white placeholder:text-white/50 focus:outline-none focus:border-[#C8A96E] transition-all"
                   />
                 </div>
                 <button
@@ -448,7 +448,7 @@ export default function Footer() {
         </div>
 
         {/* ─── Bottom Bar: Copyright & Clean Circular Social Media Icons ─── */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/65">
           <p className="font-normal text-center sm:text-left">
             &copy; 2026 University of Swat. All rights reserved
           </p>

@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import UosAssistant from "@/components/ui/UosAssistant";
 import "./globals.css";
 
   const plusJakartaSans = Plus_Jakarta_Sans({
@@ -74,6 +75,7 @@ import "./globals.css";
       <Navbar />
       {children}
       <Footer />
+      <UosAssistant />
     </body>
   </html>
 );

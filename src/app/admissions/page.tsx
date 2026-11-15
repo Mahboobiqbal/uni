@@ -75,9 +75,14 @@ const admissionActions = [
       'Semester tuition by faculty and program, open-merit and self-finance schedules, hostel and transport charges.',
     cta: 'View Fee Schedule',
     icon: Banknote,
+    surfaceClass: 'bg-white border border-stone-300 shadow-xs',
     accent: 'text-[#153B27]',
     accentBg: 'bg-[#153B27]/10',
     accentBorder: 'group-hover:border-[#153B27]/35',
+    titleClass: 'text-[#14291D] group-hover:text-[#153B27]',
+    bodyClass: 'text-stone-600',
+    footerClass: 'border-stone-200 text-[#153B27]',
+    ctaClass: 'group-hover:text-[#7F1D1D]',
   },
   {
     href: '/admissions/merit-lists',
@@ -87,9 +92,15 @@ const admissionActions = [
       'Provisional merit lists, closing percentages, and reserved quota distribution for Fall 2026 admissions.',
     cta: 'View Merit Lists',
     icon: BadgeCheck,
-    accent: 'text-[#7F1D1D]',
-    accentBg: 'bg-[#7F1D1D]/10',
-    accentBorder: 'group-hover:border-[#7F1D1D]/35',
+    surfaceClass:
+      'bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] hover:bg-[#661717]',
+    accent: 'text-[#E5CD9B]',
+    accentBg: 'bg-white/10 border border-white/20',
+    accentBorder: '',
+    titleClass: 'text-white group-hover:text-[#E5CD9B]',
+    bodyClass: 'text-white/80',
+    footerClass: 'border-white/20 text-[#E5CD9B]',
+    ctaClass: 'group-hover:text-white',
   },
   {
     href: '/programs',
@@ -99,9 +110,14 @@ const admissionActions = [
       'Eligibility criteria, credit hours, semester roadmaps, and career prospects across undergraduate and graduate degrees.',
     cta: 'Browse All Degrees',
     icon: GraduationCap,
+    surfaceClass: 'bg-white border border-stone-300 shadow-xs',
     accent: 'text-[#7A5A1E]',
     accentBg: 'bg-[#C8A96E]/20',
     accentBorder: 'group-hover:border-[#C8A96E]/60',
+    titleClass: 'text-[#14291D] group-hover:text-[#153B27]',
+    bodyClass: 'text-stone-600',
+    footerClass: 'border-stone-200 text-[#153B27]',
+    ctaClass: 'group-hover:text-[#7F1D1D]',
   },
 ];
 
@@ -160,7 +176,7 @@ export default function AdmissionsPage() {
                 Fees, Merit &amp; Degree Pathways
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-stone-500 max-w-md sm:text-right leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-600 max-w-md sm:text-right leading-relaxed">
               Review tuition, check merit standings, and find the right program before submitting your application.
             </p>
           </div>
@@ -172,7 +188,7 @@ export default function AdmissionsPage() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:-translate-y-[2px] hover:shadow-[0_28px_48px_-22px_rgba(12,25,18,0.35)] transition-all duration-200 ease-out ${item.accentBorder}`}
+                  className={`group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl ${item.surfaceClass} hover:-translate-y-[2px] hover:shadow-[0_28px_48px_-22px_rgba(12,25,18,0.35)] transition-all duration-200 ease-out ${item.accentBorder}`}
                 >
                   <div>
                     <div className={`w-12 h-12 rounded-2xl ${item.accentBg} ${item.accent} flex items-center justify-center mb-5`}>
@@ -181,13 +197,13 @@ export default function AdmissionsPage() {
                     <span className={`text-[10px] uppercase tracking-[0.18em] ${item.accent} font-bold block mb-2`}>
                       {item.tag}
                     </span>
-                    <h3 className="font-serif text-2xl font-bold text-[#14291D] group-hover:text-[#153B27] transition-colors mb-3 leading-tight tracking-[-0.01em]">
+                    <h3 className={`font-serif text-2xl font-bold ${item.titleClass} transition-colors mb-3 leading-tight tracking-[-0.01em]`}>
                       {item.title}
                     </h3>
-                    <p className="font-sans text-xs sm:text-sm text-stone-600 leading-relaxed">{item.description}</p>
+                    <p className={`font-sans text-xs sm:text-sm ${item.bodyClass} leading-relaxed`}>{item.description}</p>
                   </div>
-                  <div className="pt-5 mt-6 border-t border-stone-100 flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.12em] text-[#153B27]">
-                    <span className="group-hover:text-[#7F1D1D] transition-colors">{item.cta}</span>
+                  <div className={`pt-5 mt-6 border-t ${item.footerClass} flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.12em]`}>
+                    <span className={`${item.ctaClass} transition-colors`}>{item.cta}</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </Link>
@@ -201,7 +217,7 @@ export default function AdmissionsPage() {
           aria-labelledby="apply-charbagh-heading"
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
         >
-          <div className="lg:col-span-7 relative rounded-2xl overflow-hidden border border-stone-200/80 bg-stone-200 min-h-[320px] sm:min-h-[420px] lg:min-h-[520px]">
+          <div className="lg:col-span-7 relative rounded-2xl overflow-hidden border border-stone-300 bg-stone-200 min-h-[320px] sm:min-h-[420px] lg:min-h-[520px]">
             <Image
               src="/images/campus/main-campus-gate.jpeg"
               alt="Main entrance of the University of Swat Charbagh campus"
@@ -270,15 +286,15 @@ export default function AdmissionsPage() {
         </section>
 
         {/* Application steps */}
-        <section aria-labelledby="admission-steps-heading" className="p-7 sm:p-10 lg:p-12 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-5 border-b border-stone-100 mb-8">
+        <section aria-labelledby="admission-steps-heading" className="p-7 sm:p-10 lg:p-12 rounded-2xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
+          <div className="pb-5 border-b border-white/15 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <span className="h-0.5 w-6 bg-[#153B27]" />
-              <span className="text-xs uppercase tracking-[0.18em] text-[#153B27] font-bold">
+              <span className="h-0.5 w-6 bg-[#C8A96E]" />
+              <span className="text-xs uppercase tracking-[0.18em] text-[#C8A96E] font-bold">
                 Admission Procedure
               </span>
             </div>
-            <h2 id="admission-steps-heading" className="font-serif text-3xl font-bold text-[#14291D] tracking-[-0.02em]">
+            <h2 id="admission-steps-heading" className="font-serif text-3xl font-bold text-white tracking-[-0.02em]">
               Apply in Four Clear Steps
             </h2>
           </div>
@@ -289,19 +305,19 @@ export default function AdmissionsPage() {
               return (
                 <li
                   key={st.title}
-                  className="relative p-6 rounded-xl bg-stone-50/70 border border-stone-200/80 hover:bg-white hover:border-[#153B27]/25 hover:-translate-y-[2px] hover:shadow-[0_18px_36px_-20px_rgba(12,25,18,0.3)] transition-all duration-200 ease-out"
+                  className="relative p-6 rounded-xl bg-white/[0.07] border border-white/[0.12] hover:bg-white/[0.12] hover:border-white/25 hover:-translate-y-[2px] hover:shadow-[0_18px_36px_-20px_rgba(0,0,0,0.45)] transition-all duration-200 ease-out"
                 >
                   <span
                     aria-hidden="true"
-                    className="absolute top-4 right-5 font-serif text-4xl font-bold text-[#153B27]/10 tabular-nums leading-none"
+                    className="absolute top-4 right-5 font-serif text-4xl font-bold text-[#C8A96E]/25 tabular-nums leading-none"
                   >
                     {String(idx + 1).padStart(2, '0')}
                   </span>
-                  <div className="w-11 h-11 rounded-xl bg-white border border-stone-200 text-[#153B27] flex items-center justify-center mb-4">
+                  <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 text-[#C8A96E] flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#14291D] mb-2 leading-snug pr-8">{st.title}</h3>
-                  <p className="font-sans text-xs sm:text-[13px] text-stone-600 leading-relaxed">{st.text}</p>
+                  <h3 className="font-serif text-lg font-bold text-white mb-2 leading-snug pr-8">{st.title}</h3>
+                  <p className="font-sans text-xs sm:text-[13px] text-white/70 leading-relaxed">{st.text}</p>
                 </li>
               );
             })}
@@ -309,8 +325,8 @@ export default function AdmissionsPage() {
         </section>
 
         {/* Scholarships */}
-        <section aria-labelledby="scholarships-heading" className="p-7 sm:p-10 lg:p-12 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-5 border-b border-stone-100 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <section aria-labelledby="scholarships-heading" className="p-7 sm:p-10 lg:p-12 rounded-2xl bg-white border border-stone-300 shadow-xs">
+          <div className="pb-5 border-b border-stone-200 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="h-0.5 w-6 bg-[#7F1D1D]" />
@@ -322,7 +338,7 @@ export default function AdmissionsPage() {
                 Scholarships &amp; Financial Aid (UAFAO)
               </h2>
             </div>
-            <span className="text-[11px] uppercase tracking-[0.14em] font-bold text-stone-400">
+            <span className="text-[11px] uppercase tracking-[0.14em] font-bold text-stone-500">
               University Advancement &amp; Financial Aid Office
             </span>
           </div>
@@ -331,15 +347,15 @@ export default function AdmissionsPage() {
             {scholarshipSchemes.map((sc) => (
               <article
                 key={sc.title}
-                className="p-6 rounded-xl bg-stone-50/70 border border-stone-200/80 flex items-start gap-4 hover:bg-white hover:border-[#153B27]/25 transition-colors"
+                className="p-6 rounded-xl bg-stone-50/70 border border-stone-300 flex items-start gap-4 hover:bg-white hover:border-[#153B27]/25 transition-colors"
               >
-                <div className="p-3 rounded-xl bg-white border border-stone-200 text-[#153B27] shrink-0">
+                <div className="p-3 rounded-xl bg-white border border-stone-300 text-[#153B27] shrink-0">
                   <HeartHandshake className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-3 mb-1.5">
                     <h3 className="font-serif text-lg font-bold text-[#14291D] leading-snug">{sc.title}</h3>
-                    <span className="text-[10px] font-mono text-stone-500 bg-white px-2 py-0.5 rounded border border-stone-200 whitespace-nowrap shrink-0">
+                    <span className="text-[10px] font-mono text-stone-600 bg-white px-2 py-0.5 rounded border border-stone-300 whitespace-nowrap shrink-0">
                       {sc.deadline}
                     </span>
                   </div>

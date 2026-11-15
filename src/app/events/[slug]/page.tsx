@@ -48,7 +48,7 @@ export default async function EventDetailPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Details column */}
           <div className="lg:col-span-8 space-y-8">
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mb-6">
                 About the Event
               </h2>
@@ -56,13 +56,13 @@ export default async function EventDetailPage({ params }: PageProps) {
                 {event.description}
               </p>
 
-              <div className="mt-8 pt-6 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
+              <div className="mt-8 pt-6 border-t border-stone-200 grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
                 <div className="flex items-center gap-3">
                   <span className="w-10 h-10 rounded-xl bg-emerald-50 text-[#153B27] flex items-center justify-center shrink-0">
                     <Calendar className="w-4 h-4" />
                   </span>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-stone-400 font-bold">Date</p>
+                    <p className="text-xs uppercase tracking-wider text-stone-500 font-bold">Date</p>
                     <p className="font-semibold text-stone-800">{event.date}</p>
                   </div>
                 </div>
@@ -71,7 +71,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                     <Clock className="w-4 h-4" />
                   </span>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-stone-400 font-bold">Timing</p>
+                    <p className="text-xs uppercase tracking-wider text-stone-500 font-bold">Timing</p>
                     <p className="font-semibold text-stone-800">{event.time}</p>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                     <MapPin className="w-4 h-4" />
                   </span>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-stone-400 font-bold">Venue</p>
+                    <p className="text-xs uppercase tracking-wider text-stone-500 font-bold">Venue</p>
                     <p className="font-semibold text-stone-800">{event.location}</p>
                   </div>
                 </div>
@@ -89,7 +89,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                     <Users className="w-4 h-4" />
                   </span>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-stone-400 font-bold">Organizer</p>
+                    <p className="text-xs uppercase tracking-wider text-stone-500 font-bold">Organizer</p>
                     <p className="font-semibold text-stone-800">{event.organizer}</p>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
           {/* Sidebar */}
           <div className="lg:col-span-4">
-            <div className="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-xs lg:sticky lg:top-24">
+            <div className="p-6 rounded-3xl bg-white border border-stone-300 shadow-xs lg:sticky lg:top-24">
               <div className="flex items-center gap-2 mb-5">
                 <Tag className="w-4 h-4 text-[#7F1D1D]" />
                 <h3 className="font-serif text-lg font-bold text-stone-900">More Events</h3>
@@ -131,7 +131,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                   <Link
                     key={evt.id}
                     href={`/events/${evt.id}`}
-                    className="block p-4 rounded-2xl bg-stone-50 border border-stone-100 hover:border-stone-300 transition-colors"
+                    className="block p-4 rounded-2xl bg-stone-50 border border-stone-200 hover:border-stone-400 transition-colors"
                   >
                     <span className="block text-xs font-semibold text-[#153B27] mb-1">
                       {evt.date}
@@ -139,7 +139,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                     <span className="block text-sm font-bold text-stone-800 leading-snug">
                       {evt.title}
                     </span>
-                    <span className="block text-xs text-stone-500 mt-1">{evt.category}</span>
+                    <span className="block text-xs text-stone-600 mt-1">{evt.category}</span>
                   </Link>
                 ))}
               </div>

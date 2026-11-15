@@ -41,10 +41,10 @@ export default function NewsPage() {
             {featured.map((article) => (
               <article
                 key={article.id}
-                className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs flex flex-col justify-between group hover:border-[#153B27]/40 hover:shadow-md transition-all"
+                className="p-6 sm:p-8 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] flex flex-col justify-between group hover:bg-[#0F2D1E] transition-all"
               >
                 <div>
-                  <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden mb-6 bg-stone-100 border border-stone-200">
+                  <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden mb-6 bg-white/10 border border-white/15">
                     <Image
                       src={article.image}
                       alt={article.title}
@@ -53,34 +53,34 @@ export default function NewsPage() {
                     />
                   </div>
 
-                  <div className="flex items-center gap-3 text-xs text-stone-500 font-sans mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#153B27] font-semibold border border-emerald-200">
+                  <div className="flex items-center gap-3 text-xs text-white/60 font-sans mb-3">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#C8A96E]/15 text-[#C8A96E] font-semibold border border-[#C8A96E]/30">
                       {article.category}
                     </span>
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-stone-400" />
+                      <Calendar className="w-3.5 h-3.5 text-white/60" />
                       {article.date}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-2xl font-bold text-stone-900 group-hover:text-[#153B27] transition-colors mb-3 leading-snug">
+                  <h3 className="font-serif text-2xl font-bold text-white group-hover:text-[#C8A96E] transition-colors mb-3 leading-snug">
                     <Link href={`/news/${article.id}`}>
                       {article.title}
                     </Link>
                   </h3>
 
-                  <p className="font-sans text-xs sm:text-sm text-stone-600 leading-relaxed mb-6">
+                  <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
                     {article.summary}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-                  <span className="text-xs text-stone-400 font-medium">
+                <div className="pt-4 border-t border-white/15 flex items-center justify-between">
+                  <span className="text-xs text-white/60 font-medium">
                     By {article.author}
                   </span>
                   <Link
                     href={`/news/${article.id}`}
-                    className="font-semibold text-xs text-[#153B27] hover:underline flex items-center gap-1"
+                    className="font-semibold text-xs text-[#C8A96E] hover:underline flex items-center gap-1"
                   >
                     <span>Read Full Story</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -107,7 +107,7 @@ export default function NewsPage() {
             {remaining.map((article) => (
               <article
                 key={article.id}
-                className="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-xs flex flex-col justify-between group hover:border-[#7F1D1D]/40 hover:shadow-md transition-all"
+                className="p-6 rounded-3xl bg-white border border-stone-300 shadow-xs flex flex-col justify-between group hover:border-[#7F1D1D]/40 hover:shadow-md transition-all"
               >
                 <div>
                   <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden mb-4 bg-stone-100 border border-stone-200">
@@ -123,7 +123,7 @@ export default function NewsPage() {
                     <span className="px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-semibold border border-stone-200 text-[10px]">
                       {article.category}
                     </span>
-                    <span className="text-[11px] font-mono text-stone-400">
+                    <span className="text-[11px] font-mono text-stone-500">
                       {article.date}
                     </span>
                   </div>
@@ -139,8 +139,8 @@ export default function NewsPage() {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
-                  <span className="text-stone-400 text-[11px]">
+                <div className="pt-4 border-t border-stone-200 flex items-center justify-between text-xs">
+                  <span className="text-stone-500 text-[11px]">
                     {article.author}
                   </span>
                   <Link

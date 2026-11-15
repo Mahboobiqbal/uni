@@ -47,26 +47,26 @@ export default function OricPage() {
           <div className="lg:col-span-8 space-y-12">
             
             {/* Vision & Mission */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
               <div className="flex items-center gap-2 mb-3">
-                <span className="h-0.5 w-6 bg-[#153B27]" />
-                <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
+                <span className="h-0.5 w-6 bg-[#C8A96E]" />
+                <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
                   Institutional Mission
                 </span>
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mb-4">
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-4">
                 Vision of ORIC
               </h2>
-              <blockquote className="font-serif italic text-xl text-stone-900 border-l-4 border-[#153B27] pl-5 py-1 mb-6">
+              <blockquote className="font-serif italic text-xl text-white border-l-4 border-[#C8A96E] pl-5 py-1 mb-6">
                 &ldquo;Support University of Swat into becoming a regional center of innovation, high-impact applied research, and entrepreneurship.&rdquo;
               </blockquote>
-              <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
+              <p className="font-sans text-white/70 text-sm sm:text-base leading-relaxed">
                 The Office of Research, Innovation and Commercialization (ORIC) provides central administrative and financial architecture to facilitate high-level multidisciplinary research. ORIC connects university researchers with provincial industries, manages IP portfolios, fosters patent filings, and mentors young entrepreneurs through the university incubation center.
               </p>
             </div>
 
             {/* Core Functions */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
               <div className="flex items-center gap-2 mb-3">
                 <span className="h-0.5 w-6 bg-[#7F1D1D]" />
                 <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
@@ -78,8 +78,8 @@ export default function OricPage() {
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#153B27] mb-3">
+                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-300">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-300 flex items-center justify-center text-[#153B27] mb-3">
                     <Award className="w-5 h-5" />
                   </div>
                   <h4 className="font-serif text-base font-bold text-stone-900 mb-1.5">
@@ -90,8 +90,8 @@ export default function OricPage() {
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#7F1D1D] mb-3">
+                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-300">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-300 flex items-center justify-center text-[#7F1D1D] mb-3">
                     <Handshake className="w-5 h-5" />
                   </div>
                   <h4 className="font-serif text-base font-bold text-stone-900 mb-1.5">
@@ -102,8 +102,8 @@ export default function OricPage() {
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#B48A3E] mb-3">
+                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-300">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-300 flex items-center justify-center text-[#B48A3E] mb-3">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <h4 className="font-serif text-base font-bold text-stone-900 mb-1.5">
@@ -114,8 +114,8 @@ export default function OricPage() {
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#153B27] mb-3">
+                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-300">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-300 flex items-center justify-center text-[#153B27] mb-3">
                     <Lightbulb className="w-5 h-5" />
                   </div>
                   <h4 className="font-serif text-base font-bold text-stone-900 mb-1.5">
@@ -129,7 +129,7 @@ export default function OricPage() {
             </div>
 
             {/* Team Roster */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
               <div className="flex items-center gap-2 mb-3">
                 <span className="h-0.5 w-6 bg-[#B48A3E]" />
                 <span className="text-xs uppercase tracking-widest text-[#B48A3E] font-bold">
@@ -142,7 +142,7 @@ export default function OricPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {oricTeam.map((m, idx) => (
-                  <div key={idx} className="p-4 rounded-2xl bg-stone-50 border border-stone-200/80 flex items-center justify-between">
+                  <div key={idx} className="p-4 rounded-2xl bg-stone-50 border border-stone-300 flex items-center justify-between">
                     <div>
                       <h4 className="font-serif text-sm font-bold text-stone-900">
                         {m.name}
@@ -161,14 +161,14 @@ export default function OricPage() {
           {/* Sidebar Column */}
           <div className="lg:col-span-4 space-y-6">
             
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-              <h3 className="font-serif text-xl font-bold text-stone-900 pb-3 border-b border-stone-100 mb-4">
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-300 shadow-xs">
+              <h3 className="font-serif text-xl font-bold text-stone-900 pb-3 border-b border-stone-200 mb-4">
                 Contact ORIC
               </h3>
 
               <div className="space-y-4 text-xs sm:text-[13px]">
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Director ORIC
                   </span>
                   <span className="font-semibold text-stone-900 text-sm">
@@ -177,7 +177,7 @@ export default function OricPage() {
                 </div>
 
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Official Inquiries
                   </span>
                   <a
@@ -190,7 +190,7 @@ export default function OricPage() {
                 </div>
 
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Office Location
                   </span>
                   <span className="font-medium text-stone-700 block mt-0.5">
@@ -199,7 +199,7 @@ export default function OricPage() {
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-stone-100 flex flex-col gap-2">
+              <div className="mt-8 pt-6 border-t border-stone-200 flex flex-col gap-2">
                 <Link
                   href="/academics/downloads"
                   className="w-full py-3 rounded-xl bg-[#153B27] text-white font-semibold text-xs text-center hover:bg-[#153B27]/90 transition-colors"

@@ -35,7 +35,7 @@ export default function ContactPage() {
         
         {/* Quick Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+          <div className="p-8 rounded-3xl bg-white border border-stone-300 shadow-xs">
             <div className="w-12 h-12 rounded-2xl bg-[#153B27]/10 text-[#153B27] flex items-center justify-center mb-6">
               <MapPin className="w-6 h-6" />
             </div>
@@ -50,24 +50,24 @@ export default function ContactPage() {
             </span>
           </div>
 
-          <div className="p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-            <div className="w-12 h-12 rounded-2xl bg-[#7F1D1D]/10 text-[#7F1D1D] flex items-center justify-center mb-6">
+          <div className="p-8 rounded-3xl bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)]">
+            <div className="w-12 h-12 rounded-2xl bg-white/10 text-[#E5CD9B] border border-white/20 flex items-center justify-center mb-6">
               <Phone className="w-6 h-6" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-stone-900 mb-2">
+            <h3 className="font-serif text-xl font-bold text-white mb-2">
               Telephone Exchanges
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-stone-600 leading-relaxed mb-2">
+            <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed mb-2">
               <strong>VC Secretariat:</strong> 0946-730510<br />
               <strong>Registrar Office:</strong> 0946-730511<br />
               <strong>Admissions Helpline:</strong> 0946-730514
             </p>
-            <span className="text-xs font-semibold text-[#7F1D1D] block">
+            <span className="text-xs font-semibold text-[#E5CD9B] block">
               Official Exchange Landlines
             </span>
           </div>
 
-          <div className="p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+          <div className="p-8 rounded-3xl bg-white border border-stone-300 shadow-xs">
             <div className="w-12 h-12 rounded-2xl bg-[#B48A3E]/10 text-[#B48A3E] flex items-center justify-center mb-6">
               <Mail className="w-6 h-6" />
             </div>
@@ -86,8 +86,8 @@ export default function ContactPage() {
         </div>
 
         {/* Complete Administrative Contact Directory */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-4 border-b border-stone-100 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
+          <div className="pb-4 border-b border-stone-200 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold block mb-1">
                 Institutional Directory
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 Key Administrative Extensions &amp; Contacts
               </h2>
             </div>
-            <span className="text-xs text-stone-400 font-mono">
+            <span className="text-xs text-stone-500 font-mono">
               University of Swat Exchange
             </span>
           </div>
@@ -104,7 +104,7 @@ export default function ContactPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm border-collapse">
               <thead>
-                <tr className="border-b border-stone-200 text-stone-400 font-bold uppercase tracking-wider text-[11px]">
+                <tr className="border-b border-stone-200 text-stone-600 font-bold uppercase tracking-wider text-[11px]">
                   <th className="py-3">Office / Directorate</th>
                   <th className="py-3">Officer in Charge</th>
                   <th className="py-3">Telephone</th>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                   <th className="py-3">Campus Location</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-100 text-stone-700 font-medium">
+              <tbody className="divide-y divide-stone-200 text-stone-700 font-medium">
                 {directory.map((row, idx) => (
                   <tr key={idx} className="hover:bg-stone-50/60 transition-colors">
                     <td className="py-4 font-serif font-bold text-stone-900">
@@ -129,7 +129,7 @@ export default function ContactPage() {
                         {row.email}
                       </a>
                     </td>
-                    <td className="py-4 text-xs text-stone-500">
+                    <td className="py-4 text-xs text-stone-600">
                       {row.location}
                     </td>
                   </tr>

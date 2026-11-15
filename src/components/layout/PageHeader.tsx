@@ -54,12 +54,12 @@ export default function PageHeader({
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
         {/* Clean Integrated Breadcrumb Trail (inside container, below navbar) */}
         <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center gap-2 text-xs font-medium text-stone-300 flex-wrap">
+          <ol className="flex items-center gap-2 text-xs font-medium text-white/70 flex-wrap">
             {crumbs.map((crumb, idx) => {
               const isLast = idx === crumbs.length - 1;
               return (
                 <React.Fragment key={idx}>
-                  {idx > 0 && <ChevronRight className="w-3.5 h-3.5 text-stone-400 shrink-0" />}
+                  {idx > 0 && <ChevronRight className="w-3.5 h-3.5 text-white/45 shrink-0" />}
                   <li>
                     {isLast || !crumb.href ? (
                       <span className="text-amber-300 font-semibold" aria-current="page">

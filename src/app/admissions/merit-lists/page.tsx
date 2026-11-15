@@ -21,12 +21,66 @@ const meritLists = [
 ];
 
 const quotaCategories = [
-  { name: 'Merged Districts (Ex-FATA) Quota', seats: 'Reserved per department', eligibility: 'Valid domicile of erstwhile FATA tribal agencies.' },
-  { name: 'Other Provinces & AJK Quota', seats: '2 seats per program', eligibility: 'Nomination through respective provincial education secretariats.' },
-  { name: 'Persons with Disabilities (Special Quota)', seats: '1 seat per program', eligibility: 'Disability certificate issued by authorized government medical board.' },
-  { name: 'Sports Merit Quota', seats: 'Open trials', eligibility: 'District/Provincial/National level sports participation certificate.' },
-  { name: 'University Employee Children Quota', seats: 'Statutory quota', eligibility: 'Verified service credentials of UOS regular employee.' },
-  { name: 'Minority Communities Quota', seats: '1 seat per program', eligibility: 'Proof of belonging to recognized religious minority communities.' },
+  {
+    name: 'Merged Districts (Ex-FATA) Quota',
+    seats: 'Reserved per department',
+    eligibility: 'Valid domicile of erstwhile FATA tribal agencies.',
+    cardClass: 'bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_18px_36px_-20px_rgba(102,23,23,0.5)] hover:bg-[#661717]',
+    indexClass: 'text-white/40',
+    labelClass: 'text-[#E5CD9B]',
+    titleClass: 'text-white',
+    bodyClass: 'text-white/80',
+  },
+  {
+    name: 'Other Provinces & AJK Quota',
+    seats: '2 seats per program',
+    eligibility: 'Nomination through respective provincial education secretariats.',
+    cardClass: 'bg-stone-50/70 border border-stone-300 hover:bg-white hover:border-[#153B27]/25 hover:shadow-[0_18px_36px_-20px_rgba(12,25,18,0.3)]',
+    indexClass: 'text-stone-400',
+    labelClass: 'text-[#7F1D1D]',
+    titleClass: 'text-[#14291D]',
+    bodyClass: 'text-stone-600',
+  },
+  {
+    name: 'Persons with Disabilities (Special Quota)',
+    seats: '1 seat per program',
+    eligibility: 'Disability certificate issued by authorized government medical board.',
+    cardClass: 'bg-stone-50/70 border border-stone-300 hover:bg-white hover:border-[#153B27]/25 hover:shadow-[0_18px_36px_-20px_rgba(12,25,18,0.3)]',
+    indexClass: 'text-stone-400',
+    labelClass: 'text-[#7F1D1D]',
+    titleClass: 'text-[#14291D]',
+    bodyClass: 'text-stone-600',
+  },
+  {
+    name: 'Sports Merit Quota',
+    seats: 'Open trials',
+    eligibility: 'District/Provincial/National level sports participation certificate.',
+    cardClass: 'bg-stone-50/70 border border-stone-300 hover:bg-white hover:border-[#153B27]/25 hover:shadow-[0_18px_36px_-20px_rgba(12,25,18,0.3)]',
+    indexClass: 'text-stone-400',
+    labelClass: 'text-[#7F1D1D]',
+    titleClass: 'text-[#14291D]',
+    bodyClass: 'text-stone-600',
+  },
+  {
+    name: 'University Employee Children Quota',
+    seats: 'Statutory quota',
+    eligibility: 'Verified service credentials of UOS regular employee.',
+    cardClass: 'bg-stone-50/70 border border-stone-300 hover:bg-white hover:border-[#153B27]/25 hover:shadow-[0_18px_36px_-20px_rgba(12,25,18,0.3)]',
+    indexClass: 'text-stone-400',
+    labelClass: 'text-[#7F1D1D]',
+    titleClass: 'text-[#14291D]',
+    bodyClass: 'text-stone-600',
+  },
+  {
+    name: 'Minority Communities Quota',
+    seats: '1 seat per program',
+    eligibility: 'Proof of belonging to recognized religious minority communities.',
+    cardClass: 'bg-stone-50/70 border border-stone-300 hover:bg-white hover:border-[#153B27]/25 hover:shadow-[0_18px_36px_-20px_rgba(12,25,18,0.3)]',
+    indexClass: 'text-stone-400',
+    labelClass: 'text-[#7F1D1D]',
+    titleClass: 'text-[#14291D]',
+    bodyClass: 'text-stone-600',
+  },
 ];
 
 export default function MeritListsPage() {
@@ -89,13 +143,13 @@ export default function MeritListsPage() {
 
         <section
           aria-labelledby="verification-instructions"
-          className="p-6 sm:p-7 rounded-2xl bg-[#7F1D1D]/[0.06] border border-[#7F1D1D]/20 mb-10 flex items-start gap-4"
+          className="p-6 sm:p-7 rounded-2xl bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] mb-10 flex items-start gap-4"
         >
-          <div className="w-10 h-10 rounded-lg bg-[#7F1D1D]/10 text-[#7F1D1D] flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-lg bg-white/10 text-[#E5CD9B] border border-white/20 flex items-center justify-center shrink-0">
             <AlertTriangle className="w-5 h-5" />
           </div>
-          <div className="text-xs sm:text-sm text-stone-700 leading-relaxed">
-            <h2 id="verification-instructions" className="font-serif text-lg sm:text-xl font-bold text-[#14291D] mb-1.5">
+          <div className="text-xs sm:text-sm text-white/80 leading-relaxed">
+            <h2 id="verification-instructions" className="font-serif text-lg sm:text-xl font-bold text-white mb-1.5">
               Instructions for Selected Candidates
             </h2>
             <p>
@@ -104,20 +158,20 @@ export default function MeritListsPage() {
           </div>
         </section>
 
-        <section aria-labelledby="merit-lists-heading" className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-white border border-stone-200/90 shadow-xs mb-10 lg:mb-12">
-          <div className="pb-5 border-b border-stone-100 mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <section aria-labelledby="merit-lists-heading" className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] mb-10 lg:mb-12">
+          <div className="pb-5 border-b border-white/15 mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="h-0.5 w-6 bg-[#7F1D1D]" />
-                <span className="text-xs uppercase tracking-[0.18em] text-[#7F1D1D] font-bold">
+                <span className="h-0.5 w-6 bg-[#C8A96E]" />
+                <span className="text-xs uppercase tracking-[0.18em] text-[#C8A96E] font-bold">
                   Fall 2026 Admissions
                 </span>
               </div>
-              <h2 id="merit-lists-heading" className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D] tracking-[-0.02em]">
+              <h2 id="merit-lists-heading" className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-[-0.02em]">
                 Departmental Open Merit Lists
               </h2>
             </div>
-            <span className="text-[11px] uppercase tracking-[0.14em] font-bold text-stone-400">
+            <span className="text-[11px] uppercase tracking-[0.14em] font-bold text-white/60">
               Updated: Phase-II Admissions
             </span>
           </div>
@@ -126,7 +180,7 @@ export default function MeritListsPage() {
             <table className="w-full min-w-[760px] text-left border-collapse">
               <caption className="sr-only">Provisional departmental merit lists for Fall 2026 admissions</caption>
               <thead>
-                <tr className="border-b border-stone-200 text-stone-500 font-bold uppercase tracking-[0.14em] text-[10px]">
+                <tr className="border-b border-white/15 text-[#C8A96E] font-bold uppercase tracking-[0.14em] text-[10px]">
                   <th scope="col" className="py-3 px-2 sm:px-0">Program / Department</th>
                   <th scope="col" className="py-3 px-2 sm:px-0">Merit List Round</th>
                   <th scope="col" className="py-3 px-2 sm:px-0">Closing Merit</th>
@@ -134,19 +188,19 @@ export default function MeritListsPage() {
                   <th scope="col" className="py-3 px-2 sm:px-0 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-100 text-xs sm:text-sm text-stone-700">
+              <tbody className="divide-y divide-white/15 text-xs sm:text-sm text-white/80">
                 {meritLists.map((item) => (
-                  <tr key={`${item.program}-${item.round}`} className="hover:bg-stone-50/70 transition-colors">
+                  <tr key={`${item.program}-${item.round}`} className="hover:bg-white/[0.06] transition-colors">
                     <td className="py-4 px-2 sm:px-0">
-                      <span className="font-serif font-bold text-[#14291D] block text-sm sm:text-base leading-snug">
+                      <span className="font-serif font-bold text-white block text-sm sm:text-base leading-snug">
                         {item.program}
                       </span>
-                      <span className="text-[11px] text-stone-500 block mt-0.5">{item.department}</span>
+                      <span className="text-[11px] text-white/60 block mt-0.5">{item.department}</span>
                     </td>
-                    <td className="py-4 px-2 sm:px-0 text-stone-600">{item.round}</td>
-                    <td className="py-4 px-2 sm:px-0 font-mono font-bold text-[#153B27] tabular-nums">{item.cutoff}</td>
+                    <td className="py-4 px-2 sm:px-0 text-white/70">{item.round}</td>
+                    <td className="py-4 px-2 sm:px-0 font-mono font-bold text-[#C8A96E] tabular-nums">{item.cutoff}</td>
                     <td className="py-4 px-2 sm:px-0">
-                      <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-[0.14em] px-2.5 py-1 rounded-full bg-[#153B27]/10 text-[#153B27] border border-[#153B27]/20">
+                      <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-[0.14em] px-2.5 py-1 rounded-full bg-[#C8A96E]/15 text-[#C8A96E] border border-[#C8A96E]/30">
                         {item.status}
                       </span>
                     </td>
@@ -155,7 +209,7 @@ export default function MeritListsPage() {
                         href="https://uswat.edu.pk/merit-list/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-end text-[11px] font-bold uppercase tracking-[0.12em] text-[#153B27] hover:text-[#7F1D1D] transition-colors"
+                        className="inline-flex items-center justify-end text-[11px] font-bold uppercase tracking-[0.12em] text-[#C8A96E] hover:text-white transition-colors"
                       >
                         View Full List
                       </a>
@@ -167,8 +221,8 @@ export default function MeritListsPage() {
           </div>
         </section>
 
-        <section aria-labelledby="quota-heading" className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-5 border-b border-stone-100 mb-6">
+        <section aria-labelledby="quota-heading" className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-white border border-stone-300 shadow-xs">
+          <div className="pb-5 border-b border-stone-200 mb-6">
             <div className="flex items-center gap-2 mb-2">
               <span className="h-0.5 w-6 bg-[#153B27]" />
               <span className="text-xs uppercase tracking-[0.18em] text-[#153B27] font-bold">
@@ -184,19 +238,19 @@ export default function MeritListsPage() {
             {quotaCategories.map((q, idx) => (
               <article
                 key={q.name}
-                className="p-5 sm:p-6 rounded-xl bg-stone-50/70 border border-stone-200/80 hover:bg-white hover:border-[#153B27]/25 hover:-translate-y-[2px] hover:shadow-[0_18px_36px_-20px_rgba(12,25,18,0.3)] transition-all duration-200 ease-out"
+                className={`p-5 sm:p-6 rounded-xl ${q.cardClass} hover:-translate-y-[2px] transition-all duration-200 ease-out`}
               >
                 <span
                   aria-hidden="true"
-                  className="block font-serif text-sm font-bold text-stone-300 tabular-nums mb-2"
+                  className={`block font-serif text-sm font-bold ${q.indexClass} tabular-nums mb-2`}
                 >
                   {String(idx + 1).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.14em] font-bold text-[#7F1D1D] block mb-1.5">
+                <span className={`text-[10px] uppercase tracking-[0.14em] font-bold ${q.labelClass} block mb-1.5`}>
                   {q.seats}
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#14291D] mb-2 leading-snug">{q.name}</h3>
-                <p className="font-sans text-xs sm:text-[13px] text-stone-600 leading-relaxed">{q.eligibility}</p>
+                <h3 className={`font-serif text-lg font-bold ${q.titleClass} mb-2 leading-snug`}>{q.name}</h3>
+                <p className={`font-sans text-xs sm:text-[13px] ${q.bodyClass} leading-relaxed`}>{q.eligibility}</p>
               </article>
             ))}
           </div>

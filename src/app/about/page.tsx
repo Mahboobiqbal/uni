@@ -23,29 +23,29 @@ export default function AboutPage() {
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20 space-y-16">
         
         {/* Swat Valley Scenery & Heritage */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-7 space-y-5">
               <div className="flex items-center gap-2">
-                <span className="h-0.5 w-6 bg-[#153B27]" />
-                <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
+                <span className="h-0.5 w-6 bg-[#C8A96E]" />
+                <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
                   The Valley of Swat (Uddiyana)
                 </span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 leading-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
                 Where Ancient Gandhara Meets Modern Intellect
               </h2>
-              <p className="font-sans text-stone-700 text-base leading-relaxed">
+              <p className="font-sans text-white text-base leading-relaxed">
                 The lush green forests, running clear streams, and historic Swat Valley lies between 34°-40′ to 35°N latitude and 72′ to 74°-6′ E longitude. The valley is an integral part of the strategic and significant region where three parts of the Asian continent—South Asia, Central Asia and China—meet.
               </p>
-              <p className="font-sans text-stone-600 text-sm leading-relaxed">
+              <p className="font-sans text-white/70 text-sm leading-relaxed">
                 The River Swat is a clear water river starting from the Ushu mountain range to the wide spread of the valley. Swat was historically known as Uddiyana (the garden), famous worldwide for its Buddhist stupas, rock carvings, ancient monastic sanctuaries, and peaceful hospitality inherited from the historic era of the Wali of Swat.
               </p>
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-sm border border-stone-200">
+              <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-sm border border-white/15">
                 <Image
                   src="/images/campus/charbagh-campus.jpg"
                   alt="Swat Valley University Campus"
@@ -62,33 +62,33 @@ export default function AboutPage() {
         {/* University Establishment & Mission */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+          <div className="p-8 sm:p-10 rounded-3xl bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)]">
             <div className="flex items-center gap-2 mb-3">
-              <span className="h-0.5 w-6 bg-[#7F1D1D]" />
-              <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+              <span className="h-0.5 w-6 bg-[#E5CD9B]" />
+              <span className="text-xs uppercase tracking-widest text-[#E5CD9B] font-bold">
                 Establishment (2010)
               </span>
             </div>
-            <h3 className="font-serif text-2xl font-bold text-stone-900 mb-4">
+            <h3 className="font-serif text-2xl font-bold text-white mb-4">
               Founding &amp; Statutory Origin
             </h3>
-            <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed mb-6">
+            <p className="font-sans text-white/80 text-sm sm:text-base leading-relaxed mb-6">
               The University of Swat was formally chartered in 2010 by the Government of Khyber Pakhtunkhwa to advance higher education in Swat, Shangla, Buner, and neighboring districts. From humble beginnings, the university has rapidly expanded to over 6,000 scholars, 28 teaching departments, four major academic faculties, and a purpose-built 100% solarized Main Campus in Charbagh.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-stone-100 text-xs">
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/20 text-xs">
               <div>
-                <strong className="block text-stone-900 text-sm">Governor of KP</strong>
-                <span className="text-stone-500">Chancellor</span>
+                <strong className="block text-white text-sm">Governor of KP</strong>
+                <span className="text-[#E5CD9B]">Chancellor</span>
               </div>
               <div>
-                <strong className="block text-stone-900 text-sm">Prof. Dr. Husnul Amin</strong>
-                <span className="text-stone-500">Vice Chancellor</span>
+                <strong className="block text-white text-sm">Prof. Dr. Husnul Amin</strong>
+                <span className="text-[#E5CD9B]">Vice Chancellor</span>
               </div>
             </div>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
             <div className="flex items-center gap-2 mb-3">
               <span className="h-0.5 w-6 bg-[#B48A3E]" />
               <span className="text-xs uppercase tracking-widest text-[#B48A3E] font-bold">
@@ -125,8 +125,8 @@ export default function AboutPage() {
         </div>
 
         {/* Sub-Campuses Overview */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-4 border-b border-stone-100 mb-8">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-300 shadow-xs">
+          <div className="pb-4 border-b border-stone-200 mb-8">
             <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold block mb-1">
               Geographic Presence
             </span>
@@ -136,8 +136,8 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
-              <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4 bg-stone-200">
+            <div className="p-6 rounded-2xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
+              <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4 bg-white/10">
                 <Image
                   src="/images/campus/charbagh-campus.jpg"
                   alt="Charbagh Main Campus"
@@ -145,20 +145,20 @@ export default function AboutPage() {
                   className="object-cover"
                 />
               </div>
-              <h4 className="font-serif text-lg font-bold text-stone-900 mb-1">
+              <h4 className="font-serif text-lg font-bold text-white mb-1">
                 Charbagh Main Campus
               </h4>
-              <span className="text-xs text-[#153B27] font-semibold block mb-2">Central Campus · Charbagh</span>
-              <p className="font-sans text-xs text-stone-600 leading-relaxed mb-4">
+              <span className="text-xs text-[#C8A96E] font-semibold block mb-2">Central Campus · Charbagh</span>
+              <p className="font-sans text-xs text-white/70 leading-relaxed mb-4">
                 Houses all 4 faculties, Central Library, Vice Chancellor’s Secretariat, and solarized labs.
               </p>
-              <Link href="/campuses/main-campus" className="text-xs font-semibold text-[#153B27] hover:underline flex items-center gap-1">
+              <Link href="/campuses/main-campus" className="text-xs font-semibold text-[#C8A96E] hover:underline flex items-center gap-1">
                 <span>View Campus Profile</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-300">
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4 bg-stone-200">
                 <Image
                   src="/images/campus/women-campus.jpg"
@@ -180,7 +180,7 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-300">
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4 bg-stone-200">
                 <Image
                   src="/images/campus/main-campus-gate.jpeg"

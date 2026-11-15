@@ -23,11 +23,11 @@ export default function LeadershipPage() {
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20">
         
         {/* Vice Chancellor Featured Showcase */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/90 shadow-sm mb-20">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-300 shadow-sm mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             <div className="lg:col-span-4 flex justify-center">
-              <div className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden shadow-lg border-4 border-stone-100">
+              <div className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden shadow-lg border-4 border-stone-200">
                 <Image
                   src={viceChancellorProfile.image}
                   alt={viceChancellorProfile.name}
@@ -52,7 +52,7 @@ export default function LeadershipPage() {
                 {viceChancellorProfile.designation}, {viceChancellorProfile.institution}
               </span>
 
-              <p className="font-sans text-stone-600 text-base leading-relaxed mb-8 line-clamp-4 italic border-l-2 border-[#153B27]/40 pl-4">
+              <p className="font-sans text-white/85 text-base leading-relaxed mb-8 line-clamp-4 italic bg-[#153B27] border-l-4 border-[#C8A96E] pl-5 pr-5 py-4 rounded-r-xl">
                 &ldquo;{viceChancellorProfile.message.split('\n\n')[0]}&rdquo;
               </p>
 
@@ -107,11 +107,11 @@ export default function LeadershipPage() {
                 {group.officers.map((officer, oIdx) => (
                   <div
                     key={oIdx}
-                    className="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-xs flex flex-col justify-between"
+                    className="p-6 rounded-3xl bg-white border border-stone-300 shadow-xs flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shrink-0 relative flex items-center justify-center text-stone-400 font-serif text-lg font-bold">
+                        <div className="w-16 h-16 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shrink-0 relative flex items-center justify-center text-stone-500 font-serif text-lg font-bold">
                           {officer.image ? (
                             <Image
                               src={officer.image}
@@ -120,7 +120,7 @@ export default function LeadershipPage() {
                               className="object-cover object-top"
                             />
                           ) : (
-                            <UserCheck className="w-6 h-6 text-stone-400" />
+                            <UserCheck className="w-6 h-6 text-stone-500" />
                           )}
                         </div>
                         <div>
@@ -130,7 +130,7 @@ export default function LeadershipPage() {
                           <span className="text-xs font-semibold text-[#153B27] block">
                             {officer.designation}
                           </span>
-                          <span className="text-[11px] text-stone-500 block">
+                          <span className="text-[11px] text-stone-600 block">
                             {officer.departmentOffice}
                           </span>
                         </div>
@@ -143,7 +143,7 @@ export default function LeadershipPage() {
                       )}
                     </div>
 
-                    <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+                    <div className="pt-4 border-t border-stone-200 flex items-center justify-between text-xs">
                       <a
                         href={`mailto:${officer.email}`}
                         className="font-mono text-stone-600 hover:text-[#7F1D1D] flex items-center gap-1.5 transition-colors"

@@ -38,7 +38,7 @@ export default function ViceChancellorDetailPage() {
           {/* Main Column: Full Discourse & Vision */}
           <div className="lg:col-span-8 space-y-10">
             
-            <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/90 shadow-sm">
+            <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-300 shadow-sm">
               <div className="flex items-center gap-2 mb-4">
                 <span className="h-0.5 w-6 bg-[#7F1D1D]" />
                 <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
@@ -50,7 +50,7 @@ export default function ViceChancellorDetailPage() {
               </h2>
 
               <div className="font-sans text-stone-700 text-base sm:text-lg leading-relaxed space-y-6">
-                <p className="italic font-serif text-xl sm:text-2xl text-stone-900 leading-snug border-l-4 border-[#153B27] pl-6 py-1">
+                <p className="italic font-serif text-xl sm:text-2xl text-white leading-snug bg-[#153B27] border-l-4 border-[#C8A96E] pl-6 pr-6 py-5 rounded-r-xl">
                   &ldquo;It is with immense pride, humility, and a profound sense of responsibility that I assume the office of Vice Chancellor of the University of Swat. I am honored to serve this distinguished institution at a pivotal moment in its journey.&rdquo;
                 </p>
                 <p>
@@ -102,14 +102,14 @@ export default function ViceChancellorDetailPage() {
                     Vice Chancellor, University of Swat
                   </span>
                 </div>
-                <div className="text-xs font-mono text-stone-400">
+                <div className="text-xs font-mono text-stone-500">
                   Notification: HED / Govt of KP
                 </div>
               </div>
             </div>
 
             {/* Secretariat Staff */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-sm">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-sm">
               <div className="flex items-center gap-2 mb-4">
                 <span className="h-0.5 w-6 bg-[#B48A3E]" />
                 <span className="text-xs uppercase tracking-widest text-[#B48A3E] font-bold">
@@ -123,7 +123,7 @@ export default function ViceChancellorDetailPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {viceChancellorProfile.secretariat.map((staff, sIdx) => (
                   <div key={sIdx} className="p-5 rounded-2xl bg-stone-50 border border-stone-200/80 flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-2xl overflow-hidden bg-stone-200 shrink-0 relative flex items-center justify-center text-stone-400 font-serif text-lg font-bold">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden bg-stone-200 shrink-0 relative flex items-center justify-center text-stone-500 font-serif text-lg font-bold">
                       {staff.image ? (
                         <Image
                           src={staff.image}
@@ -144,7 +144,7 @@ export default function ViceChancellorDetailPage() {
                       </span>
                       <a
                         href={`mailto:${staff.email}`}
-                        className="text-[11px] font-mono text-stone-500 hover:text-[#7F1D1D] flex items-center gap-1 mt-1"
+                        className="text-[11px] font-mono text-stone-600 hover:text-[#7F1D1D] flex items-center gap-1 mt-1"
                       >
                         <Mail className="w-3 h-3" />
                         {staff.email}
@@ -161,8 +161,8 @@ export default function ViceChancellorDetailPage() {
           <div className="lg:col-span-4 space-y-6">
             
             {/* Portrait Card */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-sm text-center">
-              <div className="relative w-full aspect-4/5 rounded-2xl overflow-hidden shadow-md mb-6 border-4 border-stone-100">
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-300 shadow-sm text-center">
+              <div className="relative w-full aspect-4/5 rounded-2xl overflow-hidden shadow-md mb-6 border-4 border-stone-200">
                 <Image
                   src={viceChancellorProfile.image}
                   alt={viceChancellorProfile.name}
@@ -179,9 +179,9 @@ export default function ViceChancellorDetailPage() {
                 Vice Chancellor · University of Swat
               </span>
 
-              <div className="space-y-3 text-left text-xs sm:text-[13px] border-t border-stone-100 pt-6">
+              <div className="space-y-3 text-left text-xs sm:text-[13px] border-t border-stone-200 pt-6">
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Direct Email
                   </span>
                   <a
@@ -194,7 +194,7 @@ export default function ViceChancellorDetailPage() {
                 </div>
 
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Secretariat Landline
                   </span>
                   <span className="font-mono text-stone-800 flex items-center gap-1.5 mt-0.5">
@@ -204,7 +204,7 @@ export default function ViceChancellorDetailPage() {
                 </div>
 
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Executive Office
                   </span>
                   <span className="font-medium text-stone-700 flex items-center gap-1.5 mt-0.5">
@@ -214,7 +214,7 @@ export default function ViceChancellorDetailPage() {
                 </div>
 
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     PM Citizen Portal Focal Person
                   </span>
                   <span className="font-medium text-stone-700 block mt-0.5">
@@ -223,7 +223,7 @@ export default function ViceChancellorDetailPage() {
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-stone-100 flex flex-col gap-2">
+              <div className="mt-8 pt-6 border-t border-stone-200 flex flex-col gap-2">
                 <Link
                   href="/about"
                   className="w-full py-3 rounded-xl bg-[#153B27] text-white font-semibold text-xs hover:bg-[#153B27]/90 transition-colors"

@@ -112,7 +112,7 @@ export default function CampusLifeHeritage() {
               Campus Life &amp; Swat Valley Heritage
             </h2>
           </div>
-          <p className="font-sans text-sm sm:text-base text-stone-500 max-w-md lg:text-right leading-[1.68]">
+          <p className="font-sans text-sm sm:text-base text-stone-600 max-w-md lg:text-right leading-[1.68]">
             A visual tour of the University of Swat — from the Charbagh Main Campus and the Women
             Campus to libraries, sports, and the Gandharan heritage surrounding the valley.
           </p>
@@ -125,8 +125,8 @@ export default function CampusLifeHeritage() {
               key={tile.id}
               className={
                 tile.featured
-                  ? 'group relative min-h-[260px] sm:min-h-[380px] lg:col-span-2 lg:row-span-2 lg:min-h-[520px] rounded-xl border border-stone-200/90 bg-white shadow-xs overflow-hidden hover:-translate-y-[2px] transition-all duration-200 ease-out'
-                  : 'group relative min-h-[220px] rounded-xl border border-stone-200/90 bg-white shadow-xs overflow-hidden hover:-translate-y-[2px] transition-all duration-200 ease-out'
+                  ? 'group relative min-h-[260px] sm:min-h-[380px] lg:col-span-2 lg:row-span-2 lg:min-h-[520px] rounded-xl border border-stone-300 bg-white shadow-xs overflow-hidden hover:-translate-y-[2px] transition-all duration-200 ease-out'
+                  : 'group relative min-h-[220px] rounded-xl border border-stone-300 bg-white shadow-xs overflow-hidden hover:-translate-y-[2px] transition-all duration-200 ease-out'
               }
             >
               <button

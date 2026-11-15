@@ -2,10 +2,21 @@
 
 This file tracks every component in the University of Swat project, its source location, dependencies, status, and replacement history.
 
+## Card Surface System (2026-11-15 sitewide restyle)
+
+All cards follow one of three surfaces (full recipes in `docs/CHANGELOG.md`, entry "Sitewide Card Surface System"):
+
+- **FOREST `bg-[#153B27]`** — featured/lead cards, primary stat blocks, spotlight leads. Gold `#C8A96E` labels, white headings, `white/70+` body, `white/15` hairlines, `hover:bg-[#0F2D1E]`.
+- **CRIMSON `bg-[#7F1D1D]`** — priority notices, admissions/deadline callouts, key metrics (max one per grid). Small labels `#E5CD9B` (AA-safe on crimson), `hover:bg-[#661717]`.
+- **LIGHT (strengthened)** — everything else: `border-stone-300` containers, `stone-200` internals, `text-stone-500/600` minimums, no faint greys.
+
+Rhythm: one dark surface per grid/row; never two adjacent crimsons. Carried today by: RankingSection (forest lead + forest/crimson/light/forest tiles), FacultyProgramsGrid & FlagshipDegreeSpotlight (featured flag), CampusBulletin (crimson reader pane), AdmissionsInquiryFunnel (crimson contacts column), StudentAlumniSuccess & UpcomingEvents (forest leads via `featured` / `first:` variants), HeroSection (pre-existing crimson pillars), PageHeader-band + per-page metric bars/callouts on inner routes.
+
 | Component | Path | Type | Status | Description |
 | --- | --- | --- | --- | --- |
 | `TopNoticeRibbon` | `src/components/layout/TopNoticeRibbon.tsx` | Client | **Active (Live Announcement Ticker)** | Topmost sticky ribbon with rotating admissions, merit list, and scholarship notices, direct CTA links, ticker controls, and dismiss trigger |
-| `Navbar` | `src/components/layout/Navbar.tsx` | Client | **Active (Flagship Academic Nav & Portal CTA)** | Transparent-to-frosted top navigation with circular crest, "University of Swat" branding, smooth cubic-bezier fade-in 2-column floating mega-menu cards, academic taxonomy (Programs, Faculty, Academics, Admissions, Campus Life, Research), and University Crimson (#7F1D1D) "Student Portal" button |
+| `Navbar` | `src/components/layout/Navbar.tsx` | Client | **Active (Link Triggers + Hover Mega Nav & Portal CTA)** | Editorial top navigation: circular crest + "University of Swat" branding, seven mega-menu triggers driven by `src/data/navigation.ts` (Programs, Faculties, Academics, Admissions, Campus Life, Research, University). Each trigger is a link — **hover opens the panel, click opens the section's own page** — with viewport-safe single panel beneath the bar, `aria-expanded`/`aria-controls` wiring, ArrowDown-to-open, ArrowLeft/Right roving, Escape-to-close with focus return, close-on-scroll/route-change, university-grid aligned bar (`max-w-[1360px] px-6 lg:px-12`), search action and University Crimson (`#7F1D1D`) "Student Portal" button. Desktop nav at `xl+`, drawer below |
+| `MegaMenuPanel` | `src/components/layout/MegaMenuPanel.tsx` | Client | **Active (Editorial Mega-Menu Surface)** | Warm alabaster card (`#FCFBF8`, 20px radius, forest shadow) with crimson eyebrow + serif section summary, grouped hairline link columns (factual right-aligned qualifier, gold tick + crimson label on hover), and a Deep Forest editorial fact rail with crest watermark and one CTA; Arrow-key link navigation; 760 / 1080 / 1180px widths by column count |
 | `HeroSection` | `src/components/home/HeroSection.tsx` | Client | **Active (Cinematic Video, 3 Architectural Crimson Cards)** | Full-screen background video hero with multi-stop vignette dissolving into Warm Alabaster (`#F6F5F0`), authoritative display serif H1, dual CTA, and three distinct University Crimson (`#7F1D1D`) architectural cards (Quality, Leadership, Experience) with muted gold top border + Roman numerals, overlapping the hero's bottom edge onto the light section below |
 | `ViceChancellorSection` | `src/components/home/ViceChancellorSection.tsx` | Client | **Active (Warm Alabaster Wide Grid, Cohesive Stone Badges)** | Full-width open leadership discourse section on Warm Alabaster (`#F6F5F0`), aligned to the shared 1360px grid, featuring enlarged 420px React Bits `<ProfileCard />` with official portrait, concise inspirational quote, and unified neutral stone achievement badges |
 | `EditorialStorytelling` | `src/components/home/EditorialStorytelling.tsx` | Client | **Active (Alternating Editorial Rows)** | High-impact alternating storytelling section featuring Swat Valley alpine campus sustainability (100% solarized, UI GreenMetric) and frontier research (Gandhara heritage & ORIC metrics) |
@@ -22,7 +33,10 @@ This file tracks every component in the University of Swat project, its source l
 | `ProfileCard` | `src/components/ui/ProfileCard.tsx` | Client | **Active (Primitive)** | React Bits interactive 3D holographic profile card component with configurable width (`--pc-width`), institutional `caption` support, cursor-following glare, specular sheen, parallax portrait, and Hugeicons mail trigger |
 | `Footer` | `src/components/layout/Footer.tsx` | Client | **Active (Deep Forest Green Directory & Crimson Accent)** | Commanding Deep Forest Green (`bg-[#0F291B]`) footer with a University Crimson (`border-t-4 border-[#7F1D1D]`) top border, circular crest branding, white headings, Crimson subscribe action, 4 main columns with verified UoS statutory links, and circular social media glyphs |
 | `PageHeader` | `src/components/layout/PageHeader.tsx` | Server | **Active (Deep Forest Green Architectural Hero)** | High-contrast Deep Forest Green (`bg-[#153B27]`) architectural inner-page hero banner with Muted Gold (`#C8A96E`) eyebrow, pure white serif H1, integrated breadcrumb trail, and full navbar clearance |
+| `DownloadsClient` | `src/components/academics/DownloadsClient.tsx` | Client | **Active (Interactive Repository Explorer)** | Interactive download center with live search, 7 category filter pills, overlapping 4-metric crimson stat bar, verified PDF cards, and statutory attestation advisory |
+| `UosAssistant` | `src/components/ui/UosAssistant.tsx` + `UosAssistant.css` | Client | **Active (React Bits–style AI Assistant)** | Fixed bottom-right assistant rebuilt in the React Bits style: physics-based tilt engine on the circular Forest Green (`#153B27`) crest toggle badge (serif "UoS" monogram, double-ring seal), letterhead panel with serif `Cormorant Garamond` headings, hairline rules, Muted Gold (`#C8A96E`) accent rule, and University Crimson (`#7F1D1D`) send button. Micro-animations: panel scale/fade entrance, staggered message rise, three-dot typing pulse, tactile send press. `role="dialog"`, `aria-expanded`/`aria-controls`, Escape-to-close with focus return, Enter-to-send, `aria-live` announcements. No real LLM backend wired by default — set `NEXT_PUBLIC_CHATBOT_API_URL` / pass `apiEndpoint` to connect one; otherwise replies with an honest contact-direction message |
 | `NotFound` | `src/app/not-found.tsx` | Server | **Active (Custom 404)** | Editorial "page not enrolled" 404 with home/programs/contact actions |
+
 
 ---
 
@@ -38,9 +52,9 @@ This file tracks every component in the University of Swat project, its source l
 | `/leadership` | `src/app/leadership/page.tsx` | Static | **Active** | Statutory university leadership catalog and administrative council |
 | `/leadership/vice-chancellor` | `src/app/leadership/vice-chancellor/page.tsx` | Static | **Active** | Full discourse, vision, curriculum vitae, and secretariat of Prof. Dr. Husnul Amin |
 | `/leadership/[slug]` | `src/app/leadership/[slug]/page.tsx` | SSG (Dynamic) | **Active (4 Paths)** | Administrative profiles for Registrar, Treasurer, Controller of Examinations, and Provost |
-| `/academics` | `src/app/academics/page.tsx` | Static | **Active** | Academic council overview, degree programs, and educational ecosystem |
-| `/academics/calendar` | `src/app/academics/calendar/page.tsx` | Static | **Active** | Official academic calendar 2026–2027, semester milestones, and examination schedules |
-| `/academics/downloads` | `src/app/academics/downloads/page.tsx` | Static | **Active** | Categorized proformas, admission forms, scholarship applications, and university statutes |
+| `/academics` | `src/app/academics/page.tsx` | Static | **Active (Design-Taste Institutional Hub)** | Comprehensive academic ecosystem: Deep Forest Green PageHeader, overlapping 4-metric crimson stat bar, 3 core gateway spec cards (I–III), Charbagh alpine complex editorial split, 8-bracket HEC grading scale with academic progression rules, QEC 91.4% W-Category showcase, 4 academic authorities, and 4-way pathway navigation |
+| `/academics/calendar` | `src/app/academics/calendar/page.tsx` | Static | **Active (Design-Taste Semester Calendar)** | Official Academic Calendar 2026–2027: Deep Forest Green PageHeader, overlapping 4-metric crimson stat bar, side-by-side Fall 2026 & Spring 2027 timelines with status pills, exam badges, PDF download action, and statutory examination advisory |
+| `/academics/downloads` | `src/app/academics/downloads/page.tsx` | Static / Client | **Active (Interactive Download Center)** | Official Statutes & Forms repository: Deep Forest Green PageHeader, `DownloadsClient` with live search, 7 category filter pills, verified PDF proformas, and Registrar attestation advisory |
 | `/admissions` | `src/app/admissions/page.tsx` | Static | **Active** | Comprehensive admissions prospectus, eligibility requirements, step-by-step application pipeline |
 | `/admissions/fee-structure` | `src/app/admissions/fee-structure/page.tsx` | Static | **Active** | Official fee schedule breakdown for all BS, MS/MPhil, PhD, and Self-Finance programs |
 | `/admissions/merit-lists` | `src/app/admissions/merit-lists/page.tsx` | Static | **Active** | Departmental provisional and final merit lists with downloadable official gazettes |
@@ -80,7 +94,7 @@ This file tracks every component in the University of Swat project, its source l
 
 | Module | Path | Description |
 | --- | --- | --- |
-| Navigation Data | `src/data/navigation.ts` | Mega menu links, categories, campus details |
+| Navigation Data | `src/data/navigation.ts` | Single source of truth for the primary navigation: typed `NavItem` / `NavGroup` / `NavLink` / `NavRail` model, seven taxonomy groups (Programs, Faculties, Academics, Admissions, Campus Life, Research, University), per-panel factual qualifiers and rail figures, and `primaryActions`. Consumed by `Navbar` and `MegaMenuPanel`; replaces the legacy placeholder mega data (`href: "#"`) |
 | Announcements Data | `src/data/announcements.ts` | Structured typed notices (13 items, all 7 tabs), tone-based badges, official references, callout boxes |
 | University Data | `src/data/universityData.ts` | Statutory history, governance, accreditation metrics, official email/phone directory |
 | Leadership Data | `src/data/leadershipData.ts` | VC credentials (Prof. Dr. Husnul Amin), Secretariat roster, Statutory Officers profiles |

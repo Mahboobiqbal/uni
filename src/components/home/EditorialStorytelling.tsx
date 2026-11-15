@@ -42,35 +42,35 @@ export default function EditorialStorytelling() {
 
             {/* Value checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-300 shadow-xs hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out">
                 <SunMedium className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs text-[#14291D]">100% Solar-Powered</p>
-                  <p className="text-[11px] text-stone-500">Green clean energy grid across all blocks</p>
+                  <p className="text-[11px] text-stone-600">Green clean energy grid across all blocks</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-300 shadow-xs hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out">
                 <Leaf className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs text-[#14291D]">Top 15 UI GreenMetric</p>
-                  <p className="text-[11px] text-stone-500">National leader in ecological stewardship</p>
+                  <p className="text-[11px] text-stone-600">National leader in ecological stewardship</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-300 shadow-xs hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out">
                 <BookOpenCheck className="w-5 h-5 text-[#7F1D1D] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs text-[#14291D]">Central Scholar Halls</p>
-                  <p className="text-[11px] text-stone-500">HEC Digital Library &amp; 25,000+ journals</p>
+                  <p className="text-[11px] text-stone-600">HEC Digital Library &amp; 25,000+ journals</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-200/80 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white/70 border border-stone-300 shadow-xs hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out">
                 <Compass className="w-5 h-5 text-[#7F1D1D] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs text-[#14291D]">Scenic Valley Location</p>
-                  <p className="text-[11px] text-stone-500">Serene Charbagh foothills, Swat</p>
+                  <p className="text-[11px] text-stone-600">Serene Charbagh foothills, Swat</p>
                 </div>
               </div>
             </div>
@@ -175,22 +175,22 @@ export default function EditorialStorytelling() {
             </p>
 
             {/* Research stats bar */}
-            <div className="grid grid-cols-3 gap-4 py-3 border-y border-stone-200/90 text-center">
+            <div className="grid grid-cols-3 gap-4 py-3 border-y border-stone-300 text-center">
               <div>
                 <p className="font-serif text-2xl sm:text-3xl font-bold text-[#7F1D1D]">200+</p>
-                <p className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold mt-0.5">
+                <p className="text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
                   Annual Papers
                 </p>
               </div>
-              <div className="border-x border-stone-200/90">
+              <div className="border-x border-stone-300">
                 <p className="font-serif text-2xl sm:text-3xl font-bold text-[#153B27]">50+</p>
-                <p className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold mt-0.5">
+                <p className="text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
                   Research Labs
                 </p>
               </div>
               <div>
                 <p className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D]">PKR 85M</p>
-                <p className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold mt-0.5">
+                <p className="text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
                   Research Grants
                 </p>
               </div>
@@ -209,7 +209,7 @@ export default function EditorialStorytelling() {
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-700 hover:text-[#153B27] active:scale-[0.985] active:translate-y-px transition-all duration-150"
               >
                 <span>View Publications Directory</span>
-                <ArrowUpRight className="w-4 h-4 text-stone-400" />
+                <ArrowUpRight className="w-4 h-4 text-stone-500" />
               </Link>
             </div>
           </div>

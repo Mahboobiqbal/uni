@@ -134,7 +134,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                 </div>
 
                 {photo ? (
-                  <div className="group relative rounded-3xl overflow-hidden border border-stone-200/90 shadow-[0_24px_50px_-24px_rgba(12,25,18,0.35)]">
+                  <div className="group relative rounded-3xl overflow-hidden border border-stone-300 shadow-[0_24px_50px_-24px_rgba(12,25,18,0.35)]">
                     <Image
                       src={photo.src}
                       alt={photo.alt}
@@ -222,11 +222,11 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                 >
                   Key Learning Outcomes
                 </h2>
-                <span className="text-[10px] uppercase tracking-[0.16em] text-stone-400 font-bold tabular-nums whitespace-nowrap">
+                <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-bold tabular-nums whitespace-nowrap">
                   {String(prog.learningOutcomes.length).padStart(2, '0')} Outcomes
                 </span>
               </div>
-              <ol className="bg-white border border-stone-200/90 rounded-3xl divide-y divide-stone-200 overflow-hidden shadow-xs">
+              <ol className="bg-white border border-stone-300 rounded-3xl divide-y divide-stone-200 overflow-hidden shadow-xs">
                 {prog.learningOutcomes.map((outcome, idx) => (
                   <li
                     key={idx}
@@ -261,12 +261,12 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                 >
                   Semester-by-Semester Scheme of Studies
                 </h2>
-                <span className="text-[10px] uppercase tracking-[0.16em] text-stone-400 font-bold tabular-nums whitespace-nowrap">
+                <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-bold tabular-nums whitespace-nowrap">
                   {String(prog.semesterOutline.length).padStart(2, '0')} Terms
                 </span>
               </div>
 
-              <ol className="bg-white border border-stone-200/90 rounded-3xl divide-y divide-stone-200 overflow-hidden shadow-xs">
+              <ol className="bg-white border border-stone-300 rounded-3xl divide-y divide-stone-200 overflow-hidden shadow-xs">
                 {prog.semesterOutline.map((term, tIdx) => {
                   const capstoneHighlight = term.courses.some((c) =>
                     /\b(final year|capstone|thesis|internship)\b/i.test(c)
@@ -300,7 +300,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                             </span>
                           )}
                         </div>
-                        <span className="text-[10px] uppercase tracking-[0.14em] text-stone-400 font-bold tabular-nums mt-1 block">
+                        <span className="text-[10px] uppercase tracking-[0.14em] text-stone-500 font-bold tabular-nums mt-1 block">
                           {term.courses.length} Courses
                         </span>
                       </div>
@@ -338,7 +338,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                   Career Prospects
                 </h2>
               </div>
-              <ol className="bg-white border border-stone-200/90 rounded-3xl divide-y divide-stone-200 overflow-hidden shadow-xs">
+              <ol className="bg-white border border-stone-300 rounded-3xl divide-y divide-stone-200 overflow-hidden shadow-xs">
                 {prog.careerProspects.map((career, idx) => (
                   <li
                     key={idx}
@@ -362,7 +362,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
           {/* ─── Sidebar Column ─── */}
           <aside className="lg:col-span-4 space-y-6" aria-label="Enrollment quick facts">
             {/* Enrollment Overview */}
-            <div className="rounded-3xl bg-white border border-stone-200/90 shadow-xs overflow-hidden">
+            <div className="rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] overflow-hidden">
               <div className="relative bg-[#153B27] text-white px-6 sm:px-7 pt-6 pb-5">
                 <div aria-hidden="true" className="absolute top-0 left-0 h-[3px] w-16 bg-[#C8A96E]" />
                 <div
@@ -380,44 +380,44 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                 </p>
               </div>
 
-              <dl className="px-6 sm:px-7 py-5 space-y-4 text-xs sm:text-[13px] divide-y divide-stone-100">
+              <dl className="px-6 sm:px-7 py-5 space-y-4 text-xs sm:text-[13px] divide-y divide-white/15">
                 <div className="flex items-start justify-between gap-4 pt-1">
-                  <dt className="text-[10px] uppercase tracking-wider text-stone-400 font-bold pt-0.5">
+                  <dt className="text-[10px] uppercase tracking-wider text-white/60 font-bold pt-0.5">
                     Duration
                   </dt>
-                  <dd className="font-semibold text-[#14291D] text-right">
+                  <dd className="font-semibold text-white text-right">
                     {shortDuration(prog.duration)}
                   </dd>
                 </div>
                 <div className="flex items-start justify-between gap-4 pt-4">
-                  <dt className="text-[10px] uppercase tracking-wider text-stone-400 font-bold pt-0.5">
+                  <dt className="text-[10px] uppercase tracking-wider text-white/60 font-bold pt-0.5">
                     Credit Hours
                   </dt>
-                  <dd className="font-semibold text-[#14291D] text-right tabular-nums">
+                  <dd className="font-semibold text-white text-right tabular-nums">
                     {prog.creditHours} Credits
                   </dd>
                 </div>
                 <div className="flex items-start justify-between gap-4 pt-4">
-                  <dt className="text-[10px] uppercase tracking-wider text-stone-400 font-bold pt-0.5">
+                  <dt className="text-[10px] uppercase tracking-wider text-white/60 font-bold pt-0.5">
                     Fee / Semester
                   </dt>
-                  <dd className="font-medium text-stone-700 text-right leading-snug max-w-[14rem]">
+                  <dd className="font-medium text-white/80 text-right leading-snug max-w-[14rem]">
                     {prog.feePerSemester}
                   </dd>
                 </div>
                 <div className="flex items-start justify-between gap-4 pt-4">
-                  <dt className="text-[10px] uppercase tracking-wider text-stone-400 font-bold pt-0.5">
+                  <dt className="text-[10px] uppercase tracking-wider text-white/60 font-bold pt-0.5">
                     Scholarships
                   </dt>
-                  <dd className="font-medium text-stone-700 text-right leading-snug max-w-[14rem]">
+                  <dd className="font-medium text-white/80 text-right leading-snug max-w-[14rem]">
                     HEC Need-Based · KPEF · Ehsaas · University Merit
                   </dd>
                 </div>
                 <div className="flex items-start justify-between gap-4 pt-4 pb-1">
-                  <dt className="text-[10px] uppercase tracking-wider text-stone-400 font-bold pt-0.5">
+                  <dt className="text-[10px] uppercase tracking-wider text-white/60 font-bold pt-0.5">
                     Accreditation
                   </dt>
-                  <dd className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#153B27] border border-[#C9D6C2] bg-[#EFF5EE] rounded-full px-2.5 py-1">
+                  <dd className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#C8A96E] border border-[#C8A96E]/30 bg-[#C8A96E]/15 rounded-full px-2.5 py-1">
                     <Award className="w-3.5 h-3.5" />
                     {accreditedBy(prog)}
                   </dd>
@@ -434,7 +434,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                 </Link>
                 <Link
                   href={`/departments/${prog.departmentId}`}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl border border-stone-300 text-stone-700 hover:border-[#153B27] hover:text-[#153B27] bg-white text-[11px] font-bold uppercase tracking-[0.1em] min-h-[44px] transition-all duration-200 active:scale-[0.985]"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl border border-white/20 text-white/80 hover:border-[#C8A96E] hover:text-[#C8A96E] bg-white/10 text-[11px] font-bold uppercase tracking-[0.1em] min-h-[44px] transition-all duration-200 active:scale-[0.985]"
                 >
                   <GraduationCap className="w-4 h-4" />
                   Department Faculty &amp; Labs
@@ -443,12 +443,12 @@ export default async function ProgramDetailPage({ params }: PageProps) {
             </div>
 
             {/* Other Degree Programs */}
-            <div className="rounded-3xl bg-white border border-stone-200/90 shadow-xs overflow-hidden">
+            <div className="rounded-3xl bg-white border border-stone-300 shadow-xs overflow-hidden">
               <div className="px-6 sm:px-7 pt-6 pb-4 flex items-center gap-2.5">
                 <Landmark className="w-4 h-4 text-[#7F1D1D]" />
                 <h4 className="font-serif text-lg font-bold text-[#14291D]">Other Degree Programs</h4>
               </div>
-              <ol className="divide-y divide-stone-100">
+              <ol className="divide-y divide-stone-200">
                 {programsDetailCatalog
                   .filter((p) => p.slug !== prog.slug)
                   .slice(0, 5)
@@ -460,19 +460,19 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                       >
                         <span
                           aria-hidden="true"
-                          className="font-serif text-sm font-bold text-stone-300 group-hover:text-[#153B27]/40 transition-colors tabular-nums w-6 shrink-0"
+                          className="font-serif text-sm font-bold text-stone-400 group-hover:text-[#153B27]/40 transition-colors tabular-nums w-6 shrink-0"
                         >
                           {String(idx + 1).padStart(2, '0')}
                         </span>
                         <span className="flex-1 font-serif text-sm font-bold text-[#14291D] leading-snug group-hover:text-[#153B27] transition-colors">
                           {other.name}
                         </span>
-                        <ArrowRight className="w-3.5 h-3.5 text-stone-300 group-hover:text-[#7F1D1D] group-hover:translate-x-0.5 transition-all duration-200 shrink-0" />
+                        <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-[#7F1D1D] group-hover:translate-x-0.5 transition-all duration-200 shrink-0" />
                       </Link>
                     </li>
                   ))}
               </ol>
-              <div className="px-6 sm:px-7 py-4 border-t border-stone-100">
+              <div className="px-6 sm:px-7 py-4 border-t border-stone-200">
                 <Link
                   href="/programs"
                   className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#7F1D1D] hover:text-[#661717] transition-colors min-h-[44px] -my-2"

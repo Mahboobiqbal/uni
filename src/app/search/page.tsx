@@ -158,15 +158,15 @@ function SearchPageContent() {
           </h1>
 
           <form onSubmit={handleSubmit} className="max-w-2xl">
-            <div className="flex items-center gap-3 p-2 rounded-2xl bg-white border border-stone-200/90 shadow-xs focus-within:border-[#153B27]/50">
-              <Search className="w-5 h-5 text-stone-400 ml-3 shrink-0" />
+            <div className="flex items-center gap-3 p-2 rounded-2xl bg-white border border-stone-300 shadow-xs focus-within:border-[#153B27]/50">
+              <Search className="w-5 h-5 text-stone-500 ml-3 shrink-0" />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search programs, departments, faculty, news, events…"
                 aria-label="Search the university website"
-                className="w-full bg-transparent text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none py-2.5"
+                className="w-full bg-transparent text-sm text-stone-800 placeholder:text-stone-500 focus:outline-none py-2.5"
               />
               <button
                 type="submit"
@@ -227,7 +227,7 @@ function SearchPageContent() {
                       <Link
                         key={`${result.section}-${result.title}-${result.href}`}
                         href={result.href}
-                        className="group flex items-start gap-4 p-5 rounded-xl bg-white border border-stone-200/90 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_14px_30px_-16px_rgba(21,59,39,0.25)]"
+                        className="group flex items-start gap-4 p-5 rounded-xl bg-white border border-stone-300 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_14px_30px_-16px_rgba(21,59,39,0.25)]"
                       >
                         <span className="w-9 h-9 rounded-lg bg-[#153B27]/8 text-[#153B27] flex items-center justify-center shrink-0">
                           {result.icon}
@@ -236,11 +236,11 @@ function SearchPageContent() {
                           <span className="block text-sm font-bold text-[#14291D] group-hover:text-[#153B27] transition-colors">
                             {result.title}
                           </span>
-                          <span className="block text-xs text-stone-500 mt-1 line-clamp-2">
+                          <span className="block text-xs text-stone-600 mt-1 line-clamp-2">
                             {result.excerpt}
                           </span>
                         </span>
-                        <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-[#153B27] ml-auto shrink-0 transition-all" />
+                        <ArrowUpRight className="w-4 h-4 text-stone-500 group-hover:text-[#153B27] ml-auto shrink-0 transition-all" />
                       </Link>
                     ))}
                 </div>

@@ -2,384 +2,54 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ChevronDown, Menu, Search, X } from 'lucide-react';
 import TopNoticeRibbon from './TopNoticeRibbon';
+import MegaMenuPanel from './MegaMenuPanel';
+import { navItems, primaryActions } from '@/data/navigation';
 
-interface SubmenuItem {
-  label: string;
-  href: string;
-  description: string;
-  icon: React.ReactNode;
-}
-
-interface NavItem {
-  label: string;
-  href: string;
-  hasDropdown?: boolean;
-  submenu?: SubmenuItem[];
-}
-
-const navItems: NavItem[] = [
-  { label: 'Home', href: '/' },
-  {
-    label: 'Programs',
-    href: '/programs',
-    hasDropdown: true,
-    submenu: [
-      {
-        label: 'BS Computer Science',
-        href: '/programs/bs-computer-science',
-        description: 'Artificial Intelligence, Software Systems & Data Networks',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        )
-      },
-      {
-        label: 'BS Software Engineering',
-        href: '/programs/bs-software-engineering',
-        description: 'Full-Stack Architecture, Cloud & Software Engineering',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        )
-      },
-      {
-        label: 'BBA (Honors) Business Admin',
-        href: '/programs/bba-honors',
-        description: 'Strategic Leadership, Corporate Finance & HR Analytics',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        )
-      },
-      {
-        label: 'BS Chemistry (4-Year)',
-        href: '/programs/bs-chemistry',
-        description: 'Organic, Inorganic, Physical & Analytical Chemistry',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-          </svg>
-        )
-      },
-      {
-        label: 'BS Environmental Sciences',
-        href: '/programs/bs-environmental-sciences',
-        description: 'Alpine Ecology, Mountain Hydrology & Climate Change',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Bachelor of Laws (LLB 5-Yr)',
-        href: '/programs/llb-5-years',
-        description: 'Constitutional, Criminal & Corporate Jurisprudence',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-          </svg>
-        )
-      }
-    ]
-  },
-  { label: 'Faculty', href: '/faculty' },
-  {
-    label: 'Academics',
-    href: '/academics',
-    hasDropdown: true,
-    submenu: [
-      {
-        label: 'Faculties & Departments',
-        href: '/faculty',
-        description: 'All 4 faculties & 28 academic departments',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-        )
-      },
-      {
-        label: 'Academic Calendar',
-        href: '/academics/calendar',
-        description: 'Semester schedules, gazettes & date sheets',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Official Downloads & Forms',
-        href: '/academics/downloads',
-        description: 'Proformas, examination forms & regulations',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-        )
-      },
-      {
-        label: 'University Leadership',
-        href: '/leadership',
-        description: 'Statutory officers & administrative directory',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Vice Chancellor\'s Office',
-        href: '/leadership/vice-chancellor',
-        description: 'Prof. Dr. Husnul Amin\'s vision & secretariat',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Affiliated Colleges',
-        href: '/affiliated-colleges',
-        description: 'Registered public and private degree colleges',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-        )
-      }
-    ]
-  },
-  {
-    label: 'Admissions',
-    href: '/admissions',
-    hasDropdown: true,
-    submenu: [
-      {
-        label: 'Admissions 2026',
-        href: '/admissions',
-        description: 'Application criteria, timeline & procedures',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-          </svg>
-        )
-      },
-      {
-        label: 'Fee Structure',
-        href: '/admissions/fee-structure',
-        description: 'Semester dues for BS, MS, PhD & Self-Finance',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Merit Lists & Quotas',
-        href: '/admissions/merit-lists',
-        description: 'Departmental provisional & final merit lists',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Scholarships & Aid',
-        href: '/admissions#scholarships-heading',
-        description: 'HEC Need-Based, Ehsaas & KPEF scholarships',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Student CMS Portal',
-        href: '/portal',
-        description: 'Enrollment, course registration & grades',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Contact Admissions Desk',
-        href: '/contact',
-        description: 'Directorate guidance & helpline support',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-        )
-      }
-    ]
-  },
-  {
-    label: 'Campus Life',
-    href: '/campus-life',
-    hasDropdown: true,
-    submenu: [
-      {
-        label: 'Charbagh Main Campus',
-        href: '/campuses/main-campus',
-        description: 'Flagship academic and administrative grounds',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-        )
-      },
-      {
-        label: 'Women Sub-Campus',
-        href: '/campuses/women-campus',
-        description: 'Dedicated center for women\'s higher education',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Campus Life & Facilities',
-        href: '/campus-life',
-        description: 'Hostels, sports complex & student societies',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-        )
-      },
-      {
-        label: 'News & Press Releases',
-        href: '/news',
-        description: 'Official university notifications & press',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Events & Conferences',
-        href: '/events',
-        description: 'Symposia, sports tournaments & workshops',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-        )
-      },
-      {
-        label: 'About University of Swat',
-        href: '/about',
-        description: 'Heritage, vision, mission & governance',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )
-      }
-    ]
-  },
-  {
-    label: 'Research',
-    href: '/research',
-    hasDropdown: true,
-    submenu: [
-      {
-        label: 'Research & Innovation (ORIC)',
-        href: '/research/oric',
-        description: 'Commercialization, grants & industry liaison',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-          </svg>
-        )
-      },
-      {
-        label: 'Advanced Studies (ASRB)',
-        href: '/research/asrb',
-        description: 'Postgraduate thesis policies & oversight',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path d="M12 14l9-5-9-5-9 5 9 5z" />
-            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 14v7" />
-          </svg>
-        )
-      },
-      {
-        label: 'Research Overview',
-        href: '/research',
-        description: 'Focus areas, patents & Gandhara archaeology',
-        icon: (
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-          </svg>
-        )
-      }
-    ]
-  }
-];
+const panelId = (anchor: string) => `nav-panel-${anchor}`;
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
-  const navRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  const headerRef = useRef<HTMLElement>(null);
   const desktopNavRef = useRef<HTMLElement>(null);
   const lastTriggerRef = useRef<HTMLElement | null>(null);
 
-  const activeNavItem = navItems.find((item) => item.label === activeDropdown) ?? null;
+  const activeItem = navItems.find((item) => item.label === activeDropdown) ?? null;
 
-  const focusNavItem = (dir: number, current: number) => {
-    const nav = desktopNavRef.current;
-    if (!nav) return;
-    const triggers = Array.from(nav.querySelectorAll('[data-nav-idx]')) as HTMLElement[];
-    if (!triggers.length) return;
-    const next = (current + dir + triggers.length) % triggers.length;
-    triggers[next].focus();
+  const closeAll = () => {
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+    setMobileSubmenu(null);
   };
 
-  const handleHeaderKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.key === 'Escape') {
-      if (activeDropdown || mobileMenuOpen) {
-        e.preventDefault();
-        const restoreFocus = activeDropdown != null;
-        setActiveDropdown(null);
-        setMobileMenuOpen(false);
-        if (restoreFocus && lastTriggerRef.current) lastTriggerRef.current.focus();
-      }
-    }
-  };
+  // Close any open surface after a route change.
+  useEffect(() => {
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+    setMobileSubmenu(null);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
+      setActiveDropdown(null);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown on outside click
+  // Outside click closes the mega panel.
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setActiveDropdown(null);
       }
     };
@@ -387,345 +57,309 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const focusFirstPanelLink = (anchor: string) => {
+    window.setTimeout(() => {
+      document
+        .querySelector<HTMLAnchorElement>(`#${panelId(anchor)} a[href]`)
+        ?.focus();
+    }, 40);
+  };
+
+  const moveBetweenTriggers = (direction: number, current: number) => {
+    const triggers = Array.from(
+      desktopNavRef.current?.querySelectorAll<HTMLElement>('[data-nav-trigger]') ?? []
+    );
+    if (!triggers.length) return;
+    const next = (current + direction + triggers.length) % triggers.length;
+    triggers[next].focus();
+  };
+
+  const handleHeaderKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key !== 'Escape') return;
+    if (!activeDropdown && !mobileMenuOpen) return;
+    event.preventDefault();
+    const restoreFocus = activeDropdown !== null;
+    closeAll();
+    if (restoreFocus) lastTriggerRef.current?.focus();
+  };
+
   return (
     <header
-      ref={navRef}
+      ref={headerRef}
       onKeyDown={handleHeaderKeyDown}
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0C1912]/90 backdrop-blur-xl border-b border-white/15 shadow-lg'
+          ? 'border-b border-white/15 bg-[#0C1912]/92 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.8)] backdrop-blur-xl'
           : 'bg-gradient-to-b from-black/75 via-black/35 to-transparent'
       }`}
     >
       <TopNoticeRibbon />
-      <div className={`w-full pl-3 sm:pl-4 pr-4 sm:pr-6 flex items-center justify-between transition-all duration-300 ${
-        isScrolled ? 'py-3' : 'py-3.5 sm:py-4'
-      }`}>
-        {/* Left Branding: Circular Crest Logo + "University of Swat" */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 text-white group focus:outline-none"
-          title="University of Swat"
+
+      <div className="relative" onMouseLeave={() => setActiveDropdown(null)}>
+        <div
+          className={`mx-auto flex w-full max-w-[1360px] items-center justify-between gap-6 px-4 transition-all duration-300 sm:px-6 lg:px-12 ${
+            isScrolled ? 'py-2.5' : 'py-3.5'
+          }`}
         >
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0.5 bg-white/10 backdrop-blur-sm border border-white/20 shadow-sm flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-105 group-hover:border-white/50 transition-all">
-            <img
-              src="/uos-logo-circle.png"
-              alt="University of Swat Crest"
-              className="w-full h-full object-contain rounded-full"
-            />
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="font-serif font-bold text-xl sm:text-2xl tracking-[-0.02em] text-white leading-tight">
-              University of Swat
+          {/* ── Branding ───────────────────────────────────────────────── */}
+          <Link
+            href="/"
+            className="group flex shrink-0 items-center gap-3 text-white focus:outline-none"
+            title="University of Swat"
+          >
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 p-0.5 backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:border-white/50 sm:h-11 sm:w-11">
+              <img
+                src="/uos-logo-circle.png"
+                alt="University of Swat crest"
+                className="h-full w-full rounded-full object-contain"
+              />
             </span>
-            <span className="text-[10px] sm:text-[11px] tracking-wider text-white/70 uppercase font-sans font-semibold">
-              Khyber Pakhtunkhwa, Pakistan
+            <span className="flex flex-col text-left">
+              <span className="font-serif text-lg font-bold leading-tight tracking-[-0.02em] text-white sm:text-[19px] 2xl:text-[21px]">
+                University of Swat
+              </span>
+              <span className="mt-0.5 text-[9.5px] font-semibold uppercase tracking-[0.16em] text-white/60">
+                Khyber Pakhtunkhwa, Pakistan
+              </span>
             </span>
-          </div>
-        </Link>
+          </Link>
 
-        {/* Middle Navigation Links (Desktop) */}
-        <nav ref={desktopNavRef} className="hidden md:flex items-center gap-6 lg:gap-8" role="menubar">
-          {navItems.map((item, index) => {
-            const isDropdownOpen = activeDropdown === item.label;
+          {/* ── Desktop navigation ─────────────────────────────────────── */}
+          <nav
+            ref={desktopNavRef}
+            aria-label="Primary"
+            className="hidden items-center gap-1 xl:flex"
+          >
+            {navItems.map((item, index) => {
+              const isOpen = activeDropdown === item.label;
 
-            if (item.hasDropdown) {
               return (
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={(e) => {
-                    lastTriggerRef.current = e.currentTarget as HTMLElement;
+                  onMouseEnter={(event) => {
+                    lastTriggerRef.current =
+                      event.currentTarget.querySelector<HTMLElement>('[data-nav-trigger]');
                     setActiveDropdown(item.label);
                   }}
-                  onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <button
-                    type="button"
-                    data-nav-idx={index}
-                    onClick={(e) => {
-                      lastTriggerRef.current = e.currentTarget as HTMLElement;
-                      setActiveDropdown(isDropdownOpen ? null : item.label);
+                  <Link
+                    href={item.href}
+                    data-nav-trigger={item.anchor}
+                    aria-expanded={isOpen}
+                    aria-controls={panelId(item.anchor)}
+                    onClick={(event) => {
+                      // Click goes to the section's own page; hover opens the panel.
+                      lastTriggerRef.current = event.currentTarget;
+                      setActiveDropdown(null);
                     }}
-                    onKeyDown={(e) => {
-                      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-                        e.preventDefault();
-                        focusNavItem(e.key === 'ArrowRight' ? 1 : -1, index);
+                    onKeyDown={(event) => {
+                      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        moveBetweenTriggers(event.key === 'ArrowRight' ? 1 : -1, index);
+                        return;
+                      }
+                      if (event.key === 'ArrowDown') {
+                        event.preventDefault();
+                        lastTriggerRef.current = event.currentTarget;
+                        setActiveDropdown(item.label);
+                        focusFirstPanelLink(item.anchor);
                       }
                     }}
-                    aria-expanded={isDropdownOpen}
-                    aria-haspopup="menu"
-                    className={`flex items-center gap-1.5 text-sm font-semibold transition-colors cursor-pointer py-2 focus:outline-none ${
-                      isDropdownOpen ? 'text-white' : 'text-white/90 hover:text-white'
+                    className={`relative flex cursor-pointer items-center gap-1 whitespace-nowrap rounded-md px-2 py-2 text-[12.5px] font-semibold transition-colors duration-150 focus:outline-none 2xl:px-2.5 2xl:text-[13px] ${
+                      isOpen ? 'text-white' : 'text-white/85 hover:text-white'
                     }`}
                   >
                     <span>{item.label}</span>
-                    <svg
-                      className={`w-3.5 h-3.5 text-white/70 transition-transform duration-300 ${
-                        isDropdownOpen ? 'rotate-180 text-white' : ''
+                    <ChevronDown
+                      aria-hidden="true"
+                      strokeWidth={2.2}
+                      className={`h-3 w-3 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 text-[#C8A96E]' : 'text-white/50'
                       }`}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </button>
-
-                  {/* Dropdown Menu Card (Premium mega menu) */}
-                  <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 pt-3.5 z-50 w-[760px] lg:w-[820px] max-w-[95vw] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top before:content-[''] before:absolute before:-top-3.5 before:left-0 before:right-0 before:h-3.5 ${
-                      isDropdownOpen
-                        ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
-                        : 'opacity-0 translate-y-2 scale-[0.985] pointer-events-none invisible'
-                    }`}
-                  >
-                    <div className="relative">
-                      {/* Top centered pointer caret */}
-                      <div
-                        className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-t border-l border-stone-200 rounded-tl-[2px] z-20"
-                        aria-hidden="true"
-                      />
-
-                      {/* Premium card surface */}
-                      <div className="relative bg-white rounded-2xl shadow-[0_30px_70px_-20px_rgba(12,25,18,0.28),0_0_0_1px_rgba(20,41,29,0.06)] border border-stone-200/90 overflow-hidden text-left z-10">
-                        {/* Category header */}
-                        <div className="flex items-center justify-between gap-4 px-7 sm:px-8 py-4 border-b border-stone-100 bg-[#FBFAF7]">
-                          <div className="flex items-center gap-2.5 min-w-0">
-                            <span className="h-0.5 w-5 bg-[#C8A96E] shrink-0" aria-hidden="true" />
-                            <span className="text-[10px] uppercase tracking-[0.18em] text-[#7F1D1D] font-bold truncate">
-                              {item.label}
-                            </span>
-                            <span className="text-[11px] text-stone-500 font-medium truncate">
-                              University of Swat
-                            </span>
-                          </div>
-                          <Link
-                            href={item.href}
-                            onClick={() => setActiveDropdown(null)}
-                            className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#153B27] hover:text-[#7F1D1D] transition-colors shrink-0"
-                          >
-                            <span>View {item.label}</span>
-                            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                              <path d="M7 17L17 7M7 7h10v10" />
-                            </svg>
-                          </Link>
-                        </div>
-
-                        {/* Links grid */}
-                        <div className="p-6 sm:p-7 lg:p-8">
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
-                            {item.submenu?.map((sub) => (
-                              <Link
-                                key={`${item.label}-${sub.label}-${sub.href}`}
-                                href={sub.href}
-                                onClick={() => setActiveDropdown(null)}
-                                className="group relative flex items-start gap-4 p-3.5 rounded-xl border border-transparent hover:border-stone-200/90 hover:bg-[#FBFAF7] hover:-translate-y-[1px] transition-all duration-200 ease-out focus-visible:outline-none"
-                              >
-                                <div className="w-11 h-11 rounded-xl bg-stone-50 border border-stone-200/80 flex items-center justify-center shrink-0 text-[#153B27] group-hover:bg-[#153B27] group-hover:text-white group-hover:border-[#153B27] transition-all duration-200">
-                                  {sub.icon}
-                                </div>
-
-                                <div className="flex flex-col min-w-0 pt-0.5">
-                                  <span className="text-[15px] font-semibold text-[#14291D] group-hover:text-[#153B27] transition-colors leading-snug">
-                                    {sub.label}
-                                  </span>
-                                  <span className="text-[12.5px] text-stone-500 leading-relaxed mt-1">
-                                    {sub.description}
-                                  </span>
-                                </div>
-
-                                <svg
-                                  className="w-4 h-4 text-stone-300 group-hover:text-[#7F1D1D] ml-auto mt-1 shrink-0 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  aria-hidden="true"
-                                >
-                                  <path d="M5 12h14M13 5l7 7-7 7" />
-                                </svg>
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Bottom accent rule */}
-                        <div className="h-[3px] w-full bg-gradient-to-r from-[#153B27] via-[#C8A96E]/70 to-transparent" aria-hidden="true" />
-                      </div>
-                    </div>
-                  </div>
+                    />
+                    <span
+                      aria-hidden="true"
+                      className={`absolute inset-x-2.5 -bottom-px h-[2px] rounded-full bg-[#C8A96E] transition-opacity duration-200 ${
+                        isOpen ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    />
+                  </Link>
                 </div>
               );
-            }
+            })}
+          </nav>
 
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                data-nav-idx={index}
-                className="text-sm font-semibold text-white/90 hover:text-white transition-colors py-1.5"
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+          {/* ── Actions ────────────────────────────────────────────────── */}
+          <div className="hidden shrink-0 items-center gap-2.5 md:flex">
+            <Link
+              href={primaryActions.search.href}
+              aria-label={primaryActions.search.label}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/85 transition-colors hover:border-white/40 hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
+            >
+              <Search className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <Link
+              href={primaryActions.portal.href}
+              className="inline-flex items-center justify-center rounded-lg bg-[#7F1D1D] px-4 py-2.5 text-[13px] font-semibold text-white shadow-[0_10px_24px_-12px_rgba(0,0,0,0.9)] transition-all duration-150 hover:bg-[#681818] active:translate-y-px active:bg-[#521313]"
+            >
+              {primaryActions.portal.label}
+            </Link>
+          </div>
 
-        {/* Right Action Button: "Student Portal" in Official University Crimson #7F1D1D */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link
-            href="/search"
-            aria-label="Search the university"
-            className="w-10 h-10 rounded-full flex items-center justify-center text-white/90 hover:text-white hover:bg-white/10 border border-white/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-          >
-            <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </Link>
-          <Link
-            href="/portal"
-            className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-black/20 focus:outline-none"
-          >
-            Student Portal
-          </Link>
-        </div>
-
-        {/* Mobile Menu Hamburger Toggle */}
-        <div className="flex md:hidden items-center">
+          {/* ── Drawer toggle ──────────────────────────────────────────── */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-drawer"
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            className="p-2 text-white/90 hover:text-white focus:outline-none"
+            className="-mr-1 flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 focus:outline-none xl:hidden"
           >
             {mobileMenuOpen ? (
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              <X className="h-5 w-5" aria-hidden="true" />
             ) : (
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
+              <Menu className="h-5 w-5" aria-hidden="true" />
             )}
           </button>
         </div>
+
+        {/* Desktop mega panel — one instance, always inside the viewport */}
+        <div className="hidden xl:block">
+          {activeItem && (
+            <MegaMenuPanel
+              item={activeItem}
+              panelId={panelId(activeItem.anchor)}
+              onNavigate={() => setActiveDropdown(null)}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* ── Mobile / tablet drawer ─────────────────────────────────────── */}
       {mobileMenuOpen && (
-      <div className="md:hidden bg-[#0C1912]/95 backdrop-blur-2xl border-t border-white/10 px-5 sm:px-6 py-5 pb-7 max-h-[calc(100vh-5rem)] overflow-y-auto">
-        <div className="flex flex-col gap-1">
-          {navItems.map((item) => {
-            if (item.hasDropdown) {
+        <div
+          id="mobile-nav-drawer"
+          className="max-h-[calc(100vh-4.5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-[#0C1912]/97 px-4 pb-8 pt-2 backdrop-blur-2xl sm:px-6 xl:hidden"
+        >
+          <nav aria-label="Mobile" className="flex flex-col">
+            {navItems.map((item) => {
               const isOpen = mobileSubmenu === item.label;
+              const drawerPanelId = `mobile-panel-${item.anchor}`;
+
               return (
-                <div key={item.label} className="border-b border-white/10">
+                <div key={item.label} className="border-b border-white/10 last:border-b-0">
                   <button
                     type="button"
                     onClick={() => setMobileSubmenu(isOpen ? null : item.label)}
                     aria-expanded={isOpen}
-                    className="w-full flex items-center justify-between text-[15px] font-semibold text-white py-3.5 min-h-[48px]"
+                    aria-controls={drawerPanelId}
+                    className="flex min-h-[52px] w-full items-center justify-between gap-3 py-3.5 text-left"
                   >
-                    <span className="flex items-center gap-2.5">
-                      <span className={`h-1.5 w-1.5 rounded-full ${isOpen ? 'bg-[#C8A96E]' : 'bg-white/30'}`} aria-hidden="true" />
-                      {item.label}
+                    <span className="flex flex-col">
+                      <span className="text-[15px] font-semibold text-white">{item.label}</span>
+                      <span className="mt-0.5 text-[11px] text-white/60">{item.summary}</span>
                     </span>
-                    <svg
-                      className={`w-4 h-4 text-white/70 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#C8A96E]' : ''}`}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
+                    <ChevronDown
+                      aria-hidden="true"
+                      strokeWidth={2}
+                      className={`h-4 w-4 shrink-0 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 text-[#C8A96E]' : 'text-white/50'
+                      }`}
+                    />
                   </button>
 
                   {isOpen && (
-                    <div className="mb-3 ml-1 pl-3 border-l border-[#C8A96E]/30 flex flex-col gap-1">
+                    <div id={drawerPanelId} className="pb-4">
                       <Link
                         href={item.href}
-                        onClick={() => {
-                          setMobileMenuOpen(false);
-                          setMobileSubmenu(null);
-                        }}
-                        className="flex items-center justify-between gap-2 py-2.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-[13px] font-semibold text-[#C8A96E]"
+                        onClick={closeAll}
+                        className="mb-3 flex items-center justify-between gap-2 rounded-lg border border-[#C8A96E]/25 bg-white/[0.04] px-3 py-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#C8A96E]"
                       >
-                        <span>View all {item.label}</span>
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M5 12h14M13 5l7 7-7 7" />
-                        </svg>
+                        {item.viewAllLabel}
+                        <ArrowIcon />
                       </Link>
-                      {item.submenu?.map((sub) => (
-                        <Link
-                          key={`${item.label}-${sub.label}-${sub.href}`}
-                          href={sub.href}
-                          onClick={() => {
-                            setMobileMenuOpen(false);
-                            setMobileSubmenu(null);
-                          }}
-                          className="flex items-start gap-3 py-2.5 px-2 rounded-lg text-white/85 hover:text-white hover:bg-white/5 transition-colors"
-                        >
-                          <span className="mt-0.5 w-8 h-8 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center shrink-0 text-[#C8A96E]">
-                            {sub.icon}
-                          </span>
-                          <span className="flex flex-col min-w-0">
-                            <span className="text-[14px] font-semibold text-white leading-snug">{sub.label}</span>
-                            <span className="text-[11.5px] text-white/55 leading-relaxed mt-0.5">{sub.description}</span>
-                          </span>
-                        </Link>
-                      ))}
+
+                      <div className="flex flex-col gap-4">
+                        {item.groups.map((group) => (
+                          <div key={group.title}>
+                            <p className="mb-1.5 pl-3 text-[9.5px] font-bold uppercase tracking-[0.2em] text-white/55">
+                              {group.title}
+                            </p>
+                            <ul className="flex flex-col">
+                              {group.links.map((link) => {
+                                const Icon = link.icon;
+                                return (
+                                  <li key={`${group.title}-${link.label}`}>
+                                    <Link
+                                      href={link.href}
+                                      onClick={closeAll}
+                                      className="flex min-h-[46px] items-center gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-white/5"
+                                    >
+                                      <Icon
+                                        aria-hidden="true"
+                                        strokeWidth={1.7}
+                                        className="h-4 w-4 shrink-0 text-[#C8A96E]/80"
+                                      />
+                                      <span className="min-w-0 flex-1 text-[13.5px] font-medium leading-snug text-white/85">
+                                        {link.label}
+                                      </span>
+                                      {link.meta && (
+                                        <span className="shrink-0 text-[9.5px] font-semibold uppercase tracking-[0.08em] text-white/55">
+                                          {link.meta}
+                                        </span>
+                                      )}
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
               );
-            }
+            })}
+          </nav>
 
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-[15px] font-semibold text-white/90 hover:text-white py-3.5 border-b border-white/10 min-h-[48px] flex items-center"
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-
-          <div className="pt-4 flex flex-col gap-2.5">
+          <div className="mt-6 flex flex-col gap-2.5">
             <Link
-              href="/search"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 text-white text-[15px] font-semibold py-3 rounded-xl transition-colors"
+              href={primaryActions.search.href}
+              onClick={closeAll}
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-white/15"
             >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <span>Search University</span>
+              <Search className="h-4 w-4" aria-hidden="true" />
+              {primaryActions.search.label}
             </Link>
             <Link
-              href="/portal"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] text-white text-[15px] font-semibold py-3 rounded-xl transition-colors shadow-md"
+              href={primaryActions.portal.href}
+              onClick={closeAll}
+              className="flex w-full items-center justify-center rounded-xl bg-[#7F1D1D] py-3 text-[14px] font-semibold text-white shadow-md transition-colors hover:bg-[#681818]"
             >
-              Student Portal
+              {primaryActions.portal.label}
             </Link>
           </div>
         </div>
-      </div>
       )}
     </header>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg
+      className="h-3.5 w-3.5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14M13 5l7 7-7 7" />
+    </svg>
   );
 }

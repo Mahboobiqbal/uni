@@ -80,7 +80,7 @@ export default function CampusLifePage() {
             {campusHighlights.map((item, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs flex flex-col justify-between group hover:border-[#153B27]/40 hover:shadow-md transition-all"
+                className="p-8 rounded-3xl bg-white border border-stone-300 shadow-xs flex flex-col justify-between group hover:border-[#153B27]/60 hover:shadow-md transition-all"
               >
                 <div>
                   <div className="relative w-full aspect-16/9 rounded-2xl overflow-hidden mb-6 bg-stone-100 border border-stone-200">
@@ -103,7 +103,7 @@ export default function CampusLifePage() {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                <div className="pt-4 border-t border-stone-200 flex items-center justify-between">
                   <Link
                     href={item.link}
                     className="text-xs font-semibold text-[#153B27] hover:underline flex items-center gap-1.5"
@@ -118,49 +118,49 @@ export default function CampusLifePage() {
         </div>
 
         {/* Student Welfare & Transportation */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-4 border-b border-stone-100 mb-8">
-            <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold block mb-1">
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
+          <div className="pb-4 border-b border-white/15 mb-8">
+            <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold block mb-1">
               Welfare &amp; Services
             </span>
-            <h2 className="font-serif text-3xl font-bold text-stone-900">
+            <h2 className="font-serif text-3xl font-bold text-white">
               Health, Mobility &amp; Student Safety
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
-              <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#153B27] mb-4">
+            <div className="p-6 rounded-2xl bg-white/[0.07] border border-white/[0.12]">
+              <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-[#C8A96E] mb-4">
                 <Bus className="w-5 h-5" />
               </div>
-              <h4 className="font-serif text-base font-bold text-stone-900 mb-2">
+              <h4 className="font-serif text-base font-bold text-white mb-2">
                 University Shuttle Fleet
               </h4>
-              <p className="font-sans text-xs text-stone-600 leading-relaxed">
+              <p className="font-sans text-xs text-white/70 leading-relaxed">
                 Daily bus shuttles connect Mingora, Saidu Sharif, Barikot, and Matta with Charbagh Main Campus and Women Campus at subsidized student fares.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
-              <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#7F1D1D] mb-4">
+            <div className="p-6 rounded-2xl bg-white/[0.07] border border-white/[0.12]">
+              <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-[#C8A96E] mb-4">
                 <HeartPulse className="w-5 h-5" />
               </div>
-              <h4 className="font-serif text-base font-bold text-stone-900 mb-2">
+              <h4 className="font-serif text-base font-bold text-white mb-2">
                 Campus Health Dispensary
               </h4>
-              <p className="font-sans text-xs text-stone-600 leading-relaxed">
+              <p className="font-sans text-xs text-white/70 leading-relaxed">
                 On-campus medical officers provide free basic healthcare, emergency triage, and prescription medicines for enrolled students and resident staff.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
-              <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-[#B48A3E] mb-4">
+            <div className="p-6 rounded-2xl bg-white/[0.07] border border-white/[0.12]">
+              <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-[#C8A96E] mb-4">
                 <Shield className="w-5 h-5" />
               </div>
-              <h4 className="font-serif text-base font-bold text-stone-900 mb-2">
+              <h4 className="font-serif text-base font-bold text-white mb-2">
                 Proctorial Board &amp; Security
               </h4>
-              <p className="font-sans text-xs text-stone-600 leading-relaxed">
+              <p className="font-sans text-xs text-white/70 leading-relaxed">
                 The Proctorial Board guarantees a peaceful scholastic environment, enforces anti-harassment regulations, and maintains 24/7 gated security.
               </p>
             </div>

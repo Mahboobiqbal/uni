@@ -54,7 +54,7 @@ export default function AsrbPage() {
           <div className="lg:col-span-8 space-y-12">
             
             {/* Overview */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
               <div className="flex items-center gap-2 mb-3">
                 <span className="h-0.5 w-6 bg-[#153B27]" />
                 <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
@@ -70,24 +70,24 @@ export default function AsrbPage() {
             </div>
 
             {/* Postgraduate Research Lifecycle */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
               <div className="flex items-center gap-2 mb-3">
-                <span className="h-0.5 w-6 bg-[#7F1D1D]" />
-                <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+                <span className="h-0.5 w-6 bg-[#C8A96E]" />
+                <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
                   Doctoral &amp; MS Workflow
                 </span>
               </div>
-              <h3 className="font-serif text-2xl font-bold text-stone-900 mb-6">
+              <h3 className="font-serif text-2xl font-bold text-white mb-6">
                 Step-by-Step Thesis Approval Process
               </h3>
 
               <div className="space-y-4">
                 {asrbGuidelines.map((item, idx) => (
-                  <div key={idx} className="p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
-                    <h4 className="font-serif text-base font-bold text-stone-900 mb-1.5">
+                  <div key={idx} className="p-5 rounded-2xl bg-white/[0.07] border border-white/[0.12]">
+                    <h4 className="font-serif text-base font-bold text-white mb-1.5">
                       {item.step}
                     </h4>
-                    <p className="font-sans text-xs sm:text-sm text-stone-600 leading-relaxed">
+                    <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
                       {item.detail}
                     </p>
                   </div>
@@ -98,8 +98,8 @@ export default function AsrbPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-              <h3 className="font-serif text-xl font-bold text-stone-900 pb-3 border-b border-stone-100 mb-4">
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-300 shadow-xs">
+              <h3 className="font-serif text-xl font-bold text-stone-900 pb-3 border-b border-stone-200 mb-4">
                 ASRB Secretariat
               </h3>
               <div className="space-y-3 text-xs sm:text-[13px] text-stone-700">
@@ -117,7 +117,7 @@ export default function AsrbPage() {
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-stone-100 flex flex-col gap-2">
+              <div className="mt-8 pt-6 border-t border-stone-200 flex flex-col gap-2">
                 <a
                   href="https://uswat.edu.pk/approved-uniform-format-for-synopses/"
                   target="_blank"

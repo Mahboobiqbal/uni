@@ -22,9 +22,9 @@ import {
 function QualityGrowthChart() {
   return (
     <div className="w-full">
-      <div className="flex items-center justify-between text-[11px] font-mono text-stone-500 mb-2">
+      <div className="flex items-center justify-between text-[11px] font-mono text-white/60 mb-2">
         <span>5-Year Audit Trajectory</span>
-        <span className="text-[#153B27] font-semibold font-sans flex items-center gap-1">
+        <span className="text-[#C8A96E] font-semibold font-sans flex items-center gap-1">
           <TrendingUp className="w-3.5 h-3.5" /> +17.4% Since 2021
         </span>
       </div>
@@ -37,16 +37,16 @@ function QualityGrowthChart() {
         >
           <defs>
             <linearGradient id="hecAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#153B27" stopOpacity="0.22" />
-              <stop offset="60%" stopColor="#153B27" stopOpacity="0.05" />
-              <stop offset="100%" stopColor="#153B27" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#C8A96E" stopOpacity="0.28" />
+              <stop offset="60%" stopColor="#C8A96E" stopOpacity="0.07" />
+              <stop offset="100%" stopColor="#C8A96E" stopOpacity="0.0" />
             </linearGradient>
           </defs>
 
           {/* Background horizontal grid guides */}
-          <line x1="0" y1="15" x2="320" y2="15" stroke="#E7E5E4" strokeDasharray="3 3" strokeWidth="1" />
-          <line x1="0" y1="45" x2="320" y2="45" stroke="#E7E5E4" strokeDasharray="3 3" strokeWidth="1" />
-          <line x1="0" y1="75" x2="320" y2="75" stroke="#E7E5E4" strokeDasharray="3 3" strokeWidth="1" />
+          <line x1="0" y1="15" x2="320" y2="15" stroke="rgba(255,255,255,0.16)" strokeDasharray="3 3" strokeWidth="1" />
+          <line x1="0" y1="45" x2="320" y2="45" stroke="rgba(255,255,255,0.16)" strokeDasharray="3 3" strokeWidth="1" />
+          <line x1="0" y1="75" x2="320" y2="75" stroke="rgba(255,255,255,0.16)" strokeDasharray="3 3" strokeWidth="1" />
 
           {/* Area fill */}
           <path
@@ -58,7 +58,7 @@ function QualityGrowthChart() {
           <path
             d="M 0 76 C 45 74, 70 62, 105 56 C 145 50, 185 36, 225 30 C 265 24, 290 16, 320 12"
             fill="none"
-            stroke="#153B27"
+            stroke="#C8A96E"
             strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -72,9 +72,9 @@ function QualityGrowthChart() {
             { cx: 320, cy: 12, val: '91.4%' },
           ].map((pt, i) => (
             <g key={i}>
-              <circle cx={pt.cx} cy={pt.cy} r={pt.cx === 320 ? 4.5 : 3.5} fill="#ffffff" stroke="#153B27" strokeWidth="2.5" />
+              <circle cx={pt.cx} cy={pt.cy} r={pt.cx === 320 ? 4.5 : 3.5} fill="#0F2D1E" stroke="#C8A96E" strokeWidth="2.5" />
               {pt.cx === 320 && (
-                <circle cx={pt.cx} cy={pt.cy} r="8" fill="#153B27" opacity="0.18" />
+                <circle cx={pt.cx} cy={pt.cy} r="8" fill="#C8A96E" opacity="0.3" />
               )}
             </g>
           ))}
@@ -82,12 +82,12 @@ function QualityGrowthChart() {
       </div>
 
       {/* Timeline X-Axis */}
-      <div className="flex justify-between text-[11px] font-mono text-stone-600 mt-2 pt-1.5 border-t border-stone-200/80">
+      <div className="flex justify-between text-[11px] font-mono text-white/60 mt-2 pt-1.5 border-t border-white/15">
         <span>2021 (74.0%)</span>
         <span>2022</span>
         <span>2023 (82.5%)</span>
         <span>2024</span>
-        <span className="font-semibold text-[#153B27]">2025/26 (91.4% · W)</span>
+        <span className="font-semibold text-[#C8A96E]">2025/26 (91.4% · W)</span>
       </div>
     </div>
   );
@@ -224,13 +224,13 @@ export default function RankingSection() {
           </div>
 
           {/* Official HEC Seal Pill */}
-          <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-stone-200/90 shadow-xs shrink-0 self-start lg:self-auto">
+          <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-stone-300 shadow-xs shrink-0 self-start lg:self-auto">
             <div className="w-11 h-11 rounded-xl bg-[#153B27]/10 text-[#153B27] border border-[#153B27]/20 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
               <p className="text-xs font-bold text-[#14291D]">HEC Quality Certified</p>
-              <p className="text-[11px] text-stone-500 font-sans">Highest W-Category Rating (91.4%)</p>
+              <p className="text-[11px] text-stone-600 font-sans">Highest W-Category Rating (91.4%)</p>
             </div>
           </div>
         </div>
@@ -239,53 +239,53 @@ export default function RankingSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
 
           {/* Card 1: Lead HEC QAA Audit Card (7 Columns) */}
-          <article className="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-white border border-stone-200/90 p-7 sm:p-8 shadow-xs hover:border-[#153B27]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+          <article className="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-[#153B27] text-white border border-white/10 p-7 sm:p-8 shadow-[0_28px_56px_-24px_rgba(12,25,18,0.55)] hover:bg-[#0F2D1E] hover:-translate-y-[2px] transition-all duration-200 ease-out">
             <div>
               {/* Top Row: Eyebrow + Verified Badge */}
               <div className="flex items-center justify-between gap-4 mb-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#153B27]/10 text-[#153B27] border border-[#153B27]/20">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#C8A96E]/15 text-[#C8A96E] border border-[#C8A96E]/30">
                   <Award className="w-3.5 h-3.5" />
                   HEC Quality Assurance Agency
                 </span>
-                <span className="text-[11px] font-mono text-stone-600 font-medium">
+                <span className="text-[11px] font-mono text-white/60 font-medium">
                   Official IPE Audit
                 </span>
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D] tracking-tight mb-2">
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">
                 Highest W-Category Institutional Rating
               </h3>
-              <p className="font-sans text-sm text-stone-600 leading-[1.68] mb-6">
+              <p className="font-sans text-sm text-white/75 leading-[1.68] mb-6">
                 Evaluated under rigorous Higher Education Commission Quality Assurance Agency guidelines covering
                 doctoral faculty ratio, institutional governance, laboratory safety, digital libraries, and transparent
                 merit-based admissions.
               </p>
 
               {/* Data Graphic: 5-Year Trajectory */}
-              <div className="p-4 sm:p-5 rounded-xl bg-stone-50/80 border border-stone-200/80 mb-6">
+              <div className="p-4 sm:p-5 rounded-xl bg-white/[0.07] border border-white/[0.12] mb-6">
                 <QualityGrowthChart />
               </div>
             </div>
 
             {/* Bottom Dual Metric Strip */}
-            <div className="pt-5 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="pt-5 border-t border-white/15 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-[#153B27] text-white flex items-center justify-center font-serif text-xl font-bold shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-[#C8A96E] text-[#14291D] flex items-center justify-center font-serif text-xl font-bold shrink-0">
                   91%
                 </div>
                 <div>
-                  <p className="font-serif text-xl font-bold text-[#14291D] leading-none">91.4% Score</p>
-                  <p className="text-xs text-stone-500 mt-1">Tier-1 W-Category Accreditation</p>
+                  <p className="font-serif text-xl font-bold text-white leading-none">91.4% Score</p>
+                  <p className="text-xs text-white/65 mt-1">Tier-1 W-Category Accreditation</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 sm:border-l sm:border-stone-200/80 sm:pl-4">
-                <div className="w-12 h-12 rounded-xl bg-[#7F1D1D] text-white flex items-center justify-center font-serif text-xl font-bold shrink-0">
+              <div className="flex items-center gap-3 sm:border-l sm:border-white/15 sm:pl-4">
+                <div className="w-12 h-12 rounded-xl bg-white text-[#7F1D1D] flex items-center justify-center font-serif text-xl font-bold shrink-0">
                   #1
                 </div>
                 <div>
-                  <p className="font-serif text-xl font-bold text-[#14291D] leading-none">#1 Citations</p>
-                  <p className="text-xs text-stone-500 mt-1">Malakand Research Citations 2025</p>
+                  <p className="font-serif text-xl font-bold text-white leading-none">#1 Citations</p>
+                  <p className="text-xs text-white/65 mt-1">Malakand Research Citations 2025</p>
                 </div>
               </div>
             </div>
@@ -295,7 +295,7 @@ export default function RankingSection() {
           <div className="lg:col-span-5 flex flex-col gap-6">
 
             {/* Card 2: UI GreenMetric World Rankings */}
-            <article className="flex-1 flex flex-col justify-between rounded-2xl bg-white border border-stone-200/90 p-6 sm:p-7 shadow-xs hover:border-[#153B27]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+            <article className="flex-1 flex flex-col justify-between rounded-2xl bg-white border border-stone-300 p-6 sm:p-7 shadow-xs hover:border-[#153B27]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
               <div>
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -326,7 +326,7 @@ export default function RankingSection() {
             </article>
 
             {/* Card 3: Times Higher Education Impact Rankings */}
-            <article className="flex-1 flex flex-col justify-between rounded-2xl bg-white border border-stone-200/90 p-6 sm:p-7 shadow-xs hover:border-[#7F1D1D]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+            <article className="flex-1 flex flex-col justify-between rounded-2xl bg-white border border-stone-300 p-6 sm:p-7 shadow-xs hover:border-[#7F1D1D]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
               <div>
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#7F1D1D]/10 text-[#7F1D1D] border border-[#7F1D1D]/20">
@@ -362,53 +362,53 @@ export default function RankingSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
 
           {/* Tile A: NAEAC Agriculture */}
-          <article className="rounded-2xl bg-white border border-stone-200/90 p-6 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex flex-col justify-between">
+          <article className="rounded-2xl bg-[#153B27] text-white border border-white/10 p-6 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:bg-[#0F2D1E] hover:-translate-y-[2px] transition-all duration-200 ease-out flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#153B27]/8 text-[#153B27] border border-[#153B27]/15 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-white/10 text-[#C8A96E] border border-white/15 flex items-center justify-center mb-4">
                 <Scale className="w-5 h-5" />
               </div>
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#14291D] tracking-tight">
-                3.68 <span className="text-base text-stone-600 font-sans font-normal">/ 4.00</span>
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                3.68 <span className="text-base text-white/60 font-sans font-normal">/ 4.00</span>
               </p>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-700 mt-2 mb-1.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#C8A96E] mt-2 mb-1.5">
                 Highest NAEAC Rating
               </h4>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs text-white/70 leading-relaxed">
                 National Agriculture Education Accreditation Council top evaluation for applied horticulture &amp; soil science.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-[11px] font-semibold text-[#153B27]">
+            <div className="mt-4 pt-3 border-t border-white/15 flex items-center gap-1.5 text-[11px] font-semibold text-[#C8A96E]">
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>Full Council Accreditation</span>
             </div>
           </article>
 
           {/* Tile B: 100% HEC Charter Recognition */}
-          <article className="rounded-2xl bg-white border border-stone-200/90 p-6 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex flex-col justify-between">
+          <article className="rounded-2xl bg-[#7F1D1D] text-white border border-[#661717] p-6 shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] hover:bg-[#661717] hover:-translate-y-[2px] transition-all duration-200 ease-out flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#7F1D1D]/8 text-[#7F1D1D] border border-[#7F1D1D]/15 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-white/10 text-[#E5CD9B] border border-white/20 flex items-center justify-center mb-4">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#7F1D1D] tracking-tight">
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
                 100%
               </p>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-700 mt-2 mb-1.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#E5CD9B] mt-2 mb-1.5">
                 HEC Charter Recognized
               </h4>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs text-white/80 leading-relaxed">
                 All 28 departments authorized by the Government of Khyber Pakhtunkhwa and recognized internationally across the Commonwealth.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-[11px] font-semibold text-[#7F1D1D]">
+            <div className="mt-4 pt-3 border-t border-white/20 flex items-center gap-1.5 text-[11px] font-semibold text-[#E5CD9B]">
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>Federal &amp; Provincial Mandate</span>
             </div>
           </article>
 
           {/* Tile C: Top 5 Ecological Campus */}
-          <article className="rounded-2xl bg-white border border-stone-200/90 p-6 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex flex-col justify-between">
+          <article className="rounded-2xl bg-white border border-stone-300 p-6 shadow-xs hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#B48A3E]/10 text-[#B48A3E] border border-[#B48A3E]/20 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-[#B48A3E]/10 text-[#B48A3E] border border-[#B48A3E]/25 flex items-center justify-center mb-4">
                 <Leaf className="w-5 h-5" />
               </div>
               <p className="font-serif text-3xl sm:text-4xl font-bold text-[#B48A3E] tracking-tight">
@@ -421,29 +421,29 @@ export default function RankingSection() {
                 National clean-green ranking benchmarked for Swat Valley water catchment and zero-plastic campus zones.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-[11px] font-semibold text-[#B48A3E]">
+            <div className="mt-4 pt-3 border-t border-stone-200 flex items-center gap-1.5 text-[11px] font-semibold text-[#B48A3E]">
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>100% Solar Powered</span>
             </div>
           </article>
 
           {/* Tile D: ORIC Grants & Innovation */}
-          <article className="rounded-2xl bg-white border border-stone-200/90 p-6 shadow-xs hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex flex-col justify-between">
+          <article className="rounded-2xl bg-[#153B27] text-white border border-white/10 p-6 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:bg-[#0F2D1E] hover:-translate-y-[2px] transition-all duration-200 ease-out flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#153B27]/8 text-[#153B27] border border-[#153B27]/15 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-white/10 text-[#C8A96E] border border-white/15 flex items-center justify-center mb-4">
                 <FileText className="w-5 h-5" />
               </div>
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#14291D] tracking-tight">
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
                 PKR 85M+
               </p>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-700 mt-2 mb-1.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#C8A96E] mt-2 mb-1.5">
                 Funded Research Grants
               </h4>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs text-white/70 leading-relaxed">
                 Competitive grants awarded by HEC, PSF, and international archaeological missions for heritage and life sciences.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-[11px] font-semibold text-[#153B27]">
+            <div className="mt-4 pt-3 border-t border-white/15 flex items-center gap-1.5 text-[11px] font-semibold text-[#C8A96E]">
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>ORIC Technology Incubator</span>
             </div>
@@ -451,7 +451,7 @@ export default function RankingSection() {
         </div>
 
         {/* ── Reassurance Banner & Action Bar ── */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-stone-200/90 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-stone-300 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-2xl">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#153B27] mb-1.5">
               What These Numbers Mean for Scholars &amp; Families

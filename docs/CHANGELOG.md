@@ -4,6 +4,176 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-15] — Sitewide Card Surface System: Brand-Colored Surfaces + Light-Card Strengthening
+
+### Action Summary
+User-reported defect: "almost every card is plain white (`#FFFFFF`) with faint grey text and weak borders on a light background — sections blend together, flat, poor readability." Applied a global card-surface system across the homepage AND all inner pages. Every change is className/color-only: zero text, JSX-structure, logic, props, keys, aria, or routing changes (the only exception: per-item className-string fields added to a few local data arrays and optional `featured?: boolean` flags so a mapped lead card could go dark without conditional logic).
+
+### The Surface System (new site convention)
+1. **FOREST** — featured/lead cards, primary stat blocks, faculty/program spotlight leads: `bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:bg-[#0F2D1E]`. Internals: gold `#C8A96E` eyebrows/labels, white headings, `white/70–75` body, `white/60–65` metadata, `white/15` hairlines, icon chips `bg-white/10 border-white/15`, nested panels `bg-white/[0.07] border-white/[0.12]`, in-card SVGs recolored to gold strokes + `rgba(255,255,255,0.16)` gridlines.
+2. **CRIMSON** — high-priority notices, admissions/deadline callouts, key institutional metric blocks (max ONE per grid/row): `bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] hover:bg-[#661717]`. Small labels use lightened gold `#E5CD9B` — plain `#C8A96E` measures ≈4.3:1 on crimson (fails AA); `#E5CD9B` ≈6:1 passes.
+3. **LIGHT (majority, strengthened)** — containers `border-stone-200/90 → border-stone-300`, hover `stone-300 → stone-400`, internals `border-stone-100 → stone-200`, `divide-stone-100 → divide-stone-200`, faint `text-stone-400 → stone-500` (decorative) / `stone-600` (content), muted `text-stone-500 → stone-600`, placeholders `→ stone-500`.
+Rhythm rule: one dark surface per grid/row, never two adjacent crimsons. Deliberately untouched: photo-led surfaces and overlays, form-control backgrounds, `hover:bg-white` states, dark-section glass (`bg-white/[0.06]`+), and chrome panels (navbar/mega-menu/ribbon).
+
+### Coverage
+- **Homepage**: `RankingSection` — HEC lead card → FOREST with gold-recolored trajectory chart (strokes `#C8A96E`, dark-filled markers), accreditation tile row → forest / crimson / light / forest rhythm; `FacultyProgramsGrid` (Computing & IT lead) + `FlagshipDegreeSpotlight` (BSCS lead) → FOREST via `featured` flag; `CampusBulletin` — notice reader pane → CRIMSON (incl. `BADGE_TONES.critical` white ring so the solid-crimson chip stays visible on the crimson pane); `AdmissionsInquiryFunnel` — contacts column Forest Obsidian → CRIMSON per the admissions mandate; `StudentAlumniSuccess` — lead employability counter → FOREST; `UpcomingEvents` — next event → FOREST via `first:` / `group-first:` variants (no logic); light strengthening across `ViceChancellorSection`, `EditorialStorytelling`, `CampusLifeHeritage`, `CampusPhotoRibbon`. `HeroSection` (already crimson), `CampusTourBanner` (already dark), `page.tsx` (pure composition) unchanged.
+- **Inner pages**: `/academics` cluster — 4-metric bars → CRIMSON on academics, calendar, and downloads (+ gold top-rule recolor), gateway lead card I + progression/probation article + attestation callout → FOREST; `/programs` + `/programs/[slug]` + `/departments/[slug]` + `/faculty` + `/faculty/[slug]` — flagship spec card I, enrollment overview, department overview/directory leads, faculty 4-stat bar, profile identity cards → FOREST (faculty dept leads via `first:` variants with `!` on the three variant-vs-variant hover conflicts); `/admissions` cluster — steps section + flagship fee table + merit table + colleges directory → FOREST, merit-list action card + verification callout + Merged Districts quota → CRIMSON; `/research` cluster — ORIC pillar + ASRB process card → FOREST; `/campus-life`, `/campuses/*`, `/about` — welfare wrapper, solarization stat card, Home Sciences card, Gandhara lead, Charbagh tile → FOREST, Founding 2010 metric + Telephone Exchanges → CRIMSON; `/news` — featured band (matched pair, shared className) + article container → FOREST; `/events` — next-event row → FOREST via `first:` variants; `/leadership` + VC page — discourse quotes → FOREST quote blocks; `/portal` — IT-helpdesk card → CRIMSON; `/alumni`, `/search`, `/not-found` — strengthening (alumni cohort card was already forest); leadership portraits/bios kept light by design.
+- **Chrome light-touch**: `PageHeader` breadcrumb links `text-stone-300 → text-white/70` on the forest band (was ≈3.4:1 — an AA failure replicated on every inner page; links hover to white), chevrons `→ text-white/45`; `Footer` legal bar `text-stone-400 → text-white/65` and newsletter placeholder `→ text-white/50` (both were stone greys on the dark forest surface); `Navbar` / `MegaMenuPanel` / `TopNoticeRibbon` verified clean (no faint greys). Stale `AdmissionsInquiryFunnel` comment corrected (crimson, not Forest Obsidian).
+
+### Verification
+- `npx tsc --noEmit` → **0 errors**.
+- Residual sweeps: zero remaining `border-stone-200/90` / `border-stone-100` / `divide-stone-100` in `src/`.
+- Production build (`next build`, all 103 static routes incl. the parallel-session chatbot additions) → **exit 0, prerender clean**.
+
+---
+
+## [2026-11-15] — AI Chatbot Widget Added Site-Wide
+
+### Action Summary
+Added an accessible, floating AI assistant widget (`AiChatbot`) rendered from `src/app/layout.tsx` so it appears on every page.
+
+### Key Changes
+1. **`src/components/ui/AiChatbot.tsx` (new)** — Client component with University Crimson toggle button (bottom-right), alabaster `role="dialog"` panel, `aria-expanded`/`aria-controls`, Escape-to-close with focus return, Enter-to-send, `aria-live="polite"` message announcements, and focus-visible rings matching the global tokens.
+2. **`src/app/layout.tsx`** — Imported and rendered `<AiChatbot />` after `<Footer />` so the assistant is available on all routes.
+3. **Backend**: No real LLM is wired by default. Set `NEXT_PUBLIC_CHATBOT_API_URL` (or pass `apiEndpoint`) to connect a real AI service; until then the bot replies with an honest message directing users to university contacts instead of pretending to be an AI.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+
+### Files Created / Modified
+- `src/components/ui/AiChatbot.tsx` (new)
+- `src/app/layout.tsx` (modified)
+- `docs/CHANGELOG.md` (updated)
+- `docs/COMPONENTS.md` (updated)
+- `AGENTS.md` (updated)
+
+---
+
+## [2026-11-15] — AI Chatbot Rebuilt in React Bits Style (`UosAssistant`)
+
+### Action Summary
+Replaced the first AI chatbot (`AiChatbot.tsx`) with `UosAssistant`, rebuilt in the React Bits style (physics tilt engine, CSS custom properties, micro-animations) matching `ProfileCard.tsx`.
+
+### Key Changes
+1. **`src/components/ui/UosAssistant.tsx` (new)** — React Bits–style client component with a physics-based tilt engine on the circular crest toggle badge, letterhead panel, and micro-animations throughout.
+2. **`src/components/ui/UosAssistant.css` (new)** — Custom-property theming (Forest Green primary, University Crimson accent), panel entrance keyframe, staggered message rise, three-dot typing pulse, tactile send press, focus-visible rings.
+3. **`src/components/ui/AiChatbot.tsx` (deleted)** — Replaced by `UosAssistant`.
+4. **`src/app/layout.tsx`** — Import changed from `AiChatbot` to `UosAssistant`; rendered after `<Footer />` so it appears on every page.
+
+### Micro-animations
+- **Toggle badge**: physics tilt + glow on hover (spring stiffness/damping engine, same as `ProfileCard`).
+- **Panel**: scale + fade entrance on open.
+- **Messages**: staggered rise-in with per-message animation delay.
+- **Typing**: three-dot pulse sequence (`uos-typing` keyframe) while composing.
+- **Send button**: tactile scale-down on press.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+
+### Files Created / Modified
+- `src/components/ui/UosAssistant.tsx` (new)
+- `src/components/ui/UosAssistant.css` (new)
+- `src/components/ui/AiChatbot.tsx` (deleted)
+- `src/app/layout.tsx` (modified)
+- `docs/CHANGELOG.md` (updated)
+- `docs/COMPONENTS.md` (updated)
+- `AGENTS.md` (updated)
+
+---
+
+## [2026-11-15] — Header Mega-Menu Design-Taste Audit & Taxonomy Rebuild
+
+### Action Summary
+Audited and rebuilt the existing header popup (desktop mega menu + mobile drawer) under `design-taste-frontend` rules, raising it to the editorial standard of the rest of the site while preserving 100% of the working behaviour (hover/click open, outside-click dismissal, Escape, scroll state, search + portal actions, ribbon hosting, mobile accordion). The popup's content also had a real information-architecture defect — links were filed under the wrong parents — which is now corrected against the institution's own structure.
+
+### Audit findings (before)
+1. **Mis-categorised taxonomy** — the primary defect:
+   - `Programs` listed 6 undergraduate degrees only (7 of 59 tracks) and had no graduate or doctoral grouping.
+   - `Academics` contained statutory leadership (`/leadership`, `/leadership/vice-chancellor`) — leadership is not academics.
+   - `Admissions` contained `Student CMS Portal` (already the global header action) and `Contact Admissions Desk`, duplicating the CTA.
+   - `Campus Life` contained `News`, `Events` and `About` — none are campus life.
+   - `Research` ordered its own overview last, after its two sub-bodies.
+   - `Faculty` was a dead-end flat link despite being the whole academic structure, and had no way in.
+   - `Alumni` was unreachable from the desktop navigation.
+2. **Dead placeholder data** — `src/data/navigation.ts` exported mega-menu structures whose every `href` was `"#"`; nothing consumed them.
+3. **Viewport overflow risk** — the panel was `absolute left-1/2 -translate-x-1/2 w-[760px]` on the trigger, so right-hand menus (`Campus Life`, `Research`) pushed past the viewport edge at 768–1100px; `max-w-[95vw]` did not counter the translation offset.
+4. **Bar overflow at 768–1279px** — 7 triggers + brand + search + portal exceeded the available width, wrapping `Campus Life` onto two lines.
+5. **Ragged content** — panels with 3 vs 6 links produced orphans in the 2-column grid and jumping panel heights; no minimum structure.
+6. **Visual clutter** — competing header row (label + "University of Swat" + "View X"), uniform stone icon chips on every row, per-row hover borders, a rotated-square caret that disagreed with the surface shadow, and a decorative gradient foot rule.
+7. **Accessibility** — `role="menubar"` without menu semantics, no `aria-controls` between trigger and panel, `stone-400` 10px qualifiers (≈2.4:1) and `white/35` drawer text (≈1.9:1) below AA, no keyboard path from a trigger into its panel.
+
+### Key Changes
+1. **`src/data/navigation.ts` rewritten as the single source of truth** — typed `NavItem` / `NavGroup` / `NavLink` / `NavRail` model for seven groups, every `href` a real route, plus `primaryActions`. The fake `href: "#"` mega data (`programsMegaData`, `departmentsMegaData`, `locationsMegaData`, `portalsMegaData`) was deleted.
+2. **Corrected taxonomy** — Programs (by degree level: Undergraduate / Graduate / Doctoral), Faculties (5 faculties → department anchors, plus flagship departments), Academics (semester records + affiliation), Admissions (cycle + funding & help), Campus Life (3 campuses + student life), Research (overview, ORIC, ASRB), University (about, leadership, VC office, news, alumni, contact). Every page now appears exactly once under a parent that actually owns it; `Alumni` and `Contact` gained proper entry points.
+3. **`MegaMenuPanel` (new)** — a single panel instance rendered beneath the bar, so it is centred in the viewport at every width instead of being pushed off-screen by its trigger. Editorial surface: warm alabaster `#FCFBF8`, 20px radius, deep forest shadow; crimson eyebrow + serif summary header with a single quiet "view all" action; hairline grouped link columns with factual right-aligned qualifiers (`4 years`, `5 depts`, `BS–PhD`); gold tick + crimson label on row hover; and a Deep Forest editorial fact rail carrying one verified institutional figure (`59` degree tracks, `05` faculties, `03` campuses, `2026`, `ORIC`, `2010`) behind a crest watermark.
+4. **Bar fit** — the bar now sits on the site grid (`max-w-[1360px] px-6 lg:px-12`) with `whitespace-nowrap` triggers at 12.5px (13px at `2xl`), and the desktop nav renders from `xl`; below that the drawer takes over. Verified: no overflow or brand/nav collision at 1280, 1366, 1440 and 1600, and `Campus Life` stays on one line.
+5. **Motion** — one 200ms `cubic-bezier(0.16,1,0.3,1)` rise/fade on panel entrance (`animate-nav-panel` in `globals.css`), a 2px gold indicator on the open trigger, chevron rotation, and arrow nudges on hover; all inherit the global `prefers-reduced-motion` rule. Panel closes on scroll and on route change.
+6. **Mobile drawer rebuilt on the same model** — grouped sections with eyebrow titles, factual qualifiers, 46–52px targets, `aria-controls`/`aria-expanded` per accordion, crimson-outlined "view all" row, and search + portal actions; closes on navigation via `usePathname`.
+7. **Accessibility** — `aria-expanded` + `aria-controls` wiring, `role="menubar"` removed (plain `nav` landmark), ArrowDown opens the panel and focuses its first link, ArrowUp/Down/Home/End move inside the panel, ArrowLeft/Right rove the triggers, Escape closes and returns focus to the trigger, and all muted text raised to ≥4.5:1 (`stone-600` on alabaster, `white/55`–`white/60` on forest).
+
+### Follow-up (same day) — trigger interaction
+Header triggers are now real links rather than toggle buttons: **hover opens the panel, click goes to the section's own page** (`Programs → /programs`, `Faculties → /faculty`, `Academics → /academics`, `Admissions → /admissions`, `Campus Life → /campus-life`, `Research → /research`, `University → /about`). Keyboard behaviour is unchanged and additive: `ArrowDown` opens the panel and focuses its first link, `ArrowLeft/Right` rove the triggers, `Escape` closes and returns focus to the trigger, and `Enter` follows the link. Verified with real pointer events: hover → `#nav-panel-academics` present; click → `location.pathname === "/academics"`, panel gone, trigger rendering as `<a>`.
+
+### Technical Notes
+- Typecheck: `npx tsc --noEmit` clean. Production build: `npm run build` → 103/103 static pages generated.
+- Rendered-DOM verification at 1440×900 (all seven panels), 1280×900, 1024×768 and 390×844: every panel `overflows: false`, `scrollWidth === innerWidth` at all widths; drawer + nested accordion open correctly on phone.
+- Keyboard verified: ArrowDown → panel open, focus inside panel; Escape → panel closed, focus returned to trigger.
+- `check.mjs` (1440×900, 390×844): no overflow, collide or tap-size findings.
+- Content facts untouched and taken only from existing data stores; the `28 departments` vs `20 departments` conflict in the legacy copy is deliberately not propagated into the navigation (counts used: 59 degree tracks, 05 faculties, 03 campuses, est. 2010).
+
+### Files Modified
+- `src/data/navigation.ts` (rewritten)
+- `src/components/layout/Navbar.tsx` (rebuilt)
+- `src/components/layout/MegaMenuPanel.tsx` (new)
+- `src/app/globals.css` (`animate-nav-panel` keyframes)
+- `docs/COMPONENTS.md`, `docs/CHANGELOG.md`, `AGENTS.md` (registry)
+
+---
+
+## [2026-11-15] — Academics Section (`/academics`, `/academics/calendar`, `/academics/downloads`) Design-Taste Overhaul
+
+### Action Summary
+Applied `design-taste-frontend` rules to the entire Academics section (`src/app/academics/page.tsx`, `src/app/academics/calendar/page.tsx`, `src/app/academics/downloads/page.tsx`, and newly created client component `src/components/academics/DownloadsClient.tsx`) to transform it into an authoritative, prestigious institutional academic hub for the University of Swat while strictly preserving 100% of functional links, schedules, and document downloads.
+
+### Key Changes
+1. **Academics Hub (`/academics`)**:
+   - **PageHeader & Integrated Breadcrumbs**: Authoritative Deep Forest Green (`#153B27`) architectural hero banner with Muted Gold eyebrow (`ACADEMIC AFFAIRS & GOVERNANCE`), pure white serif H1, and integrated breadcrumb trail (`Home / Academics`).
+   - **Overlapping 4-Metric Institutional Summary Bar**: Positioned at `-mt-10 sm:-mt-12 relative z-20` with a bold University Crimson top border (`border-t-4 border-[#7F1D1D]`), crisp white cards, and verified institutional statistics (05 Faculties, 28 Teaching Departments, 91.4% HEC QEC Score, 100% Chartered).
+   - **Core Academic Gateways**: 3 high-impact architectural spec cards (Academic Calendar 2026–2027, Downloads & Official Forms, Degrees & Curricula) featuring Roman numerals (I–III), 2px card lifts (`hover:-translate-y-[2px]`), live status badges, and arrow micro-interactions.
+   - **Scholarly Infrastructure & Semester System (Editorial Split)**: Authentic Charbagh Main Campus alpine complex photograph with frosted glass badge and 1.025 zoom inside overflow-hidden frame, paired with narrative covering Semester Regulations 2016, 75% mandatory attendance, and Outcome-Based Education (OBE).
+   - **HEC-Aligned Grading System & Academic Progression Grid**: Clean, high-contrast 8-bracket grading table (A through F with marks percentages, grade points, and remarks) alongside statutory rules for Good Standing (CGPA ≥ 2.00 BS), Academic Probation (GPA < 2.00), Course Repeats, and statutory 6-year maximum tenure.
+   - **Quality Enhancement Cell (QEC) Institutional Showcase**: Deep Forest Green (`#0F291B`) command card with 91.4% W-Category badge, SAR audit protocols, student evaluations, and statutory council accreditations (NCEAC, PBC, NAEAC).
+   - **Academic Authorities Governance**: 4-card architectural grid covering The Syndicate, Academic Council, Advanced Studies & Research Board (ASRB), and departmental Boards of Studies (BoS).
+   - **Related Pathways Navigation**: 4-column responsive grid linking to Faculties & 28 Departments, Admissions & Quotas, ORIC Research, and Affiliated Colleges.
+
+2. **Official Academic Calendar 2026–2027 (`/academics/calendar`)**:
+   - Upgraded with Deep Forest Green `PageHeader`, breadcrumb navigation (`Home / Academics / Academic Calendar`), and the overlapping 4-stat bar (02 Semesters, 13 Milestones, 16–18 Weeks/Term, 75% Attendance).
+   - Side-by-side Fall 2026 and Spring 2027 timeline cards with status chips (Completed, Ongoing, Upcoming), examination tags, and hover lift feedback.
+   - Quick Action bar with direct links to return to Academics, statutory downloads, and calendar PDF.
+   - Statutory Examination Advisory from the Controller of Examinations and Academic Council.
+
+3. **Official Downloads & Statutory Forms (`/academics/downloads`)**:
+   - Created `DownloadsClient.tsx` with instant live search (`Search by title, proforma name, regulation, or keyword...`) and horizontal category filter pills (`All Documents`, `Statutory Regulations`, `Research & ASRB`, `Academic Rules`, `Examinations`, `Student Services`, `Financial Aid`).
+   - Overlapping 4-metric summary bar (08 Verified Documents, PDF Standard, 2016 Statutes, 100% Public Repository).
+   - Clean document cards with index numerals, format/size chips, target audience metadata, and direct download buttons.
+   - Statutory Attestation & Authentication advisory notice with Registrar's Office support details.
+
+### Technical Notes
+- Typecheck: `npx tsc --noEmit` clean (0 errors).
+- Design system: Strictly adheres to 60-30-10 palette (Deep Forest Green `#153B27`, University Crimson `#7F1D1D`, Muted Gold `#C8A96E`, Warm Alabaster `#F6F5F0`, Charcoal `#14291D`).
+- Responsive & Accessible: Complete mobile and desktop support with semantic tables, `aria-label` attributes, and keyboard accessibility.
+
+### Files Created / Modified
+- `src/app/academics/page.tsx` (overhauled)
+- `src/app/academics/calendar/page.tsx` (overhauled)
+- `src/app/academics/downloads/page.tsx` (overhauled)
+- `src/components/academics/DownloadsClient.tsx` (new interactive client component)
+- `docs/CHANGELOG.md` (updated)
+- `docs/COMPONENTS.md` (updated)
+- `AGENTS.md` (updated)
+
+---
+
 ## [2026-11-15] — Program Detail Pages (`/programs/[slug]`) Design-Taste Audit & Premium Overhaul
 
 ### Action Summary

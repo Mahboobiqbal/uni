@@ -421,11 +421,11 @@ export default function ProgramsPage() {
         <div
           role="search"
           aria-label="Filter degree programs"
-          className="bg-white border border-stone-200/90 border-t-4 border-t-[#7F1D1D] rounded-2xl p-4 sm:p-5 shadow-[0_24px_50px_-22px_rgba(12,25,18,0.45)] flex flex-col lg:flex-row lg:items-center gap-4"
+          className="bg-white border border-stone-300 border-t-4 border-t-[#7F1D1D] rounded-2xl p-4 sm:p-5 shadow-[0_24px_50px_-22px_rgba(12,25,18,0.45)] flex flex-col lg:flex-row lg:items-center gap-4"
         >
           {/* Left: Instant Search Input */}
           <div className="relative min-w-0 flex-1">
-            <Search className="w-4 h-4 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
+            <Search className="w-4 h-4 text-stone-500 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
             <input
               ref={searchInputRef}
               type="text"
@@ -433,21 +433,21 @@ export default function ProgramsPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search degrees or departments — try “Chemistry”…"
               aria-label="Search degree programs, departments, or disciplines"
-              className="w-full pl-11 pr-16 lg:pr-14 h-12 rounded-xl bg-stone-50 border border-stone-200/80 text-sm text-[#14291D] placeholder:text-stone-400 placeholder:truncate focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent focus:bg-white transition-all"
+              className="w-full pl-11 pr-16 lg:pr-14 h-12 rounded-xl bg-stone-50 border border-stone-300 text-sm text-[#14291D] placeholder:text-stone-500 placeholder:truncate focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent focus:bg-white transition-all"
             />
             {searchQuery ? (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
                 aria-label="Clear search"
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-stone-400 hover:text-stone-800 rounded-full transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-stone-500 hover:text-stone-800 rounded-full transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
             ) : (
               <kbd
                 aria-hidden="true"
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 items-center justify-center text-[11px] font-sans font-bold text-stone-400 bg-white border border-stone-200 rounded-md shadow-[0_1px_0_0_#e7e5e4] hidden lg:flex pointer-events-none"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 items-center justify-center text-[11px] font-sans font-bold text-stone-500 bg-white border border-stone-300 rounded-md shadow-[0_1px_0_0_#e7e5e4] hidden lg:flex pointer-events-none"
               >
                 /
               </kbd>
@@ -487,7 +487,7 @@ export default function ProgramsPage() {
         </div>
 
         {/* Quick Metrics & Results Readout */}
-        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500 px-1">
+        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-600 px-1">
           <span className="font-medium" aria-live="polite">
             Showing{' '}
             <strong className="text-[#14291D] font-bold tabular-nums">{filteredDepartments.length}</strong>{' '}
@@ -540,12 +540,18 @@ export default function ProgramsPage() {
               {filteredFlagship.map((prog, idx) => (
                 <article
                   key={prog.slug}
-                  className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:-translate-y-[2px] hover:shadow-[0_28px_48px_-22px_rgba(12,25,18,0.4)] hover:border-[#153B27]/35 transition-all duration-200 ease-out overflow-hidden"
+                  className={`group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl overflow-hidden transition-all duration-200 ease-out hover:-translate-y-[2px] ${
+                    idx === 0
+                      ? 'bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:bg-[#0F2D1E] hover:shadow-[0_28px_48px_-22px_rgba(12,25,18,0.45)]'
+                      : 'bg-white border border-stone-300 shadow-xs hover:border-[#153B27]/45 hover:shadow-[0_28px_48px_-22px_rgba(12,25,18,0.4)]'
+                  }`}
                 >
                   {/* Index numeral watermark */}
                   <span
                     aria-hidden="true"
-                    className="absolute top-4 right-5 font-serif text-5xl sm:text-6xl font-bold text-[#153B27]/[0.07] select-none leading-none tabular-nums"
+                    className={`absolute top-4 right-5 font-serif text-5xl sm:text-6xl font-bold select-none leading-none tabular-nums ${
+                      idx === 0 ? 'text-white/[0.08]' : 'text-[#153B27]/[0.07]'
+                    }`}
                   >
                     {ROMAN[idx] ?? String(idx + 1)}
                   </span>
@@ -558,31 +564,61 @@ export default function ProgramsPage() {
                   <div className="relative">
                     {/* Top Row: Duration & Credits */}
                     <div className="flex items-center justify-between gap-2 mb-5">
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full bg-[#EFF5EE] text-[#153B27] border border-[#C9D6C2]">
+                      <span
+                        className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full ${
+                          idx === 0
+                            ? 'bg-[#C8A96E]/15 text-[#C8A96E] border border-[#C8A96E]/30'
+                            : 'bg-[#EFF5EE] text-[#153B27] border border-[#C9D6C2]'
+                        }`}
+                      >
                         <Clock className="w-3 h-3" />
                         {prog.duration.split('(')[0].trim()}
                       </span>
-                      <span className="text-[10px] font-sans uppercase tracking-[0.14em] text-stone-500 font-bold tabular-nums">
+                      <span
+                        className={`text-[10px] font-sans uppercase tracking-[0.14em] font-bold tabular-nums ${
+                          idx === 0 ? 'text-white/60' : 'text-stone-600'
+                        }`}
+                      >
                         {prog.creditHours} Credit Hrs
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-[1.65rem] sm:text-2xl font-bold text-[#14291D] group-hover:text-[#153B27] transition-colors mb-3 leading-[1.15] tracking-[-0.01em] pr-8">
+                    <h3
+                      className={`font-serif text-[1.65rem] sm:text-2xl font-bold transition-colors mb-3 leading-[1.15] tracking-[-0.01em] pr-8 ${
+                        idx === 0 ? 'text-white group-hover:text-[#C8A96E]' : 'text-[#14291D] group-hover:text-[#153B27]'
+                      }`}
+                    >
                       {prog.name}
                     </h3>
 
-                    <p className="font-sans text-xs text-stone-600 leading-relaxed mb-5 line-clamp-3">
+                    <p
+                      className={`font-sans text-xs leading-relaxed mb-5 line-clamp-3 ${
+                        idx === 0 ? 'text-white/70' : 'text-stone-600'
+                      }`}
+                    >
                       {prog.description}
                     </p>
 
-                    <div className="text-[11px] text-stone-500 font-medium mb-5 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#7F1D1D] shrink-0" />
+                    <div
+                      className={`text-[11px] font-medium mb-5 flex items-center gap-2 ${
+                        idx === 0 ? 'text-white/60' : 'text-stone-600'
+                      }`}
+                    >
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                          idx === 0 ? 'bg-[#C8A96E]' : 'bg-[#7F1D1D]'
+                        }`}
+                      />
                       <span className="truncate">{prog.departmentName}</span>
                     </div>
                   </div>
 
                   {/* Interactive Trigger for Slide-Over Drawer */}
-                  <div className="relative pt-4 border-t border-stone-100 flex items-center justify-between gap-2">
+                  <div
+                    className={`relative pt-4 border-t flex items-center justify-between gap-2 ${
+                      idx === 0 ? 'border-white/15' : 'border-stone-200'
+                    }`}
+                  >
                     <button
                       type="button"
                       onClick={() => {
@@ -600,7 +636,9 @@ export default function ProgramsPage() {
                         };
                         openProgramModal(prog.name, matchingDept);
                       }}
-                      className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#153B27] hover:text-[#7F1D1D] transition-colors min-h-[44px] -my-2"
+                      className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors min-h-[44px] -my-2 ${
+                        idx === 0 ? 'text-[#C8A96E] hover:text-white' : 'text-[#153B27] hover:text-[#7F1D1D]'
+                      }`}
                     >
                       <span>View Syllabus</span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -610,7 +648,11 @@ export default function ProgramsPage() {
                       href={`/programs/${prog.slug}`}
                       aria-label={`Open the full ${prog.name} curriculum page`}
                       title={`Direct link to ${prog.name}`}
-                      className="p-2.5 rounded-lg bg-stone-50 hover:bg-[#153B27] hover:text-white active:scale-[0.94] text-stone-600 border border-stone-200/80 transition-all duration-150"
+                      className={`p-2.5 rounded-lg active:scale-[0.94] border transition-all duration-150 ${
+                        idx === 0
+                          ? 'bg-white/10 text-[#C8A96E] border-white/15 hover:bg-white/20'
+                          : 'bg-stone-50 text-stone-600 border-stone-300 hover:bg-[#153B27] hover:text-white'
+                      }`}
                     >
                       <ArrowRight className="w-4 h-4" />
                     </Link>
@@ -662,13 +704,13 @@ export default function ProgramsPage() {
                   className={`inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-[11px] font-semibold whitespace-nowrap transition-all duration-200 active:scale-[0.985] ${
                     isActive
                       ? 'bg-[#153B27] text-white shadow-sm'
-                      : 'bg-white border border-stone-200/90 text-stone-600 hover:text-[#14291D] hover:border-stone-300'
+                      : 'bg-white border border-stone-300 text-stone-600 hover:text-[#14291D] hover:border-stone-400'
                   }`}
                 >
                   <span>{fac.label}</span>
                   <span
                     className={`text-[10px] font-bold tabular-nums px-1.5 py-0.5 rounded-md ${
-                      isActive ? 'bg-white/15 text-[#C8A96E]' : 'bg-stone-100 text-stone-500'
+                      isActive ? 'bg-white/15 text-[#C8A96E]' : 'bg-stone-100 text-stone-600'
                     }`}
                   >
                     {count}
@@ -687,7 +729,7 @@ export default function ProgramsPage() {
           </div>
 
           {/* Architectural Directory Container (hairline divide-y) */}
-          <div className="bg-white border border-stone-200/90 rounded-2xl divide-y divide-stone-200 overflow-hidden shadow-xs">
+          <div className="bg-white border border-stone-300 rounded-2xl divide-y divide-stone-200 overflow-hidden shadow-xs">
             {filteredDepartments.length === 0 ? (
               /* Empty State */
               <div className="p-12 sm:p-16 text-center space-y-4">
@@ -697,7 +739,7 @@ export default function ProgramsPage() {
                 <h3 className="font-serif text-2xl font-bold text-stone-800">
                   No Matching Degree Programs Found
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-500 max-w-md mx-auto">
+                <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto">
                   We could not find any programs matching &ldquo;{searchQuery}&rdquo; in the selected
                   faculty or degree level filter. Try broadening your search or resetting filters.
                 </p>
@@ -730,7 +772,7 @@ export default function ProgramsPage() {
                       <div className="lg:w-[38%] flex items-start gap-4 lg:gap-5 shrink-0">
                         <span
                           aria-hidden="true"
-                          className="font-serif text-sm sm:text-base font-bold text-stone-300 tabular-nums pt-1 w-7 shrink-0 border-r border-stone-200 pr-3"
+                          className="font-serif text-sm sm:text-base font-bold text-stone-400 tabular-nums pt-1 w-7 shrink-0 border-r border-stone-200 pr-3"
                         >
                           {String(deptIdx + 1).padStart(2, '0')}
                         </span>
@@ -747,7 +789,7 @@ export default function ProgramsPage() {
                             {dept.name}
                           </Link>
 
-                          <div className="flex items-center gap-1.5 text-[11px] text-stone-500">
+                          <div className="flex items-center gap-1.5 text-[11px] text-stone-600">
                             <MapPin className="w-3.5 h-3.5 text-[#153B27] shrink-0" />
                             <span>{dept.campus}</span>
                           </div>
@@ -771,7 +813,7 @@ export default function ProgramsPage() {
                       </div>
 
                       {/* Right Column: Dept Profile Link in University Crimson */}
-                      <div className="lg:w-[13%] lg:text-right shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-stone-100">
+                      <div className="lg:w-[13%] lg:text-right shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-stone-200">
                         <Link
                           href={`/departments/${dept.id}`}
                           className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#7F1D1D] hover:text-[#661717] transition-colors group/link min-h-[44px] lg:min-h-0"

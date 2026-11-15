@@ -16,6 +16,7 @@ interface ProgramCard {
   careerFocus: string;
   image: string;
   accent: string;
+  featured?: boolean;
 }
 
 const flagshipPrograms: ProgramCard[] = [
@@ -31,6 +32,7 @@ const flagshipPrograms: ProgramCard[] = [
     careerFocus: 'AI Engineer · Systems Architect · Data Scientist',
     image: '/campus-shot-2.jpg',
     accent: 'border-[#153B27]',
+    featured: true,
   },
   {
     id: 'bs-se',
@@ -75,7 +77,7 @@ const flagshipPrograms: ProgramCard[] = [
 
 export default function FlagshipDegreeSpotlight() {
   return (
-    <div className="mt-16 sm:mt-24 pt-16 sm:pt-20 border-t border-stone-200/90">
+    <div className="mt-16 sm:mt-24 pt-16 sm:pt-20 border-t border-stone-300">
       {/* Header for Flagship Degrees */}
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
         <div>
@@ -103,7 +105,11 @@ export default function FlagshipDegreeSpotlight() {
         {flagshipPrograms.map((program) => (
           <article
             key={program.id}
-            className="group relative flex flex-col rounded-2xl border border-stone-200/90 bg-white shadow-xs overflow-hidden transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-xl hover:border-stone-300"
+            className={`group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-200 ease-out hover:-translate-y-[2px] ${
+              program.featured
+                ? 'border border-white/10 bg-[#153B27] text-white shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:bg-[#0F2D1E]'
+                : 'border border-stone-300 bg-white shadow-xs hover:shadow-xl hover:border-stone-400'
+            }`}
           >
             {/* Card Image with duration pill */}
             <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
@@ -131,20 +137,20 @@ export default function FlagshipDegreeSpotlight() {
 
             {/* Card Body */}
             <div className="p-5 flex-1 flex flex-col">
-              <h4 className="font-serif text-lg sm:text-xl font-bold text-[#14291D] tracking-[-0.01em] group-hover:text-[#153B27] transition-colors mb-2">
+              <h4 className={`font-serif text-lg sm:text-xl font-bold tracking-[-0.01em] transition-colors mb-2 ${program.featured ? 'text-white group-hover:text-[#C8A96E]' : 'text-[#14291D] group-hover:text-[#153B27]'}`}>
                 {program.title}
               </h4>
 
-              <p className="text-xs text-stone-600 line-clamp-3 leading-relaxed mb-4">
+              <p className={`text-xs line-clamp-3 leading-relaxed mb-4 ${program.featured ? 'text-white/70' : 'text-stone-600'}`}>
                 {program.description}
               </p>
 
               {/* Career focus pill */}
-              <div className="mt-auto pt-3 border-t border-stone-100 mb-4">
-                <p className="text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-1">
+              <div className={`mt-auto pt-3 border-t mb-4 ${program.featured ? 'border-white/15' : 'border-stone-200'}`}>
+                <p className={`text-[10px] font-bold uppercase tracking-wider mb-1 ${program.featured ? 'text-[#C8A96E]' : 'text-stone-500'}`}>
                   Career Trajectory
                 </p>
-                <p className="text-[11px] font-medium text-stone-700 truncate">
+                <p className={`text-[11px] font-medium truncate ${program.featured ? 'text-white' : 'text-stone-700'}`}>
                   {program.careerFocus}
                 </p>
               </div>
@@ -152,10 +158,14 @@ export default function FlagshipDegreeSpotlight() {
               {/* CTA link */}
               <Link
                 href={`/programs/${program.slug}`}
-                className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-lg bg-stone-50 hover:bg-[#153B27] hover:text-white active:scale-[0.985] active:translate-y-px text-[#14291D] text-xs font-semibold border border-stone-200/80 transition-all duration-150 group/btn"
+                className={`w-full inline-flex items-center justify-between px-3.5 py-2 rounded-lg active:scale-[0.985] active:translate-y-px text-xs font-semibold transition-all duration-150 group/btn ${
+                  program.featured
+                    ? 'bg-white/[0.07] hover:bg-white/15 text-white border border-white/[0.12]'
+                    : 'bg-stone-50 hover:bg-[#153B27] hover:text-white text-[#14291D] border border-stone-200/80'
+                }`}
               >
                 <span>View Full Syllabus</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/btn:text-white transition-colors" />
+                <ArrowUpRight className={`w-3.5 h-3.5 transition-colors ${program.featured ? 'text-white/60 group-hover/btn:text-[#C8A96E]' : 'text-stone-500 group-hover/btn:text-white'}`} />
               </Link>
             </div>
           </article>

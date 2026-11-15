@@ -99,7 +99,7 @@ export default function PortalPage() {
                 key={portal.title}
                 href={portal.url}
                 {...extraProps}
-                className="group p-6 sm:p-7 rounded-3xl bg-white border border-stone-200/90 shadow-xs hover:border-[#153B27]/40 hover:shadow-md transition-all flex flex-col justify-between"
+                className="group p-6 sm:p-7 rounded-3xl bg-white border border-stone-300 shadow-xs hover:border-[#153B27]/40 hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between mb-5">
@@ -107,13 +107,13 @@ export default function PortalPage() {
                       {portal.icon}
                     </div>
                     {isExt ? (
-                      <ExternalLink className="w-4 h-4 text-stone-400 group-hover:text-[#153B27] transition-colors" />
+                      <ExternalLink className="w-4 h-4 text-stone-500 group-hover:text-[#153B27] transition-colors" />
                     ) : (
-                      <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-[#153B27] transition-colors" />
+                      <ArrowUpRight className="w-4 h-4 text-stone-500 group-hover:text-[#153B27] transition-colors" />
                     )}
                   </div>
 
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 block mb-1">
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-stone-500 block mb-1">
                     {portal.tag}
                   </span>
                   <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-[#153B27] transition-colors mb-2">
@@ -124,7 +124,7 @@ export default function PortalPage() {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-[#153B27]">
+                <div className="pt-4 border-t border-stone-200 flex items-center justify-between text-xs font-semibold text-[#153B27]">
                   <span>Launch Portal</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </div>
@@ -134,15 +134,15 @@ export default function PortalPage() {
         </div>
 
         {/* Credentials & Helpdesk Box */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="p-8 sm:p-10 rounded-3xl bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold block mb-1">
+            <span className="text-xs uppercase tracking-widest text-[#E5CD9B] font-bold block mb-1">
               IT Support &amp; Single Sign-On Help
             </span>
-            <h3 className="font-serif text-2xl font-bold text-stone-900 mb-2">
+            <h3 className="font-serif text-2xl font-bold text-white mb-2">
               Forgot Your Credentials or Facing Login Issues?
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-stone-600 max-w-2xl leading-relaxed">
+            <p className="font-sans text-xs sm:text-sm text-white/80 max-w-2xl leading-relaxed">
               Your default username is your official university registration number (e.g., 2026-UOS-1234). For password resets, Office 365 licensing, or CMS module access, contact the Directorate of IT Helpdesk.
             </p>
           </div>
@@ -150,7 +150,7 @@ export default function PortalPage() {
           <div className="shrink-0 flex items-center gap-3">
             <a
               href="mailto:dit@uswat.edu.pk"
-              className="px-6 py-3 rounded-xl bg-[#153B27] text-white text-xs font-semibold hover:bg-[#153B27]/90 transition-colors shadow-xs"
+              className="px-6 py-3 rounded-xl bg-white text-[#7F1D1D] text-xs font-semibold hover:bg-white/90 transition-colors shadow-xs"
             >
               Contact IT Helpdesk
             </a>

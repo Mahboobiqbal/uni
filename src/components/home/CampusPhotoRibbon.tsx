@@ -55,7 +55,7 @@ export default function CampusPhotoRibbon() {
     <section
       id="campus-life-ribbon"
       data-purpose="campus-photo-ribbon"
-      className="py-16 sm:py-20 bg-white border-t border-stone-200/90 overflow-hidden"
+      className="py-16 sm:py-20 bg-white border-t border-stone-300 overflow-hidden"
     >
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>

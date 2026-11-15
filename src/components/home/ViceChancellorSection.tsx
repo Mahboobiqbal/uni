@@ -91,7 +91,7 @@ export default function ViceChancellorSection() {
 
               {/* Executive Academic Credentials (Clean, Unified Stone & Brand Accents) */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-300 hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-[#153B27]/10 text-[#153B27] shrink-0">
                     <Award className="w-4 h-4" />
                   </div>
@@ -101,7 +101,7 @@ export default function ViceChancellorSection() {
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-300 hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-[#7F1D1D]/10 text-[#7F1D1D] shrink-0">
                     <Building2 className="w-4 h-4" />
                   </div>
@@ -111,7 +111,7 @@ export default function ViceChancellorSection() {
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 hover:border-stone-300 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-300 hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-[#B48A3E]/10 text-[#B48A3E] shrink-0">
                     <FileText className="w-4 h-4" />
                   </div>
@@ -124,12 +124,12 @@ export default function ViceChancellorSection() {
             </div>
 
             {/* Signature, Institutional Title & Quick Links */}
-            <div className="pt-6 border-t border-stone-200/90 flex flex-wrap items-center justify-between gap-4">
+            <div className="pt-6 border-t border-stone-300 flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="font-serif italic text-2xl sm:text-[28px] text-[#153B27] font-bold tracking-tight">
                   Prof. Dr. Husnul Amin
                 </div>
-                <div className="text-xs text-stone-500 font-sans font-medium mt-0.5">
+                <div className="text-xs text-stone-600 font-sans font-medium mt-0.5">
                   Vice Chancellor, University of Swat
                 </div>
               </div>

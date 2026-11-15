@@ -61,25 +61,25 @@ export default async function NewsArticleDetailPage({ params }: PageProps) {
         </div>
 
         {/* Article Container */}
-        <article className="p-8 sm:p-14 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-10">
+        <article className="p-8 sm:p-14 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] space-y-10">
           
           {/* Metadata bar */}
-          <div className="flex flex-wrap items-center justify-between pb-6 border-b border-stone-100 gap-4 text-xs">
+          <div className="flex flex-wrap items-center justify-between pb-6 border-b border-white/15 gap-4 text-xs">
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 rounded-full bg-emerald-50 text-[#153B27] font-semibold border border-emerald-200">
+              <span className="px-3 py-1 rounded-full bg-[#C8A96E]/15 text-[#C8A96E] font-semibold border border-[#C8A96E]/30">
                 {article.category}
               </span>
-              <span className="text-stone-500">
-                Authorized by: <strong className="text-stone-800">{article.author}</strong>
+              <span className="text-white/60">
+                Authorized by: <strong className="text-white">{article.author}</strong>
               </span>
             </div>
-            <span className="text-stone-400 font-mono">
+            <span className="text-white/60 font-mono">
               University of Swat Press Release
             </span>
           </div>
 
           {/* Lead Image */}
-          <div className="relative w-full aspect-16/9 sm:aspect-21/9 rounded-2xl overflow-hidden border border-stone-200 bg-stone-100">
+          <div className="relative w-full aspect-16/9 sm:aspect-21/9 rounded-2xl overflow-hidden border border-white/15 bg-white/10">
             <Image
               src={article.image}
               alt={article.title}
@@ -90,25 +90,25 @@ export default async function NewsArticleDetailPage({ params }: PageProps) {
           </div>
 
           {/* Content Paragraphs */}
-          <div className="font-sans text-stone-700 text-base sm:text-lg leading-relaxed space-y-6 pt-4">
+          <div className="font-sans text-white/75 text-base sm:text-lg leading-relaxed space-y-6 pt-4">
             {article.content.map((p, idx) => (
-              <p key={idx} className={idx === 0 ? "font-serif text-xl sm:text-2xl text-stone-900 leading-snug" : ""}>
+              <p key={idx} className={idx === 0 ? "font-serif text-xl sm:text-2xl text-white leading-snug" : ""}>
                 {p}
               </p>
             ))}
           </div>
 
           {/* Signoff & Share */}
-          <div className="pt-8 border-t border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="text-xs text-stone-500">
-              <strong className="block text-stone-800 font-semibold mb-0.5">University of Swat Media Cell</strong>
+          <div className="pt-8 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="text-xs text-white/60">
+              <strong className="block text-white font-semibold mb-0.5">University of Swat Media Cell</strong>
               Public Relations Office, Charbagh Main Campus, Swat, KP
             </div>
 
             <div className="flex items-center gap-3">
               <Link
                 href="/news"
-                className="px-5 py-2.5 rounded-xl bg-stone-100 text-stone-700 text-xs font-semibold hover:bg-stone-200 transition-colors"
+                className="px-5 py-2.5 rounded-xl bg-white/10 text-white border border-white/15 text-xs font-semibold hover:bg-white/20 transition-colors"
               >
                 More Announcements
               </Link>

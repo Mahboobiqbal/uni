@@ -165,7 +165,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
           <div className="lg:col-span-8 space-y-10">
             
             {/* Overview Card */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
               <div className="flex items-center gap-2 mb-3">
                 <span className="h-0.5 w-6 bg-[#153B27]" />
                 <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
@@ -195,7 +195,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
             </div>
 
             {/* Official Staff Directory */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
               <div className="flex items-center gap-2 mb-3">
                 <span className="h-0.5 w-6 bg-[#7F1D1D]" />
                 <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
@@ -218,7 +218,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
                     {s.email && (
                       <a
                         href={`mailto:${s.email}`}
-                        className="text-[11px] font-mono text-stone-500 hover:text-[#7F1D1D] flex items-center gap-1 mt-2"
+                        className="text-[11px] font-mono text-stone-600 hover:text-[#7F1D1D] flex items-center gap-1 mt-2"
                       >
                         <Mail className="w-3 h-3" />
                         {s.email}
@@ -234,7 +234,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
           {/* Sidebar Column */}
           <div className="lg:col-span-4 space-y-6">
             
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-300 shadow-xs">
               {off.image && (
                 <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden mb-6 border border-stone-200">
                   <Image
@@ -246,23 +246,23 @@ export default async function OfficeDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              <h3 className="font-serif text-xl font-bold text-stone-900 pb-3 border-b border-stone-100 mb-4">
+              <h3 className="font-serif text-xl font-bold text-stone-900 pb-3 border-b border-stone-200 mb-4">
                 Office Information
               </h3>
 
               <div className="space-y-4 text-xs sm:text-[13px]">
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Officer in Charge
                   </span>
                   <span className="font-semibold text-stone-900 text-sm">
                     {off.officerInCharge}
                   </span>
-                  <span className="text-stone-500 block">{off.designation}</span>
+                  <span className="text-stone-600 block">{off.designation}</span>
                 </div>
 
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Official Email
                   </span>
                   <a
@@ -275,7 +275,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
                 </div>
 
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Direct Telephone
                   </span>
                   <span className="font-mono text-stone-700 flex items-center gap-1.5 mt-0.5">
@@ -285,7 +285,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
                 </div>
 
                 <div>
-                  <span className="text-stone-400 uppercase tracking-wider block font-bold text-[10px]">
+                  <span className="text-stone-500 uppercase tracking-wider block font-bold text-[10px]">
                     Campus Location
                   </span>
                   <span className="font-medium text-stone-700 flex items-center gap-1.5 mt-0.5">
@@ -295,7 +295,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-stone-100 flex flex-col gap-2">
+              <div className="mt-8 pt-6 border-t border-stone-200 flex flex-col gap-2">
                 <Link
                   href="/leadership"
                   className="w-full py-3 rounded-xl bg-[#153B27] text-white font-semibold text-xs text-center hover:bg-[#153B27]/90 transition-colors"
@@ -312,7 +312,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
             </div>
 
             {/* Other Offices */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-300 shadow-xs">
               <h4 className="font-serif text-lg font-bold text-stone-900 mb-4">
                 Other Executive Offices
               </h4>
@@ -323,7 +323,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
                     <Link
                       key={other.slug}
                       href={`/leadership/${other.slug}`}
-                      className="block p-3 rounded-xl bg-stone-50 border border-stone-100 hover:border-stone-300 text-stone-700 hover:text-[#153B27] font-medium transition-colors"
+                      className="block p-3 rounded-xl bg-stone-50 border border-stone-200 hover:border-stone-400 text-stone-700 hover:text-[#153B27] font-medium transition-colors"
                     >
                       {other.title}
                     </Link>

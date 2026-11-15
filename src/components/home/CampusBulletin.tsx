@@ -14,7 +14,7 @@ import {
 /* ─── Badge pill tones ─────────────────────────────────────────────────────── */
 
 const BADGE_TONES: Record<BadgeTone, string> = {
-  critical: 'bg-[#7F1D1D] text-white',
+  critical: 'bg-[#7F1D1D] text-white ring-1 ring-white/40',
   emerald: 'bg-emerald-50 text-emerald-800 border border-emerald-300',
   amber: 'bg-amber-50 text-amber-800 border border-amber-300',
   blue: 'bg-blue-50 text-blue-800 border border-blue-300',
@@ -88,7 +88,7 @@ function AutoScrollingFeed({ items, selectedId, onSelect, lockOnLeave }: AutoScr
               'group/bullet relative w-full text-left p-4 rounded-2xl border transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50 overflow-hidden',
               active
                 ? 'border-emerald-600/70 ring-1 ring-emerald-600/20 bg-gradient-to-b from-emerald-50/50 to-white shadow-[0_10px_28px_-14px_rgba(21,59,39,0.22)]'
-                : 'border-stone-200/90 bg-gradient-to-b from-white to-stone-50/60 shadow-[0_1px_2px_rgba(28,25,23,0.04)] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px hover:border-emerald-500/40 hover:shadow-[0_16px_34px_-16px_rgba(21,59,39,0.25)]'
+                : 'border-stone-300 bg-gradient-to-b from-white to-stone-50/60 shadow-[0_1px_2px_rgba(28,25,23,0.04)] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px hover:border-emerald-500/40 hover:shadow-[0_16px_34px_-16px_rgba(21,59,39,0.25)]'
             )}
           >
             {/* VC-card sheen sweep on hover */}
@@ -100,7 +100,7 @@ function AutoScrollingFeed({ items, selectedId, onSelect, lockOnLeave }: AutoScr
               <span
                 className={cn(
                   'text-[11px] font-medium',
-                  active ? 'text-amber-700' : 'text-stone-400'
+                  active ? 'text-amber-700' : 'text-stone-500'
                 )}
               >
                 {item.date}
@@ -110,7 +110,7 @@ function AutoScrollingFeed({ items, selectedId, onSelect, lockOnLeave }: AutoScr
             <h4 className="text-sm font-bold text-stone-900 leading-snug mt-1.5 line-clamp-2 group-hover:text-[#153B27] transition-colors">
               {item.title}
             </h4>
-            <p className="text-xs text-stone-500 line-clamp-1 mt-1">{item.snippet}</p>
+            <p className="text-xs text-stone-600 line-clamp-1 mt-1">{item.snippet}</p>
           </button>
         );
       })}
@@ -305,7 +305,7 @@ export default function CampusBulletin() {
               Campus Bulletin &amp; Official Announcements
             </h2>
           </div>
-          <p className="font-sans text-sm sm:text-base text-stone-500 max-w-md lg:text-right leading-[1.68]">
+          <p className="font-sans text-sm sm:text-base text-stone-600 max-w-md lg:text-right leading-[1.68]">
             Official administrative, academic, examination and campus gazettes issued by the
             Registrar&rsquo;s Office of the University of Swat.
           </p>
@@ -313,7 +313,7 @@ export default function CampusBulletin() {
 
         {/* Unified 3-Column Master-Detail Container — bento tile surface + spotlight */}
         <div
-          className="group relative rounded-xl bg-gradient-to-b from-white to-[#FBF9F6] border border-stone-200/80 shadow-[0_24px_70px_-28px_rgba(21,59,39,0.16),0_2px_6px_rgba(21,59,39,0.05)] overflow-hidden"
+          className="group relative rounded-xl bg-gradient-to-b from-white to-[#FBF9F6] border border-stone-300 shadow-[0_24px_70px_-28px_rgba(21,59,39,0.16),0_2px_6px_rgba(21,59,39,0.05)] overflow-hidden"
           onMouseEnter={() => {
             const el = spotRef.current;
             if (el) el.style.opacity = '1';
@@ -398,7 +398,7 @@ export default function CampusBulletin() {
               </div>
 
               {/* ── Right Column — Full Official Notice Reader ── */}
-              <div className="col-span-12 lg:col-span-7 relative overflow-hidden p-6 sm:p-8 flex flex-col justify-between bg-white min-w-0">
+              <div className="col-span-12 lg:col-span-7 relative overflow-hidden p-6 sm:p-8 flex flex-col justify-between bg-[#7F1D1D] text-white min-w-0">
                 {/* Faint institutional watermark filling the reader's tail space */}
                 <div aria-hidden="true" className="pointer-events-none absolute -bottom-10 -right-8 w-64 h-64 opacity-[0.045] select-none">
                   <img src="/uos-logo-circle.png" alt="" aria-hidden="true" className="w-full h-full object-contain rounded-full" />
@@ -411,11 +411,11 @@ export default function CampusBulletin() {
                       <span className={cn(BADGE_BASE, BADGE_TONES[selectedAnnouncement.tone])}>
                         {selectedAnnouncement.badge}
                       </span>
-                      <span className="text-xs text-stone-500 font-medium">
+                      <span className="text-xs text-white/70 font-medium">
                         Reference: {selectedAnnouncement.reference} &bull; {selectedAnnouncement.date}
                       </span>
                     </div>
-                    <div className="w-10 h-10 rounded-xl border border-stone-200/80 p-1 bg-gradient-to-b from-stone-50 to-white shadow-[0_2px_6px_rgba(28,25,23,0.06)] shrink-0">
+                    <div className="w-10 h-10 rounded-xl border border-white/20 p-1 bg-white/10 shrink-0">
                       <img
                         alt="University of Swat Crest"
                         src="/uos-logo-circle.png"
@@ -425,14 +425,14 @@ export default function CampusBulletin() {
                   </div>
 
                   {/* Divider */}
-                  <div className="border-t border-stone-100 my-5" />
+                  <div className="border-t border-white/20 my-5" />
 
                   {/* Main Content Body */}
-                  <h3 className="font-serif text-2xl lg:text-3xl font-bold text-stone-900 leading-tight tracking-[-0.015em]">
+                  <h3 className="font-serif text-2xl lg:text-3xl font-bold text-white leading-tight tracking-[-0.015em]">
                     {selectedAnnouncement.title}
                   </h3>
 
-                  <div className="space-y-4 mt-4 text-stone-600 text-sm lg:text-base leading-relaxed">
+                  <div className="space-y-4 mt-4 text-white/80 text-sm lg:text-base leading-relaxed">
                     {selectedAnnouncement.paragraphs.map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
@@ -440,15 +440,15 @@ export default function CampusBulletin() {
 
                   {/* Highlighted Callout Box */}
                   {selectedAnnouncement.callout && (
-                    <div className="bg-gradient-to-b from-emerald-50/80 to-white border border-emerald-200/80 rounded-xl p-4 mt-6 shadow-[0_2px_10px_-4px_rgba(21,59,39,0.06)] flex gap-3">
-                      <span className="w-8 h-8 rounded-lg bg-emerald-100/80 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="bg-white/10 border border-white/20 rounded-xl p-4 mt-6 flex gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-white/10 text-[#E5CD9B] border border-white/20 flex items-center justify-center shrink-0 mt-0.5">
                         <Info className="w-4 h-4" />
                       </span>
                       <div>
-                        <p className="text-[11px] uppercase tracking-widest font-bold text-emerald-700 mb-1">
+                        <p className="text-[11px] uppercase tracking-widest font-bold text-[#E5CD9B] mb-1">
                           {selectedAnnouncement.callout.title}
                         </p>
-                        <p className="text-sm text-emerald-950 leading-relaxed font-medium">
+                        <p className="text-sm text-white/90 leading-relaxed font-medium">
                           {selectedAnnouncement.callout.text}
                         </p>
                       </div>
@@ -457,19 +457,19 @@ export default function CampusBulletin() {
                 </div>
 
                 {/* Bottom Action Bar */}
-                <div className="border-t border-stone-100 pt-5 mt-6 flex flex-wrap items-center justify-end gap-3">
+                <div className="border-t border-white/20 pt-5 mt-6 flex flex-wrap items-center justify-end gap-3">
                   <button
                     type="button"
                     onClick={handleShare}
-                    className="inline-flex items-center gap-2 border border-stone-200 bg-white hover:bg-stone-50 text-stone-700 px-4 py-2.5 rounded-xl text-sm font-medium shadow-[0_1px_2px_rgba(28,25,23,0.04)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
+                    className="inline-flex items-center gap-2 border border-white/20 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
                   >
-                    <Share2 className="w-4 h-4 text-stone-500" />
+                    <Share2 className="w-4 h-4 text-[#E5CD9B]" />
                     Share
                   </button>
                   <button
                     type="button"
                     onClick={handleDownload}
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#065F46] to-[#153B27] text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_-12px_rgba(21,59,39,0.5)] hover:shadow-[0_16px_34px_-12px_rgba(21,59,39,0.6)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
+                    className="inline-flex items-center gap-2 bg-[#E5CD9B] text-[#661717] px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_-12px_rgba(0,0,0,0.45)] hover:bg-white hover:shadow-[0_16px_34px_-12px_rgba(0,0,0,0.5)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
                   >
                     <Download className="w-4 h-4" />
                     Download Notice (PDF)

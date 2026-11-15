@@ -12,6 +12,7 @@ interface Faculty {
   degrees: string;
   levels: string[];
   accent: string;
+  featured?: boolean;
 }
 
 const faculties: Faculty[] = [
@@ -24,6 +25,7 @@ const faculties: Faculty[] = [
     degrees: '9',
     levels: ['BS', 'MS / MPhil', 'PhD'],
     accent: 'border-[#153B27]',
+    featured: true,
   },
   {
     id: 'sciences',
@@ -91,7 +93,7 @@ export default function FacultyProgramsGrid() {
               Program Areas &amp; Academic Programs
             </h2>
           </div>
-          <p className="font-sans text-sm sm:text-base text-stone-500 max-w-md lg:text-right leading-[1.68]">
+          <p className="font-sans text-sm sm:text-base text-stone-600 max-w-md lg:text-right leading-[1.68]">
             An overview of the university&rsquo;s five program areas — delivered through four
             faculties and 28 departments.
           </p>
@@ -102,35 +104,43 @@ export default function FacultyProgramsGrid() {
           {faculties.map((faculty) => (
             <article
               key={faculty.id}
-              className="group relative flex flex-col rounded-xl border border-stone-200/90 bg-white shadow-xs p-7 overflow-hidden transition-all duration-200 ease-out hover:-translate-y-[2px] hover:border-emerald-500/40 hover:shadow-[0_20px_44px_-18px_rgba(21,59,39,0.28)]"
+              className={`group relative flex flex-col rounded-xl p-7 overflow-hidden transition-all duration-200 ease-out hover:-translate-y-[2px] ${
+                faculty.featured
+                  ? 'border border-white/10 bg-[#153B27] text-white shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:bg-[#0F2D1E]'
+                  : 'border border-stone-300 bg-white shadow-xs hover:border-emerald-500/40 hover:shadow-[0_20px_44px_-18px_rgba(21,59,39,0.28)]'
+              }`}
             >
               {/* VC-card sheen sweep on hover */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/70 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+                className={`pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent ${faculty.featured ? 'via-white/15' : 'via-white/70'} to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full`}
               />
 
               {/* Top row: icon + degree count */}
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div
-                  className={`w-11 h-11 rounded-xl bg-[#153B27]/8 text-[#153B27] border ${faculty.accent} flex items-center justify-center shrink-0`}
+                  className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
+                    faculty.featured
+                      ? 'bg-white/10 text-[#C8A96E] border border-white/15'
+                      : `bg-[#153B27]/8 text-[#153B27] border ${faculty.accent}`
+                  }`}
                 >
                   {faculty.icon}
                 </div>
                 <div className="text-right">
-                  <p className="font-serif text-3xl font-bold text-[#14291D] leading-none">
+                  <p className={`font-serif text-3xl font-bold leading-none ${faculty.featured ? 'text-white' : 'text-[#14291D]'}`}>
                     {faculty.degrees}
                   </p>
-                  <p className="text-[11px] text-stone-500 font-medium uppercase tracking-wider mt-1">
+                  <p className={`text-[11px] font-medium uppercase tracking-wider mt-1 ${faculty.featured ? 'text-white/60' : 'text-stone-500'}`}>
                     Degree Programs
                   </p>
                 </div>
               </div>
 
-              <h3 className="font-serif text-xl sm:text-[22px] font-bold text-[#14291D] tracking-[-0.015em] mb-2">
+              <h3 className={`font-serif text-xl sm:text-[22px] font-bold tracking-[-0.015em] mb-2 ${faculty.featured ? 'text-white' : 'text-[#14291D]'}`}>
                 {faculty.title}
               </h3>
-              <p className="font-sans text-sm text-stone-600 leading-[1.62] mb-5">
+              <p className={`font-sans text-sm leading-[1.62] mb-5 ${faculty.featured ? 'text-white/70' : 'text-stone-600'}`}>
                 {faculty.description}
               </p>
 
@@ -139,7 +149,7 @@ export default function FacultyProgramsGrid() {
                 {faculty.levels.map((level) => (
                   <span
                     key={level}
-                    className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold text-[#153B27] bg-[#153B27]/8 border border-[#153B27]/15"
+                    className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold ${faculty.featured ? 'text-[#C8A96E] bg-[#C8A96E]/15 border border-[#C8A96E]/30' : 'text-[#153B27] bg-[#153B27]/8 border border-[#153B27]/15'}`}
                   >
                     {level}
                   </span>
@@ -149,10 +159,14 @@ export default function FacultyProgramsGrid() {
               {/* Explore link */}
               <Link
                 href="/programs"
-                className="group/link relative mt-auto flex items-center justify-between pt-4 border-t border-stone-100 text-sm font-semibold text-[#14291D] hover:text-[#153B27] active:scale-[0.985] active:translate-y-px transition-all duration-150"
+                className={`group/link relative mt-auto flex items-center justify-between pt-4 border-t text-sm font-semibold active:scale-[0.985] active:translate-y-px transition-all duration-150 ${
+                  faculty.featured
+                    ? 'border-white/15 text-white hover:text-[#C8A96E]'
+                    : 'border-stone-200 text-[#14291D] hover:text-[#153B27]'
+                }`}
               >
                 Explore programs
-                <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/link:text-[#153B27] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
+                <ArrowUpRight className={`w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all ${faculty.featured ? 'text-white/60 group-hover/link:text-[#C8A96E]' : 'text-stone-500 group-hover/link:text-[#153B27]'}`} />
               </Link>
             </article>
           ))}

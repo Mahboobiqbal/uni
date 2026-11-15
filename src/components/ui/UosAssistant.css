@@ -1,0 +1,543 @@
+.uos-assistant {
+  /* Institutional palette — Forest Green primary, University Crimson accent */
+  --ua-color-forest: #153B27;
+  --ua-color-forest-dim: #0F291B;
+  --ua-color-crimson: #7F1D1D;
+  --ua-color-crimson-dim: #661717;
+  --ua-color-gold: #C8A96E;
+  --ua-color-alabaster: #F6F5F0;
+  --ua-color-ink: #14291D;
+  --ua-color-muted: #5C6B60;
+  --ua-color-border: #e7e5e4;
+
+  /* Physics values for the toggle badge tilt engine */
+  --ua-light-x: 50%;
+  --ua-light-y: 50%;
+  --ua-pointer-x: 50%;
+  --ua-pointer-y: 50%;
+  --ua-band-x: 50%;
+  --ua-band-y: 50%;
+  --ua-reach: 0;
+  --ua-rotate-x: 0deg;
+  --ua-rotate-y: 0deg;
+  --ua-shift-x: 0px;
+  --ua-shift-y: 0px;
+  --ua-tilt: 0;
+  --ua-active: 0;
+
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── Toggle badge — Forest Green physics tilt crest ─── */
+.uos-assistant__toggle {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ua-color-forest);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 20px 40px -12px rgba(17, 24, 39, 0.18),
+    0 0 0 1px rgba(21, 59, 39, 0.25);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.uos-assistant__toggle:focus-visible {
+  outline: 3px solid var(--ua-color-crimson);
+  outline-offset: 3px;
+}
+
+.uos-assistant__toggle:hover {
+  box-shadow:
+    0 24px 48px -10px rgba(17, 24, 39, 0.22),
+    0 0 0 1px rgba(21, 59, 39, 0.35);
+}
+
+.uos-assistant__badge {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+}
+
+.uos-assistant__badge-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.4px solid rgba(255, 255, 255, 0.5);
+  transform: rotateX(var(--ua-rotate-x)) rotateY(var(--ua-rotate-y));
+  transform-style: preserve-3d;
+}
+
+.uos-assistant__badge-ring-inner {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 0.6px solid rgba(255, 255, 255, 0.35);
+  transform: rotateX(var(--ua-rotate-x)) rotateY(var(--ua-rotate-y));
+  transform-style: preserve-3d;
+}
+
+.uos-assistant__badge-mono {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  transform: rotateX(var(--ua-rotate-x)) rotateY(var(--ua-rotate-y));
+  transform-style: preserve-3d;
+}
+
+.uos-assistant__badge-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at var(--ua-pointer-x) var(--ua-pointer-y),
+    rgba(200, 169, 110, 0.45) 0%,
+    transparent 55%
+  );
+  opacity: calc(var(--ua-active) * 0.9);
+  pointer-events: none;
+}
+
+.uos-assistant__badge-glint {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    farthest-corner circle at var(--ua-light-x) var(--ua-light-y),
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 60%
+  );
+  mix-blend-mode: overlay;
+  opacity: calc(var(--ua-active) * 0.7);
+  pointer-events: none;
+}
+
+.uos-assistant__badge-shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at var(--ua-light-x) var(--ua-light-y),
+    transparent 35%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  opacity: calc(var(--ua-tilt) * 0.6);
+  pointer-events: none;
+}
+
+/* Close glyph shown when panel is open — University Crimson */
+.uos-assistant__close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  display: none;
+  place-items: center;
+  color: #ffffff;
+}
+
+.uos-assistant__close svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ─── Dialog panel — letterhead style ─── */
+.uos-assistant__panel {
+  position: absolute;
+  right: 12px;
+  bottom: calc(12px + 56px + 14px);
+  width: 380px;
+  max-width: 88vw;
+  height: 560px;
+  max-height: 72vh;
+  border-radius: 24px;
+  border: 1px solid rgba(231, 229, 228, 0.7);
+  background: #ffffff;
+  color: var(--ua-color-ink);
+  box-shadow:
+    0 24px 60px -16px rgba(17, 24, 39, 0.12),
+    0 0 0 1px rgba(21, 59, 39, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: uos-panel-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: bottom right;
+}
+
+@keyframes uos-panel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Letterhead header — University Crimson mark */
+.uos-assistant__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border-bottom: 1px solid var(--ua-color-border);
+  background: var(--ua-color-alabaster);
+}
+
+.uos-assistant__header-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--ua-color-crimson);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  box-shadow: 0 8px 20px -6px rgba(127, 29, 29, 0.35);
+}
+
+.uos-assistant__header-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.uos-assistant__header-title {
+  margin: 0;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ua-color-ink);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.uos-assistant__header-sub {
+  margin: 1px 0 0;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--ua-color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.uos-assistant__header-rule {
+  height: 1px;
+  width: 24px;
+  background: var(--ua-color-gold);
+  margin-left: auto;
+  border-radius: 1px;
+}
+
+/* Message list */
+.uos-assistant__list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.uos-assistant__list::-webkit-scrollbar {
+  width: 4px;
+}
+.uos-assistant__list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.uos-assistant__list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.uos-assistant__list::-webkit-scrollbar-thumb:hover {
+  background: var(--ua-color-forest);
+}
+
+.uos-assistant__empty {
+  margin-top: 6px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ua-color-muted);
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  align-self: flex-start;
+}
+
+/* Individual message — smooth staggered rise */
+.uos-assistant__msg {
+  display: flex;
+  gap: 8px;
+  max-width: 88%;
+  animation: uos-msg-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes uos-msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.uos-assistant__msg--user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.uos-assistant__msg--bot {
+  align-self: flex-start;
+  flex-direction: row;
+}
+
+.uos-assistant__avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+}
+
+.uos-assistant__avatar--user {
+  background: var(--ua-color-forest);
+}
+
+.uos-assistant__avatar--bot {
+  background: var(--ua-color-crimson);
+}
+
+.uos-assistant__bubble {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ua-color-ink);
+  font-family: var(--font-sans), "Plus Jakarta Sans", sans-serif;
+  word-wrap: break-word;
+}
+
+.uos-assistant__msg--user .uos-assistant__bubble {
+  background: var(--ua-color-forest);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.uos-assistant__msg--bot .uos-assistant__bubble {
+  background: #ffffff;
+  border: 1px solid var(--ua-color-border);
+  border-left: 2px solid var(--ua-color-crimson);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Typing indicator — smooth three-dot pulse */
+.uos-assistant__typing {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid var(--ua-color-border);
+  border-left: 2px solid var(--ua-color-forest);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  animation: uos-msg-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.uos-assistant__typing-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.uos-assistant__typing-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ua-color-forest);
+  animation: uos-typing 1.4s ease-in-out infinite both;
+}
+
+.uos-assistant__typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.uos-assistant__typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes uos-typing {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+/* Composer */
+.uos-assistant__composer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--ua-color-border);
+  background: var(--ua-color-alabaster);
+}
+
+.uos-assistant__composer-inner {
+  position: relative;
+}
+
+.uos-assistant__input {
+  width: 100%;
+  padding: 10px 42px 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--ua-color-border);
+  background: #ffffff;
+  color: var(--ua-color-ink);
+  font-size: 13px;
+  font-family: var(--font-sans), "Plus Jakarta Sans", sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.uos-assistant__input:focus {
+  border-color: var(--ua-color-crimson);
+  box-shadow: 0 0 0 3px rgba(127, 29, 29, 0.12);
+}
+
+.uos-assistant__input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.uos-assistant__send {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ua-color-crimson);
+  border: none;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.uos-assistant__send:focus-visible {
+  outline: 2px solid var(--ua-color-crimson);
+  outline-offset: 2px;
+}
+
+.uos-assistant__send:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+.uos-assistant__send:disabled {
+  background: rgba(127, 29, 29, 0.35);
+  cursor: not-allowed;
+}
+
+.uos-assistant__send svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.uos-assistant__close-btn {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--ua-color-muted);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.uos-assistant__close-btn:focus-visible {
+  outline: 2px solid var(--ua-color-crimson);
+  outline-offset: 2px;
+}
+
+.uos-assistant__close-btn:hover {
+  color: var(--ua-color-crimson);
+  background: rgba(127, 29, 29, 0.08);
+}
+
+.uos-assistant__close-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .uos-assistant__panel,
+  .uos-assistant__msg,
+  .uos-assistant__typing {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .uos-assistant__toggle {
+    transition-duration: 0.001ms !important;
+  }
+  .uos-assistant__send:active {
+    transform: none;
+  }
+}

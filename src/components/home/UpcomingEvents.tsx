@@ -148,7 +148,7 @@ export default function UpcomingEvents() {
           {events.map((event) => (
             <article
               key={event.id}
-              className="group relative flex-none w-[310px] sm:w-[350px] lg:w-[390px] rounded-2xl border border-stone-200/90 bg-white shadow-xs overflow-hidden snap-start transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-xl"
+              className="group relative flex-none w-[310px] sm:w-[350px] lg:w-[390px] rounded-2xl border border-stone-300 bg-white shadow-xs overflow-hidden snap-start transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-xl first:bg-[#153B27] first:text-white first:border-white/10 first:shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] first:hover:bg-[#0F2D1E] first:hover:shadow-[0_28px_56px_-24px_rgba(12,25,18,0.55)]"
             >
               {/* Event Image Banner */}
               <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
@@ -182,22 +182,22 @@ export default function UpcomingEvents() {
 
               {/* Event Details */}
               <div className="p-6 flex flex-col h-[230px]">
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#14291D] leading-snug line-clamp-2 group-hover:text-[#153B27] transition-colors mb-2.5">
+                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#14291D] group-first:text-white leading-snug line-clamp-2 group-hover:text-[#153B27] group-first:group-hover:text-[#C8A96E] transition-colors mb-2.5">
                   {event.title}
                 </h3>
 
-                <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed mb-4">
+                <p className="text-xs text-stone-600 group-first:text-white/70 line-clamp-2 leading-relaxed mb-4">
                   {event.description}
                 </p>
 
                 {/* Time & Venue */}
-                <div className="mt-auto space-y-1.5 pt-3 border-t border-stone-100 text-xs text-stone-500">
+                <div className="mt-auto space-y-1.5 pt-3 border-t border-stone-200 group-first:border-white/15 text-xs text-stone-500 group-first:text-white/65">
                   <div className="flex items-center gap-2">
-                    <Clock className="w-3.5 h-3.5 text-stone-400 shrink-0" />
+                    <Clock className="w-3.5 h-3.5 text-stone-500 group-first:text-[#C8A96E] shrink-0" />
                     <span className="truncate">{event.time}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-stone-400 shrink-0" />
+                    <MapPin className="w-3.5 h-3.5 text-stone-500 group-first:text-[#C8A96E] shrink-0" />
                     <span className="truncate">{event.venue}</span>
                   </div>
                 </div>

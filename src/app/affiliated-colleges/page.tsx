@@ -62,45 +62,45 @@ export default function AffiliatedCollegesPage() {
         </div>
 
         {/* Public Sector Colleges */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-4 border-b border-stone-100 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="p-8 sm:p-10 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
+          <div className="pb-4 border-b border-white/15 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold block mb-1">
+              <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold block mb-1">
                 Government Institutions
               </span>
-              <h2 className="font-serif text-3xl font-bold text-stone-900">
+              <h2 className="font-serif text-3xl font-bold text-white">
                 Public Sector Affiliated Colleges
               </h2>
             </div>
-            <span className="text-xs font-semibold text-stone-500">
+            <span className="text-xs font-semibold text-white/60">
               {publicColleges.length} Government Colleges in Swat &amp; Shangla
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {publicColleges.map((c, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80 flex flex-col justify-between">
+              <div key={idx} className="p-6 rounded-2xl bg-white/[0.07] border border-white/[0.12] flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-mono text-stone-400 bg-white px-2 py-0.5 rounded border border-stone-200">
+                    <span className="text-[10px] font-mono text-[#C8A96E] bg-white/10 px-2 py-0.5 rounded border border-white/15">
                       Est. {c.established}
                     </span>
-                    <span className="text-[11px] font-semibold text-[#153B27] flex items-center gap-1">
+                    <span className="text-[11px] font-semibold text-[#C8A96E] flex items-center gap-1">
                       <MapPin className="w-3 h-3" />
                       {c.location}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-lg font-bold text-stone-900 mb-2">
+                  <h3 className="font-serif text-lg font-bold text-white mb-2">
                     {c.name}
                   </h3>
 
-                  <p className="font-sans text-xs text-stone-600 leading-relaxed mb-4">
+                  <p className="font-sans text-xs text-white/70 leading-relaxed mb-4">
                     {c.programs}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-stone-200/60 text-[11px] text-stone-500 font-medium">
+                <div className="pt-3 border-t border-white/15 text-[11px] text-white/60 font-medium">
                   Degree Conferring Authority: University of Swat
                 </div>
               </div>
@@ -109,8 +109,8 @@ export default function AffiliatedCollegesPage() {
         </div>
 
         {/* Private Sector Colleges */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-4 border-b border-stone-100 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
+          <div className="pb-4 border-b border-stone-200 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold block mb-1">
                 Private Institutions
@@ -119,16 +119,16 @@ export default function AffiliatedCollegesPage() {
                 Private Sector Affiliated Colleges
               </h2>
             </div>
-            <span className="text-xs font-semibold text-stone-500">
+            <span className="text-xs font-semibold text-stone-600">
               Regulated under University Affiliation Statutes
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {privateColleges.map((pc, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80 flex flex-col justify-between">
+              <div key={idx} className="p-6 rounded-2xl bg-stone-50 border border-stone-300 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-2">
+                  <div className="flex items-center gap-1.5 text-xs text-stone-600 mb-2">
                     <MapPin className="w-3.5 h-3.5 text-[#7F1D1D]" />
                     <span className="font-medium text-stone-700">{pc.location}</span>
                   </div>
@@ -142,7 +142,7 @@ export default function AffiliatedCollegesPage() {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-stone-200/60 text-[11px] text-stone-500 font-medium">
+                <div className="pt-3 border-t border-stone-300 text-[11px] text-stone-600 font-medium">
                   Curriculum &amp; Exam Supervision: UOS
                 </div>
               </div>

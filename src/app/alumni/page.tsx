@@ -95,13 +95,13 @@ export default function AlumniPage() {
             {programmes.map((programme) => (
               <article
                 key={programme.title}
-                className="group flex flex-col p-6 rounded-xl bg-white border border-stone-200/90 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_16px_36px_-18px_rgba(21,59,39,0.25)]"
+                className="group flex flex-col p-6 rounded-xl bg-white border border-stone-300 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_16px_36px_-18px_rgba(21,59,39,0.25)]"
               >
                 <span className="w-11 h-11 rounded-xl bg-[#153B27]/8 text-[#153B27] flex items-center justify-center mb-4">
                   {programme.icon}
                 </span>
                 <h3 className="font-serif text-lg text-[#14291D] font-bold mb-2">{programme.title}</h3>
-                <p className="text-sm text-stone-500 leading-[1.65] mb-5">{programme.text}</p>
+                <p className="text-sm text-stone-600 leading-[1.65] mb-5">{programme.text}</p>
                 <Link
                   href={programme.href}
                   className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-[#153B27] hover:text-[#14291D] transition-colors"
@@ -115,7 +115,7 @@ export default function AlumniPage() {
         </section>
 
         {/* Contact strip */}
-        <section className="p-6 sm:p-8 rounded-xl bg-white border border-stone-200/90 shadow-xs flex flex-col sm:flex-row items-start gap-5">
+        <section className="p-6 sm:p-8 rounded-xl bg-white border border-stone-300 shadow-xs flex flex-col sm:flex-row items-start gap-5">
           <span className="w-11 h-11 rounded-xl bg-[#7F1D1D]/10 text-[#7F1D1D] flex items-center justify-center shrink-0">
             <Users className="w-5 h-5" />
           </span>
@@ -123,7 +123,7 @@ export default function AlumniPage() {
             <h3 className="font-serif text-xl text-[#14291D] font-bold mb-1.5">
               Update your alumni record
             </h3>
-            <p className="text-sm text-stone-500 leading-[1.65] max-w-2xl">
+            <p className="text-sm text-stone-600 leading-[1.65] max-w-2xl">
               Alumni are invited to keep their contact and professional details current with the
               alumni office so that you receive convocation invitations, departmental news, and
               career announcements.

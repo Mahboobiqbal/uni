@@ -88,7 +88,7 @@ export default function StudentAlumniSuccess() {
           {testimonials.map((item, idx) => (
             <article
               key={item.id}
-              className="relative flex flex-col rounded-2xl bg-white border border-stone-200/90 p-8 shadow-xs hover:shadow-xl transition-all duration-200 ease-out hover:-translate-y-[2px] group"
+              className="relative flex flex-col rounded-2xl bg-white border border-stone-300 p-8 shadow-xs hover:shadow-xl transition-all duration-200 ease-out hover:-translate-y-[2px] group"
             >
               {/* Quote icon watermark */}
               <div className="absolute top-6 right-6 text-stone-200 group-hover:text-[#153B27]/15 transition-colors">
@@ -108,7 +108,7 @@ export default function StudentAlumniSuccess() {
               </p>
 
               {/* Author attribution row */}
-              <div className="flex items-center gap-4 pt-6 border-t border-stone-100 mt-auto">
+              <div className="flex items-center gap-4 pt-6 border-t border-stone-200 mt-auto">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-stone-200 shrink-0 bg-stone-100">
                   <img
                     src={item.image}
@@ -124,7 +124,7 @@ export default function StudentAlumniSuccess() {
                   <p className="text-xs text-[#153B27] font-semibold mt-0.5">
                     {item.role} · {item.company}
                   </p>
-                  <p className="text-[11px] text-stone-400 font-sans mt-0.5">
+                  <p className="text-[11px] text-stone-600 font-sans mt-0.5">
                     {item.degree} ({item.year})
                   </p>
                 </div>
@@ -134,21 +134,21 @@ export default function StudentAlumniSuccess() {
         </div>
 
         {/* Bottom 4 Metric Stat Counters (Matching reference Section 7) */}
-        <div className="rounded-2xl bg-white border border-stone-200/90 shadow-sm p-8 sm:p-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-stone-100">
-            <div className="text-center pt-4 lg:pt-0">
-              <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#153B27] tracking-tight">
+        <div className="rounded-2xl bg-white border border-stone-300 shadow-sm p-8 sm:p-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-stone-200">
+            <div className="text-center p-6 rounded-2xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
+              <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
                 92.6%
               </p>
-              <p className="text-xs sm:text-sm font-semibold text-[#14291D] mt-2">
+              <p className="text-xs sm:text-sm font-semibold text-white mt-2">
                 Graduate Employability
               </p>
-              <p className="text-[11px] text-stone-500 mt-0.5">
+              <p className="text-[11px] text-white/60 mt-0.5">
                 Employed or in postgrad within 6 months
               </p>
             </div>
 
-            <div className="text-center pt-6 lg:pt-0 lg:pl-8">
+            <div className="text-center pt-6 lg:py-6 lg:pl-8">
               <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#7F1D1D] tracking-tight">
                 10,130+
               </p>
@@ -160,7 +160,7 @@ export default function StudentAlumniSuccess() {
               </p>
             </div>
 
-            <div className="text-center pt-6 lg:pt-0 lg:pl-8">
+            <div className="text-center pt-6 lg:py-6 lg:pl-8">
               <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#B48A3E] tracking-tight">
                 PKR 45M+
               </p>
@@ -172,7 +172,7 @@ export default function StudentAlumniSuccess() {
               </p>
             </div>
 
-            <div className="text-center pt-6 lg:pt-0 lg:pl-8">
+            <div className="text-center pt-6 lg:py-6 lg:pl-8">
               <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14291D] tracking-tight">
                 15,000+
               </p>

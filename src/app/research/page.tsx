@@ -24,35 +24,35 @@ export default function ResearchPage() {
         {/* Flagship Pillars: ORIC & ASRB */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs flex flex-col justify-between group hover:border-[#153B27]/40 hover:shadow-md transition-all">
+          <div className="p-8 sm:p-10 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] flex flex-col justify-between group hover:bg-[#0F2D1E] transition-all">
             <div>
-              <div className="w-14 h-14 rounded-2xl bg-[#153B27]/10 text-[#153B27] flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-2xl bg-white/10 text-[#C8A96E] border border-white/15 flex items-center justify-center mb-6">
                 <Lightbulb className="w-7 h-7" />
               </div>
-              <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold block mb-1">
+              <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold block mb-1">
                 Industry &amp; Technology Transfer
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 group-hover:text-[#153B27] transition-colors mb-4">
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white group-hover:text-[#C8A96E] transition-colors mb-4">
                 Office of Research, Innovation &amp; Commercialization (ORIC)
               </h3>
-              <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed mb-6">
+              <p className="font-sans text-white/70 text-sm sm:text-base leading-relaxed mb-6">
                 Led by Director Dr. Anwar Hussain, ORIC spearheads competitive research grants, patent registrations, business incubation for student startups, and strategic industry collaboration with the Swat Chamber of Commerce and Industry (SCCI).
               </p>
             </div>
-            <div className="pt-6 border-t border-stone-100 flex items-center justify-between">
-              <span className="text-xs font-semibold text-[#153B27]">
+            <div className="pt-6 border-t border-white/15 flex items-center justify-between">
+              <span className="text-xs font-semibold text-[#C8A96E]">
                 Explore ORIC Division &amp; Incubation
               </span>
               <Link
                 href="/research/oric"
-                className="p-2.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 group-hover:bg-[#153B27] group-hover:text-white transition-colors"
+                className="p-2.5 rounded-xl bg-white/10 border border-white/15 text-[#C8A96E] group-hover:bg-[#C8A96E] group-hover:text-[#14291D] transition-colors"
               >
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200/90 shadow-xs flex flex-col justify-between group hover:border-[#7F1D1D]/40 hover:shadow-md transition-all">
+          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs flex flex-col justify-between group hover:border-[#7F1D1D]/40 hover:shadow-md transition-all">
             <div>
               <div className="w-14 h-14 rounded-2xl bg-[#7F1D1D]/10 text-[#7F1D1D] flex items-center justify-center mb-6">
                 <GraduationCap className="w-7 h-7" />
@@ -67,13 +67,13 @@ export default function ResearchPage() {
                 Statutory regulatory board approving MS, M.Phil, and PhD research proposals, uniform synopses standards, research supervisor appointments, and external doctoral thesis defense evaluations.
               </p>
             </div>
-            <div className="pt-6 border-t border-stone-100 flex items-center justify-between">
+            <div className="pt-6 border-t border-stone-200 flex items-center justify-between">
               <span className="text-xs font-semibold text-[#7F1D1D]">
                 ASRB Synopses Guidelines &amp; Minutes
               </span>
               <Link
                 href="/research/asrb"
-                className="p-2.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 group-hover:bg-[#7F1D1D] group-hover:text-white transition-colors"
+                className="p-2.5 rounded-xl bg-stone-50 border border-stone-300 text-stone-700 group-hover:bg-[#7F1D1D] group-hover:text-white transition-colors"
               >
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
@@ -83,8 +83,8 @@ export default function ResearchPage() {
         </div>
 
         {/* International Research Partnerships */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/90 shadow-xs">
-          <div className="pb-4 border-b border-stone-100 mb-8">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-300 shadow-xs">
+          <div className="pb-4 border-b border-stone-200 mb-8">
             <span className="text-xs uppercase tracking-widest text-[#B48A3E] font-bold block mb-1">
               Global Collaboration
             </span>
@@ -94,7 +94,7 @@ export default function ResearchPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-300">
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4 bg-stone-200">
                 <Image
                   src="/images/news/news-italian-mission-oct2026.jpeg"
@@ -111,7 +111,7 @@ export default function ResearchPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-300">
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4 bg-stone-200">
                 <Image
                   src="/images/news/news-gandhara-mou-oct2026.jpeg"
@@ -128,7 +128,7 @@ export default function ResearchPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-300">
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4 bg-stone-200">
                 <Image
                   src="/images/news/news-climate-resilience-nov2026.jpeg"
