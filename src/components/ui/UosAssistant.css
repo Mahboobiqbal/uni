@@ -1,200 +1,88 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   UoS Assistant — Apple-style floating chat widget
+   Palette: Forest Green #153B27 · Crimson #7F1D1D · Gold #C8A96E ·
+            Alabaster #F6F5F0 · Ink #14291D
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .uos-assistant {
-  /* Institutional palette — Forest Green primary, University Crimson accent */
-  --ua-color-forest: #153B27;
-  --ua-color-forest-dim: #0F291B;
-  --ua-color-crimson: #7F1D1D;
-  --ua-color-crimson-dim: #661717;
-  --ua-color-gold: #C8A96E;
-  --ua-color-alabaster: #F6F5F0;
-  --ua-color-ink: #14291D;
-  --ua-color-muted: #5C6B60;
-  --ua-color-border: #e7e5e4;
-
-  /* Physics values for the toggle badge tilt engine */
-  --ua-light-x: 50%;
-  --ua-light-y: 50%;
-  --ua-pointer-x: 50%;
-  --ua-pointer-y: 50%;
-  --ua-band-x: 50%;
-  --ua-band-y: 50%;
-  --ua-reach: 0;
-  --ua-rotate-x: 0deg;
-  --ua-rotate-y: 0deg;
-  --ua-shift-x: 0px;
-  --ua-shift-y: 0px;
-  --ua-tilt: 0;
-  --ua-active: 0;
-
   position: fixed;
-  right: 0;
-  bottom: 0;
+  right: 20px;
+  bottom: 20px;
   z-index: 60;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
+  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
-/* ─── Toggle badge — Forest Green physics tilt crest ─── */
+/* ── Toggle button ────────────────────────────────────────────────────────── */
 .uos-assistant__toggle {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--ua-color-forest);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow:
-    0 20px 40px -12px rgba(17, 24, 39, 0.18),
-    0 0 0 1px rgba(21, 59, 39, 0.25);
+  border: none;
   cursor: pointer;
   display: grid;
   place-items: center;
   color: #ffffff;
-  transform-style: preserve-3d;
+  background: linear-gradient(180deg, #1a4a30 0%, #153B27 100%);
+  box-shadow:
+    0 8px 24px -6px rgba(21, 59, 39, 0.45),
+    0 2px 6px -2px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.22s ease;
   will-change: transform;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-.uos-assistant__toggle:focus-visible {
-  outline: 3px solid var(--ua-color-crimson);
-  outline-offset: 3px;
 }
 
 .uos-assistant__toggle:hover {
+  transform: translateY(-2px) scale(1.04);
   box-shadow:
-    0 24px 48px -10px rgba(17, 24, 39, 0.22),
-    0 0 0 1px rgba(21, 59, 39, 0.35);
+    0 12px 32px -6px rgba(21, 59, 39, 0.5),
+    0 4px 10px -2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
-.uos-assistant__badge {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  display: grid;
-  place-items: center;
-  transform-style: preserve-3d;
+.uos-assistant__toggle:active {
+  transform: scale(0.92);
+  transition-duration: 0.1s;
 }
 
-.uos-assistant__badge-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1.4px solid rgba(255, 255, 255, 0.5);
-  transform: rotateX(var(--ua-rotate-x)) rotateY(var(--ua-rotate-y));
-  transform-style: preserve-3d;
+.uos-assistant__toggle:focus-visible {
+  outline: 3px solid #7F1D1D;
+  outline-offset: 3px;
 }
 
-.uos-assistant__badge-ring-inner {
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  border: 0.6px solid rgba(255, 255, 255, 0.35);
-  transform: rotateX(var(--ua-rotate-x)) rotateY(var(--ua-rotate-y));
-  transform-style: preserve-3d;
-}
-
-.uos-assistant__badge-mono {
-  position: relative;
-  z-index: 2;
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  transform: rotateX(var(--ua-rotate-x)) rotateY(var(--ua-rotate-y));
-  transform-style: preserve-3d;
-}
-
-.uos-assistant__badge-glow {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at var(--ua-pointer-x) var(--ua-pointer-y),
-    rgba(200, 169, 110, 0.45) 0%,
-    transparent 55%
-  );
-  opacity: calc(var(--ua-active) * 0.9);
-  pointer-events: none;
-}
-
-.uos-assistant__badge-glint {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(
-    farthest-corner circle at var(--ua-light-x) var(--ua-light-y),
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.2) 25%,
-    transparent 60%
-  );
-  mix-blend-mode: overlay;
-  opacity: calc(var(--ua-active) * 0.7);
-  pointer-events: none;
-}
-
-.uos-assistant__badge-shade {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at var(--ua-light-x) var(--ua-light-y),
-    transparent 35%,
-    rgba(0, 0, 0, 0.25) 100%
-  );
-  opacity: calc(var(--ua-tilt) * 0.6);
-  pointer-events: none;
-}
-
-/* Close glyph shown when panel is open — University Crimson */
-.uos-assistant__close {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 16px;
-  height: 16px;
-  transform: translate(-50%, -50%);
-  display: none;
-  place-items: center;
-  color: #ffffff;
-}
-
-.uos-assistant__close svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* ─── Dialog panel — letterhead style ─── */
+/* ── Panel ────────────────────────────────────────────────────────────────── */
 .uos-assistant__panel {
   position: absolute;
-  right: 12px;
-  bottom: calc(12px + 56px + 14px);
+  right: 0;
+  bottom: calc(56px + 14px);
   width: 380px;
-  max-width: 88vw;
-  height: 560px;
-  max-height: 72vh;
+  max-width: 92vw;
+  height: 580px;
+  max-height: 76vh;
   border-radius: 24px;
-  border: 1px solid rgba(231, 229, 228, 0.7);
-  background: #ffffff;
-  color: var(--ua-color-ink);
-  box-shadow:
-    0 24px 60px -16px rgba(17, 24, 39, 0.12),
-    0 0 0 1px rgba(21, 59, 39, 0.08);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: uos-panel-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  backdrop-filter: blur(28px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 30px 70px -20px rgba(17, 24, 39, 0.28),
+    0 8px 24px -8px rgba(17, 24, 39, 0.12),
+    0 0 0 1px rgba(21, 59, 39, 0.06);
+  animation: uos-panel-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
   transform-origin: bottom right;
 }
 
 @keyframes uos-panel-in {
   from {
     opacity: 0;
-    transform: scale(0.92) translateY(10px);
+    transform: scale(0.94) translateY(12px);
   }
   to {
     opacity: 1;
@@ -202,72 +90,108 @@
   }
 }
 
-/* Letterhead header — University Crimson mark */
+/* ── Header ───────────────────────────────────────────────────────────────── */
 .uos-assistant__header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 16px;
-  border-bottom: 1px solid var(--ua-color-border);
-  background: var(--ua-color-alabaster);
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(231, 229, 228, 0.7);
+  background: linear-gradient(180deg, rgba(246, 245, 240, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+  flex-shrink: 0;
 }
 
-.uos-assistant__header-mark {
-  width: 34px;
-  height: 34px;
+.uos-assistant__mark {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: var(--ua-color-crimson);
   display: grid;
   place-items: center;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #8f2424 0%, #7F1D1D 100%);
   color: #ffffff;
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
-  font-size: 15px;
+  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  box-shadow: 0 8px 20px -6px rgba(127, 29, 29, 0.35);
+  box-shadow:
+    0 6px 16px -4px rgba(127, 29, 29, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .uos-assistant__header-text {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  flex: 1;
 }
 
-.uos-assistant__header-title {
+.uos-assistant__title {
   margin: 0;
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
-  font-size: 16px;
+  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
   font-weight: 600;
-  color: var(--ua-color-ink);
+  color: #14291D;
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
 
-.uos-assistant__header-sub {
-  margin: 1px 0 0;
-  font-size: 9.5px;
-  font-weight: 600;
-  color: var(--ua-color-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.uos-assistant__subtitle {
+  margin: 2px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #5C6B60;
+  letter-spacing: 0.02em;
 }
 
-.uos-assistant__header-rule {
-  height: 1px;
-  width: 24px;
-  background: var(--ua-color-gold);
-  margin-left: auto;
-  border-radius: 1px;
+.uos-assistant__status {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
 }
 
-/* Message list */
+.uos-assistant__close {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #5C6B60;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  flex-shrink: 0;
+}
+
+.uos-assistant__close:hover {
+  background: rgba(127, 29, 29, 0.08);
+  color: #7F1D1D;
+}
+
+.uos-assistant__close:active {
+  transform: scale(0.9);
+}
+
+.uos-assistant__close:focus-visible {
+  outline: 2px solid #7F1D1D;
+  outline-offset: 2px;
+}
+
+/* ── Message list ─────────────────────────────────────────────────────────── */
 .uos-assistant__list {
   flex: 1;
   overflow-y: auto;
-  padding: 18px 16px;
+  padding: 18px 20px 12px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  scroll-behavior: smooth;
 }
 
 .uos-assistant__list::-webkit-scrollbar {
@@ -277,34 +201,49 @@
   background: transparent;
 }
 .uos-assistant__list::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(21, 59, 39, 0.18);
   border-radius: 9999px;
 }
 .uos-assistant__list::-webkit-scrollbar-thumb:hover {
-  background: var(--ua-color-forest);
+  background: rgba(21, 59, 39, 0.32);
 }
 
+/* Empty state */
 .uos-assistant__empty {
-  margin-top: 6px;
-  font-size: 13px;
-  font-style: italic;
-  color: var(--ua-color-muted);
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
-  align-self: flex-start;
+  margin: auto 0;
+  text-align: center;
+  padding: 24px 12px;
 }
 
-/* Individual message — smooth staggered rise */
+.uos-assistant__empty-title {
+  margin: 0;
+  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #14291D;
+  letter-spacing: -0.01em;
+}
+
+.uos-assistant__empty-text {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #5C6B60;
+  line-height: 1.5;
+}
+
+/* Message row */
 .uos-assistant__msg {
   display: flex;
   gap: 8px;
-  max-width: 88%;
-  animation: uos-msg-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  align-items: flex-end;
+  max-width: 100%;
+  animation: uos-msg-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes uos-msg-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -313,134 +252,139 @@
 }
 
 .uos-assistant__msg--user {
-  align-self: flex-end;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
 .uos-assistant__msg--bot {
-  align-self: flex-start;
-  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .uos-assistant__avatar {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: #ffffff;
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
 }
 
 .uos-assistant__avatar--user {
-  background: var(--ua-color-forest);
+  background: #153B27;
 }
 
 .uos-assistant__avatar--bot {
-  background: var(--ua-color-crimson);
+  background: #7F1D1D;
 }
 
 .uos-assistant__bubble {
   padding: 10px 14px;
-  border-radius: 14px;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--ua-color-ink);
-  font-family: var(--font-sans), "Plus Jakarta Sans", sans-serif;
+  border-radius: 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
   word-wrap: break-word;
+  max-width: 78%;
 }
 
 .uos-assistant__msg--user .uos-assistant__bubble {
-  background: var(--ua-color-forest);
+  background: #153B27;
   color: #ffffff;
   border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 8px -2px rgba(21, 59, 39, 0.35);
 }
 
 .uos-assistant__msg--bot .uos-assistant__bubble {
   background: #ffffff;
-  border: 1px solid var(--ua-color-border);
-  border-left: 2px solid var(--ua-color-crimson);
+  color: #14291D;
+  border: 1px solid rgba(231, 229, 228, 0.9);
   border-bottom-left-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-/* Typing indicator — smooth three-dot pulse */
-.uos-assistant__typing {
-  align-self: flex-start;
+/* Typing bubble */
+.uos-assistant__bubble--typing {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid var(--ua-color-border);
-  border-left: 2px solid var(--ua-color-forest);
-  border-bottom-left-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  animation: uos-msg-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  min-height: 20px;
+  padding: 12px 16px;
 }
 
-.uos-assistant__typing-dots {
+.uos-assistant__dots {
   display: flex;
   gap: 4px;
+  align-items: center;
 }
 
-.uos-assistant__typing-dot {
-  width: 7px;
-  height: 7px;
+.uos-assistant__dots span {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--ua-color-forest);
-  animation: uos-typing 1.4s ease-in-out infinite both;
+  background: #7F1D1D;
+  animation: uos-dot 1.2s ease-in-out infinite;
+  opacity: 0.4;
 }
 
-.uos-assistant__typing-dot:nth-child(2) {
-  animation-delay: 0.2s;
+.uos-assistant__dots span:nth-child(2) {
+  animation-delay: 0.16s;
 }
-.uos-assistant__typing-dot:nth-child(3) {
-  animation-delay: 0.4s;
+.uos-assistant__dots span:nth-child(3) {
+  animation-delay: 0.32s;
 }
 
-@keyframes uos-typing {
-  0%, 100% {
-    opacity: 0.45;
+@keyframes uos-dot {
+  0%, 60%, 100% {
     transform: translateY(0);
+    opacity: 0.4;
   }
-  50% {
-    opacity: 1;
+  30% {
     transform: translateY(-4px);
+    opacity: 1;
   }
 }
 
-/* Composer */
+/* ── Composer ─────────────────────────────────────────────────────────────── */
 .uos-assistant__composer {
-  padding: 14px 16px;
-  border-top: 1px solid var(--ua-color-border);
-  background: var(--ua-color-alabaster);
+  padding: 12px 16px 14px;
+  border-top: 1px solid rgba(231, 229, 228, 0.7);
+  background: rgba(246, 245, 240, 0.5);
+  flex-shrink: 0;
 }
 
 .uos-assistant__composer-inner {
   position: relative;
-}
-
-.uos-assistant__input {
-  width: 100%;
-  padding: 10px 42px 10px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--ua-color-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
   background: #ffffff;
-  color: var(--ua-color-ink);
-  font-size: 13px;
-  font-family: var(--font-sans), "Plus Jakarta Sans", sans-serif;
-  outline: none;
+  border: 1px solid rgba(231, 229, 228, 0.9);
+  border-radius: 9999px;
+  padding: 4px 4px 4px 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.uos-assistant__input:focus {
-  border-color: var(--ua-color-crimson);
+.uos-assistant__composer-inner:focus-within {
+  border-color: #7F1D1D;
   box-shadow: 0 0 0 3px rgba(127, 29, 29, 0.12);
+}
+
+.uos-assistant__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #14291D;
+  font-size: 14px;
+  font-family: inherit;
+  padding: 8px 0;
+}
+
+.uos-assistant__input::placeholder {
+  color: #8a948d;
 }
 
 .uos-assistant__input:disabled {
@@ -449,95 +393,62 @@
 }
 
 .uos-assistant__send {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: var(--ua-color-crimson);
   border: none;
-  color: #ffffff;
   display: grid;
   place-items: center;
+  color: #ffffff;
+  background: #7F1D1D;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.2s ease;
+  flex-shrink: 0;
+  transition: background 0.18s ease, transform 0.18s ease, opacity 0.18s ease;
 }
 
-.uos-assistant__send:focus-visible {
-  outline: 2px solid var(--ua-color-crimson);
-  outline-offset: 2px;
+.uos-assistant__send:hover:not(:disabled) {
+  background: #661717;
 }
 
-.uos-assistant__send:active {
-  transform: translateY(-50%) scale(0.92);
+.uos-assistant__send:active:not(:disabled) {
+  transform: scale(0.9);
 }
 
 .uos-assistant__send:disabled {
-  background: rgba(127, 29, 29, 0.35);
+  background: rgba(127, 29, 29, 0.3);
   cursor: not-allowed;
 }
 
-.uos-assistant__send svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.uos-assistant__close-btn {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: none;
-  background: transparent;
-  color: var(--ua-color-muted);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: color 0.2s ease, background 0.2s ease;
-}
-
-.uos-assistant__close-btn:focus-visible {
-  outline: 2px solid var(--ua-color-crimson);
+.uos-assistant__send:focus-visible {
+  outline: 2px solid #7F1D1D;
   outline-offset: 2px;
 }
 
-.uos-assistant__close-btn:hover {
-  color: var(--ua-color-crimson);
-  background: rgba(127, 29, 29, 0.08);
+.uos-assistant__hint {
+  margin: 8px 4px 0;
+  font-size: 10.5px;
+  color: #8a948d;
+  text-align: center;
+  letter-spacing: 0.01em;
 }
 
-.uos-assistant__close-btn svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* Reduced motion */
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .uos-assistant__panel,
-  .uos-assistant__msg,
-  .uos-assistant__typing {
+  .uos-assistant__msg {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
   }
-  .uos-assistant__toggle {
+  .uos-assistant__toggle,
+  .uos-assistant__send,
+  .uos-assistant__close {
     transition-duration: 0.001ms !important;
   }
-  .uos-assistant__send:active {
+  .uos-assistant__dots span {
+    animation: none !important;
+    opacity: 0.6;
+  }
+  .uos-assistant__toggle:hover {
     transform: none;
   }
 }
