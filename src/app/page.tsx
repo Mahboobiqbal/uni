@@ -37,7 +37,7 @@ export default function HomePage() {
         {/* 7. [NEW] Upcoming Campus Events & Calendar Carousel */}
         <UpcomingEvents />
 
-        {/* 8. RankingSection (<MagicBento /> scorecard with charts) */}
+        {/* 8. RankingSection (Institutional Scorecard & Quality Audit Registry) */}
         <RankingSection />
 
         {/* 9. CampusLifeHeritage (5-tile bento campus gallery) */}

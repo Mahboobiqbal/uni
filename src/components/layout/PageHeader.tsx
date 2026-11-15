@@ -16,6 +16,7 @@ interface PageHeaderProps {
   backHref?: string;
   backLabel?: string;
   breadcrumbs?: BreadcrumbItem[];
+  children?: React.ReactNode;
 }
 
 export default function PageHeader({
@@ -27,6 +28,7 @@ export default function PageHeader({
   backHref = '/',
   backLabel,
   breadcrumbs,
+  children,
 }: PageHeaderProps) {
   const displayDescription = description || subtitle;
   const displayEyebrow = tag || eyebrow;
@@ -98,6 +100,8 @@ export default function PageHeader({
             </p>
           )}
         </div>
+
+        {children && <div className="mt-8 sm:mt-10">{children}</div>}
       </div>
     </div>
   );

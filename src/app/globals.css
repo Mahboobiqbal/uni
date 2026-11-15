@@ -93,6 +93,50 @@ section[id] {
   background: #153B27;
 }
 
+/* Syllabus Drawer — slide-in + backdrop fade + toast rise */
+@keyframes drawer-in {
+  from {
+    opacity: 0.4;
+    transform: translateX(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes backdrop-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-drawer-in {
+  animation: drawer-in 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-backdrop-fade {
+  animation: backdrop-fade 0.3s ease-out both;
+}
+
+.animate-toast-in {
+  animation: toast-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Campus Bulletin — Official Notice Reader Transition */
 @keyframes notice-rise {
   from {

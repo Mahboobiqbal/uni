@@ -4,6 +4,109 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-15] — Programs Page (`/programs`) Design-Taste Audit & Premium Overhaul
+
+### Action Summary
+Applied `design-taste-frontend` rules to `src/app/programs/page.tsx` while strictly preserving 100% of functional logic (search, degree-level segmented pills, faculty tabs, results readout, slide-over syllabus drawer, download-scheme toast, focus management, keyboard shortcuts, empty state reset).
+
+### Key Changes
+1. **Shared `PageHeader` Adoption** (House Rule 4, Equal Edges):
+   - Removed the bespoke inline hero section (duplicated markup diverging from the site's shared header) and rendered `<PageHeader>` with breadcrumb `Home > Academics > Degrees & Curricula`, eyebrow "Academic Programs & Schemes of Study", and a data-verified fact strip (Faculties 05 / Teaching Departments 20 / Degree Tracks 59 / Campuses 03 / HEC Recognized) rendered through the new `children` slot with hairline dividers, gold serif values, `tabular-nums`.
+2. **Program Finder Bar** (House Rules 4 & 5):
+   - Converted to `role="search"`, equal-width input (`flex-1`, `h-12`), short labels for segmented pills (`All Levels / Undergraduate / Graduate / Doctorate`) to fix 1440px overflow, `aria-pressed`, tactile `active:scale-[0.98]`, `/` keyboard shortcut focus with on-screen `<kbd>` hint, `aria-live="polite"` results readout, underlined reset link with offset.
+3. **Featured Degree Specifications Cards** (House Rule 5):
+   - Added Roman-numeral index watermarks (I–VI), gold top rule (expands on hover), `hover:-translate-y-[2px]` lift with forest/glow shadow, `tabular-nums` credit-hours, explicit `aria-label` on direct action arrow link, tactile `active:scale-[0.94]/[0.985]`.
+4. **Directory Section** (House Rules 1, 4 & 5):
+   - Degree tags recolored from generic blue/emerald/amber to an institutional 3-tier system (undergraduate sage/forest, graduate warm stone/ink, doctorate muted gold), hairline row alignment, asymmetric column split (`38% / 47% / 13%`), `MapPin` icon tuned to forest, dept-profile tag as compact crimson micro-CTA, tactile `hover:-translate-y-px`.
+5. **Syllabus Slide-Over Drawer** (House Rules 4 & 5):
+   - Forest spec-sheet header with gold hairline, gold ACCREDITATION badge, hairline spec strip (Duration / Credits / Accreditation / Open Merit Fee) replacing stacked rounded boxes, numbered semester roadmap (01–08) with gold dash course lines and `divide-y`, gold-ruled eligibility callout (replacing heavy amber box), tactile footer actions with `active:scale-[0.985]`, focus trap + focus return to trigger, Escape closes, body scroll locked.
+6. **Global Motion** (`globals.css`):
+   - Added `@keyframes drawer-in`, `@keyframes backdrop-fade`, `@keyframes toast-in` and `.animate-drawer-in` / `.animate-backdrop-fade` / `.animate-toast-in` utilities (respect `prefers-reduced-motion` via existing global rule).
+7. **Type Hygiene**:
+   - Removed unused imports (`Calendar`, `ChevronRight`, `Filter`, `Printer`, `Sparkles`, `FileText`), consolidated ROMAN index array, unified 3-tier degree-tag style helper, `programsTotal` computed once from `allDepartments`.
+
+### Technical Notes
+- Typecheck: `npx tsc --noEmit` clean.
+- Production build (`npm run build`): all routes prerendered; `.next/server/app/programs.html` emitted.
+- Verified renders at 1440x900 and 390x844 (full-page screenshots); drawer interaction captured at both widths.
+- `PageHeader` extended with optional `children?: React.ReactNode` to host the fact strip; no visual change for existing consumers.
+- **Post-upgrade mobile audit** (320/390): removed dead imports (`ChevronRight`, `Sparkles`); degree-level pills and faculty tabs converted from `overflow-x-auto` scroll rows to `flex-wrap` so every pill/tab is fully visible and tappable at 320px (previously the last pill/tab was cut); added `min-h-[40px]` to the interactive degree tags (opens the syllabus drawer) to satisfy 44px tap-target guidance on mobile. Headless-Chrome CDP checks confirm `documentElement.scrollWidth === 320` (no horizontal page scroll; only the intentional decorative `blur-3xl` hero glows bleed inside their `overflow-hidden` section) and the drawer's Apply footer sits fully within the 390px viewport.
+
+### Files Modified
+- `src/app/programs/page.tsx`
+- `src/components/layout/PageHeader.tsx`
+- `src/app/globals.css`
+- `docs/CHANGELOG.md`
+- `docs/COMPONENTS.md` (registry status)
+- `AGENTS.md` (component registry note)
+
+---
+
+## [2026-11-15] — Homepage Mesh Gradients & Announcement Section Prominence Overhaul
+
+### Action Summary
+Injected rich, multi-color atmospheric mesh gradients into the homepage backgrounds and overhauled the Announcement section (`CampusBulletin.tsx`) to make it prominent, distinctive, and authoritative:
+
+1. **`CampusBulletin` Announcement Section Overhaul (`src/components/home/CampusBulletin.tsx`)**:
+   - **Multi-Point Mesh Gradient Background**: Deep Forest Green (`rgba(21,59,39,0.18)`), University Crimson (`rgba(127,29,29,0.16)`), and Muted Gold (`rgba(200,169,110,0.20)`) radial mesh with fine geometric dot matrix.
+   - **Live Beacon Eyebrow**: Animated ping beacon + `"Live Statutory Notice Board · Fall 2026"`.
+   - **Architectural Masthead Ribbon**: Deep Forest Green gradient header bar (`#0F291B` to `#153B27`) with official university crest, `"University of Swat · Academic Gazette"` typography, and live dispatch tag.
+   - **Bold Container Border & Ambient Aura**: `border-2 border-[#153B27]/25 shadow-[0_24px_70px_-20px_rgba(21,59,39,0.22)]`.
+   - **Feed Item Hierarchy**: Active notices receive a bold Forest Green left accent bar (`border-l-4 border-l-[#153B27]`); critical notices receive a Crimson indicator (`border-l-4 border-l-[#7F1D1D]`).
+   - **Reader Letterhead Banner**: Official publication letterhead with status indicator.
+
+2. **Multi-Color Mesh Gradients across Homepage Backgrounds**:
+   - **`ViceChancellorSection.tsx`**: Layered multi-point mesh gradient blending Forest Green (`rgba(21,59,39,0.14)`), Muted Gold (`rgba(200,169,110,0.16)`), and Crimson (`rgba(127,29,29,0.10)`) with a subtle 28px dot grid.
+   - **`EditorialStorytelling.tsx`**: Alpine atmospheric mesh gradient highlighting Story Row 1 (Green Campus) with emerald/sage and Story Row 2 (ORIC / Gandhara) with crimson/gold.
+   - **`FacultyProgramsGrid.tsx`**: Academic spectrum mesh gradient with green, crimson, and gold pools highlighting the white faculty and flagship degree cards.
+   - **`UpcomingEvents.tsx`**: Campus calendar mesh gradient blending terracotta/crimson and forest green.
+   - **`RankingSection.tsx`**: Scorecard mesh gradient radiating gold and forest green ambient glows around the HEC W-Category audit card.
+   - **`CampusLifeHeritage.tsx`**: Swat Valley alpine & heritage mesh gradient.
+   - **`StudentAlumniSuccess.tsx`**: Outcomes & achievement dual-tint mesh gradient.
+   - **`AdmissionsInquiryFunnel.tsx`**: Admissions portal mesh gradient radiating gold and green behind the dark obsidian container.
+   - **`CampusPhotoRibbon.tsx`**: Warm `#FAF9F6` ground with ambient gold/green mesh pools.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 103/103 static routes prerendered cleanly with Turbopack.
+
+---
+
+## [2026-11-15] — Rebuild Ranking & Recognition Section in Editorial Style (`design-taste-frontend`)
+
+### Action Summary
+Rebuilt the "Ranking & Recognition" section ([`src/components/home/RankingSection.tsx`](file:///d:/projects/uni/src/components/home/RankingSection.tsx)) from scratch into a prestigious Institutional Scorecard & Accreditation Registry following `design-taste-frontend` rules:
+
+1. **Replaced `<MagicBento />` with Bespoke Responsive Grid Architecture**:
+   - Eliminated third-party component overhead (`MagicBento.tsx` cleanly removed per replacement protocol).
+   - Designed a high-contrast 12-column architectural grid with `max-w-[1360px] mx-auto px-6 lg:px-12` container boundaries.
+
+2. **Editorial Split Header & Official HEC Seal**:
+   - Muted crimson/gold eyebrow (`INSTITUTIONAL QUALITY & BENCHMARKS`), display serif H2 (`Ranking, Recognition & Quality Audits`), and succinct institutional description.
+   - Distinctive HEC Quality Certified shield pill badge ("Highest W-Category Rating (91.4%)").
+
+3. **High-Precision SVG Data Visualizations**:
+   - **QualityGrowthChart**: Custom responsive SVG area curve tracking 5-year quality assurance trajectory from 74% to 91.4% with coordinate milestone indicators and subtle grid guidelines.
+   - **AuditScoreBar**: Segmented progress bar with Deep Forest Green (`#153B27`), University Crimson (`#7F1D1D`), and Muted Gold (`#C8A96E`) markers.
+   - **SustainabilityBars**: 6-year progressive bar chart representing UI GreenMetric alpine campus solarization and carbon neutrality.
+   - **TheImpactSparkline**: Custom vector curve charting Times Higher Education 301–400 global ranking across SDG 4 and SDG 15.
+
+4. **4-Column Statutory Accreditation Registry**:
+   - **NAEAC Agriculture**: `3.68 / 4.00` CGPA rating for applied horticulture and soil sciences.
+   - **HEC Charter**: `100%` federal and provincial charter recognition across all 28 departments.
+   - **Green Campus**: `Top 5` national ecological campus benchmark for Swat Valley water catchment.
+   - **ORIC Innovation**: `PKR 85M+` funded research grants across heritage and alpine life sciences.
+
+5. **Reassurance Banner & QEC PDF Audit Report Action**:
+   - Explanatory reassurance box bridging global degree equivalency for families and prospective scholars.
+   - Dual actions: "Download QEC Audit (PDF)" with instant confirmation toast, and "Explore Admissions Criteria →" button.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 103/103 static routes prerendered cleanly with Turbopack.
+
+---
+
 ## [2026-11-15] — Homepage Design-Taste Audit & Polish (tasteskill 2.5 Compliance)
 
 ### Action Summary
