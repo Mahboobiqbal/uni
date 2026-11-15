@@ -307,7 +307,7 @@ export default function CampusBulletin() {
     <section
       id="announcements"
       data-purpose="campus-bulletin"
-      className="relative overflow-hidden py-16 sm:py-20 bg-[#F6F5F0]"
+      className="relative overflow-hidden pt-16 sm:pt-20 pb-8 sm:pb-10 bg-[#F6F5F0]"
     >
       {/* VC-style ambient color aura behind the bulletin */}
       <div className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full bg-[#153B27]/8 blur-3xl pointer-events-none" />
@@ -408,7 +408,7 @@ export default function CampusBulletin() {
             {/* ── Two-Column Master-Detail ── */}
             <div className="grid grid-cols-12">
               {/* ── Left Column — Scrollable Auto-Looping Notice Feed ── */}
-              <div className="col-span-12 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-stone-200 p-4 max-h-[420px] lg:max-h-[620px] relative overflow-hidden bg-white min-w-0">
+              <div className="col-span-12 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-stone-200 p-4 max-h-[420px] lg:max-h-[720px] relative overflow-hidden bg-white min-w-0">
                 <AutoScrollingFeed
                   items={feedItems}
                   selectedId={selectedId}

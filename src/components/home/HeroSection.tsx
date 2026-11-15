@@ -196,12 +196,6 @@ export default function HeroSection() {
           <div className="flex flex-col">
             {/* Bottom-Left — Main Hero Headline & CTAs */}
             <div className="max-w-2xl text-left">
-              {/* Eyebrow pill */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-[#E2C07D] uppercase tracking-widest mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#E2C07D]" />
-                <span>EST. 2010 • CHARTERED PUBLIC UNIVERSITY OF SWAT</span>
-              </div>
-
               {/* Headline with italic gold "Innovators" + hand-drawn gold SVG underline */}
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.08] drop-shadow-md">
                 Shaping Scholars &amp;{' '}

@@ -89,12 +89,22 @@ export const navItems: NavItem[] = [
       {
         title: 'Graduate programs',
         links: [
+          { label: 'MS Computer Science', href: '/departments/computer-software-technology', meta: '2 yrs', icon: Code },
+          { label: 'MBA / MS Management Sciences', href: '/departments/management-commerce', meta: '2 yrs', icon: Briefcase },
+          { label: 'M.Phil Chemistry', href: '/departments/chemistry', meta: '2 yrs', icon: FlaskConical },
+          { label: 'M.Phil Botany', href: '/departments/botany', meta: '2 yrs', icon: Leaf },
+          { label: 'M.Phil Environmental Sciences', href: '/departments/environmental-sciences', meta: '2 yrs', icon: Leaf },
           { label: 'Browse all graduate programs', href: '/programs?level=graduate', meta: 'MS / MPhil / MBA', icon: GraduationCap },
         ],
       },
       {
         title: 'Doctoral programs',
         links: [
+          { label: 'PhD Computer Science', href: '/departments/computer-software-technology', meta: 'PhD', icon: Code },
+          { label: 'PhD Chemistry', href: '/departments/chemistry', meta: 'PhD', icon: FlaskConical },
+          { label: 'PhD Environmental Sciences', href: '/departments/environmental-sciences', meta: 'PhD', icon: Leaf },
+          { label: 'PhD Zoology', href: '/departments/zoology', meta: 'PhD', icon: Leaf },
+          { label: 'PhD Islamic Studies', href: '/departments/islamic-arabic-studies', meta: 'PhD', icon: BookOpen },
           { label: 'Browse all doctoral programs', href: '/programs?level=doctoral', meta: 'PhD', icon: BookOpen },
         ],
       },

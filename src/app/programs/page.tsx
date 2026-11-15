@@ -2,13 +2,12 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   ArrowRight,
-  ArrowUpRight,
   BookOpen,
   Building2,
   CheckCircle2,
-  Clock,
   Download,
   GraduationCap,
   Layers,
@@ -37,18 +36,11 @@ const facultyProgramCount = (slug: string) => {
   return cat ? cat.departments.reduce((sum, d) => sum + d.programsOffered.length, 0) : 0;
 };
 
-const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI'] as const;
-
-const DEGREE_TAG_STYLES = {
-  doctorate: 'border-[#C8A96E]/70 text-[#7A5A1E] bg-[#FBF6EA] hover:bg-[#F3EADA]',
-  graduate: 'border-[#D8D3C4] text-[#14291D] bg-[#EFEDE6] hover:bg-[#E4E1D5]',
-  undergraduate: 'border-[#C9D6C2] text-[#153B27] bg-[#EFF5EE] hover:bg-[#DDEBDE]',
-} as const;
-
-const degreeTagStyle = (prog: string) => {
+/** Pill style for the faculty-grouped directory cards (forest / crimson / amber). */
+const degreePillClass = (prog: string) => {
   const lower = prog.toLowerCase();
   if (lower.includes('phd') || lower.includes('ph.d') || lower.includes('doctorate')) {
-    return DEGREE_TAG_STYLES.doctorate;
+    return 'border-[#C8A96E]/70 bg-amber-900/10 text-amber-900';
   }
   if (
     lower.startsWith('ms') ||
@@ -58,9 +50,21 @@ const degreeTagStyle = (prog: string) => {
     lower.startsWith('llm') ||
     lower.startsWith('master')
   ) {
-    return DEGREE_TAG_STYLES.graduate;
+    return 'border-[#E4C6C6] bg-[#7F1D1D]/10 text-[#7F1D1D]';
   }
-  return DEGREE_TAG_STYLES.undergraduate;
+  return 'border-[#C9D6C2] bg-[#153B27]/10 text-[#153B27]';
+};
+
+/** Resolve a degree title to a flagship detail route slug when one exists. */
+const resolveSlug = (progTitle: string): string | undefined => {
+  const norm = progTitle.toLowerCase();
+  const found = programsDetailCatalog.find(
+    (p) =>
+      norm.includes(p.slug.replace(/-/g, ' ')) ||
+      norm.includes(p.name.toLowerCase()) ||
+      p.name.toLowerCase().includes(norm.split('(')[0].trim())
+  );
+  return found?.slug;
 };
 
 type DegreeLevelFilter = 'all' | 'undergraduate' | 'graduate' | 'doctorate';
@@ -83,6 +87,8 @@ interface DegreeModalData {
 }
 
 export default function ProgramsPage() {
+  const router = useRouter();
+
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedLevel, setSelectedLevel] = useState<DegreeLevelFilter>('all');
@@ -363,20 +369,6 @@ export default function ProgramsPage() {
     []
   );
 
-  // Filtered Flagship Cards (Matches search or level)
-  const filteredFlagship = useMemo(() => {
-    return programsDetailCatalog.filter((prog) => {
-      if (selectedLevel === 'graduate' || selectedLevel === 'doctorate') return false;
-      if (!searchQuery.trim()) return true;
-      const q = searchQuery.toLowerCase();
-      return (
-        prog.name.toLowerCase().includes(q) ||
-        prog.departmentName.toLowerCase().includes(q) ||
-        prog.description.toLowerCase().includes(q)
-      );
-    });
-  }, [selectedLevel, searchQuery]);
-
   return (
     <main id="main-content" className="bg-[#F6F5F0] min-h-screen text-[#14291D]">
       {/* ─── Hero Header & Academic Fact Strip (Deep Forest Green) ─── */}
@@ -388,6 +380,7 @@ export default function ProgramsPage() {
           { label: 'Home', href: '/' },
           { label: 'Programs' },
         ]}
+        backgroundImage="/campus-main.jpg"
       >
         {/* Verified institutional fact strip — reads as one line with hairline dividers */}
         <dl className="flex flex-wrap items-stretch border-t border-white/15 pt-6 sm:pt-7 gap-y-4">
@@ -511,158 +504,7 @@ export default function ProgramsPage() {
 
       {/* Main Content Area */}
       <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 space-y-20">
-        {/* ─── Part 1: Featured Degree Specifications (3x2 Grid) ─── */}
-        {filteredFlagship.length > 0 && (
-          <section id="flagship-degrees" aria-labelledby="flagship-heading">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="h-0.5 w-6 bg-[#7F1D1D]" />
-                  <span className="text-xs uppercase tracking-[0.18em] text-[#7F1D1D] font-bold">
-                    Flagship Curricula
-                  </span>
-                </div>
-                <h2
-                  id="flagship-heading"
-                  className="font-serif text-3xl sm:text-4xl text-[#14291D] font-bold tracking-[-0.02em]"
-                >
-                  Featured Degree Specifications
-                </h2>
-              </div>
-              <p className="text-xs sm:text-sm text-stone-600 max-w-md sm:text-right leading-relaxed">
-                Six flagship curricula with semester-by-semester roadmaps, credit allocations, and eligibility — drawn from the official schemes of study.
-              </p>
-            </div>
-
-            {/* 3x2 Grid of Spec Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-              {filteredFlagship.map((prog, idx) => (
-                <article
-                  key={prog.slug}
-                  className={`group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl overflow-hidden transition-all duration-200 ease-out hover:-translate-y-[2px] ${
-                    idx === 0
-                      ? 'bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:bg-[#0F2D1E] hover:shadow-[0_28px_48px_-22px_rgba(12,25,18,0.45)]'
-                      : 'bg-white border border-stone-300 shadow-xs hover:border-[#153B27]/45 hover:shadow-[0_28px_48px_-22px_rgba(12,25,18,0.4)]'
-                  }`}
-                >
-                  {/* Index numeral watermark */}
-                  <span
-                    aria-hidden="true"
-                    className={`absolute top-4 right-5 font-serif text-5xl sm:text-6xl font-bold select-none leading-none tabular-nums ${
-                      idx === 0 ? 'text-white/[0.08]' : 'text-[#153B27]/[0.07]'
-                    }`}
-                  >
-                    {ROMAN[idx] ?? String(idx + 1)}
-                  </span>
-                  {/* Gold top rule */}
-                  <span
-                    aria-hidden="true"
-                    className="absolute top-0 left-0 h-[3px] w-16 bg-[#C8A96E] transition-all duration-300 ease-out group-hover:w-28"
-                  />
-
-                  <div className="relative">
-                    {/* Top Row: Duration & Credits */}
-                    <div className="flex items-center justify-between gap-2 mb-5">
-                      <span
-                        className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full ${
-                          idx === 0
-                            ? 'bg-[#C8A96E]/15 text-[#D4B87A] border border-[#C8A96E]/30'
-                            : 'bg-[#EFF5EE] text-[#153B27] border border-[#C9D6C2]'
-                        }`}
-                      >
-                        <Clock className="w-3 h-3" />
-                        {prog.duration.split('(')[0].trim()}
-                      </span>
-                      <span
-                        className={`text-[10px] font-sans uppercase tracking-[0.14em] font-bold tabular-nums ${
-                          idx === 0 ? 'text-white/60' : 'text-stone-600'
-                        }`}
-                      >
-                        {prog.creditHours} Credit Hrs
-                      </span>
-                    </div>
-
-                    <h3
-                      className={`font-serif text-[1.65rem] sm:text-2xl font-bold transition-colors mb-3 leading-[1.15] tracking-[-0.01em] pr-8 ${
-                        idx === 0 ? 'text-white group-hover:text-[#D4B87A]' : 'text-[#14291D] group-hover:text-[#153B27]'
-                      }`}
-                    >
-                      {prog.name}
-                    </h3>
-
-                    <p
-                      className={`font-sans text-xs leading-relaxed mb-5 line-clamp-3 ${
-                        idx === 0 ? 'text-white/70' : 'text-stone-600'
-                      }`}
-                    >
-                      {prog.description}
-                    </p>
-
-                    <div
-                      className={`text-[11px] font-medium mb-5 flex items-center gap-2 ${
-                        idx === 0 ? 'text-white/60' : 'text-stone-600'
-                      }`}
-                    >
-                      <span
-                        className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                          idx === 0 ? 'bg-[#C8A96E]' : 'bg-[#7F1D1D]'
-                        }`}
-                      />
-                      <span className="truncate">{prog.departmentName}</span>
-                    </div>
-                  </div>
-
-                  {/* Interactive Trigger for Slide-Over Drawer */}
-                  <div
-                    className={`relative pt-4 border-t flex items-center justify-between gap-2 ${
-                      idx === 0 ? 'border-white/15' : 'border-stone-200'
-                    }`}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const matchingDept = allDepartments.find(
-                          (d) => d.id === prog.departmentId
-                        ) || {
-                          id: prog.departmentId,
-                          name: prog.departmentName,
-                          facultyGroup: prog.facultyGroup,
-                          campus: 'Charbagh Main Campus',
-                          aims: '',
-                          description: '',
-                          programsOffered: [],
-                          contactEmail: '',
-                        };
-                        openProgramModal(prog.name, matchingDept);
-                      }}
-                      className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors min-h-[44px] -my-2 ${
-                        idx === 0 ? 'text-[#D4B87A] hover:text-white' : 'text-[#153B27] hover:text-[#7F1D1D]'
-                      }`}
-                    >
-                      <span>View Syllabus</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </button>
-
-                    <Link
-                      href={`/programs/${prog.slug}`}
-                      aria-label={`Open the full ${prog.name} curriculum page`}
-                      title={`Direct link to ${prog.name}`}
-                      className={`p-2.5 rounded-lg active:scale-[0.94] border transition-all duration-150 ${
-                        idx === 0
-                          ? 'bg-white/10 text-[#D4B87A] border-white/15 hover:bg-white/20'
-                          : 'bg-stone-50 text-stone-600 border-stone-300 hover:bg-[#153B27] hover:text-white'
-                      }`}
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* ─── Part 2: Interactive Faculty Directory ─── */}
+        {/* ─── Interactive Faculty Directory ─── */}
         <section id="faculty-directory" aria-labelledby="directory-heading">
           {/* Section Heading */}
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
@@ -719,116 +561,132 @@ export default function ProgramsPage() {
             })}
           </div>
 
-          {/* Directory legend (degree tiers) */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mb-3 px-1 text-[10px] text-stone-600">
+                    {/* Directory legend (degree tiers) */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mb-6 px-1 text-[10px] text-stone-600">
             <span className="uppercase tracking-[0.16em] font-bold text-stone-600">Key</span>
-            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-[#EFF5EE] border border-[#C9D6C2]" /> Undergraduate</span>
-            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-[#EFEDE6] border border-[#D8D3C4]" /> Graduate</span>
-            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-[#FBF6EA] border border-[#C8A96E]/70" /> Doctorate</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-[#153B27]/10 border border-[#C9D6C2]" /> Undergraduate</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-[#7F1D1D]/10 border border-[#E4C6C6]" /> Graduate</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-amber-900/10 border border-[#C8A96E]/70" /> Doctorate</span>
           </div>
 
-          {/* Architectural Directory Container (hairline divide-y) */}
-          <div className="bg-white border border-stone-300 rounded-2xl divide-y divide-stone-200 overflow-hidden shadow-xs">
-            {filteredDepartments.length === 0 ? (
-              /* Empty State */
-              <div className="p-12 sm:p-16 text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-stone-100 text-stone-600 mx-auto flex items-center justify-center">
-                  <Search className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-stone-800">
-                  No Matching Degree Programs Found
-                </h3>
-                <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto">
-                  We could not find any programs matching &ldquo;{searchQuery}&rdquo; in the selected
-                  faculty or degree level filter. Try broadening your search or resetting filters.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSelectedFaculty('all');
-                    setSelectedLevel('all');
-                  }}
-                  className="px-6 py-3 rounded-xl bg-[#153B27] hover:bg-[#0F2D1E] text-white text-[11px] font-bold uppercase tracking-[0.12em] min-h-[44px] transition-all active:scale-[0.985]"
-                >
-                  Reset All Filters
-                </button>
+          {filteredDepartments.length === 0 ? (
+            <div className="p-12 sm:p-16 text-center space-y-4 bg-white border border-stone-300 rounded-2xl shadow-xs">
+              <div className="w-12 h-12 rounded-full bg-stone-100 text-stone-600 mx-auto flex items-center justify-center">
+                <Search className="w-6 h-6" />
               </div>
-            ) : (
-              filteredDepartments.map((dept, deptIdx) => {
-                const visiblePrograms = dept.programsOffered.filter((p) =>
-                  matchesDegreeLevel(p, selectedLevel)
+              <h3 className="font-serif text-2xl font-bold text-stone-800">No Matching Degree Programs Found</h3>
+              <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto">
+                We could not find any programs matching &ldquo;{searchQuery}&rdquo; in the selected
+                faculty or degree level filter. Try broadening your search or resetting filters.
+              </p>
+              <button
+                type="button"
+                onClick={() => { setSearchQuery(''); setSelectedFaculty('all'); setSelectedLevel('all'); }}
+                className="px-6 py-3 rounded-xl bg-[#153B27] hover:bg-[#0F2D1E] text-white text-[11px] font-bold uppercase tracking-[0.12em] min-h-[44px] transition-all active:scale-[0.985]"
+              >
+                Reset All Filters
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-10">
+              {facultiesCatalog.map((fac, fi) => {
+                const depts = filteredDepartments.filter((d) =>
+                  fac.departments.some((fd) => fd.id === d.id)
                 );
-
+                if (depts.length === 0) return null;
+                let degreeTotal = 0;
+                depts.forEach((d) => {
+                  degreeTotal += d.programsOffered.filter((p) => matchesDegreeLevel(p, selectedLevel)).length;
+                });
+                const dark = fi % 2 === 0;
                 return (
-                  <div
-                    key={dept.id}
-                    className="group/row p-5 sm:p-6 lg:p-7 hover:bg-[#FBFAF7] transition-colors relative"
-                  >
-                    {/* 3-Column Desktop Alignment (index · identity · degrees · action) */}
-                    <div className="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-6 justify-between">
-                      {/* Left Column: Index numeral + Faculty eyebrow + Department Name + Campus */}
-                      <div className="lg:w-[38%] flex items-start gap-4 lg:gap-5 shrink-0">
-                        <span
-                          aria-hidden="true"
-                          className="font-serif text-sm sm:text-base font-bold text-stone-600 tabular-nums pt-1 w-7 shrink-0 border-r border-stone-200 pr-3"
-                        >
-                          {String(deptIdx + 1).padStart(2, '0')}
-                        </span>
-
-                        <div className="space-y-1.5 min-w-0">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7F1D1D] block">
-                            {dept.facultyGroup}
-                          </span>
-
-                          <Link
-                            href={`/departments/${dept.id}`}
-                            className="font-serif text-lg sm:text-xl font-bold text-[#14291D] hover:text-[#153B27] transition-colors block leading-snug tracking-[-0.01em]"
-                          >
-                            {dept.name}
-                          </Link>
-
-                          <div className="flex items-center gap-1.5 text-[11px] text-stone-600">
-                            <MapPin className="w-3.5 h-3.5 text-[#153B27] shrink-0" />
-                            <span>{dept.campus}</span>
-                          </div>
-                        </div>
+                  <div key={fac.slug}>
+                    <div className={`${dark ? 'bg-[#153B27]' : 'bg-[#7F1D1D]'} text-white rounded-t-2xl px-6 py-4 flex flex-wrap items-center justify-between gap-3`}>
+                      <div>
+                        <h3 className="font-serif text-xl font-bold">{fac.name}</h3>
+                        <p className="text-xs text-white/75 mt-0.5">{depts.length} Departments · {degreeTotal} Degree Tracks</p>
                       </div>
-
-                      {/* Middle Column: Interactive Degree Tags */}
-                      <div className="lg:w-[47%] flex flex-wrap gap-1.5 lg:gap-2">
-                        {visiblePrograms.map((prog, pIdx) => (
-                          <button
-                            key={pIdx}
-                            type="button"
-                            onClick={() => openProgramModal(prog, dept)}
-                            className={`inline-flex items-center gap-1.5 px-3 min-h-[40px] rounded-lg text-[11px] font-semibold border transition-all duration-150 text-left hover:-translate-y-px active:scale-[0.98] ${degreeTagStyle(prog)}`}
-                            title={`Click to view syllabus outline for ${prog}`}
-                          >
-                            <GraduationCap className="w-3.5 h-3.5 shrink-0 opacity-60" />
-                            <span>{prog}</span>
-                          </button>
-                        ))}
+                      <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/10 border border-white/20">{degreeTotal} Programs</span>
+                    </div>
+                    <div className="bg-white border border-t-0 border-stone-200 rounded-b-2xl p-5 sm:p-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        {depts.map((dept) => {
+                          const visible = dept.programsOffered.filter((p) => matchesDegreeLevel(p, selectedLevel));
+                          return (
+                            <article
+                              key={dept.id}
+                              role="link"
+                              tabIndex={0}
+                              onClick={() => router.push(`/departments/${dept.id}`)}
+                              onKeyDown={(e) => {
+                                if ((e.key === 'Enter' || e.key === ' ') && !(e.target as HTMLElement).closest('a,button')) {
+                                  e.preventDefault();
+                                  router.push(`/departments/${dept.id}`);
+                                }
+                              }}
+                              className="bg-white border border-stone-200 hover:border-[#153B27] rounded-xl p-5 shadow-xs transition-colors flex flex-col cursor-pointer group"
+                            >
+                              <div className="flex items-start justify-between gap-3">
+                                <div className="min-w-0">
+                                  <Link
+                                    href={`/departments/${dept.id}`}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="font-bold text-stone-900 hover:text-[#153B27] leading-snug transition-colors block"
+                                  >
+                                    {dept.name}
+                                  </Link>
+                                  <span className="inline-flex items-center gap-1 text-[11px] text-stone-600 mt-1.5">
+                                    <MapPin className="w-3.5 h-3.5 text-[#153B27]" />
+                                    {dept.campus}
+                                  </span>
+                                </div>
+                                <Link
+                                  href={`/departments/${dept.id}`}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-[#7F1D1D] hover:text-[#661717] transition-colors whitespace-nowrap"
+                                >
+                                  Deptt. Profile
+                                  <ArrowRight className="w-3.5 h-3.5" />
+                                </Link>
+                              </div>
+                              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-stone-100">
+                                {visible.map((prog) => {
+                                  const slug = resolveSlug(prog);
+                                  const pillCls = degreePillClass(prog);
+                                  return slug ? (
+                                    <Link
+                                      key={prog}
+                                      href={`/programs/${slug}`}
+                                      onClick={(e) => e.stopPropagation()}
+                                      className={`inline-flex items-center px-3 py-1.5 rounded-lg text-[11px] font-semibold border ${pillCls} transition-transform active:scale-[0.98]`}
+                                    >
+                                      {prog}
+                                    </Link>
+                                  ) : (
+                                    <button
+                                      key={prog}
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        openProgramModal(prog, dept);
+                                      }}
+                                      className={`inline-flex items-center px-3 py-1.5 rounded-lg text-[11px] font-semibold border ${pillCls} transition-transform active:scale-[0.98]`}
+                                    >
+                                      {prog}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </article>
+                          );
+                        })}
                       </div>
-
-                      {/* Right Column: Dept Profile Link in University Crimson */}
-                      <div className="lg:w-[13%] lg:text-right shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-stone-200">
-                        <Link
-                          href={`/departments/${dept.id}`}
-                          className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#7F1D1D] hover:text-[#661717] transition-colors group/link min-h-[44px] lg:min-h-0"
-                        >
-                          <span>Dept. Profile</span>
-                          <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
-                        </Link>
-                      </div>
-
                     </div>
                   </div>
                 );
-              })
-            )}
-          </div>
-        </section>
+              })}
+            </div>
+          )}        </section>
       </div>
 
       {/* ─── Interactive Syllabus Slide-Over Drawer ─── */}

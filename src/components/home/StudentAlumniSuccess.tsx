@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Award, Briefcase, GraduationCap, Quote, Star, Users } from 'lucide-react';
+import { Quote, Star } from 'lucide-react';
 
 interface Testimonial {
   id: string;
@@ -84,7 +84,7 @@ export default function StudentAlumniSuccess() {
         </div>
 
         {/* 3 Testimonial Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((item, idx) => (
             <article
               key={item.id}
@@ -131,59 +131,6 @@ export default function StudentAlumniSuccess() {
               </div>
             </article>
           ))}
-        </div>
-
-        {/* Bottom 4 Metric Stat Counters (Matching reference Section 7) */}
-        <div className="rounded-2xl bg-white border border-stone-300 shadow-sm p-8 sm:p-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-stone-200">
-            <div className="text-center p-6 rounded-2xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
-              <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-                92.6%
-              </p>
-              <p className="text-xs sm:text-sm font-semibold text-white mt-2">
-                Graduate Employability
-              </p>
-              <p className="text-[11px] text-white/60 mt-0.5">
-                Employed or in postgrad within 6 months
-              </p>
-            </div>
-
-            <div className="text-center pt-6 lg:py-6 lg:pl-8">
-              <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#7F1D1D] tracking-tight">
-                10,130+
-              </p>
-              <p className="text-xs sm:text-sm font-semibold text-[#14291D] mt-2">
-                Enrolled Scholars
-              </p>
-              <p className="text-[11px] text-stone-500 mt-0.5">
-                Across 28 degree-awarding departments
-              </p>
-            </div>
-
-            <div className="text-center pt-6 lg:py-6 lg:pl-8">
-              <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#B48A3E] tracking-tight">
-                PKR 45M+
-              </p>
-              <p className="text-xs sm:text-sm font-semibold text-[#14291D] mt-2">
-                Scholarships Awarded
-              </p>
-              <p className="text-[11px] text-stone-500 mt-0.5">
-                HEC Need-Based, Ehsaas &amp; Merit Aid
-              </p>
-            </div>
-
-            <div className="text-center pt-6 lg:py-6 lg:pl-8">
-              <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14291D] tracking-tight">
-                15,000+
-              </p>
-              <p className="text-xs sm:text-sm font-semibold text-[#14291D] mt-2">
-                Alumni Network
-              </p>
-              <p className="text-[11px] text-stone-500 mt-0.5">
-                Scholars active across 18 countries
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>

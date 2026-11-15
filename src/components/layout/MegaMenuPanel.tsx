@@ -11,12 +11,6 @@ interface MegaMenuPanelProps {
   onNavigate: () => void;
 }
 
-const WIDTH_BY_COLUMNS: Record<NavItem['columns'], string> = {
-  1: 'max-w-full',
-  2: 'max-w-full',
-  3: 'max-w-full',
-};
-
 const GRID_BY_COLUMNS: Record<NavItem['columns'], string> = {
   1: 'grid-cols-1',
   2: 'grid-cols-2',
@@ -24,11 +18,12 @@ const GRID_BY_COLUMNS: Record<NavItem['columns'], string> = {
 };
 
 /**
- * Editorial mega-menu panel.
+ * Full-width architectural mega-drawer.
  *
- * Structure: category header → grouped link columns → an editorial fact rail
- * carrying one verified institutional figure. Rendered once beneath the bar so
- * the panel can never overflow the viewport regardless of which trigger opens it.
+ * Anchored flush to the bottom edge of the navbar — spans 100% of the screen
+ * width with zero margins, rounded corners, or floating-card shadows. Warm
+ * Alabaster directory surface + a Deep Forest Green feature rail that touches
+ * the right edge of the inner grid cleanly.
  */
 export default function MegaMenuPanel({ item, panelId, onNavigate }: MegaMenuPanelProps) {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -67,16 +62,16 @@ export default function MegaMenuPanel({ item, panelId, onNavigate }: MegaMenuPan
       id={panelId}
       role="region"
       aria-label={`${item.label} menu`}
-      className="absolute inset-x-0 top-full z-40 px-3 pb-4 pt-2 sm:px-5 lg:px-8"
+      className="absolute inset-x-0 top-full z-40"
     >
       <div
         ref={contentRef}
         onKeyDown={handleKeyDown}
-        className={`animate-nav-panel mx-auto w-full overflow-hidden rounded-[20px] border border-stone-200/80 bg-[#FCFBF8] text-left shadow-[0_40px_90px_-28px_rgba(12,25,18,0.45),0_1px_0_0_rgba(255,255,255,0.8)_inset] ${WIDTH_BY_COLUMNS[item.columns]}`}
+        className="animate-mega-drawer w-full overflow-hidden border-t border-white/15 border-b-4 border-b-[#7F1D1D] bg-[#F6F5F0] text-left shadow-2xl"
       >
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_252px]">
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px]">
           {/* ── Directory ─────────────────────────────────────────────── */}
-          <div className="px-6 pb-6 pt-5 lg:px-8 lg:pb-7 lg:pt-6">
+          <div className="px-6 pb-8 pt-7 sm:px-10 lg:px-14">
             <div className="flex items-start justify-between gap-8 border-b border-stone-200/80 pb-4">
               <div className="min-w-0">
                 <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#7F1D1D]">
@@ -101,10 +96,10 @@ export default function MegaMenuPanel({ item, panelId, onNavigate }: MegaMenuPan
               </Link>
             </div>
 
-            <div className={`mt-5 grid gap-x-8 gap-y-6 ${GRID_BY_COLUMNS[item.columns]}`}>
+            <div className={`mt-6 grid gap-x-10 gap-y-7 ${GRID_BY_COLUMNS[item.columns]}`}>
               {item.groups.map((group) => (
                 <div key={group.title}>
-                  <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-stone-600">
+                  <p className="mb-2.5 text-[10px] font-bold uppercase tracking-[0.18em] text-stone-600">
                     {group.title}
                   </p>
                   <ul className="space-y-px">
@@ -144,8 +139,8 @@ export default function MegaMenuPanel({ item, panelId, onNavigate }: MegaMenuPan
             </div>
           </div>
 
-          {/* ── Editorial fact rail ───────────────────────────────────── */}
-          <aside className="relative hidden overflow-hidden bg-[#0F2D1E] px-6 py-6 text-white lg:flex lg:flex-col">
+          {/* ── Deep Forest feature rail — flush to the right edge ─────── */}
+          <aside className="relative hidden overflow-hidden bg-[#153B27] px-8 py-7 text-white lg:flex lg:flex-col">
             <img
               src="/uos-logo-circle.png"
               alt=""

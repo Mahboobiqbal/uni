@@ -84,11 +84,22 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      ref={headerRef}
-      onKeyDown={handleHeaderKeyDown}
+    <>
+      {/* Subtle backdrop dimmer behind the open drawer */}
+      {activeDropdown && (
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 z-[45] bg-black/35 backdrop-blur-[2px] animate-backdrop-fade"
+        />
+      )}
+
+      <header
+        ref={headerRef}
+        onKeyDown={handleHeaderKeyDown}
       className={`fixed inset-x-0 top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
+        activeDropdown
+          ? 'border-b border-white/15 bg-[#0F291B]'
+          : isScrolled
           ? 'border-b border-white/15 bg-[#0C1912]/92 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.8)] backdrop-blur-xl'
           : 'bg-gradient-to-b from-black/75 via-black/35 to-transparent'
       }`}
@@ -344,6 +355,7 @@ export default function Navbar() {
         </div>
       )}
     </header>
+    </>
   );
 }
 

@@ -3,12 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import ProfileCard from '@/components/ui/ProfileCard';
-import { Award, Building2, FileText, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
 export default function ViceChancellorSection() {
   return (
     <section
-      className="pt-44 sm:pt-52 lg:pt-60 pb-20 sm:pb-28 bg-[#F6F5F0] relative z-10 overflow-hidden"
+      className="pt-52 sm:pt-64 lg:pt-72 pb-8 sm:pb-10 bg-[#F6F5F0] relative z-10 overflow-hidden"
       data-purpose="vice-chancellor-section"
       id="vice-chancellor"
     >
@@ -17,58 +17,53 @@ export default function ViceChancellorSection() {
       <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
-        {/* Editorial bridge between Hero's crimson cards and the VC portrait */}
-        <div className="text-center mb-12 lg:mb-16">
-          <div className="flex items-center justify-center gap-2.5 mb-4">
-            <span className="h-px w-10 bg-[#7F1D1D]/40" />
-            <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
-              University Leadership
-            </span>
-            <span className="h-px w-10 bg-[#7F1D1D]/40" />
-          </div>
-          <p className="font-serif italic text-xl sm:text-2xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
-            A message from the Office of the Vice Chancellor &mdash; the values that guide the
-            University of Swat.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-          {/* Left: React Bits <ProfileCard /> with 3D Tilt & Holographic Foil */}
+          {/* Left: Portrait frame — clean photo, caption strip below */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
             <div className="relative group w-full flex justify-center">
-              {/* Subtle ambient shadow behind card */}
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#153B27]/15 via-[#7F1D1D]/10 to-[#B48A3E]/10 blur-2xl opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none" />
 
-              <ProfileCard
-                avatarUrl="/images/leadership/vc-prof-dr-husnul-amin.jpeg"
-                iconUrl="/pattern-crest.svg"
-                miniAvatarUrl="/uos-logo-circle.png"
-                name="Prof. Dr. Husnul Amin"
-                title="Vice Chancellor · University of Swat"
-                caption="Prof. Dr. Husnul Amin"
-                captionClassName="text-[#153B27] font-semibold"
-                contactText=""
-                showUserInfo={true}
-                theme="light"
-                backdropColor="#153B27"
-                width="min(420px, 100%)"
-                radius={22}
-                holo={0.85}
-                glare={0.65}
-                tiltStrength={14}
-                parallax={10}
-                enableTilt={true}
-                intro={true}
-                className="mx-auto shadow-md"
-              />
+              <div className="w-full max-w-[420px]">
+                <ProfileCard
+                  avatarUrl="/images/leadership/vc-prof-dr-husnul-amin.jpeg"
+                  iconUrl="/pattern-crest.svg"
+                  name=""
+                  title=""
+                  showUserInfo={false}
+                  theme="light"
+                  backdropColor="#153B27"
+                  width="100%"
+                  radius={22}
+                  holo={0.85}
+                  glare={0.65}
+                  tiltStrength={14}
+                  parallax={10}
+                  enableTilt={true}
+                  intro={true}
+                />
+              </div>
+            </div>
+
+            {/* Caption strip — crest + bold name */}
+            <div className="flex items-center pt-4 px-2 pb-1 w-full max-w-[420px]">
+              <div className="flex items-center gap-3">
+                <img
+                  src="/uos-logo-circle.png"
+                  alt="University of Swat crest"
+                  className="h-10 w-10 rounded-full object-contain"
+                />
+                <span className="font-serif text-xl font-bold text-stone-900 tracking-[-0.01em]">
+                  Prof. Dr. Husnul Amin
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Right: Leadership Message & Discourse */}
-          <div className="lg:col-span-7 flex flex-col justify-center pl-0 lg:pl-4">
+          {/* Right: Leadership editorial discourse */}
+          <div className="lg:col-span-7 flex flex-col justify-center pl-0 lg:pl-6">
             <div>
-              {/* Section Tag */}
+              {/* Section tag */}
               <div className="flex items-center gap-2.5 mb-3">
                 <span className="h-0.5 w-7 bg-[#7F1D1D]" />
                 <span className="text-xs sm:text-[12.5px] uppercase tracking-wider text-[#7F1D1D] font-bold">
@@ -76,80 +71,68 @@ export default function ViceChancellorSection() {
                 </span>
               </div>
 
-              {/* Section Headline */}
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] text-stone-900 font-bold tracking-[-0.025em] leading-[1.12] mb-5">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] text-stone-900 font-bold tracking-[-0.025em] leading-[1.12] mb-6">
                 Voice of the Vice Chancellor
               </h2>
 
-              {/* Concise, Inspiring Leadership Statement */}
-              <blockquote className="font-sans text-stone-700 text-base sm:text-lg lg:text-[19px] leading-[1.68] font-normal mb-8 border-l-2 border-[#153B27]/40 pl-5 italic">
-                &ldquo;It is with immense pride, humility, and a profound sense of responsibility that I assume
-                the office of Vice Chancellor of the University of Swat. We stand at a pivotal moment to cultivate
-                intellectual excellence, good governance, campus-wide green solarization, and dedicated empowerment
-                for our scholars across Swat and beyond.&rdquo;
+              {/* Editorial quote — oversized gold mark + crimson accent bar, key phrases in forest */}
+              <blockquote className="relative border-l-4 border-[#7F1D1D] pl-6 sm:pl-7">
+                <span
+                  aria-hidden="true"
+                  className="absolute -top-7 -left-2 font-serif text-6xl leading-none text-[#C8A96E] select-none"
+                >
+                  &ldquo;
+                </span>
+                <p className="font-serif text-xl lg:text-2xl text-stone-900 leading-relaxed">
+                  It is with immense pride, humility, and a profound sense of responsibility that I assume
+                  the office of Vice Chancellor of the University of Swat. We stand at a pivotal moment to
+                  cultivate{' '}
+                  <strong className="text-[#153B27] font-semibold">
+                    intellectual excellence, good governance, campus-wide green solarization
+                  </strong>
+                  , and dedicated empowerment for our scholars across Swat and beyond.
+                </p>
               </blockquote>
 
-              {/* Executive Academic Credentials (Clean, Unified Stone & Brand Accents) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-300 hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-[#153B27]/10 text-[#153B27] shrink-0">
-                    <Award className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block text-xs font-bold text-stone-900">PhD (Doctoral Scholar)</span>
-                    <span className="text-[11px] text-stone-600">Academic Leadership</span>
-                  </div>
+              {/* Architectural pillar strip — borderless, stone-divided */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-stone-300 py-5 my-7 border-y border-stone-300/80">
+                <div className="py-3 sm:py-1 sm:px-5 first:pl-0">
+                  <p className="text-[10px] font-bold tracking-widest uppercase text-[#7F1D1D]">
+                    Academic Credential
+                  </p>
+                  <p className="mt-1.5 text-base font-bold text-[#153B27]">PhD Doctoral Scholar</p>
                 </div>
-
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-300 hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-[#7F1D1D]/10 text-[#7F1D1D] shrink-0">
-                    <Building2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block text-xs font-bold text-stone-900">Green Campus</span>
-                    <span className="text-[11px] text-stone-600">100% Solarization</span>
-                  </div>
+                <div className="py-3 sm:py-1 sm:px-5">
+                  <p className="text-[10px] font-bold tracking-widest uppercase text-[#7F1D1D]">
+                    Campus Initiative
+                  </p>
+                  <p className="mt-1.5 text-base font-bold text-[#153B27]">100% Solarized Campus</p>
                 </div>
-
-                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-300 hover:border-stone-400 hover:-translate-y-[2px] transition-all duration-200 ease-out flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-[#B48A3E]/10 text-[#B48A3E] shrink-0">
-                    <FileText className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block text-xs font-bold text-stone-900">Oct 2026</span>
-                    <span className="text-[11px] text-stone-600">Appointed Vice Chancellor</span>
-                  </div>
+                <div className="py-3 sm:py-1 sm:px-5">
+                  <p className="text-[10px] font-bold tracking-widest uppercase text-[#7F1D1D]">
+                    Tenure &amp; Mandate
+                  </p>
+                  <p className="mt-1.5 text-base font-bold text-[#153B27]">Appointed Oct 2026</p>
                 </div>
               </div>
             </div>
 
-            {/* Signature, Institutional Title & Quick Links */}
-            <div className="pt-6 border-t border-stone-300 flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <div className="font-serif italic text-2xl sm:text-[28px] text-[#153B27] font-bold tracking-tight">
-                  Prof. Dr. Husnul Amin
-                </div>
-                <div className="text-xs text-stone-600 font-sans font-medium mt-0.5">
-                  Vice Chancellor, University of Swat
-                </div>
-              </div>
-
-              {/* Quick Action Links */}
-              <div className="flex flex-wrap items-center gap-2.5 text-xs font-semibold">
-                <Link
-                  href="/leadership/vice-chancellor"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#153B27] text-white hover:bg-[#153B27]/90 active:scale-[0.985] active:translate-y-px transition-all duration-150 shadow-xs"
-                >
-                  <span>Full Message &amp; Secretariat</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-700 hover:bg-stone-50 active:scale-[0.985] active:translate-y-px transition-all duration-150 shadow-xs"
-                >
-                  <span>About University</span>
-                </Link>
-              </div>
+            {/* Clean action row — no repeated name */}
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/leadership/vice-chancellor"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#153B27] text-white hover:bg-[#153B27]/90 active:scale-[0.985] active:translate-y-px transition-all duration-150 shadow-xs"
+              >
+                <span>Full Message &amp; Secretariat</span>
+                <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-stone-300 text-stone-800 hover:border-[#7F1D1D] hover:text-[#7F1D1D] active:scale-[0.985] transition-all duration-150"
+              >
+                <span>About University</span>
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </Link>
             </div>
           </div>
 

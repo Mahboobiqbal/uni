@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 
 interface BreadcrumbItem {
@@ -16,6 +17,13 @@ interface PageHeaderProps {
   backHref?: string;
   backLabel?: string;
   breadcrumbs?: BreadcrumbItem[];
+  image?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  };
+  /** Optional full-bleed photographic background — layered under the Deep Forest Green glow overlay. */
+  backgroundImage?: string;
   children?: React.ReactNode;
 }
 
@@ -28,6 +36,8 @@ export default function PageHeader({
   backHref = '/',
   backLabel,
   breadcrumbs,
+  image,
+  backgroundImage,
   children,
 }: PageHeaderProps) {
   const displayDescription = description || subtitle;
@@ -42,6 +52,26 @@ export default function PageHeader({
 
   return (
     <div className="relative overflow-hidden bg-[#153B27] text-white border-b border-[#0C1912]/40 pt-32 sm:pt-40 pb-16 sm:pb-20">
+      {/* Full-bleed photographic background + Deep Forest Green glow overlay */}
+      {backgroundImage && (
+        <>
+          <img
+            src={backgroundImage}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-[#0F291B]/95 via-[#153B27]/88 to-[#153B27]/75"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(12,25,18,0)_0%,rgba(12,25,18,0.55)_100%)]"
+          />
+        </>
+      )}
+
       {/* Subtle atmospheric ambient glow */}
       <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/12 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#0C1912]/50 blur-3xl pointer-events-none" />
@@ -81,8 +111,14 @@ export default function PageHeader({
         </nav>
 
         {/* Section Header Content */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <div>
+        <div
+          className={
+            image
+              ? 'grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center'
+              : 'flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6'
+          }
+        >
+          <div className={image ? 'lg:col-span-8' : undefined}>
             <div className="flex items-center gap-2.5 mb-3.5">
               <span className="h-0.5 w-7 bg-[#C8A96E]" />
               <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
@@ -92,12 +128,42 @@ export default function PageHeader({
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-bold tracking-tight leading-[1.12]">
               {title}
             </h1>
+
+            {displayDescription && image && (
+              <p className="mt-5 font-sans text-sm sm:text-base text-stone-200 max-w-xl leading-relaxed">
+                {displayDescription}
+              </p>
+            )}
           </div>
 
-          {displayDescription && (
+          {!image && displayDescription && (
             <p className="font-sans text-sm sm:text-base text-stone-200 max-w-lg lg:text-right leading-relaxed">
               {displayDescription}
             </p>
+          )}
+
+          {image && (
+            <figure className="lg:col-span-4">
+              <div className="relative w-full h-56 sm:h-72 lg:h-auto lg:aspect-[3/2] overflow-hidden rounded-lg border border-white/15 bg-[#0C1912]">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 34vw, 100vw"
+                  className="object-cover"
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-[#0C1912]/45 via-transparent to-transparent"
+                  aria-hidden="true"
+                />
+              </div>
+              {image.caption && (
+                <figcaption className="mt-3 text-[10px] uppercase tracking-[0.16em] text-white/55 font-semibold">
+                  {image.caption}
+                </figcaption>
+              )}
+            </figure>
           )}
         </div>
 

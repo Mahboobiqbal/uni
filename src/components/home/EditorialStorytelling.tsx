@@ -10,7 +10,7 @@ export default function EditorialStorytelling() {
     <section
       id="university-story"
       data-purpose="editorial-storytelling"
-      className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
+      className="pt-12 sm:pt-14 pb-20 sm:pb-28 bg-[#F6F5F0] relative overflow-hidden"
     >
       {/* Subtle ambient lighting */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
@@ -92,12 +92,12 @@ export default function EditorialStorytelling() {
               {/* Outer decorative glow frame */}
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-tr from-[#153B27]/20 via-[#C8A96E]/20 to-transparent blur-xl pointer-events-none" />
 
-              <div className="relative rounded-2xl overflow-hidden border border-stone-300/80 shadow-xl bg-white aspect-[4/3] group">
+              <div className="relative rounded-2xl overflow-hidden border border-stone-300/80 shadow-xl bg-white group">
                 <img
-                  src="/images/campus/charbagh-campus.jpg"
-                  alt="University of Swat Charbagh Main Campus in Swat Valley"
+                  src="/campus-main.jpg"
+                  alt="University of Swat Charbagh Main Campus entrance in Swat Valley"
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500 ease-out"
+                  className="w-full h-auto object-contain group-hover:scale-[1.025] transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 
@@ -129,7 +129,7 @@ export default function EditorialStorytelling() {
 
               <div className="relative rounded-2xl overflow-hidden border border-stone-300/80 shadow-xl bg-white aspect-[4/3] group">
                 <img
-                  src="/images/campus/heritage-swat.jpg"
+                  src="/images/news/news-gandhara-mou-oct2026.jpeg"
                   alt="Swat Valley Buddhist Heritage & Archaeological Research"
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500 ease-out"

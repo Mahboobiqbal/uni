@@ -1,5 +1,6 @@
 import HeroSection from "@/components/home/HeroSection";
 import ViceChancellorSection from "@/components/home/ViceChancellorSection";
+import InstitutionalPillarsMarquee from "@/components/home/InstitutionalPillarsMarquee";
 import EditorialStorytelling from "@/components/home/EditorialStorytelling";
 import FacultyProgramsGrid from "@/components/home/FacultyProgramsGrid";
 import CampusBulletin from "@/components/home/CampusBulletin";
@@ -21,6 +22,9 @@ export default function HomePage() {
 
         {/* 2. ViceChancellorSection with 3D tilt portrait and discourse */}
         <ViceChancellorSection />
+
+        {/* 2.5 Institutional pillars & heritage marquee separator */}
+        <InstitutionalPillarsMarquee />
 
         {/* 3. [NEW] Editorial Storytelling Rows (Alpine campus & frontier research) */}
         <EditorialStorytelling />

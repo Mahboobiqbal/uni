@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -32,22 +31,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-/** Real departmental photography â€” only where an authentic subject image exists. */
-const PROGRAM_PHOTO: Record<string, { src: string; alt: string }> = {
-  'bs-chemistry': {
-    src: '/images/departments/department-of-chemistry_1_img.jpg',
-    alt: 'Department of Chemistry at the University of Swat',
-  },
-  'bs-environmental-sciences': {
-    src: '/images/departments/department-of-environmental-sciences_4_img.jpg',
-    alt: 'Department of Environmental Sciences at the University of Swat',
-  },
+/** Verified campus photography (source: uswat.edu.pk campus gallery) used for the programme hero. */
+const HERO_IMAGE = {
+  src: '/images/uos/campus-and-events/campus-event-11.jpg',
+  alt: 'A University of Swat academic building at the Charbagh Main Campus with the Swat hills behind',
+  caption: 'Charbagh Main Campus · University of Swat',
 };
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'] as const;
 
 const accreditedBy = (prog: { slug: string }) =>
-  prog.slug.includes('llb') ? 'PBC Â· HEC' : 'NCEAC / HEC';
+  prog.slug.includes('llb') ? 'PBC · HEC' : 'NCEAC / HEC';
 
 const termType = (prog: { slug: string }, term: string) =>
   prog.slug.includes('llb') ? term.replace('Year', 'Year of Study') : term;
@@ -79,7 +73,7 @@ const careerDomain = (title: string): string => {
   return 'Industry Practice';
 };
 
-/** Compact bullet overview â€” minimal text, story-hierarchy style. */
+/** Compact bullet overview — minimal text, story-hierarchy style. */
 const academicOverview = (prog: { name: string; facultyGroup: string; degreeLevel: string; slug: string }) => {
   const isComputing = prog.slug.includes('computer') || prog.slug.includes('software');
   const isLaw = prog.slug.includes('llb');
@@ -91,13 +85,13 @@ const academicOverview = (prog: { name: string; facultyGroup: string; degreeLeve
   } else if (isLaw) {
     bullets.push('Core: constitutional jurisprudence, criminal & civil procedure, Islamic jurisprudence.');
     bullets.push('Practice: moot courtroom, legal clinics, structured final-year internship.');
-    bullets.push('Accreditation: PBC Â· HEC recognized; pathway to LLM & PhD.');
+    bullets.push('Accreditation: PBC · HEC recognized; pathway to LLM & PhD.');
   } else {
     bullets.push(`Core: theoretical foundations + hands-on lab/field practice across ${prog.facultyGroup}.`);
     bullets.push('Facilities: dedicated labs, seminar rooms, and research spaces (Charbagh).');
     bullets.push('Accreditation: HEC recognized; pathway to MS & PhD programs.');
   }
-  bullets.push(`Format: semester-based Â· ${prog.degreeLevel} Â· medium English.`);
+  bullets.push(`Format: semester-based · ${prog.degreeLevel} · medium English.`);
   return bullets;
 };
 
@@ -109,7 +103,6 @@ export default async function ProgramDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const photo = PROGRAM_PHOTO[prog.slug];
   const overview = academicOverview(prog);
   const avgCredits = semesterCredits(prog);
   const isLaw = prog.slug.includes('llb');
@@ -121,6 +114,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
         eyebrow={prog.facultyGroup}
         title={prog.name}
         description={prog.description}
+        image={HERO_IMAGE}
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Programs', href: '/programs' },
@@ -155,17 +149,17 @@ export default async function ProgramDetailPage({ params }: PageProps) {
         </dl>
       </PageHeader>
 
-      {/* â”€â”€â”€ Main content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── Main content ───────────────────────────────────────────────────── */}
       <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* â”€â”€â”€ Main Column â”€â”€â”€ */}
+          {/* ─── Main Column ─── */}
           <main className="lg:col-span-8 space-y-12 sm:space-y-14">
             {/* 01. About the Program + Snapshot + Eligibility */}
             <section aria-labelledby="about-heading">
               <div className="flex items-center gap-2.5 mb-4">
                 <span className="h-0.5 w-7 bg-[#153B27]" />
                 <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
-                  01 Â· Curricular Scope
+                  01 · Curricular Scope
                 </span>
               </div>
               <h2
@@ -175,9 +169,9 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                 About the Program
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
-                {/* Left: 2-paragraph overview + photo */}
-                <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+                {/* Left: overview bullets with the meta strip pinned to the column foot */}
+                <div className="flex flex-col">
                   <ul className="space-y-2.5">
                     {overview.map((b, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm sm:text-[15px] text-stone-700 leading-relaxed">
@@ -187,100 +181,82 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                     ))}
                   </ul>
 
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-stone-500 font-medium pt-3 border-t border-stone-200">
-                    <span>{prog.departmentName}</span>
-                    <span className="w-px h-4 bg-stone-300" aria-hidden="true" />
-                    <span>{prog.degreeLevel}</span>
-                    <span className="w-px h-4 bg-stone-300" aria-hidden="true" />
-                    <span>{prog.facultyGroup}</span>
+                  <div className="mt-auto pt-5">
+                    <div className="border-t border-stone-200 pt-3 text-sm text-stone-500 font-medium leading-relaxed">
+                      <span className="block">{prog.departmentName}</span>
+                      <span className="block">{prog.degreeLevel}</span>
+                      <span className="block">{prog.facultyGroup}</span>
+                    </div>
                   </div>
-
-                  {photo && (
-                    <figure className="relative rounded-xl overflow-hidden border border-stone-200 bg-white mt-4">
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        width={960}
-                        height={720}
-                        className="w-full h-auto object-cover aspect-[16/10]"
-                      />
-                      <figcaption className="px-4 py-2.5 text-xs text-stone-500 font-medium border-t border-stone-200">
-                        {prog.departmentName} Â· Charbagh Main Campus
-                      </figcaption>
-                    </figure>
-                  )}
                 </div>
 
-                {/* Right: Program Snapshot Card + Eligibility Card */}
-                <div className="space-y-5">
-                  {/* Program Snapshot Card */}
-                  <div className="bg-[#153B27] text-white rounded-xl p-6 border-t-4 border-[#C8A96E]">
-                    <div className="flex items-center gap-2.5 mb-4">
-                      <BookOpen className="w-5 h-5 text-[#C8A96E]" aria-hidden="true" />
-                      <h3 className="font-serif text-lg font-bold tracking-[-0.01em]">
-                        Program Snapshot
-                      </h3>
-                    </div>
-                    <dl className="divide-y divide-white/10">
-                      {[
-                        { label: 'System', value: 'Semester-Based' },
-                        { label: 'Accreditation', value: accreditedBy(prog) },
-                        { label: 'Campus', value: 'Charbagh Main Campus' },
-                        { label: 'Intake', value: 'Fall & Spring' },
-                        { label: 'Medium', value: 'English' },
-                      ].map((row) => (
-                        <div
-                          key={row.label}
-                          className="flex items-baseline justify-between gap-4 py-2.5"
-                        >
-                          <dt className="text-[10px] uppercase tracking-[0.16em] text-white/60 font-bold">
-                            {row.label}
-                          </dt>
-                          <dd className="font-sans text-sm font-semibold text-white text-right">
-                            {row.value}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
+                {/* Right: Program Snapshot — stretches so both columns end flush */}
+                <div className="bg-[#153B27] text-white rounded-xl p-6 border-t-4 border-[#C8A96E] flex flex-col">
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <BookOpen className="w-5 h-5 text-[#C8A96E]" aria-hidden="true" />
+                    <h3 className="font-serif text-lg font-bold tracking-[-0.01em]">
+                      Program Snapshot
+                    </h3>
                   </div>
-
+                  <dl className="divide-y divide-white/10 flex flex-1 flex-col justify-between">
+                    {[
+                      { label: 'System', value: 'Semester-Based' },
+                      { label: 'Accreditation', value: accreditedBy(prog) },
+                      { label: 'Campus', value: 'Charbagh Main Campus' },
+                      { label: 'Intake', value: 'Fall & Spring' },
+                      { label: 'Medium', value: 'English' },
+                    ].map((row) => (
+                      <div
+                        key={row.label}
+                        className="flex items-baseline justify-between gap-4 py-2.5"
+                      >
+                        <dt className="text-[10px] uppercase tracking-[0.16em] text-white/60 font-bold">
+                          {row.label}
+                        </dt>
+                        <dd className="font-sans text-sm font-semibold text-white text-right">
+                          {row.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
               </div>
 
-              {/* Eligibility & Admission Criteria — full width below the overview */}
-<div className="bg-white border border-stone-200 border-l-4 border-l-[#7F1D1D] rounded-xl p-6">
-                    <div className="flex items-center gap-2.5 mb-4">
-                      <GraduationCap className="w-5 h-5 text-[#7F1D1D]" aria-hidden="true" />
-                      <h3 className="font-serif text-lg font-bold text-[#14291D] tracking-[-0.01em]">
-                        Eligibility &amp; Admission Criteria
-                      </h3>
-                    </div>
-                    <ul className="space-y-3 text-sm text-stone-700 leading-relaxed">
-                      <li className="flex items-start gap-2.5">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#7F1D1D] shrink-0" aria-hidden="true" />
-                        <span>
-                          <strong className="text-[#14291D] font-semibold">Academic Requirement:</strong>{' '}
-                          {prog.eligibility}
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#7F1D1D] shrink-0" aria-hidden="true" />
-                        <span>
-                          <strong className="text-[#14291D] font-semibold">Entry Test / Merit Weightage:</strong>{' '}
-                          As per HEC and University of Swat admission policy; merit lists published on the
-                          admissions portal for each intake.
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#7F1D1D] shrink-0" aria-hidden="true" />
-                        <span>
-                          <strong className="text-[#14291D] font-semibold">Equivalence Rule:</strong>{' '}
-                          Candidates with equivalent credentials (A-Level, foreign boards) are evaluated on a
-                          case-by-case basis by the admissions committee.
-                        </span>
-                      </li>
-                    </ul>
+              {/* Eligibility & Admission Criteria — rule-separated text, no card */}
+              <div className="mt-9 border-t-2 border-[#7F1D1D] pt-5">
+                <div className="flex items-center gap-2.5 mb-2">
+                  <GraduationCap className="w-4 h-4 text-[#7F1D1D]" aria-hidden="true" />
+                  <h3 className="font-serif text-lg font-bold text-[#14291D] tracking-[-0.01em]">
+                    Eligibility &amp; Admission Criteria
+                  </h3>
+                </div>
+                <dl className="divide-y divide-stone-200 border-b border-stone-200">
+                  <div className="grid grid-cols-1 sm:grid-cols-[190px_1fr] gap-1 sm:gap-6 py-3">
+                    <dt className="text-[10px] uppercase tracking-[0.16em] text-[#7F1D1D] font-bold sm:pt-1">
+                      Academic Requirement
+                    </dt>
+                    <dd className="text-sm text-stone-700 leading-relaxed">{prog.eligibility}</dd>
                   </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-[190px_1fr] gap-1 sm:gap-6 py-3">
+                    <dt className="text-[10px] uppercase tracking-[0.16em] text-[#7F1D1D] font-bold sm:pt-1">
+                      Entry Test / Merit
+                    </dt>
+                    <dd className="text-sm text-stone-700 leading-relaxed">
+                      As per HEC and University of Swat admission policy; merit lists are published on the
+                      admissions portal for each intake.
+                    </dd>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-[190px_1fr] gap-1 sm:gap-6 py-3">
+                    <dt className="text-[10px] uppercase tracking-[0.16em] text-[#7F1D1D] font-bold sm:pt-1">
+                      Equivalence
+                    </dt>
+                    <dd className="text-sm text-stone-700 leading-relaxed">
+                      Candidates with equivalent credentials (A-Level, foreign boards) are evaluated on a
+                      case-by-case basis by the admissions committee.
+                    </dd>
+                  </div>
+                </dl>
+              </div>
             </section>
 
             {/* 02. Eligibility (legacy anchor kept for deep links) */}
@@ -290,14 +266,14 @@ export default async function ProgramDetailPage({ params }: PageProps) {
               </h2>
             </section>
 
-            {/* 03. Key Learning Outcomes â€” 2x2 grid */}
+            {/* 03. Key Learning Outcomes — 2x2 grid */}
             <section aria-labelledby="outcomes-heading" className="border-t border-stone-200 pt-12 sm:pt-14">
               <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
                 <div>
                   <div className="flex items-center gap-2.5 mb-3">
                     <span className="h-0.5 w-7 bg-[#153B27]" />
                     <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
-                      03 Â· Curricular Objectives
+                      03 · Curricular Objectives
                     </span>
                   </div>
                   <h2
@@ -312,34 +288,31 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
                 {prog.learningOutcomes.map((outcome, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-white border border-stone-200 rounded-xl p-5 flex items-start gap-4"
-                  >
+                  <li key={idx} className="flex items-start gap-4 border-t border-stone-200 py-4">
                     <span
                       aria-hidden="true"
-                      className="shrink-0 w-9 h-9 rounded-lg bg-[#153B27] text-white font-serif font-bold text-sm tabular-nums flex items-center justify-center"
+                      className="shrink-0 font-serif text-lg font-bold text-[#153B27] tabular-nums leading-none pt-0.5"
                     >
                       {String(idx + 1).padStart(2, '0')}
                     </span>
                     <p className="font-sans text-sm sm:text-[15px] text-stone-700 leading-relaxed">
                       {outcome}
                     </p>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </section>
 
-            {/* 04. Semester scheme â€” 2-column grid */}
+            {/* 04. Semester scheme — 2-column grid */}
             <section aria-labelledby="scheme-heading" className="border-t border-stone-200 pt-12 sm:pt-14">
               <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
                 <div>
                   <div className="flex items-center gap-2.5 mb-3">
                     <span className="h-0.5 w-7 bg-[#B48A3E]" />
                     <span className="text-xs uppercase tracking-widest text-[#7A5A1E] font-bold">
-                      04 Â· Academic Roadmap
+                      04 · Academic Roadmap
                     </span>
                   </div>
                   <h2
@@ -350,62 +323,50 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                   </h2>
                 </div>
                 <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-bold tabular-nums">
-                  {String(prog.semesterOutline.length).padStart(2, '0')} Terms Â· {prog.creditHours} Cr. Hrs
+                  {String(prog.semesterOutline.length).padStart(2, '0')} Terms · {prog.creditHours} Cr. Hrs
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-9">
                 {prog.semesterOutline.map((term, tIdx) => {
                   const isCapstone = term.courses.some((c) =>
-                    /\b(final year|capstone|thesis|internship)\b/i.test(c),
+                    /(final year|capstone|thesis|internship)/i.test(c),
                   );
                   return (
-                    <article
-                      key={tIdx}
-                      className="bg-white border border-stone-200 rounded-xl overflow-hidden"
-                    >
-                      <header className="bg-[#153B27] text-white px-5 py-3 flex justify-between items-center">
-                        <div className="flex items-center gap-2.5">
-                          <span className="font-serif text-base font-bold tracking-[-0.01em]">
-                            Semester {String(tIdx + 1).padStart(2, '0')}
-                          </span>
+                    <div key={tIdx} className="border-t-2 border-[#153B27] pt-4">
+                      <div className="flex items-baseline justify-between gap-3 mb-1.5">
+                        <h3 className="font-serif text-lg font-bold text-[#14291D] tracking-[-0.01em]">
+                          Semester {String(tIdx + 1).padStart(2, '0')}
                           {isCapstone && (
-                            <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#7F1D1D] text-white text-[9px] font-bold uppercase tracking-[0.12em]">
+                            <span className="ml-2 align-middle font-sans text-[9px] font-bold uppercase tracking-[0.12em] text-[#7F1D1D]">
                               Capstone
                             </span>
                           )}
-                        </div>
-                        <span className="text-[11px] font-bold tabular-nums text-[#C8A96E]">
+                        </h3>
+                        <span className="text-[11px] font-bold tabular-nums text-stone-500 shrink-0">
                           {avgCredits} Cr. Hrs
                         </span>
-                      </header>
-                      <ul className="divide-y divide-stone-100 px-5 py-2">
+                      </div>
+                      <ul className="divide-y divide-stone-200/80">
                         {term.courses.map((course, cIdx) => (
-                          <li
-                            key={cIdx}
-                            className="flex items-center justify-between gap-3 py-2"
-                          >
-                            <span className="text-sm font-medium text-stone-800 leading-snug">
-                              {course}
-                            </span>
-                            <span className="text-xs text-stone-500 tabular-nums shrink-0">
-                              3 Cr
-                            </span>
+                          <li key={cIdx} className="flex items-baseline justify-between gap-3 py-1.5">
+                            <span className="text-sm text-stone-700 leading-snug">{course}</span>
+                            <span className="text-[11px] text-stone-400 tabular-nums shrink-0">3 Cr</span>
                           </li>
                         ))}
                       </ul>
-                    </article>
+                    </div>
                   );
                 })}
               </div>
             </section>
 
-            {/* 05. Career Prospects â€” 3-column grid */}
+            {/* 05. Career Prospects — 3-column grid */}
             <section aria-labelledby="careers-heading" className="border-t border-stone-200 pt-12 sm:pt-14">
               <div className="flex items-center gap-2.5 mb-4">
                 <span className="h-0.5 w-7 bg-[#153B27]" />
                 <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
-                  05 Â· Professional Pathways
+                  05 · Professional Pathways
                 </span>
               </div>
               <h2
@@ -415,31 +376,36 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                 Career Prospects
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <ol className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
                 {prog.careerProspects.map((career, idx) => (
-                  <div
+                  <li
                     key={idx}
-                    className="bg-white border border-stone-200 border-t-[3px] border-t-[#153B27] rounded-xl p-5"
+                    className="flex items-baseline justify-between gap-4 border-t border-stone-200 py-3.5"
                   >
-                    <span className="block text-[10px] uppercase tracking-[0.16em] text-[#153B27] font-bold mb-2 tabular-nums">
-                      {ROMAN[idx] ?? String(idx + 1)}.
+                    <div>
+                      <h3 className="font-serif text-base sm:text-lg font-bold text-[#14291D] leading-snug">
+                        {career}
+                      </h3>
+                      <p className="text-xs text-stone-500 leading-relaxed mt-0.5">{careerDomain(career)}</p>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      className="font-serif text-xs font-bold text-stone-400 tabular-nums shrink-0"
+                    >
+                      {ROMAN[idx] ?? String(idx + 1)}
                     </span>
-                    <h3 className="font-serif text-base sm:text-lg font-bold text-[#14291D] leading-snug mb-1.5">
-                      {career}
-                    </h3>
-                    <p className="text-xs text-stone-500 leading-relaxed">{careerDomain(career)}</p>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </section>
 
-            {/* 06. Apply â€” full-width CTA banner */}
+            {/* 06. Apply — full-width CTA banner */}
             <section aria-labelledby="apply-heading" className="border-t border-stone-200 pt-12 sm:pt-14">
               <div className="bg-[#153B27] text-white rounded-2xl p-8 lg:p-10 border-t-4 border-[#7F1D1D]">
                 <div className="flex items-center gap-2.5 mb-3">
                   <span className="h-0.5 w-7 bg-[#C8A96E]" />
                   <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
-                    06 Â· Next Steps
+                    06 · Next Steps
                   </span>
                 </div>
                 <h2
@@ -476,7 +442,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
             </section>
           </main>
 
-          {/* â”€â”€â”€ Sidebar (sticky) â”€â”€â”€ */}
+          {/* ─── Sidebar (sticky) ─── */}
           <aside
             className="lg:col-span-4 space-y-8 sticky top-28 self-start"
             aria-label="Enrollment quick facts"
@@ -520,7 +486,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                     Scholarships
                   </dt>
                   <dd className="font-sans text-sm text-stone-700 leading-snug">
-                    HEC Need-Based Â· KPEF Â· Ehsaas Â· University Merit
+                    HEC Need-Based · KPEF · Ehsaas · University Merit
                   </dd>
                 </div>
               </dl>
