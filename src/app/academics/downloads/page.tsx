@@ -119,6 +119,7 @@ export default function DownloadsPage() {
           { label: 'Academics', href: '/academics' },
           { label: 'Downloads & Forms' },
         ]}
+        backgroundImage="/images/campus/charbagh-campus.jpg"
       />
 
       {/* ─── 2. Interactive Client Explorer ─── */}

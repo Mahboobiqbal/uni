@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import type { NavItem } from '@/data/navigation';
+import FacultiesMegaDrawer from './FacultiesMegaDrawer';
 
 interface MegaMenuPanelProps {
   item: NavItem;
@@ -69,6 +70,9 @@ export default function MegaMenuPanel({ item, panelId, onNavigate }: MegaMenuPan
         onKeyDown={handleKeyDown}
         className="animate-mega-drawer w-full overflow-hidden border-t border-white/15 border-b-4 border-b-[#7F1D1D] bg-[#F6F5F0] text-left shadow-2xl"
       >
+        {item.anchor === 'faculties' ? (
+          <FacultiesMegaDrawer item={item} onNavigate={onNavigate} />
+        ) : (
         <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px]">
           {/* ── Directory ─────────────────────────────────────────────── */}
           <div className="px-6 pb-8 pt-7 sm:px-10 lg:px-14">
@@ -168,6 +172,7 @@ export default function MegaMenuPanel({ item, panelId, onNavigate }: MegaMenuPan
             </Link>
           </aside>
         </div>
+        )}
       </div>
     </div>
   );

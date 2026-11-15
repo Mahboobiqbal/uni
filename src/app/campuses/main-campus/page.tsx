@@ -19,10 +19,10 @@ export default function MainCampusPage() {
         eyebrow="Campuses · University of Swat"
       />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-10 sm:py-20">
         
         {/* Back Link */}
-        <div className="mb-10">
+        <div className="mb-8 sm:mb-10">
           <Link
             href="/campus-life"
             className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 hover:text-[#153B27] transition-colors"
@@ -32,12 +32,12 @@ export default function MainCampusPage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          <div className="lg:col-span-8 space-y-12">
+          <div className="lg:col-span-8 space-y-8 sm:space-y-12">
             
             {/* Hero Image */}
-            <div className="relative w-full aspect-16/9 rounded-3xl overflow-hidden shadow-sm border border-stone-200">
+            <div className="relative w-full aspect-16/9 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-stone-200">
               <Image
                 src="/images/campus/charbagh-campus.jpg"
                 alt="Charbagh Main Campus University of Swat"
@@ -48,7 +48,7 @@ export default function MainCampusPage() {
             </div>
 
             {/* Overview */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
+            <div className="p-5 sm:p-10 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs">
               <div className="flex items-center gap-2 mb-3">
                 <span className="h-0.5 w-6 bg-[#153B27]" />
                 <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
@@ -64,7 +64,7 @@ export default function MainCampusPage() {
             </div>
 
             {/* Landmark Solarization Project */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
+            <div className="p-5 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
               <div className="flex items-center gap-2 mb-3">
                 <span className="h-0.5 w-6 bg-[#C8A96E]" />
                 <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
@@ -100,7 +100,7 @@ export default function MainCampusPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-300 shadow-xs">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs">
               <h3 className="font-serif text-xl font-bold text-stone-900 pb-3 border-b border-stone-200 mb-4">
                 Campus Location
               </h3>

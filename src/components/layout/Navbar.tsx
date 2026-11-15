@@ -36,6 +36,18 @@ export default function Navbar() {
     setMobileSubmenu(null);
   }, [pathname]);
 
+  // Lock body scroll when mobile drawer is open.
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -115,10 +127,10 @@ export default function Navbar() {
           {/* ── Branding ───────────────────────────────────────────────── */}
           <Link
             href="/"
-            className="group flex shrink-0 items-center gap-3 text-white focus:outline-none"
+            className="group flex shrink-0 items-center gap-2.5 text-white focus:outline-none sm:gap-3"
             title="University of Swat"
           >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 p-0.5 backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:border-white/50 sm:h-11 sm:w-11">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 p-0.5 backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:border-white/50 sm:h-11 sm:w-11">
               <img
                 src="/uos-logo-circle.png"
                 alt="University of Swat crest"
@@ -126,10 +138,10 @@ export default function Navbar() {
               />
             </span>
             <span className="flex flex-col text-left">
-              <span className="font-serif text-lg font-bold leading-tight tracking-[-0.02em] text-white sm:text-[19px] 2xl:text-[21px]">
+              <span className="font-serif text-[16px] font-bold leading-tight tracking-[-0.02em] text-white sm:text-[19px] 2xl:text-[21px]">
                 University of Swat
               </span>
-              <span className="mt-0.5 text-[9.5px] font-semibold uppercase tracking-[0.16em] text-white/60">
+              <span className="mt-0.5 text-[8.5px] font-semibold uppercase tracking-[0.14em] text-white/60 sm:text-[9.5px] sm:tracking-[0.16em]">
                 Khyber Pakhtunkhwa, Pakistan
               </span>
             </span>
@@ -142,6 +154,19 @@ export default function Navbar() {
             className="hidden items-center gap-1 xl:flex"
           >
             {navItems.map((item, index) => {
+              if (item.direct) {
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-center px-2 py-2 text-[12.5px] font-semibold text-white/85 hover:text-white rounded-md transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+
               const isOpen = activeDropdown === item.label;
 
               return (
@@ -218,21 +243,31 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* ── Drawer toggle ──────────────────────────────────────────── */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-nav-drawer"
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            className="-mr-1 flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 focus:outline-none xl:hidden"
-          >
-            {mobileMenuOpen ? (
-              <X className="h-5 w-5" aria-hidden="true" />
-            ) : (
-              <Menu className="h-5 w-5" aria-hidden="true" />
-            )}
-          </button>
+          {/* ── Mobile / Tablet Action Icons ───────────────────────────── */}
+          <div className="flex items-center gap-1 xl:hidden">
+            <Link
+              href={primaryActions.search.href}
+              aria-label={primaryActions.search.label}
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition-colors focus:outline-none"
+            >
+              <Search className="h-4.5 w-4.5" aria-hidden="true" />
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              className="flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 focus:outline-none"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" aria-hidden="true" />
+              ) : (
+                <Menu className="h-5 w-5" aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Desktop mega panel — one instance, always inside the viewport */}
@@ -251,10 +286,24 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div
           id="mobile-nav-drawer"
-          className="max-h-[calc(100vh-4.5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-[#0C1912]/97 px-4 pb-8 pt-2 backdrop-blur-2xl sm:px-6 xl:hidden"
+          className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-[#0C1912]/97 px-4 pb-8 pt-2 backdrop-blur-2xl sm:px-6 xl:hidden"
         >
           <nav aria-label="Mobile" className="flex flex-col">
             {navItems.map((item) => {
+              if (item.direct) {
+                return (
+                  <div key={item.label} className="border-b border-white/10 last:border-b-0">
+                    <Link
+                      href={item.href}
+                      onClick={closeAll}
+                      className="flex min-h-[52px] items-center gap-3 py-3.5 text-left"
+                    >
+                      <span className="text-[15px] font-semibold text-white">{item.label}</span>
+                    </Link>
+                  </div>
+                );
+              }
+
               const isOpen = mobileSubmenu === item.label;
               const drawerPanelId = `mobile-panel-${item.anchor}`;
 

@@ -23,7 +23,7 @@ export default function NewsPage() {
         eyebrow="Newsroom · University of Swat"
       />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 space-y-16">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-10 sm:py-20 space-y-12 sm:space-y-16">
         
         {/* Featured News Section */}
         <div>
@@ -33,15 +33,15 @@ export default function NewsPage() {
               Featured Headlines
             </span>
           </div>
-          <h2 className="font-serif text-3xl font-bold text-stone-900 mb-8">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mb-6 sm:mb-8">
             Top Institutional Stories
           </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {featured.map((article) => (
               <article
                 key={article.id}
-                className="p-6 sm:p-8 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] flex flex-col justify-between group hover:bg-[#0F2D1E] transition-all"
+                className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] flex flex-col justify-between group hover:bg-[#0F2D1E] transition-all"
               >
                 <div>
                   <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden mb-6 bg-white/10 border border-white/15">
@@ -99,7 +99,7 @@ export default function NewsPage() {
               Press Archive
             </span>
           </div>
-          <h2 className="font-serif text-3xl font-bold text-stone-900 mb-8">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mb-6 sm:mb-8">
             More News &amp; Events
           </h2>
 
@@ -107,7 +107,7 @@ export default function NewsPage() {
             {remaining.map((article) => (
               <article
                 key={article.id}
-                className="p-6 rounded-3xl bg-white border border-stone-300 shadow-xs flex flex-col justify-between group hover:border-[#7F1D1D]/40 hover:shadow-md transition-all"
+                className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs flex flex-col justify-between group hover:border-[#7F1D1D]/40 hover:shadow-md transition-all"
               >
                 <div>
                   <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden mb-4 bg-stone-100 border border-stone-200">

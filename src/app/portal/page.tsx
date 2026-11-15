@@ -85,7 +85,7 @@ export default function PortalPage() {
         eyebrow="Single Sign-On &amp; Electronic Workflows"
       />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 space-y-12">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-10 sm:py-20 space-y-12">
         
         {/* Portals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -99,7 +99,7 @@ export default function PortalPage() {
                 key={portal.title}
                 href={portal.url}
                 {...extraProps}
-                className="group p-6 sm:p-7 rounded-3xl bg-white border border-stone-300 shadow-xs hover:border-[#153B27]/40 hover:shadow-md transition-all flex flex-col justify-between"
+                className="group p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs hover:border-[#153B27]/40 hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between mb-5">
@@ -134,7 +134,7 @@ export default function PortalPage() {
         </div>
 
         {/* Credentials & Helpdesk Box */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="p-5 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#7F1D1D] text-white border border-[#661717] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
             <span className="text-xs uppercase tracking-widest text-[#E5CD9B] font-bold block mb-1">
               IT Support &amp; Single Sign-On Help

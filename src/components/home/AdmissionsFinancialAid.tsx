@@ -75,14 +75,14 @@ export default function AdmissionsFinancialAid() {
               Admissions &amp; Scholarships • 2026–2027
             </span>
           </div>
-          <h3 className="font-serif text-3xl lg:text-4xl font-bold text-[#14291D] tracking-[-0.02em]">
+          <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#14291D] tracking-[-0.02em]">
             Accessible Excellence &amp; Student Financial Support
           </h3>
         </div>
 
         <Link
           href="/admissions"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#153B27] hover:text-[#7F1D1D] transition-colors group"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#153B27] hover:text-[#7F1D1D] transition-colors group min-h-[44px] py-1"
         >
           <span>Download Admissions Prospectus (PDF)</span>
           <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
@@ -90,11 +90,11 @@ export default function AdmissionsFinancialAid() {
       </div>
 
       {/* 3-column architectural pathway cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8 sm:mt-10">
         {aidCards.map((card) => (
           <article
             key={card.id}
-            className={`rounded-2xl p-7 flex flex-col justify-between ${card.cardClass}`}
+            className={`rounded-2xl p-5 sm:p-7 flex flex-col justify-between ${card.cardClass}`}
           >
             <div>
               <span className={`inline-flex items-center text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full ${card.badgeClass}`}>
@@ -114,7 +114,7 @@ export default function AdmissionsFinancialAid() {
 
             <Link
               href={card.ctaHref}
-              className={`inline-flex items-center justify-between w-full py-3 px-5 rounded-xl font-semibold text-center transition-colors mt-6 group ${card.ctaClass}`}
+              className={`inline-flex items-center justify-between w-full py-3 px-5 rounded-xl font-semibold text-center transition-colors mt-6 group min-h-[44px] ${card.ctaClass}`}
             >
               <span>{card.cta}</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />

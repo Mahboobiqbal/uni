@@ -21,14 +21,14 @@ export default function EventsPage() {
         eyebrow="Events · University of Swat"
       />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 space-y-8">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-10 sm:py-20 space-y-8">
         
         <div className="space-y-6">
           {eventsList.map((evt) => (
             <Link
               key={evt.id}
               href={`/events/${evt.id}`}
-              className="group block p-8 rounded-3xl bg-white border border-stone-300 shadow-xs hover:border-[#153B27]/40 hover:shadow-md transition-all first:bg-[#153B27] first:text-white first:border-white/10 first:shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] first:hover:bg-[#0F2D1E] first:hover:border-white/20! first:hover:shadow-[0_28px_56px_-24px_rgba(12,25,18,0.55)]"
+              className="group block p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs hover:border-[#153B27]/40 hover:shadow-md transition-all first:bg-[#153B27] first:text-white first:border-white/10 first:shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] first:hover:bg-[#0F2D1E] first:hover:border-white/20! first:hover:shadow-[0_28px_56px_-24px_rgba(12,25,18,0.55)]"
             >
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center gap-3 text-xs">

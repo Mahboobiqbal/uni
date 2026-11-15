@@ -44,11 +44,11 @@ export default async function EventDetailPage({ params }: PageProps) {
         backLabel="All Events"
       />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-10 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Details column */}
           <div className="lg:col-span-8 space-y-8">
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
+            <div className="p-5 sm:p-10 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs">
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mb-6">
                 About the Event
               </h2>
@@ -96,22 +96,22 @@ export default async function EventDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-gradient-to-b from-[#153B27] to-[#14291D] text-white">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#153B27] to-[#14291D] text-white">
               <h3 className="font-serif text-xl font-bold mb-3">Attendance & Registration</h3>
               <p className="text-white/75 text-sm leading-relaxed mb-5">
                 Participation is open to students, faculty, and the public. Confirm attendance with
                 the organizing department or through the university contact directory below.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-[#153B27] text-sm font-bold hover:bg-stone-100 transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white text-[#153B27] text-sm font-bold hover:bg-stone-100 transition-colors"
                 >
                   Contact Organizer
                 </Link>
                 <Link
                   href="/academics/calendar"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/25 text-white text-sm font-bold hover:bg-white/10 transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-white/25 text-white text-sm font-bold hover:bg-white/10 transition-colors"
                 >
                   View Academic Calendar
                 </Link>
@@ -121,7 +121,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
           {/* Sidebar */}
           <div className="lg:col-span-4">
-            <div className="p-6 rounded-3xl bg-white border border-stone-300 shadow-xs lg:sticky lg:top-24">
+            <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs lg:sticky lg:top-24">
               <div className="flex items-center gap-2 mb-5">
                 <Tag className="w-4 h-4 text-[#7F1D1D]" />
                 <h3 className="font-serif text-lg font-bold text-stone-900">More Events</h3>

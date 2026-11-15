@@ -150,7 +150,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative z-30 w-full min-h-screen flex flex-col justify-between bg-[#0C1912] text-white">
+    <section className="relative z-30 w-full min-h-screen flex flex-col justify-between overflow-x-clip bg-[#0C1912] text-white">
       {/* Inline keyframes for the seamless vertical auto-scroll loop */}
       <style>{`
         @keyframes hero-widget-scroll {
@@ -192,12 +192,12 @@ export default function HeroSection() {
 
       {/* Bottom content area — editorial left-to-right balance, vertically centered */}
       <div className="relative z-20 mt-auto w-full pb-44 sm:pb-48 md:pb-52">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative">
           <div className="flex flex-col">
             {/* Bottom-Left — Main Hero Headline & CTAs */}
             <div className="max-w-2xl text-left">
               {/* Headline with italic gold "Innovators" + hand-drawn gold SVG underline */}
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.08] drop-shadow-md">
+              <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.1] sm:leading-[1.08] drop-shadow-md">
                 Shaping Scholars &amp;{' '}
                 <span className="relative inline-block italic font-serif text-[#E2C07D]">
                   Innovators
@@ -221,23 +221,23 @@ export default function HeroSection() {
               </h1>
 
               {/* Subtext */}
-              <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 max-w-xl mt-5 leading-[1.65] font-normal drop-shadow-sm">
+              <p className="font-sans text-xs sm:text-base md:text-lg text-white/90 max-w-xl mt-4 sm:mt-5 leading-[1.65] font-normal drop-shadow-sm">
                 Rooted in ancient Gandharan heritage and energized by modern academic zeal, the
                 University of Swat provides world-class education, transformative scientific inquiry,
                 and regional leadership.
               </p>
 
               {/* CTAs */}
-              <div className="mt-7 sm:mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                 <Link
                   href="/programs"
-                  className="inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] active:scale-[0.985] active:translate-y-px text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-lg shadow-lg shadow-black/40 hover:-translate-y-[2px] transition-all duration-150"
+                  className="w-full sm:w-auto inline-flex items-center justify-center bg-[#7F1D1D] hover:bg-[#681818] active:bg-[#521313] active:scale-[0.985] active:translate-y-px text-white font-semibold text-sm sm:text-base px-7 sm:px-8 py-3.5 rounded-lg shadow-lg shadow-black/40 hover:-translate-y-[2px] transition-all duration-150"
                 >
                   Explore Programs
                 </Link>
                 <Link
                   href="/campus-life"
-                  className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 active:bg-white/15 active:scale-[0.985] active:translate-y-px text-white backdrop-blur-md border border-white/20 font-semibold text-sm sm:text-base px-7 py-3.5 rounded-lg transition-all duration-150 shadow-md shadow-black/20 hover:-translate-y-[2px]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center bg-white/10 hover:bg-white/20 active:bg-white/15 active:scale-[0.985] active:translate-y-px text-white backdrop-blur-md border border-white/20 font-semibold text-sm sm:text-base px-6 sm:px-7 py-3.5 rounded-lg transition-all duration-150 shadow-md shadow-black/20 hover:-translate-y-[2px]"
                 >
                   Explore Campus Life
                 </Link>
@@ -392,18 +392,18 @@ export default function HeroSection() {
 
       {/* Three Architectural Crimson Pillars — overlapping the bottom edge onto Warm Alabaster */}
       <div className="absolute bottom-0 inset-x-0 z-30 pointer-events-none">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 translate-y-[78%] md:translate-y-[82%] pointer-events-auto relative z-30">
+        <div className="max-w-[1440px] w-full mx-auto px-3 sm:px-10 lg:px-14">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 translate-y-[78%] md:translate-y-[82%] pointer-events-auto relative z-30">
             {heroPillars.map((pillar) => (
               <article
                 key={pillar.title}
-                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] px-3 py-4 sm:px-7 sm:py-6 flex flex-col gap-2 sm:gap-3 transition-all duration-200 ease-out hover:-translate-y-[2px]"
+                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] px-2.5 py-3 sm:px-7 sm:py-6 flex flex-col gap-1 sm:gap-3 transition-all duration-200 ease-out hover:-translate-y-[2px]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-serif italic text-base sm:text-lg text-[#E0C078]">{pillar.numeral}</span>
+                  <span className="font-serif italic text-sm sm:text-lg text-[#E0C078]">{pillar.numeral}</span>
                   {pillar.icon}
                 </div>
-                <h2 className="font-serif text-sm sm:text-xl font-bold tracking-tight">{pillar.title}</h2>
+                <h2 className="font-serif text-xs sm:text-xl font-bold tracking-tight truncate sm:overflow-visible">{pillar.title}</h2>
                 <p className="font-sans text-white/85 leading-[1.62] text-[11px] sm:text-sm hidden sm:block">{pillar.description}</p>
 
                 {/* Key institutional facts */}

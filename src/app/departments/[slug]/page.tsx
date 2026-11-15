@@ -2,14 +2,83 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, BookOpen, GraduationCap, Mail, MapPin, Award, CheckCircle2, FlaskConical, Users } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, Users } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
-import { allDepartments, facultiesCatalog } from '@/data/departmentsData';
+import { allDepartments } from '@/data/departmentsData';
+import { programsDetailCatalog } from '@/data/programsDetailData';
 import { slugify } from '@/lib/slugify';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+const FALLBACK_HERO = '/images/campus/main-campus-gate.jpeg';
+
+/** Real departmental/field photos where they exist; verified campus block fallback otherwise. */
+const HERO_IMAGES: Record<string, string> = {
+  chemistry: '/images/departments/department-of-chemistry_1_img.jpg',
+  botany: '/images/departments/department-of-botany_0_img.jpg',
+  zoology: '/images/departments/department-of-zoology_0_img.png',
+  'environmental-sciences': '/images/departments/department-of-environmental-sciences_2_img.png',
+  'biotechnology-genetics-forensic-and-microbiology':
+    '/images/departments/department-of-biotechnology-genetics-forensic-and-microbiology_0_img.jpg',
+  'english-and-foreign-languages': '/images/departments/department-of-english-and-foreign-languages_0_img.png',
+};
+
+const durationOf = (prog: string): string => {
+  const l = prog.toLowerCase();
+  if (l.includes('phd') || l.includes('ph.d') || l.includes('doctorate')) return '3–5 Years';
+  if (l.startsWith('llb') || l.includes('law') || l.startsWith('dpt') || l.startsWith('doctor of')) return '5 Years';
+  if (
+    l.startsWith('ms') ||
+    l.startsWith('mphil') ||
+    l.startsWith('m.phil') ||
+    l.startsWith('mba') ||
+    l.startsWith('llm') ||
+    l.startsWith('master')
+  ) {
+    return '2 Years';
+  }
+  return '4 Years';
+};
+
+const durationBadgeClass = (prog: string): string => {
+  const l = prog.toLowerCase();
+  if (l.includes('phd') || l.includes('ph.d') || l.includes('doctorate')) {
+    return 'bg-amber-900/10 text-amber-900 border-[#C8A96E]/70';
+  }
+  if (
+    l.startsWith('ms') ||
+    l.startsWith('mphil') ||
+    l.startsWith('m.phil') ||
+    l.startsWith('mba') ||
+    l.startsWith('llm') ||
+    l.startsWith('master')
+  ) {
+    return 'bg-[#7F1D1D]/10 text-[#7F1D1D] border-[#E4C6C6]';
+  }
+  return 'bg-[#153B27]/10 text-[#153B27] border-[#C9D6C2]';
+};
+
+const flagshipSlug = (prog: string): string | undefined => {
+  const norm = prog.toLowerCase();
+  const found = programsDetailCatalog.find(
+    (p) =>
+      norm.includes(p.slug.replace(/-/g, ' ')) ||
+      norm.includes(p.name.toLowerCase()) ||
+      p.name.toLowerCase().includes(norm.split('(')[0].trim())
+  );
+  return found?.slug;
+};
+
+const initials = (name: string): string =>
+  name
+    .replace(/^(Dr\.|Prof\.|Mr\.|Ms\.|Mrs\.)\s*/i, '')
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase();
 
 export async function generateStaticParams() {
   return allDepartments.map((dept) => ({
@@ -35,252 +104,226 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  const heroImage = HERO_IMAGES[dept.id] ?? FALLBACK_HERO;
+
   return (
     <div className="bg-[#F6F5F0] min-h-screen">
       <PageHeader
         tag={dept.facultyGroup}
         title={dept.name}
-        subtitle={dept.aims}
         eyebrow="Academic Department · University of Swat"
+        backgroundImage={heroImage}
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Faculties', href: '/faculty' },
+          { label: dept.name },
+        ]}
       />
 
       <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
-        
-        {/* Back Link */}
-        <div className="mb-10">
-          <Link
-            href="/faculty"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 hover:text-[#153B27] transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to All Faculties &amp; Departments</span>
-          </Link>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
           {/* Main Column */}
-          <div className="lg:col-span-8 space-y-12">
-            
-            {/* Overview & Mission */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
-              <div className="flex items-center gap-2.5 mb-4">
-                <span className="h-0.5 w-6 bg-[#C8A96E]" />
-                <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">
-                  Departmental Mission &amp; Overview
+          <div className="lg:col-span-8 space-y-14">
+            {/* About the Department — editorial, on the page canvas */}
+            <section aria-labelledby="about-heading">
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="h-0.5 w-7 bg-[#7F1D1D]" />
+                <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+                  Departmental Overview
                 </span>
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-6">
+              <h2 id="about-heading" className="font-serif text-3xl sm:text-4xl font-bold text-[#14291D] tracking-[-0.02em] mb-5">
                 About the Department
               </h2>
-              <p className="font-sans text-white/75 text-base sm:text-lg leading-relaxed mb-6">
+              <p className="font-sans text-stone-600 text-base sm:text-lg leading-[1.75]">
                 {dept.description}
               </p>
-              <div className="p-5 rounded-2xl bg-white/[0.07] border border-white/[0.12]">
-                <h4 className="font-sans text-xs font-bold uppercase tracking-wider text-white mb-2">
-                  Academic Aims &amp; Strategic Purpose
+
+              <div className="mt-7 border-l-4 border-[#7F1D1D] pl-6">
+                <h4 className="text-xs font-bold uppercase tracking-widest text-[#7F1D1D]">
+                  Departmental Mission
                 </h4>
-                <p className="font-sans text-sm text-white/70 leading-relaxed">
+                <p className="text-stone-700 mt-2 text-sm sm:text-base leading-relaxed">
                   {dept.aims}
                 </p>
               </div>
-            </div>
+            </section>
 
-            {/* Degree Programs Offered */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
-              <div className="flex items-center gap-2.5 mb-4">
-                <span className="h-0.5 w-6 bg-[#7F1D1D]" />
-                <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+            {/* Offered Degree Programs — sharp white cards on canvas */}
+            <section aria-labelledby="programs-heading">
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="h-0.5 w-7 bg-[#153B27]" />
+                <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold">
                   Curriculum &amp; Academic Degrees
                 </span>
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mb-6">
+              <h2 id="programs-heading" className="font-serif text-3xl sm:text-4xl font-bold text-[#14291D] tracking-[-0.02em] mb-6">
                 Offered Degree Programs
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {dept.programsOffered.map((program, idx) => (
-                  <div
-                    key={idx}
-                    className="p-5 rounded-2xl bg-stone-50 border border-stone-300 hover:border-[#153B27]/50 transition-colors flex items-start gap-3.5"
-                  >
-                    <div className="p-2 rounded-xl bg-white border border-stone-300 text-[#153B27] shrink-0 mt-0.5">
-                      <GraduationCap className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h4 className="font-serif text-base font-bold text-stone-900">
-                        {program}
-                      </h4>
-                      <span className="text-xs text-stone-600 font-sans block mt-1">
-                        HEC Recognized · Semester System
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Scholarly Faculty Roster */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-300 shadow-xs">
-              <div className="flex items-center gap-2.5 mb-4">
-                <span className="h-0.5 w-6 bg-[#B48A3E]" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {dept.programsOffered.map((program) => {
+                  const slugPath = flagshipSlug(program) ?? '/programs';
+                  return (
+                    <div
+                      key={program}
+                      className="bg-white border border-stone-200 hover:border-[#153B27] rounded-xl p-5 shadow-xs transition-colors flex flex-col justify-between"
+                    >
+                      <div>
+                        <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold border ${durationBadgeClass(program)}`}>
+                          {durationOf(program)}
+                        </span>
+                        <h3 className="font-serif text-lg font-bold text-stone-900 mt-3 leading-snug">
+                          {program}
+                        </h3>
+                        <p className="text-xs text-stone-500 mt-1.5">HEC Recognized • Semester System</p>
+                      </div>
+                      <Link
+                        href={slugPath}
+                        className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[#7F1D1D] hover:text-[#661717] transition-colors group"
+                      >
+                        <span>View Syllabus</span>
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* Teaching Faculty — clean uniform grid (photo + name + role only) */}
+            <section aria-labelledby="faculty-heading">
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="h-0.5 w-7 bg-[#B48A3E]" />
                 <span className="text-xs uppercase tracking-widest text-[#B48A3E] font-bold">
                   Academic Faculty
                 </span>
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mb-6">
+              <h2 id="faculty-heading" className="font-serif text-3xl sm:text-4xl font-bold text-[#14291D] tracking-[-0.02em] mb-6">
                 Teaching Faculty &amp; Researchers
               </h2>
 
               {dept.facultyMembers && dept.facultyMembers.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {dept.facultyMembers.map((member, idx) => (
                     <Link
                       key={idx}
                       href={`/faculty/${slugify(`${member.name}-${dept.id}`)}`}
-                      className="group p-5 rounded-2xl bg-stone-50 border border-stone-300 flex items-center gap-4 hover:border-stone-400 transition-colors"
+                      className="bg-white border border-stone-200 rounded-xl p-4 flex items-center gap-4 hover:border-[#153B27] transition-colors"
                     >
-                      <div className="w-16 h-16 rounded-2xl overflow-hidden bg-stone-200 shrink-0 relative flex items-center justify-center text-stone-400 font-serif text-xl font-bold">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden bg-[#153B27] shrink-0 flex items-center justify-center text-white font-serif text-lg font-bold border border-stone-200">
                         {member.image ? (
                           <Image
                             src={member.image}
                             alt={member.name}
-                            fill
-                            className="object-cover"
+                            width={64}
+                            height={64}
+                            className="w-full h-full object-cover object-top"
                           />
                         ) : (
-                          member.name.slice(0, 2)
+                          initials(member.name)
                         )}
                       </div>
-                      <div>
-                        <h4 className="font-serif text-base font-bold text-stone-900 group-hover:text-[#153B27] transition-colors">
+                      <div className="min-w-0">
+                        <h4 className="font-serif font-bold text-stone-900 text-base leading-snug">
                           {member.name}
                         </h4>
-                        <span className="text-xs font-semibold text-[#153B27] block">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#7F1D1D] mt-1 truncate">
                           {member.designation}
-                        </span>
-                        {member.qualification && (
-                          <span className="text-[11px] text-stone-600 block mt-0.5">
-                            {member.qualification}
-                          </span>
-                        )}
+                        </p>
                       </div>
                     </Link>
                   ))}
                 </div>
               ) : (
-                <div className="p-6 rounded-2xl bg-stone-50 border border-dashed border-stone-300 text-center">
+                <div className="p-6 rounded-2xl bg-white border border-dashed border-stone-300 text-center">
                   <Users className="w-8 h-8 text-stone-400 mx-auto mb-2" />
-                  <h4 className="font-serif text-base font-bold text-stone-800">
-                    Department Faculty
-                  </h4>
+                  <h4 className="font-serif text-base font-bold text-stone-800">Department Faculty</h4>
                   <p className="text-xs text-stone-600 max-w-sm mx-auto mt-1">
                     Supervised by {dept.headOfDepartment || 'Head of Department'}. Official faculty directory and office hours are available via the departmental secretariat.
                   </p>
                 </div>
               )}
-            </div>
-
+            </section>
           </div>
 
-          {/* Sidebar Column */}
-          <div className="lg:col-span-4 space-y-6">
-            
-            {/* Quick Department Facts Card */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
-              <h3 className="font-serif text-xl font-bold text-white mb-6 pb-4 border-b border-white/15">
-                Department Directory
-              </h3>
+          {/* Sidebar — sticky */}
+          <div className="lg:col-span-4">
+            <div className="space-y-6 lg:sticky lg:top-28">
+              {/* Department Directory */}
+              <div className="bg-[#153B27] text-white rounded-2xl p-6 border-t-4 border-t-[#7F1D1D]">
+                <h3 className="font-serif text-xl font-bold text-white mb-6 pb-4 border-b border-white/15">
+                  Department Directory
+                </h3>
 
-              <div className="space-y-4 text-xs sm:text-[13px]">
-                <div>
-                  <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">
-                    Head of Department
-                  </span>
-                  <span className="font-semibold text-white text-sm">
-                    {dept.headOfDepartment || 'Academic Chairperson'}
-                  </span>
+                <div className="space-y-4 text-xs sm:text-[13px]">
+                  <div>
+                    <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">Head of Department</span>
+                    <span className="font-semibold text-white text-sm">{dept.headOfDepartment || 'Academic Chairperson'}</span>
+                  </div>
+                  <div>
+                    <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">Faculty Division</span>
+                    <span className="font-semibold text-white">{dept.facultyGroup}</span>
+                  </div>
+                  <div>
+                    <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">Campus Location</span>
+                    <span className="font-medium text-white/75 flex items-center gap-1.5 mt-0.5">
+                      <MapPin className="w-3.5 h-3.5 text-[#C8A96E]" />
+                      Academic Block C, Charbagh Main Campus
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">Official Inquiry Email</span>
+                    <span className="font-mono text-white/75 flex items-center gap-1.5 mt-0.5">
+                      <Mail className="w-3.5 h-3.5 text-[#C8A96E]" />
+                      {dept.contactEmail}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">Accreditation &amp; Standards</span>
+                    <span className="font-medium text-white/75">Higher Education Commission (HEC) of Pakistan</span>
+                  </div>
                 </div>
 
-                <div>
-                  <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">
-                    Faculty Division
-                  </span>
-                  <span className="font-semibold text-white">
-                    {dept.facultyGroup}
-                  </span>
-                </div>
-
-                <div>
-                  <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">
-                    Campus Location
-                  </span>
-                  <span className="font-medium text-white/75 flex items-center gap-1.5 mt-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-[#C8A96E]" />
-                    Academic Block C, Charbagh Main Campus
-                  </span>
-                </div>
-
-                <div>
-                  <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">
-                    Official Inquiry Email
-                  </span>
-                  <span className="font-mono text-white/75 flex items-center gap-1.5 mt-0.5">
-                    <Mail className="w-3.5 h-3.5 text-[#C8A96E]" />
-                    {dept.contactEmail}
-                  </span>
-                </div>
-
-                <div>
-                  <span className="text-white/60 uppercase tracking-wider block font-bold text-[10px]">
-                    Accreditation &amp; Standards
-                  </span>
-                  <span className="font-medium text-white/75">
-                    Higher Education Commission (HEC) of Pakistan
-                  </span>
+                <div className="mt-8 pt-6 border-t border-white/15 flex flex-col gap-2.5">
+                  <Link
+                    href="/admissions"
+                    className="w-full py-3 rounded-xl bg-[#C8A96E] text-[#14291D] font-semibold text-xs text-center hover:bg-[#DCC489] transition-colors shadow-xs"
+                  >
+                    Apply for Admission
+                  </Link>
+                  <Link
+                    href="/academics/downloads"
+                    className="w-full py-3 rounded-xl bg-white/10 text-white/80 font-semibold text-xs text-center hover:bg-white/20 transition-colors"
+                  >
+                    Download Syllabi &amp; Rules
+                  </Link>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/15 flex flex-col gap-2.5">
-                <Link
-                  href="/admissions"
-                  className="w-full py-3 rounded-xl bg-[#C8A96E] text-[#14291D] font-semibold text-xs text-center hover:bg-[#DCC489] transition-colors shadow-xs"
-                >
-                  Apply for Admission
-                </Link>
-                <Link
-                  href="/academics/downloads"
-                  className="w-full py-3 rounded-xl bg-white/10 text-white/80 font-semibold text-xs text-center hover:bg-white/20 transition-colors"
-                >
-                  Download Syllabi &amp; Rules
-                </Link>
-              </div>
-            </div>
-
-            {/* Other Departments in Faculty */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-300 shadow-xs">
-              <h4 className="font-serif text-lg font-bold text-stone-900 mb-4">
-                Other Departments in {dept.facultyGroup.split('&')[0]}
-              </h4>
-              <div className="space-y-2 text-xs">
-                {allDepartments
-                  .filter((d) => d.facultyGroup === dept.facultyGroup && d.id !== dept.id)
-                  .slice(0, 4)
-                  .map((od) => (
-                    <Link
-                      key={od.id}
-                      href={`/departments/${od.id}`}
-                      className="block p-3 rounded-xl bg-stone-50 border border-stone-200 hover:border-stone-400 text-stone-700 hover:text-[#153B27] font-medium transition-colors"
-                    >
-                      {od.name}
-                    </Link>
-                  ))}
+              {/* Other Departments */}
+              <div className="bg-white border border-stone-200 rounded-2xl p-6">
+                <h4 className="font-serif text-lg font-bold text-stone-900 mb-4">
+                  Other Departments in {dept.facultyGroup.split('&')[0]}
+                </h4>
+                <div className="space-y-2 text-xs">
+                  {allDepartments
+                    .filter((d) => d.facultyGroup === dept.facultyGroup && d.id !== dept.id)
+                    .slice(0, 4)
+                    .map((od) => (
+                      <Link
+                        key={od.id}
+                        href={`/departments/${od.id}`}
+                        className="block p-3 rounded-xl bg-stone-50 border border-stone-200 hover:border-stone-400 text-stone-700 hover:text-[#153B27] font-medium transition-colors"
+                      >
+                        {od.name}
+                      </Link>
+                    ))}
+                </div>
               </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
   );

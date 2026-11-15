@@ -43,10 +43,10 @@ export default async function NewsArticleDetailPage({ params }: PageProps) {
         eyebrow="Media Cell &amp; Public Relations"
       />
 
-      <div className="max-w-[1100px] mx-auto px-6 lg:px-12 py-16 sm:py-20">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-20">
         
         {/* Back link */}
-        <div className="mb-10 flex items-center justify-between">
+        <div className="mb-8 sm:mb-10 flex items-center justify-between">
           <Link
             href="/news"
             className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 hover:text-[#153B27] transition-colors"
@@ -61,7 +61,7 @@ export default async function NewsArticleDetailPage({ params }: PageProps) {
         </div>
 
         {/* Article Container */}
-        <article className="p-8 sm:p-14 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] space-y-10">
+        <article className="p-5 sm:p-8 lg:p-14 rounded-2xl sm:rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] space-y-8 sm:space-y-10">
           
           {/* Metadata bar */}
           <div className="flex flex-wrap items-center justify-between pb-6 border-b border-white/15 gap-4 text-xs">
@@ -92,7 +92,7 @@ export default async function NewsArticleDetailPage({ params }: PageProps) {
           {/* Content Paragraphs */}
           <div className="font-sans text-white/75 text-base sm:text-lg leading-relaxed space-y-6 pt-4">
             {article.content.map((p, idx) => (
-              <p key={idx} className={idx === 0 ? "font-serif text-xl sm:text-2xl text-white leading-snug" : ""}>
+              <p key={idx} className={idx === 0 ? "font-serif text-lg sm:text-2xl text-white leading-snug" : ""}>
                 {p}
               </p>
             ))}

@@ -202,10 +202,10 @@ export default function RankingSection() {
       <div className="absolute top-1/4 -right-32 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -left-32 w-96 h-96 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10">
 
         {/* ── Section Header (Editorial Split) ── */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 lg:mb-16">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2.5 mb-3">
               <span className="h-0.5 w-7 bg-[#7F1D1D]" />
@@ -213,7 +213,7 @@ export default function RankingSection() {
                 Institutional Quality &amp; Benchmarks
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
               Ranking, Recognition &amp; Quality Audits
             </h2>
             <p className="font-sans text-sm sm:text-base text-stone-600 mt-4 leading-[1.68]">
@@ -239,7 +239,7 @@ export default function RankingSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
 
           {/* Card 1: Lead HEC QAA Audit Card (7 Columns) */}
-          <article className="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-[#153B27] text-white border border-white/10 p-7 sm:p-8 shadow-[0_28px_56px_-24px_rgba(12,25,18,0.55)] hover:bg-[#0F2D1E] hover:-translate-y-[2px] transition-all duration-200 ease-out">
+          <article className="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-[#153B27] text-white border border-white/10 p-5 sm:p-8 shadow-[0_28px_56px_-24px_rgba(12,25,18,0.55)] hover:bg-[#0F2D1E] hover:-translate-y-[2px] transition-all duration-200 ease-out">
             <div>
               {/* Top Row: Eyebrow + Verified Badge */}
               <div className="flex items-center justify-between gap-4 mb-4">
@@ -295,7 +295,7 @@ export default function RankingSection() {
           <div className="lg:col-span-5 flex flex-col gap-6">
 
             {/* Card 2: UI GreenMetric World Rankings */}
-            <article className="flex-1 flex flex-col justify-between rounded-2xl bg-white border border-stone-300 p-6 sm:p-7 shadow-xs hover:border-[#153B27]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+            <article className="flex-1 flex flex-col justify-between rounded-2xl bg-white border border-stone-300 p-5 sm:p-7 shadow-xs hover:border-[#153B27]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
               <div>
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -326,7 +326,7 @@ export default function RankingSection() {
             </article>
 
             {/* Card 3: Times Higher Education Impact Rankings */}
-            <article className="flex-1 flex flex-col justify-between rounded-2xl bg-white border border-stone-300 p-6 sm:p-7 shadow-xs hover:border-[#7F1D1D]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+            <article className="flex-1 flex flex-col justify-between rounded-2xl bg-white border border-stone-300 p-5 sm:p-7 shadow-xs hover:border-[#7F1D1D]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
               <div>
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#7F1D1D]/10 text-[#7F1D1D] border border-[#7F1D1D]/20">
@@ -451,7 +451,7 @@ export default function RankingSection() {
         </div>
 
         {/* ── Reassurance Banner & Action Bar ── */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-stone-300 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="p-5 sm:p-8 rounded-2xl bg-white border border-stone-300 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-2xl">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#153B27] mb-1.5">
               What These Numbers Mean for Scholars &amp; Families
@@ -464,11 +464,11 @@ export default function RankingSection() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={handleDownloadReport}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 active:scale-[0.985] active:translate-y-px text-xs font-semibold text-stone-800 transition-all duration-150 border border-stone-200/80"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 active:scale-[0.985] active:translate-y-px text-xs font-semibold text-stone-800 transition-all duration-150 border border-stone-200/80 min-h-[44px]"
             >
               <Download className="w-4 h-4 text-stone-600" />
               <span>Download QEC Audit (PDF)</span>
@@ -476,7 +476,7 @@ export default function RankingSection() {
 
             <Link
               href="/admissions"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#153B27] hover:bg-[#0F291C] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-xs font-semibold shadow-xs transition-all duration-150"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-xl bg-[#153B27] hover:bg-[#0F291C] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-xs font-semibold shadow-xs transition-all duration-150 min-h-[44px]"
             >
               <span>Explore Admissions Criteria</span>
               <ArrowUpRight className="w-4 h-4 text-emerald-300" />

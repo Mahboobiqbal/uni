@@ -16,7 +16,7 @@ export default function ViceChancellorSection() {
       <div className="absolute top-10 right-10 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-14 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left: Portrait frame — clean photo, caption strip below */}
@@ -26,7 +26,7 @@ export default function ViceChancellorSection() {
 
               <div className="w-full max-w-[420px]">
                 <ProfileCard
-                  avatarUrl="/images/leadership/vc-prof-dr-husnul-amin.jpeg"
+                  avatarUrl="/vc-portrait.jpg"
                   iconUrl="/pattern-crest.svg"
                   name=""
                   title=""
@@ -118,17 +118,17 @@ export default function ViceChancellorSection() {
             </div>
 
             {/* Clean action row — no repeated name */}
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <Link
                 href="/leadership/vice-chancellor"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#153B27] text-white hover:bg-[#153B27]/90 active:scale-[0.985] active:translate-y-px transition-all duration-150 shadow-xs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-3 sm:py-2.5 rounded-xl bg-[#153B27] text-white hover:bg-[#153B27]/90 active:scale-[0.985] active:translate-y-px transition-all duration-150 shadow-xs min-h-[44px]"
               >
                 <span>Full Message &amp; Secretariat</span>
                 <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-stone-300 text-stone-800 hover:border-[#7F1D1D] hover:text-[#7F1D1D] active:scale-[0.985] transition-all duration-150"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-3 sm:py-2.5 rounded-xl border border-stone-300 text-stone-800 hover:border-[#7F1D1D] hover:text-[#7F1D1D] active:scale-[0.985] transition-all duration-150 min-h-[44px]"
               >
                 <span>About University</span>
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />

@@ -94,7 +94,7 @@ export default function UpcomingEvents() {
       data-purpose="upcoming-events"
       className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
     >
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10">
         {/* Header with Navigation Controls */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
           <div>
@@ -143,12 +143,12 @@ export default function UpcomingEvents() {
         {/* Horizontal Scrolling Card Track */}
         <div
           ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto pb-6 scrollbar-none snap-x snap-mandatory"
+          className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 scrollbar-none snap-x snap-mandatory momentum-scroll"
         >
           {events.map((event) => (
             <article
               key={event.id}
-              className="group relative flex-none w-[310px] sm:w-[350px] lg:w-[390px] rounded-2xl border border-stone-300 bg-white shadow-xs overflow-hidden snap-start transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-xl first:bg-[#153B27] first:text-white first:border-white/10 first:shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] first:hover:bg-[#0F2D1E] first:hover:shadow-[0_28px_56px_-24px_rgba(12,25,18,0.55)]"
+              className="group relative flex-none w-[84vw] max-w-[340px] sm:w-[350px] lg:w-[390px] rounded-2xl border border-stone-300 bg-white shadow-xs overflow-hidden snap-start transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-xl first:bg-[#153B27] first:text-white first:border-white/10 first:shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] first:hover:bg-[#0F2D1E] first:hover:shadow-[0_28px_56px_-24px_rgba(12,25,18,0.55)]"
             >
               {/* Event Image Banner */}
               <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">

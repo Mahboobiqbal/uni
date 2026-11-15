@@ -5,31 +5,19 @@ import { MessageCircle, Send, X } from 'lucide-react';
 
 import './UosAssistant.css';
 
-/**
- * UoS Assistant — premium, Apple-style floating chat widget for the
- * University of Swat.
- *
- * Visual language: clean glass surface, rounded corners, soft layered
- * shadows, restrained spring motion, forest-green / crimson / gold brand
- * palette. No 3D tilt, no glow effects, no gimmicks — just a calm,
- * confident institutional assistant.
- *
- * Backend: no real LLM is wired by default. Set NEXT_PUBLIC_CHATBOT_API_URL
- * (or pass `apiEndpoint`) to connect one; until then the bot replies with an
- * honest contact-direction message.
- */
-
 export interface UosAssistantProps {
-  /** Optional API endpoint for a real AI backend. */
   apiEndpoint?: string;
-  /** Initial collapsed state. Defaults to closed. */
   defaultOpen?: boolean;
 }
 
-export default function UosAssistant({
-  apiEndpoint,
-  defaultOpen = false,
-}: UosAssistantProps = {}) {
+const QUICK_PROMPTS = [
+  'Fall 2026 Admission Deadlines',
+  'BS & MPhil Fee Structure',
+  'HEC & KPEF Scholarships',
+  '73 Degree Programs & Eligibility',
+];
+
+export default function UosAssistant({ apiEndpoint, defaultOpen = false }: UosAssistantProps = {}) {
   const [open, setOpen] = useState(defaultOpen);
   const [inputValue, setInputValue] = useState('');
   const [isSending, setIsSending] = useState(false);
@@ -49,7 +37,6 @@ export default function UosAssistant({
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
-  // Focus the input when the panel opens; restore focus to toggle on close.
   useEffect(() => {
     if (open) {
       const t = window.setTimeout(() => inputRef.current?.focus(), 120);
@@ -57,13 +44,12 @@ export default function UosAssistant({
     }
   }, [open]);
 
-  // Escape closes the panel; Tab is trapped inside the dialog.
   useEffect(() => {
     if (!open) return;
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpen(false);
-        toggleRef.current?.focus();
+        window.setTimeout(() => toggleRef.current?.focus(), 60);
         return;
       }
       if (e.key !== 'Tab') return;
@@ -87,7 +73,6 @@ export default function UosAssistant({
     return () => document.removeEventListener('keydown', handleKey);
   }, [open]);
 
-  // Close when clicking outside the widget.
   useEffect(() => {
     if (!open) return;
     const handlePointer = (e: MouseEvent | TouchEvent) => {
@@ -103,7 +88,6 @@ export default function UosAssistant({
     };
   }, [open]);
 
-  // Restore focus to toggle on unmount while open.
   useEffect(() => {
     return () => {
       if (open) toggleRef.current?.focus();
@@ -114,14 +98,12 @@ export default function UosAssistant({
     setMessages((prev) => [...prev, { role: 'bot', text }]);
   }, []);
 
-  const handleSend = useCallback(
-    async (e?: React.FormEvent) => {
-      e?.preventDefault();
-      const text = inputValue.trim();
+  const sendMessage = useCallback(
+    async (raw: string) => {
+      const text = raw.trim();
       if (!text || isSending) return;
 
       setMessages((prev) => [...prev, { role: 'user', text }]);
-      setInputValue('');
       setIsSending(true);
 
       abortControllerRef.current?.abort();
@@ -160,14 +142,25 @@ export default function UosAssistant({
         }
       }
     },
-    [apiEndpoint, inputValue, isSending, addBotMessage],
+    [apiEndpoint, isSending, addBotMessage],
+  );
+
+  const handleSubmit = useCallback(
+    (e?: React.FormEvent) => {
+      e?.preventDefault();
+      const text = inputValue.trim();
+      if (!text) return;
+      setInputValue('');
+      void sendMessage(text);
+    },
+    [inputValue, sendMessage],
   );
 
   const handleToggle = () => setOpen((prev) => !prev);
 
   return (
     <div ref={rootRef} className="uos-assistant" aria-label="University of Swat assistant">
-      {/* ── Toggle ── */}
+      {/* Launcher — hidden while the panel is open */}
       <button
         ref={toggleRef}
         type="button"
@@ -176,12 +169,11 @@ export default function UosAssistant({
         title={open ? 'Close assistant' : 'Open assistant'}
         aria-label={open ? 'Close University of Swat assistant' : 'Open University of Swat assistant'}
         onClick={handleToggle}
-        className="uos-assistant__toggle"
+        className={`uos-assistant__toggle ${open ? 'uos-assistant__toggle--hidden' : ''}`}
       >
         {open ? <X size={22} strokeWidth={2} /> : <MessageCircle size={22} strokeWidth={2} />}
       </button>
 
-      {/* ── Panel ── */}
       {open && (
         <div
           id="uos-assistant-dialog"
@@ -190,21 +182,25 @@ export default function UosAssistant({
           aria-labelledby="uos-assistant-title"
           className="uos-assistant__panel"
         >
-          {/* Header */}
           <header className="uos-assistant__header">
-            <span className="uos-assistant__mark" aria-hidden="true">U</span>
+            <span className="uos-assistant__mark" aria-hidden="true">
+              <img src="/uos-logo-circle.png" alt="" />
+            </span>
             <div className="uos-assistant__header-text">
               <h2 id="uos-assistant-title" className="uos-assistant__title">
                 UoS Assistant
               </h2>
               <p className="uos-assistant__subtitle">
                 <span className="uos-assistant__status" aria-hidden="true" />
-                University of Swat
+                Admissions &amp; Academic Desk • Online
               </p>
             </div>
             <button
               type="button"
-              onClick={() => { setOpen(false); toggleRef.current?.focus(); }}
+              onClick={() => {
+                setOpen(false);
+                window.setTimeout(() => toggleRef.current?.focus(), 60);
+              }}
               className="uos-assistant__close"
               aria-label="Close assistant"
             >
@@ -212,7 +208,6 @@ export default function UosAssistant({
             </button>
           </header>
 
-          {/* Messages */}
           <div className="uos-assistant__list" role="log" aria-live="polite" aria-relevant="additions">
             {messages.length === 0 && (
               <div className="uos-assistant__empty">
@@ -220,6 +215,13 @@ export default function UosAssistant({
                 <p className="uos-assistant__empty-text">
                   Ask about admissions, programmes, campus life, or research.
                 </p>
+                <div className="uos-assistant__quick">
+                  {QUICK_PROMPTS.map((q) => (
+                    <button key={q} type="button" onClick={() => void sendMessage(q)} className="uos-assistant__quick-chip">
+                      {q}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
             {messages.map((msg, i) => (
@@ -228,10 +230,7 @@ export default function UosAssistant({
                 className={`uos-assistant__msg uos-assistant__msg--${msg.role}`}
                 style={{ animationDelay: `${Math.min(i, 6) * 0.04}s` }}
               >
-                <span
-                  className={`uos-assistant__avatar uos-assistant__avatar--${msg.role}`}
-                  aria-hidden="true"
-                >
+                <span className={`uos-assistant__avatar uos-assistant__avatar--${msg.role}`} aria-hidden="true">
                   {msg.role === 'user' ? 'U' : 'S'}
                 </span>
                 <span className="uos-assistant__bubble">{msg.text}</span>
@@ -254,8 +253,7 @@ export default function UosAssistant({
             <div ref={messagesEndRef} aria-hidden="true" />
           </div>
 
-          {/* Composer */}
-          <form onSubmit={handleSend} className="uos-assistant__composer">
+          <form onSubmit={handleSubmit} className="uos-assistant__composer">
             <div className="uos-assistant__composer-inner">
               <input
                 ref={inputRef}
@@ -270,18 +268,11 @@ export default function UosAssistant({
                 className="uos-assistant__input"
                 aria-label="Type a message"
               />
-              <button
-                type="submit"
-                disabled={!inputValue.trim() || isSending}
-                className="uos-assistant__send"
-                aria-label="Send message"
-              >
-                <Send size={16} strokeWidth={2} />
+              <button type="submit" disabled={!inputValue.trim() || isSending} className="uos-assistant__send" aria-label="Send message">
+                <Send size={15} strokeWidth={2.2} />
               </button>
             </div>
-            <p className="uos-assistant__hint">
-              Powered by University of Swat · Replies may be limited
-            </p>
+            <p className="uos-assistant__hint">Powered by University of Swat · Replies may be limited</p>
           </form>
         </div>
       )}

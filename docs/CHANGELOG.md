@@ -4,6 +4,87 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-15] — Skill Installation: `responsive-design` & Implementation of Modern Mobile Patterns
+
+### Action Summary
+1. Installed the `responsive-design` skill from `wshobson/agents` (ui-design plugin) with its complete reference suite:
+   - `d:/projects/uni/.agents/skills/responsive-design/SKILL.md`
+   - `references/breakpoint-strategies.md`
+   - `references/container-queries.md`
+   - `references/details.md`
+   - `references/fluid-layouts.md`
+   - Replicated to global agent skills: `C:/Users/adeel/.gemini/config/skills/responsive-design/`
+2. Implemented the skill's modern responsive patterns across the University of Swat website:
+   - **Pattern 1: Fluid Typography & Spacing via CSS `clamp()` (`src/app/globals.css`)**:
+     Added `--text-fluid-xs` through `--text-fluid-hero` and `--space-fluid-xs` through `--space-fluid-xl` for seamless scaling between 320px and 1280px without layout shifts.
+   - **Pattern 2: Intrinsic Grid Layouts (`globals.css`)**:
+     Added `.grid-auto-fit-cards` utilizing `grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr))` preventing horizontal overflow on compact viewports.
+   - **Pattern 3: Dynamic Viewport Units (`100dvh`) (`Navbar.tsx`, `UosAssistant.css`)**:
+     Replaced `100vh` on mobile drawers and modals with `100dvh` to eliminate mobile browser bottom-bar clipping bugs on iOS Safari and Android Chrome.
+   - **Pattern 6: Card Transformation for Multi-Column Data Tables**:
+     - `src/components/admissions/AdmissionsHub.tsx`: Program Fees schedule converted into responsive structured cards on `<sm` viewports (`block sm:hidden`) while preserving the full tabular comparison on `hidden sm:block`.
+     - `src/app/academics/page.tsx`: Official 8-row grading and GPA matrix converted into mobile cards on `<sm` viewports with clear percentage, letter grade, and GPA points.
+     - `src/app/contact/page.tsx`: Key administrative contacts converted into one-tap call/email cards on mobile.
+   - **Touch Target & Tap Polish (WCAG 2.5.5 / 2.5.8)**:
+     Enforced 44x44px minimum touch targets across all mobile buttons, tabs, social links (`Footer.tsx`), assistant close buttons (`UosAssistant.css`), inquiry funnel buttons (`AdmissionsInquiryFunnel.tsx`), and download action links (`DownloadsClient.tsx`).
+   - **iOS Safari Auto-Zoom Prevention**:
+     All form inputs and selects set to `text-[16px] sm:text-sm` / `sm:text-xs`.
+
+---
+
+## [2026-11-15] — Comprehensive Mobile Responsiveness & Mobile UX Optimization
+
+### Action Summary
+Full end-to-end mobile responsiveness optimization across the entire University of Swat website (~15–30 pages + all home and layout components) targeting screens from 320px (compact phones) up to 768px (tablets) without compromising the editorial desktop layout.
+
+### Key Changes
+1. **Global Viewport & Mobile Foundation (`src/app/layout.tsx`, `src/app/globals.css`)**:
+   - Added official Next.js 16 `Viewport` configuration (`width: 'device-width'`, `initialScale: 1`, `maximumScale: 5`, and responsive `themeColor` tokens `#0C1912` / `#153B27`).
+   - Added `-webkit-tap-highlight-color: transparent` and modern `min-height: 100dvh` for mobile viewports.
+   - Introduced `.scrollbar-none` and `.momentum-scroll` (`-webkit-overflow-scrolling: touch`) utilities for fluid horizontal swipe rails.
+2. **AI Chatbot Mobile Bottom-Sheet (`src/components/ui/UosAssistant.css`)**:
+   - Converted floating assistant panel on viewports `< 640px` to a bottom-sheet modal anchored to `inset: auto 12px 12px 12px; height: 88dvh; max-height: 560px;`.
+   - Scaled toggle crest badge to 52px for mobile ergonomics.
+   - Set prompt input font size to `16px` on mobile to prevent iOS Safari auto-zoom.
+3. **Global Navigation & Ribbons (`src/components/layout/Navbar.tsx`, `TopNoticeRibbon.tsx`, `Footer.tsx`)**:
+   - Added body scroll locking when mobile menu drawer is open.
+   - Scaled brand monogram and title down gracefully for 320px viewports (`text-[16px]`).
+   - Integrated a mobile quick-access search button directly in the mobile navbar header next to the hamburger toggle.
+   - Streamlined announcement ribbon on `<sm` viewports to avoid text truncations.
+   - Optimized footer padding (`px-4 sm:px-10 lg:px-14`) and increased social link tap targets (`p-2 -m-2`) to meet WCAG 44px minimums.
+4. **Editorial Page Header & Fact Strips (`src/components/layout/PageHeader.tsx`, `src/app/admissions/page.tsx`, `src/app/programs/page.tsx`, `src/app/faculty/page.tsx`, `src/app/programs/[slug]/page.tsx`)**:
+   - Tightened mobile padding to `pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-8`.
+   - Added breadcrumb truncation (`max-w-[200px] inline-block`) and scalable serif headings (`text-2xl sm:text-4xl lg:text-5xl`).
+   - Converted `<dl>` facts strip into a clean 2-column mobile grid (`grid grid-cols-2 sm:flex sm:flex-wrap`) with alternating column dividers, eliminating broken wrapping borders.
+5. **Search Page Header Alignment (`src/app/search/page.tsx`)**:
+   - Fixed header overlap bug by applying `pt-28 sm:pt-36 lg:pt-40` so content starts below the fixed navbar.
+   - Upgraded search input font size to `text-[16px] sm:text-sm` (preventing iOS auto-zoom).
+6. **Academic Programs & Faculty Catalog (`src/app/programs/page.tsx`, `src/app/faculty/page.tsx`, `src/components/academics/DownloadsClient.tsx`, `src/components/academics/AffiliatedCollegesClient.tsx`)**:
+   - Converted multi-option category and faculty filter pill rows into horizontal swipeable chip rails (`overflow-x-auto pb-1.5 scrollbar-none momentum-scroll`).
+   - Removed sticky filter occlusion on mobile (`relative lg:sticky lg:top-24`) to maximize viewport reading area.
+   - Set all search inputs to `text-[16px] sm:text-sm`.
+7. **Admissions & Fee Tables (`src/components/admissions/AdmissionsHub.tsx`, `src/app/programs/[slug]/page.tsx`)**:
+   - Fixed sticky jump-bar offset to `top-20 lg:top-24`.
+   - Added a mobile horizontal swipe indicator banner above the fee table.
+   - Scaled CTA buttons to full-width responsive on mobile (`w-full sm:w-auto min-h-[44px]`).
+8. **Contact Directory (`src/app/contact/page.tsx`)**:
+   - Implemented a dedicated mobile card layout for key administrative contacts (`block md:hidden`) with direct one-tap `tel:` and `mailto:` action buttons while preserving the full desktop data table (`hidden md:block`).
+9. **Editorial Articles & Events (`src/app/news/page.tsx`, `src/app/news/[slug]/page.tsx`, `src/app/events/page.tsx`, `src/app/events/[slug]/page.tsx`)**:
+   - Scaled card and container paddings from `p-8 sm:p-14` down to `p-5 sm:p-8 lg:p-12`.
+10. **Campuses & Leadership (`src/app/campuses/main-campus/page.tsx`, `src/app/campuses/women-campus/page.tsx`, `src/app/leadership/vice-chancellor/page.tsx`, `src/app/about/page.tsx`, `src/app/campus-life/page.tsx`)**:
+   - Scaled container gutters to `px-4 sm:px-10 lg:px-14` and tightened oversized quote pullouts.
+11. **Homepage Interactive Showcase Components (`HeroSection.tsx`, `CampusBulletin.tsx`, `UpcomingEvents.tsx`, `AcademicShowcase.tsx`, `AdmissionsInquiryFunnel.tsx`, `RankingSection.tsx`, `CampusTourBanner.tsx`, `EditorialStorytelling.tsx`, `StudentAlumniSuccess.tsx`, `CampusPhotoRibbon.tsx`, `ViceChancellorSection.tsx`)**:
+   - Scaled titles and headlines (`text-2xl sm:text-4xl lg:text-5xl`).
+   - Enabled momentum horizontal scrolling for carousels with peek hints.
+   - Fixed tab indicator scroll offset calculations.
+   - Enforced full-width stacked button layouts on mobile with >=44px touch targets.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 304/304 static and partially prerendered pages built cleanly.
+
+---
+
 ## [2026-11-15] — Hero Section Redesigned with Frosted-Glass News & Events Widget
 
 ### Action Summary
@@ -240,6 +321,23 @@ Updated the navbar label from "Faculties" to "Departments" and the /faculty page
 - `src/data/navigation.ts`
 - `src/app/faculty/page.tsx`
 - `src/components/home/HeroSection.tsx` (reverted)
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — VC Portrait Swapped to Local Asset
+
+### Action Summary
+Swapped the Vice Chancellor's `ProfileCard` portrait from the network image to the local `public/vc-portrait.jpg`.
+
+### Key Changes
+1. **`src/components/home/ViceChancellorSection.tsx`**: Changed `avatarUrl` from `/images/leadership/vc-prof-dr-husnul-amin.jpeg` to `/vc-portrait.jpg`.
+
+### Verification
+- `npx tsc --noEmit`: 0 errors.
+
+### Files Modified
+- `src/components/home/ViceChancellorSection.tsx`
 - `docs/CHANGELOG.md`
 
 ---

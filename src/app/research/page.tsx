@@ -19,13 +19,13 @@ export default function ResearchPage() {
       />
 
       {/* ─── Section 1 · Flagship pillars — ORIC & ASRB photo-led directory rows ── */}
-      <section id="pillars" className="py-16 sm:py-24">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 space-y-8">
+      <section id="pillars" className="py-12 sm:py-24">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 space-y-8">
 
           {/* ORIC — forest lead row */}
-          <article className="group relative overflow-hidden rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:border-[#C8A96E]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
+          <article className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:border-[#C8A96E]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
             <div className="grid grid-cols-1 lg:grid-cols-12">
-              <div className="lg:col-span-7 p-8 sm:p-10 flex flex-col">
+              <div className="lg:col-span-7 p-5 sm:p-10 flex flex-col">
                 <div className="w-14 h-14 rounded-2xl bg-white/10 text-[#C8A96E] border border-white/15 flex items-center justify-center mb-6">
                   <Lightbulb className="w-7 h-7" aria-hidden="true" />
                 </div>
@@ -35,7 +35,7 @@ export default function ResearchPage() {
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white leading-tight mb-4">
                   Office of Research, Innovation &amp; Commercialization (ORIC)
                 </h2>
-                <p className="font-sans text-white/75 text-base leading-relaxed">
+                <p className="font-sans text-white/75 text-sm sm:text-base leading-relaxed">
                   Led by Director Dr. Anwar Hussain, ORIC spearheads competitive research grants, patent registrations, business incubation for student startups, and strategic industry collaboration with the Swat Chamber of Commerce and Industry (SCCI).
                 </p>
 
@@ -56,7 +56,7 @@ export default function ResearchPage() {
                   </div>
                   <Link
                     href="/research/oric"
-                    className="self-start inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-[#C8A96E] text-sm font-semibold hover:bg-[#C8A96E] hover:text-[#14291D] active:scale-[0.985] transition-all duration-150"
+                    className="self-start inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-[#C8A96E] text-sm font-semibold hover:bg-[#C8A96E] hover:text-[#14291D] active:scale-[0.985] transition-all duration-150 min-h-[44px]"
                   >
                     <span>Explore ORIC Division &amp; Incubation</span>
                     <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
@@ -77,9 +77,9 @@ export default function ResearchPage() {
           </article>
 
           {/* ASRB — strengthened light row */}
-          <article className="group relative overflow-hidden rounded-3xl bg-white border border-stone-300 shadow-xs hover:border-[#7F1D1D]/40 hover:-translate-y-[2px] hover:shadow-md transition-all duration-200 ease-out">
+          <article className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs hover:border-[#7F1D1D]/40 hover:-translate-y-[2px] hover:shadow-md transition-all duration-200 ease-out">
             <div className="grid grid-cols-1 lg:grid-cols-12">
-              <div className="lg:col-span-7 p-8 sm:p-10 flex flex-col">
+              <div className="lg:col-span-7 p-5 sm:p-10 flex flex-col">
                 <div className="w-14 h-14 rounded-2xl bg-[#7F1D1D]/10 text-[#7F1D1D] flex items-center justify-center mb-6">
                   <GraduationCap className="w-7 h-7" aria-hidden="true" />
                 </div>
@@ -89,7 +89,7 @@ export default function ResearchPage() {
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 leading-tight mb-4">
                   Advanced Studies &amp; Research Board (ASRB)
                 </h2>
-                <p className="font-sans text-stone-600 text-base leading-relaxed">
+                <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
                   Statutory regulatory board approving MS, M.Phil, and PhD research proposals, uniform synopses standards, research supervisor appointments, and external doctoral thesis defense evaluations.
                 </p>
 
@@ -107,7 +107,7 @@ export default function ResearchPage() {
                   </div>
                   <Link
                     href="/research/asrb"
-                    className="self-start inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-stone-50 border border-stone-300 text-stone-700 text-sm font-semibold hover:bg-[#7F1D1D] hover:border-[#7F1D1D] hover:text-white active:scale-[0.985] transition-all duration-150"
+                    className="self-start inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-stone-50 border border-stone-300 text-stone-700 text-sm font-semibold hover:bg-[#7F1D1D] hover:border-[#7F1D1D] hover:text-white active:scale-[0.985] transition-all duration-150 min-h-[44px]"
                   >
                     <span>ASRB Synopses Guidelines &amp; Minutes</span>
                     <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
@@ -133,7 +133,7 @@ export default function ResearchPage() {
       {/* ─── Section 2 · Discovery statement — full-width photo band ──────────── */}
       <section
         id="discovery"
-        className="relative w-full py-24 sm:py-32 overflow-hidden bg-[#0C1912] text-white"
+        className="relative w-full py-16 sm:py-28 overflow-hidden bg-[#0C1912] text-white"
       >
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <img
@@ -145,17 +145,17 @@ export default function ResearchPage() {
           <div className="absolute inset-0 bg-radial from-transparent via-[#0C1912]/50 to-[#0C1912]" aria-hidden="true" />
         </div>
 
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10 text-center">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-[#E5CD9B] uppercase tracking-widest mb-6">
             <FlaskConical className="w-3.5 h-3.5 text-[#C8A96E]" aria-hidden="true" />
             <span>Research, Innovation &amp; Commercialization</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] max-w-4xl mx-auto leading-[1.12] mb-6 text-white drop-shadow-sm">
+          <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] max-w-4xl mx-auto leading-[1.12] mb-6 text-white drop-shadow-sm">
             Empirical Inquiry Across Mountains, Ecosystems &amp; Ancient Gandhara
           </h2>
 
-          <p className="font-sans text-stone-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-12">
+          <p className="font-sans text-stone-300 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-12">
             Empowering cutting-edge empirical inquiry across mountain biodiversity, renewable solar systems, Gandhara archaeology, and applied computational sciences.
           </p>
 
@@ -177,9 +177,9 @@ export default function ResearchPage() {
       </section>
 
       {/* ─── Section 3 · Gandhara heritage — editorial split ──────────────────── */}
-      <section id="gandhara" className="py-16 sm:py-24">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <section id="gandhara" className="py-12 sm:py-24">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
 
             <div className="lg:col-span-6 space-y-6">
               <div className="flex items-center gap-2.5">
@@ -189,22 +189,22 @@ export default function ResearchPage() {
                 </span>
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
                 Excavating Ancient Bazira with the Italian Archaeological Mission
               </h2>
 
-              <p className="font-sans text-stone-600 text-base sm:text-lg leading-[1.75]">
+              <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">
                 The Italian Archaeological Mission to Pakistan, headed by Prof. Dr. Luca Maria Olivieri (Sitara-i-Imtiaz), works in continuous partnership with University of Swat researchers on ongoing joint excavations at the ancient city of Bazira (Barikot)&mdash;unearthing Gandharan Buddhist stupas and prehistoric settlements.
               </p>
 
-              <p className="font-sans text-stone-600 text-base sm:text-sm leading-relaxed">
+              <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
                 Mission fieldwork supports the cataloging of artifacts in the central university museum collection and the organization of international archaeological seminars hosted with partners across continents.
               </p>
 
               <div className="pt-2">
                 <Link
                   href="/news/italian-archaeological-mission-meeting"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#153B27] hover:bg-[#0F291C] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-sm transition-all duration-150 group"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#153B27] hover:bg-[#0F291C] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-sm transition-all duration-150 group min-h-[44px]"
                 >
                   <span>Read the Mission Story</span>
                   <ArrowUpRight className="w-4 h-4 text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
@@ -239,13 +239,13 @@ export default function ResearchPage() {
 
       {/* ─── Section 4 · International collaborations — ruled directory rows ──── */}
       <section id="partnerships" className="pb-0">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
           <div className="pb-4 border-b border-stone-200 mb-2 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold block mb-1">
                 Global Collaboration
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-[-0.02em]">
+              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-stone-900 tracking-[-0.02em]">
                 International Collaborations &amp; Research Missions
               </h2>
             </div>

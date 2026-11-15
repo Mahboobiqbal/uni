@@ -119,22 +119,30 @@ const programAreas: ProgramArea[] = [
 export default function AcademicShowcase() {
   const [activeId, setActiveId] = useState(programAreas[0].id);
   const active = programAreas.find((a) => a.id === activeId) ?? programAreas[0];
+  const spotlightRef = React.useRef<HTMLDivElement>(null);
+
+  const handleSelectArea = (id: string, isClick = false) => {
+    setActiveId(id);
+    if (isClick && typeof window !== 'undefined' && window.innerWidth < 1024) {
+      spotlightRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch mt-10">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch mt-8 sm:mt-10">
       {/* ── Left: Interactive 5-Row Architectural Index ─────────────────── */}
-      <div className="lg:col-span-7 flex flex-col gap-3">
+      <div className="lg:col-span-7 flex flex-col gap-2.5 sm:gap-3">
         {programAreas.map((area) => {
           const isActive = area.id === activeId;
           return (
             <button
               key={area.id}
               type="button"
-              onMouseEnter={() => setActiveId(area.id)}
-              onClick={() => setActiveId(area.id)}
-              className={`text-left flex flex-col justify-between gap-3 rounded-xl px-6 py-4 transition-all duration-300 cursor-pointer ${
+              onMouseEnter={() => handleSelectArea(area.id, false)}
+              onClick={() => handleSelectArea(area.id, true)}
+              className={`text-left flex flex-col justify-between gap-2.5 sm:gap-3 rounded-xl px-4 py-3.5 sm:px-6 sm:py-4 transition-all duration-300 cursor-pointer ${
                 isActive
-                  ? 'bg-[#153B27] text-white border-l-4 border-l-[#C8A96E] shadow-lg translate-x-1.5'
+                  ? 'bg-[#153B27] text-white border-l-4 border-l-[#C8A96E] shadow-lg lg:translate-x-1.5'
                   : 'bg-white border border-stone-200 hover:border-[#153B27]'
               }`}
             >
@@ -192,7 +200,7 @@ export default function AcademicShowcase() {
       </div>
 
       {/* ── Right: Dynamic Photographic Spotlight Card ─────────────────── */}
-      <div className="lg:col-span-5 bg-[#153B27] text-white rounded-2xl overflow-hidden border-t-4 border-t-[#7F1D1D] shadow-2xl flex flex-col justify-between">
+      <div ref={spotlightRef} className="lg:col-span-5 bg-[#153B27] text-white rounded-2xl overflow-hidden border-t-4 border-t-[#7F1D1D] shadow-2xl flex flex-col justify-between">
         {/* Crossfading image */}
         <div key={active.id} className="animate-backdrop-fade">
           <div className="relative h-56 overflow-hidden">
@@ -235,7 +243,7 @@ export default function AcademicShowcase() {
 
             <Link
               href={active.ctaHref}
-              className="mt-6 inline-flex items-center justify-between bg-[#7F1D1D] hover:bg-[#991B1B] text-white font-semibold py-3.5 px-5 rounded-xl transition-colors group"
+              className="mt-6 inline-flex w-full sm:w-auto items-center justify-between sm:justify-center gap-3 bg-[#7F1D1D] hover:bg-[#991B1B] text-white font-semibold py-3.5 px-5 rounded-xl transition-colors group min-h-[44px]"
             >
               <span>{active.ctaLabel}</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />

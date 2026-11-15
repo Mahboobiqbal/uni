@@ -38,6 +38,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -52,11 +53,68 @@ body {
   font-family: var(--font-sans);
   line-height: 1.65;
   overflow-x: clip;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* Anchored sections clear the fixed navbar on jump */
 section[id] {
   scroll-margin-top: 5.5rem;
+}
+
+/* Mobile-Friendly Utility Classes */
+.touch-pan-y {
+  touch-action: pan-y;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.momentum-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── Responsive Design Skill Utilities & Fluid Scale ───────────────────── */
+:root {
+  /* Fluid Typography Scale */
+  --text-fluid-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-fluid-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-fluid-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-fluid-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --text-fluid-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-fluid-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  --text-fluid-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+  --text-fluid-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+  --text-fluid-hero: clamp(2rem, 1.5rem + 3vw, 4.25rem);
+
+  /* Fluid Spacing Scale */
+  --space-fluid-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --space-fluid-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-fluid-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-fluid-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --space-fluid-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+}
+
+.grid-auto-fit-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.touch-target-min {
+  min-height: 44px;
+  min-width: 44px;
 }
 
 /* ─── Accessibility & Focus-Visible (Hallmark Rule 6) ─────────────────────── */
@@ -198,6 +256,24 @@ section[id] {
 
 .animate-notice-rise {
   animation: notice-rise 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ─── Print / PDF output — hide chrome, show clean calendar content ───────── */
+@media print {
+  header,
+  nav,
+  footer,
+  #site-footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+  main,
+  #main-content {
+    padding: 0 !important;
+  }
 }
 
 /* ─── Mandatory Reduced Motion (Hallmark Rule 7 & WCAG 2.2) ───────────────── */

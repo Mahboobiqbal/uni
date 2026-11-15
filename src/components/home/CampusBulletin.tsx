@@ -162,7 +162,7 @@ export default function CampusBulletin() {
     const rr = rail.getBoundingClientRect();
     const br = btn.getBoundingClientRect();
     setPillPos({
-      left: br.left - rr.left,
+      left: br.left - rr.left + rail.scrollLeft,
       top: br.top - rr.top,
       width: br.width,
       height: br.height,
@@ -175,8 +175,13 @@ export default function CampusBulletin() {
 
   useEffect(() => {
     const onResize = () => measurePill();
+    const rail = railRef.current;
     window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    rail?.addEventListener('scroll', onResize, { passive: true });
+    return () => {
+      window.removeEventListener('resize', onResize);
+      rail?.removeEventListener('scroll', onResize);
+    };
   }, [measurePill]);
 
   /* Bento-style cursor spotlight over the unified container */
@@ -314,7 +319,7 @@ export default function CampusBulletin() {
       <div className="absolute top-1/3 -left-24 w-[380px] h-[380px] rounded-full bg-[#7F1D1D]/8 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 right-1/4 w-[460px] h-[460px] rounded-full bg-[#B48A3E]/10 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10">
         {/* Split Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
           <div>
@@ -357,10 +362,10 @@ export default function CampusBulletin() {
 
           <div className="relative z-10">
             {/* ── Top Row — Full-Width Category Rail ── */}
-            <div className="border-b border-stone-200 bg-[#FAF9F6] p-4 min-w-0">
+            <div className="border-b border-stone-200 bg-[#FAF9F6] p-3 sm:p-4 min-w-0">
               <div
                 ref={railRef}
-                className="relative flex gap-1.5 overflow-x-auto pb-1"
+                className="relative flex gap-1.5 overflow-x-auto pb-1 scrollbar-none momentum-scroll"
               >
                 {/* Sliding active pill (Origin Tabs-style) */}
                 <div
@@ -421,7 +426,7 @@ export default function CampusBulletin() {
               </div>
 
               {/* ── Right Column — Full Official Notice Reader ── */}
-              <div className="col-span-12 lg:col-span-7 relative overflow-hidden p-6 sm:p-8 flex flex-col justify-between bg-[#7F1D1D] text-white min-w-0">
+              <div className="col-span-12 lg:col-span-7 relative overflow-hidden p-5 sm:p-8 flex flex-col justify-between bg-[#7F1D1D] text-white min-w-0">
                 {/* Faint institutional watermark filling the reader's tail space */}
                 <div aria-hidden="true" className="pointer-events-none absolute -bottom-10 -right-8 w-64 h-64 opacity-[0.045] select-none">
                   <img src="/uos-logo-circle.png" alt="" aria-hidden="true" className="w-full h-full object-contain rounded-full" />
@@ -480,11 +485,11 @@ export default function CampusBulletin() {
                 </div>
 
                 {/* Bottom Action Bar */}
-                <div className="border-t border-white/20 pt-5 mt-6 flex flex-wrap items-center justify-end gap-3">
+                <div className="border-t border-white/20 pt-5 mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3">
                   <button
                     type="button"
                     onClick={handleShare}
-                    className="inline-flex items-center gap-2 border border-white/20 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
+                    className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 border border-white/20 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
                   >
                     <Share2 className="w-4 h-4 text-[#E5CD9B]" />
                     Share
@@ -492,7 +497,7 @@ export default function CampusBulletin() {
                   <button
                     type="button"
                     onClick={handleDownload}
-                    className="inline-flex items-center gap-2 bg-[#E5CD9B] text-[#661717] px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_-12px_rgba(0,0,0,0.45)] hover:bg-white hover:shadow-[0_16px_34px_-12px_rgba(0,0,0,0.5)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
+                    className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 bg-[#E5CD9B] text-[#661717] px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_-12px_rgba(0,0,0,0.45)] hover:bg-white hover:shadow-[0_16px_34px_-12px_rgba(0,0,0,0.5)] transition-all duration-150 cursor-pointer hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50"
                   >
                     <Download className="w-4 h-4" />
                     Download Notice (PDF)

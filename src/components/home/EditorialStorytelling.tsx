@@ -16,9 +16,9 @@ export default function EditorialStorytelling() {
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10 space-y-24 sm:space-y-32">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10 space-y-16 sm:space-y-32">
         {/* ─── Story Row 1: Alpine Sanctuary & Green Campus ─────────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Text Content (Left, 6 cols) */}
           <div className="lg:col-span-6 space-y-6">
             <div className="flex items-center gap-2.5">
@@ -28,11 +28,11 @@ export default function EditorialStorytelling() {
               </span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
               An Alpine Sanctuary Designed for Inspired Scholars &amp; Natural Harmony
             </h2>
 
-            <p className="font-sans text-stone-600 text-base sm:text-lg leading-[1.75]">
+            <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">
               Spread across the verdant foothills of Charbagh, the University of Swat combines majestic
               alpine geography with purpose-built collegiate architecture. Recognized among Pakistan&rsquo;s
               top institutions in the UI GreenMetric World University Rankings, our flagship grounds provide a
@@ -78,7 +78,7 @@ export default function EditorialStorytelling() {
             <div className="pt-3">
               <Link
                 href="/campuses/main-campus"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#153B27] hover:bg-[#0F291C] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-sm transition-all duration-150 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#153B27] hover:bg-[#0F291C] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-sm transition-all duration-150 group min-h-[44px]"
               >
                 <span>Explore Charbagh Main Campus</span>
                 <ArrowUpRight className="w-4 h-4 text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -162,11 +162,11 @@ export default function EditorialStorytelling() {
               </span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
               Frontier Alpine Research, Herbal Therapeutics &amp; Gandhara Preservation
             </h2>
 
-            <p className="font-sans text-stone-600 text-base sm:text-lg leading-[1.75]">
+            <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">
               The University of Swat sits at the historic crossroads of Buddhist antiquity and the fragile
               mountain ecosystems of Northern Pakistan. Through the Office of Research, Innovation &amp;
               Commercialization (ORIC), our faculty collaborate with international archaeological missions,
@@ -175,38 +175,38 @@ export default function EditorialStorytelling() {
             </p>
 
             {/* Research stats bar */}
-            <div className="grid grid-cols-3 gap-4 py-3 border-y border-stone-300 text-center">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 py-3 border-y border-stone-300 text-center">
               <div>
-                <p className="font-serif text-2xl sm:text-3xl font-bold text-[#7F1D1D]">200+</p>
-                <p className="text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
+                <p className="font-serif text-xl sm:text-3xl font-bold text-[#7F1D1D]">200+</p>
+                <p className="text-[10px] sm:text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
                   Annual Papers
                 </p>
               </div>
               <div className="border-x border-stone-300">
-                <p className="font-serif text-2xl sm:text-3xl font-bold text-[#153B27]">50+</p>
-                <p className="text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
+                <p className="font-serif text-xl sm:text-3xl font-bold text-[#153B27]">50+</p>
+                <p className="text-[10px] sm:text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
                   Research Labs
                 </p>
               </div>
               <div>
-                <p className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D]">PKR 85M</p>
-                <p className="text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
+                <p className="font-serif text-xl sm:text-3xl font-bold text-[#14291D]">PKR 85M</p>
+                <p className="text-[10px] sm:text-[11px] text-stone-600 uppercase tracking-wider font-semibold mt-0.5">
                   Research Grants
                 </p>
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap gap-4 items-center">
+            <div className="pt-2 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 items-stretch sm:items-center">
               <Link
                 href="/research/oric"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#7F1D1D] hover:bg-[#681818] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-sm transition-all duration-150 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#7F1D1D] hover:bg-[#681818] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-sm transition-all duration-150 group min-h-[44px]"
               >
                 <span>Discover Research &amp; ORIC</span>
                 <ArrowUpRight className="w-4 h-4 text-amber-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
                 href="/research"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-700 hover:text-[#153B27] active:scale-[0.985] active:translate-y-px transition-all duration-150"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-3 rounded-lg border border-stone-300 text-sm font-semibold text-stone-700 hover:text-[#153B27] hover:border-[#153B27] active:scale-[0.985] active:translate-y-px transition-all duration-150 min-h-[44px]"
               >
                 <span>View Publications Directory</span>
                 <ArrowUpRight className="w-4 h-4 text-stone-500" />

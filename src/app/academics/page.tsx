@@ -79,7 +79,7 @@ const academicGateways = [
     tag: 'Curricular Schemes',
     title: 'Degrees & Curricula Directory',
     description:
-      'Comprehensive catalog of 59 approved undergraduate, graduate, and doctoral degree tracks across 28 departments with semester course breakdowns.',
+      'Comprehensive catalog of 73 approved undergraduate, graduate, and doctoral degree tracks across 28 departments with semester course breakdowns.',
     liveStatus: 'Approved by Academic Council & Boards of Studies',
     cta: 'Explore Degree Directory',
     icon: GraduationCap,
@@ -168,7 +168,7 @@ const academicAuthorities = [
     description:
       'Chaired by the Vice Chancellor, the Academic Council approves degree curricula, establishes examination regulations, sanctions new departments, and sets admission policies.',
     icon: Landmark,
-    accentBorder: 'border-t-2 border-t-[#153B27]',
+    accentBorder: 'border-t-[3px] border-t-[#7F1D1D]',
   },
   {
     title: 'Advanced Studies & Research Board',
@@ -177,7 +177,7 @@ const academicAuthorities = [
     description:
       'Regulates MS/MPhil and PhD admissions, approves research synopses, appoints external thesis evaluators, and ensures rigorous doctoral defense protocols.',
     icon: BookOpen,
-    accentBorder: 'border-t-2 border-t-[#7F1D1D]',
+    accentBorder: 'border-t-[3px] border-t-[#7F1D1D]',
   },
   {
     title: 'Boards of Studies (BoS)',
@@ -186,16 +186,16 @@ const academicAuthorities = [
     description:
       'Each academic department maintains a Board of Studies comprising senior faculty and external academic experts who periodically modernize syllabi and recommend course schemes.',
     icon: ScrollText,
-    accentBorder: 'border-t-2 border-t-[#B48A3E]',
+    accentBorder: 'border-t-[3px] border-t-[#7F1D1D]',
   },
   {
-    title: 'Quality Enhancement Cell (QEC)',
-    role: 'Institutional Quality Monitoring',
-    statute: 'HEC Quality Assurance Agency',
+    title: 'Board of Advanced Studies & Syndicate',
+    role: 'Governance & Oversight Committees',
+    statute: 'University Model Act · Statutes 2016',
     description:
-      'Independent audit wing reporting directly to the Vice Chancellor, responsible for institutional performance evaluation, SAR documentation, and national ranking metrics.',
+      'The Syndicate oversees financial and administrative governance while the Affiliation & Examination Committee regulates affiliated colleges, examination conduct, and academic standards.',
     icon: Award,
-    accentBorder: 'border-t-2 border-t-[#153B27]',
+    accentBorder: 'border-t-[3px] border-t-[#7F1D1D]',
   },
 ];
 
@@ -245,9 +245,10 @@ export default function AcademicsPage() {
           { label: 'Home', href: '/' },
           { label: 'Academics' },
         ]}
+        backgroundImage="/images/campus/charbagh-campus.jpg"
       />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 pb-20 sm:pb-28 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 pb-20 sm:pb-28 relative z-10">
         {/* ─── 2. Editorial Year-at-a-Glance Strip (replaces overlapping crimson stat bar) ─── */}
         <div className="-mt-10 sm:-mt-12 relative z-20 mb-14 lg:mb-18">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 rounded-2xl overflow-hidden border border-stone-200 shadow-xs">
@@ -257,14 +258,14 @@ export default function AcademicsPage() {
               { value: '91.4%', label: 'HEC QEC Rating', detail: 'W-Category National Quality' },
               { value: '100%', label: 'Chartered & Recognized', detail: 'HEC & Statutory Councils' },
             ].map((stat) => (
-              <div key={stat.label} className="bg-white p-5 sm:p-6 text-center sm:text-left">
-                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#153B27] tracking-tight">
+              <div key={stat.label} className="bg-white p-4 sm:p-6 text-center sm:text-left">
+                <span className="block font-serif text-2xl sm:text-4xl font-bold text-[#153B27] tracking-tight">
                   {stat.value}
                 </span>
-                <span className="text-xs uppercase tracking-wider text-stone-700 font-bold mt-1 block">
+                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-stone-700 font-bold mt-1 block">
                   {stat.label}
                 </span>
-                <span className="text-[11px] text-stone-500 mt-0.5 block">{stat.detail}</span>
+                <span className="text-[10px] sm:text-[11px] text-stone-500 mt-0.5 block">{stat.detail}</span>
               </div>
             ))}
           </div>
@@ -282,7 +283,7 @@ export default function AcademicsPage() {
               </div>
               <h2
                 id="academic-gateways-heading"
-                className="font-serif text-3xl sm:text-4xl text-[#14291D] font-bold tracking-[-0.02em]"
+                className="font-serif text-2xl sm:text-4xl text-[#14291D] font-bold tracking-[-0.02em]"
               >
                 Schedules, Documents &amp; Degree Pathways
               </h2>
@@ -299,40 +300,38 @@ export default function AcademicsPage() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`group relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl hover:-translate-y-[2px] transition-all duration-200 ease-out ${item.accentBorder}`}
+                  className="group relative flex flex-col justify-between bg-white border border-stone-200 border-t-[3px] border-t-[#153B27] hover:border-[#7F1D1D] hover:border-t-[#7F1D1D] rounded-xl p-5 sm:p-6 shadow-sm hover:-translate-y-[2px] hover:shadow-md transition-all duration-200 ease-out"
                 >
                   <div>
-                    {/* Top Header Strip with Roman Numeral & Tag */}
                     <div className="flex items-center justify-between mb-5">
-                      <div className={`w-12 h-12 rounded-xl ${item.accentBg} ${item.accent} flex items-center justify-center`}>
+                      <div className="w-12 h-12 rounded-xl bg-stone-100 text-[#153B27] flex items-center justify-center">
                         <Icon className="w-6 h-6" />
                       </div>
-                      <span className="font-serif text-lg font-bold text-[#C8A96E]/80 tracking-widest tabular-nums">
+                      <span className="font-serif text-lg font-bold text-[#7F1D1D] tracking-widest tabular-nums">
                         {item.roman}
                       </span>
                     </div>
 
-                    <span className={`text-[10px] uppercase tracking-[0.18em] ${item.accent} font-bold block mb-2`}>
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-[#7F1D1D] font-bold block mb-2">
                       {item.tag}
                     </span>
 
-                    <h3 className={`font-serif text-2xl font-bold ${item.titleClass} transition-colors mb-3 leading-tight tracking-[-0.01em]`}>
+                    <h3 className="font-serif text-2xl font-bold text-[#14291D] group-hover:text-[#153B27] transition-colors mb-3 leading-tight tracking-[-0.01em]">
                       {item.title}
                     </h3>
 
-                    <p className={`font-sans text-xs sm:text-sm ${item.bodyClass} leading-relaxed mb-5`}>
+                    <p className="font-sans text-xs sm:text-sm text-stone-600 leading-relaxed mb-5">
                       {item.description}
                     </p>
 
-                    {/* Live status badge */}
-                    <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium ${item.statusClass}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${item.statusDotClass} shrink-0`} />
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium bg-stone-50 border border-stone-200 text-stone-600">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#7F1D1D] shrink-0" />
                       <span>{item.liveStatus}</span>
                     </div>
                   </div>
 
-                  <div className={`pt-5 mt-6 border-t ${item.footerClass} flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.12em]`}>
-                    <span className={`${item.ctaHoverClass} transition-colors`}>{item.cta}</span>
+                  <div className="pt-5 mt-6 border-t border-stone-200 flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.12em] text-[#7F1D1D]">
+                    <span>{item.cta}</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </Link>
@@ -347,7 +346,7 @@ export default function AcademicsPage() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-16 lg:mb-20"
         >
           {/* Authentic Campus Photograph Frame */}
-          <div className="lg:col-span-7 group relative rounded-2xl overflow-hidden border border-stone-300 bg-stone-200 min-h-[360px] sm:min-h-[440px] lg:min-h-[540px]">
+          <div className="lg:col-span-7 group relative rounded-2xl overflow-hidden shadow-lg min-h-[360px] sm:min-h-[440px] lg:min-h-[540px]">
             <Image
               src="/images/campus/charbagh-campus.jpg"
               alt="Charbagh Main Campus academic and administration blocks at the University of Swat"
@@ -371,7 +370,7 @@ export default function AcademicsPage() {
           </div>
 
           {/* Editorial Discourse & Standards */}
-          <div className="lg:col-span-5 rounded-2xl bg-white border border-stone-300 p-7 sm:p-8 lg:p-9 flex flex-col justify-between shadow-xs">
+          <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <span className="h-0.5 w-6 bg-[#153B27]" />
@@ -443,7 +442,7 @@ export default function AcademicsPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             {/* Left: Official Grading Table (7 cols) */}
-            <article className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white border border-stone-300 shadow-xs">
+            <article className="lg:col-span-7 p-5 sm:p-8 rounded-2xl bg-white border border-stone-300 shadow-xs">
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-stone-200">
                 <div>
                   <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#14291D] tracking-[-0.01em]">
@@ -458,7 +457,29 @@ export default function AcademicsPage() {
                 </span>
               </div>
 
-              <div className="overflow-x-auto -mx-2 sm:mx-0">
+              {/* Mobile Card Layout for small screens */}
+              <div className="sm:hidden space-y-2.5">
+                {gradeMatrix.map((row) => (
+                  <div key={row.grade} className="flex items-center justify-between p-3 rounded-xl bg-stone-50 border border-stone-200">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className={`inline-block font-bold px-2 py-0.5 rounded text-xs ${row.tone}`}>
+                          {row.grade}
+                        </span>
+                        <span className="font-semibold text-stone-900 text-xs">{row.marks}</span>
+                      </div>
+                      <span className="text-[11px] text-stone-500 mt-0.5 block">{row.remark}</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] uppercase font-bold text-stone-400 block">Grade Points</span>
+                      <span className="tabular-nums font-bold text-sm text-stone-800">{row.points}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden sm:block overflow-x-auto">
                 <table className="w-full min-w-[500px] text-left border-collapse">
                   <caption className="sr-only">University of Swat official grading scale and grade points</caption>
                   <thead>
@@ -495,7 +516,7 @@ export default function AcademicsPage() {
             </article>
 
             {/* Right: Progression & Probation Standards (5 cols) */}
-            <article className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] space-y-5">
+            <article className="lg:col-span-5 p-5 sm:p-8 rounded-2xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] space-y-5">
               <div className="pb-4 border-b border-white/15">
                 <h3 className="font-serif text-xl sm:text-2xl font-bold text-white tracking-[-0.01em]">
                   Academic Standing &amp; Probation
@@ -533,7 +554,7 @@ export default function AcademicsPage() {
 
         {/* ─── 6. Quality Enhancement Cell (QEC) & National Accreditations ─── */}
         <section aria-labelledby="qec-heading" className="mb-16 lg:mb-20">
-          <div className="rounded-2xl bg-[#0F291B] text-white border border-[#0C1912] shadow-xl p-8 sm:p-10 lg:p-12 relative overflow-hidden">
+          <div className="rounded-2xl bg-[#0F291B] text-white border border-[#0C1912] shadow-xl p-5 sm:p-10 lg:p-12 relative overflow-hidden">
             {/* Ambient gold glow */}
             <div aria-hidden="true" className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#C8A96E]/12 blur-3xl pointer-events-none" />
             <div aria-hidden="true" className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[#153B27]/40 blur-3xl pointer-events-none" />

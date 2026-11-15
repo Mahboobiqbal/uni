@@ -1,10 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import UosAssistant from "@/components/ui/UosAssistant";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0C1912" },
+    { media: "(prefers-color-scheme: light)", color: "#153B27" },
+  ],
+};
 
   const plusJakartaSans = Plus_Jakarta_Sans({
     variable: "--font-sans",

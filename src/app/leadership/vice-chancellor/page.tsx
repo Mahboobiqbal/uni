@@ -21,9 +21,9 @@ export default function ViceChancellorDetailPage() {
       />
 
       {/* ── Official Inaugural Discourse & portrait ───────────────────────────────── */}
-      <section id="discourse" className="py-16 sm:py-24 bg-[#F6F5F0]">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
-          <div className="mb-8">
+      <section id="discourse" className="py-10 sm:py-24 bg-[#F6F5F0]">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
+          <div className="mb-6 sm:mb-8">
             <Link
               href="/leadership"
               className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 hover:text-[#153B27] transition-colors min-h-[44px]"
@@ -33,22 +33,22 @@ export default function ViceChancellorDetailPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Main Column: Full Discourse & Vision */}
             <div className="lg:col-span-8">
-              <div className="p-8 sm:p-12 rounded-3xl bg-white border border-stone-300 shadow-sm">
+              <div className="p-5 sm:p-12 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-sm">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="h-0.5 w-6 bg-[#7F1D1D]" />
                   <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
                     Official Inaugural Discourse
                   </span>
                 </div>
-                <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 font-bold mb-6">
+                <h2 className="font-serif text-2xl sm:text-4xl text-stone-900 font-bold mb-6">
                   Shaping the Scholastic Future of Swat
                 </h2>
 
                 <div className="font-sans text-stone-700 text-base sm:text-lg leading-relaxed space-y-6">
-                  <p className="italic font-serif text-xl sm:text-2xl text-white leading-snug bg-[#153B27] border-l-4 border-[#C8A96E] pl-6 pr-6 py-5 rounded-r-xl">
+                  <p className="italic font-serif text-lg sm:text-2xl text-white leading-snug bg-[#153B27] border-l-4 border-[#C8A96E] pl-4 pr-4 sm:pl-6 sm:pr-6 py-4 sm:py-5 rounded-r-xl">
                     &ldquo;It is with immense pride, humility, and a profound sense of responsibility that I assume the office of Vice Chancellor of the University of Swat. I am honored to serve this distinguished institution at a pivotal moment in its journey.&rdquo;
                   </p>
                   <p>
@@ -109,7 +109,7 @@ export default function ViceChancellorDetailPage() {
 
             {/* Sidebar Column: Portrait & Direct Email */}
             <div className="lg:col-span-4">
-              <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-300 shadow-sm text-center">
+              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-sm text-center">
                 <div className="relative w-full aspect-4/5 rounded-2xl overflow-hidden shadow-md mb-6 border-4 border-stone-200">
                   <Image
                     src={viceChancellorProfile.image}
@@ -162,9 +162,9 @@ export default function ViceChancellorDetailPage() {
       </section>
 
       {/* ── The Vice Chancellor's Office: text-left / photo-right split ───────────── */}
-      <section id="vice-chancellor-office" className="py-16 sm:py-24 bg-[#F6F5F0] relative overflow-hidden">
+      <section id="vice-chancellor-office" className="py-10 sm:py-24 bg-[#F6F5F0] relative overflow-hidden">
         <div className="absolute top-1/3 -left-24 w-80 h-80 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Text (left) */}
             <div className="lg:col-span-6">

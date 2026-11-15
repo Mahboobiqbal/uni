@@ -98,9 +98,9 @@ export default function CampusLifeHeritage() {
       <div className="absolute -top-24 right-0 w-[400px] h-[400px] rounded-full bg-[#C8A96E]/8 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 -left-24 w-[420px] h-[420px] rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10">
         {/* Split Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10 lg:mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8 sm:mb-10 lg:mb-14">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
               <span className="h-0.5 w-7 bg-[#7F1D1D]" />
@@ -108,7 +108,7 @@ export default function CampusLifeHeritage() {
                 Campus Life &amp; Heritage
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
               Campus Life &amp; Swat Valley Heritage
             </h2>
           </div>

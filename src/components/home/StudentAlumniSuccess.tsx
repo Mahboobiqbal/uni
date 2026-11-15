@@ -64,9 +64,9 @@ export default function StudentAlumniSuccess() {
       data-purpose="student-alumni-success"
       className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
     >
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="h-0.5 w-6 bg-[#7F1D1D]" />
             <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
@@ -74,21 +74,21 @@ export default function StudentAlumniSuccess() {
             </span>
             <span className="h-0.5 w-6 bg-[#7F1D1D]" />
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14] mb-4">
+          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14] mb-4">
             Where Ambition Meets Proven Real-World Impact
           </h2>
-          <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+          <p className="font-sans text-stone-600 text-sm sm:text-lg leading-relaxed">
             Our graduates lead engineering teams, author high-impact scientific publications,
             and launch ventures that reshape the socio-economic landscape of Pakistan and beyond.
           </p>
         </div>
 
         {/* 3 Testimonial Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((item, idx) => (
             <article
               key={item.id}
-              className="relative flex flex-col rounded-2xl bg-white border border-stone-300 p-8 shadow-xs hover:shadow-xl transition-all duration-200 ease-out hover:-translate-y-[2px] group"
+              className="relative flex flex-col rounded-2xl bg-white border border-stone-300 p-5 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-200 ease-out hover:-translate-y-[2px] group"
             >
               {/* Quote icon watermark */}
               <div className="absolute top-6 right-6 text-stone-200 group-hover:text-[#153B27]/15 transition-colors">

@@ -146,31 +146,31 @@ function SearchPageContent() {
     <div className="bg-[#F6F5F0] min-h-screen">
       <div className="relative overflow-hidden bg-[#F6F5F0] border-b border-stone-200/80">
         <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/8 blur-3xl pointer-events-none" />
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-14 lg:py-20 relative z-10">
-          <div className="flex items-center gap-2.5 mb-3">
-            <span className="h-0.5 w-7 bg-[#7F1D1D]" />
-            <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 pt-28 sm:pt-36 lg:pt-40 pb-12 sm:pb-16 relative z-10">
+          <div className="flex items-center gap-2 sm:gap-2.5 mb-3">
+            <span className="h-0.5 w-6 sm:w-7 bg-[#7F1D1D]" />
+            <span className="text-[11px] sm:text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
               Search · University of Swat
             </span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-[52px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.08] mb-8">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-[52px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.08] mb-6 sm:mb-8">
             Search the University
           </h1>
 
           <form onSubmit={handleSubmit} className="max-w-2xl">
-            <div className="flex items-center gap-3 p-2 rounded-2xl bg-white border border-stone-300 shadow-xs focus-within:border-[#153B27]/50">
-              <Search className="w-5 h-5 text-stone-500 ml-3 shrink-0" />
+            <div className="flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 rounded-2xl bg-white border border-stone-300 shadow-xs focus-within:border-[#153B27]/50">
+              <Search className="w-5 h-5 text-stone-500 ml-2.5 sm:ml-3 shrink-0" />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search programs, departments, faculty, news, events…"
+                placeholder="Search programs, departments, faculty…"
                 aria-label="Search the university website"
-                className="w-full bg-transparent text-sm text-stone-800 placeholder:text-stone-500 focus:outline-none py-2.5"
+                className="w-full bg-transparent text-[16px] sm:text-sm text-stone-800 placeholder:text-stone-500 focus:outline-none py-2"
               />
               <button
                 type="submit"
-                className="shrink-0 px-5 py-2.5 rounded-xl bg-[#153B27] text-white text-sm font-semibold hover:bg-[#14291D] transition-colors"
+                className="shrink-0 px-4 sm:px-5 py-2.5 rounded-xl bg-[#153B27] text-white text-xs sm:text-sm font-semibold hover:bg-[#14291D] transition-colors"
               >
                 Search
               </button>

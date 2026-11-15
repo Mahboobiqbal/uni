@@ -64,6 +64,8 @@ export interface NavItem {
   columns: 1 | 2 | 3;
   groups: NavGroup[];
   rail: NavRail;
+  /** Render as a direct single-click link (no mega drawer / chevron). */
+  direct?: boolean;
 }
 
 export const navItems: NavItem[] = [
@@ -123,7 +125,7 @@ export const navItems: NavItem[] = [
     anchor: 'faculties',
     summary: 'Five faculties and their teaching departments',
     viewAllLabel: 'Academic structure',
-    columns: 3,
+    columns: 2,
     groups: [
       {
         title: 'Faculties',
@@ -158,31 +160,6 @@ export const navItems: NavItem[] = [
             meta: '4 depts',
             icon: Scale,
           },
-        ],
-      },
-      {
-        title: 'Flagship departments',
-        links: [
-          { label: 'Computer & Software Technology', href: '/departments/computer-software-technology', meta: 'BS–PhD', icon: Code },
-          { label: 'Chemistry', href: '/departments/chemistry', meta: 'BS–PhD', icon: FlaskConical },
-          { label: 'Environmental Sciences', href: '/departments/environmental-sciences', meta: 'BS–PhD', icon: Leaf },
-          { label: 'Management & Commerce', href: '/departments/management-commerce', meta: 'BBA–MS', icon: Briefcase },
-          { label: 'Law & Shariah', href: '/departments/law-shariah', meta: 'LLB–LLM', icon: Scale },
-          { label: 'Allied Health Sciences', href: '/departments/allied-health-sciences', meta: 'Institute', icon: Award },
-        ],
-      },
-      {
-        title: 'Graduate & doctoral departments',
-        links: [
-          { label: 'Computer & Software Technology', href: '/departments/computer-software-technology', meta: 'MS · PhD', icon: Code },
-          { label: 'Management & Commerce', href: '/departments/management-commerce', meta: 'MBA · MS', icon: Briefcase },
-          { label: 'Chemistry', href: '/departments/chemistry', meta: 'M.Phil · PhD', icon: FlaskConical },
-          { label: 'Environmental Sciences', href: '/departments/environmental-sciences', meta: 'M.Phil · PhD', icon: Leaf },
-          { label: 'Law & Shariah', href: '/departments/law-shariah', meta: 'LLM', icon: Scale },
-          { label: 'English & Foreign Languages', href: '/departments/english-foreign-languages', meta: 'M.Phil', icon: BookOpen },
-          { label: 'Botany', href: '/departments/botany', meta: 'PhD', icon: Leaf },
-          { label: 'Zoology', href: '/departments/zoology', meta: 'PhD', icon: Leaf },
-          { label: 'Islamic & Arabic Studies', href: '/departments/islamic-arabic-studies', meta: 'PhD', icon: BookOpen },
         ],
       },
     ],
@@ -232,6 +209,7 @@ export const navItems: NavItem[] = [
     summary: 'The Fall 2026 admission cycle',
     viewAllLabel: 'Admissions 2026',
     columns: 2,
+    direct: true,
     groups: [
       {
         title: 'Admission cycle',

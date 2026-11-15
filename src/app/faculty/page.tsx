@@ -1,217 +1,251 @@
-import type { Metadata } from 'next';
+'use client';
+
+import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Briefcase,
-  Building,
-  ChevronRight,
-  Cpu,
-  FlaskConical,
-  GraduationCap,
-  HeartPulse,
-  Mail,
-  MapPin,
-  Scale,
-  Sparkles,
-} from 'lucide-react';
+import { ArrowRight, Search } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import { facultiesCatalog, allDepartments } from '@/data/departmentsData';
 
-export const metadata: Metadata = {
-  title: 'Faculties & Academic Departments | University of Swat',
-  description: 'Explore the 4 official faculties and 28 teaching departments at the University of Swat.',
+const ROMAN = ['I', 'II', 'III', 'IV', 'V'] as const;
+
+const FACULTY_FILTERS = [
+  { id: 'all', label: 'All Faculties' },
+  { id: 'physical-computational-sciences', label: 'Physical & Computational' },
+  { id: 'chemical-life-sciences', label: 'Chemical & Life' },
+  { id: 'allied-health-sciences', label: 'Allied Health' },
+  { id: 'management-social-sciences', label: 'Management & Social' },
+  { id: 'languages-humanities-law', label: 'Languages, Hum. & Law' },
+] as const;
+
+const campusPill = (campus: string): string => {
+  const c = campus.toLowerCase();
+  if (c.includes('women')) return 'bg-[#7F1D1D]/10 text-[#7F1D1D] border-[#E4C6C6]';
+  if (c.includes('shangla')) return 'bg-amber-900/10 text-amber-900 border-[#C8A96E]/70';
+  return 'bg-[#153B27]/10 text-[#153B27] border-[#C9D6C2]';
 };
 
-const facultyIcons: Record<string, React.ReactNode> = {
-  'physical-computational-sciences': <Cpu className="w-5 h-5 text-white" />,
-  'chemical-life-sciences': <FlaskConical className="w-5 h-5 text-white" />,
-  'allied-health-sciences': <HeartPulse className="w-5 h-5 text-white" />,
-  'management-social-sciences': <Briefcase className="w-5 h-5 text-white" />,
-  'languages-humanities-law': <Scale className="w-5 h-5 text-white" />,
-  'humanities-legal-studies': <Scale className="w-5 h-5 text-white" />,
+const cleanHod = (hod?: string): string => {
+  if (!hod) return 'Office of the Chairperson';
+  const t = hod.trim().toLowerCase();
+  if (!t || t === 'university dept.' || t === 'university dept') return 'Office of the Chairperson';
+  return hod.trim();
 };
+
+const facultyStats = (() => {
+  const deptCount = allDepartments.length;
+  const programCount = allDepartments.reduce((s, d) => s + d.programsOffered.length, 0);
+  return { facultyCount: facultiesCatalog.length, deptCount, programCount };
+})();
 
 export default function FacultyPage() {
+  const [query, setQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState<string>('all');
+
+  const visibleFaculties = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return facultiesCatalog
+      .map((fac) => {
+        if (activeFilter !== 'all' && fac.slug !== activeFilter) return null;
+        const depts = fac.departments.filter((d) => {
+          if (!q) return true;
+          return (
+            d.name.toLowerCase().includes(q) ||
+            (d.headOfDepartment ?? '').toLowerCase().includes(q) ||
+            d.aims.toLowerCase().includes(q) ||
+            d.campus.toLowerCase().includes(q)
+          );
+        });
+        return depts.length ? { fac, depts } : null;
+      })
+      .filter((x): x is { fac: (typeof facultiesCatalog)[number]; depts: (typeof facultiesCatalog)[number]['departments'] } => x !== null);
+  }, [query, activeFilter]);
+
+  const totalShown = visibleFaculties.reduce((s, v) => s + v.depts.length, 0);
+
   return (
     <div className="bg-[#F6F5F0] min-h-screen text-[#14291D]">
-      {/* ─── 1. Deep Forest Green (#153B27) Architectural Hero Banner ─── */}
+      {/* Photographic hero with Deep Forest Green glow */}
       <PageHeader
         tag="ACADEMIC STRUCTURE"
         title="Faculties & Teaching Departments"
-        subtitle="The University of Swat is organized into specialized academic faculties encompassing 28 teaching departments, research institutes, and regional sub-campuses."
+        description="The University of Swat is organized into specialized academic faculties encompassing its teaching departments, research institutes, and regional sub-campuses."
         eyebrow="ACADEMIC STRUCTURE"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Faculties' },
         ]}
-      />
+        backgroundImage="/images/campus/charbagh-campus.jpg"
+      >
+        <dl className="grid grid-cols-2 sm:flex sm:flex-wrap items-stretch border-t border-white/15 pt-6 sm:pt-7 gap-y-5 sm:gap-y-4">
+          {[
+            { value: String(facultyStats.facultyCount), label: 'Academic Faculties' },
+            { value: String(facultyStats.deptCount), label: 'Teaching Departments' },
+            { value: `${facultyStats.programCount}+`, label: 'Degree Programs' },
+            { value: '250+', label: 'Scholarly Faculty' },
+          ].map((fact, idx, arr) => (
+            <div
+              key={fact.label}
+              className={`flex flex-col justify-center pr-4 sm:pr-8 sm:mr-8 ${
+                idx % 2 === 0 ? 'border-r sm:border-r border-white/15' : idx < arr.length - 1 ? 'sm:border-r border-white/15' : ''
+              }`}
+            >
+              <dt className="order-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-white/55 font-semibold mt-1.5">
+                {fact.label}
+              </dt>
+              <dd className="order-1 font-serif text-2xl sm:text-3xl lg:text-4xl text-[#D4B87A] font-bold leading-none tabular-nums">
+                {fact.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </PageHeader>
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 pb-20 sm:pb-28">
-        {/* ─── 2. Overlapping 4-Stat Summary Bar with Bold Crimson Top Border (#7F1D1D) ─── */}
-        <div className="-mt-10 sm:-mt-12 relative z-20 rounded-2xl bg-[#153B27] text-white border border-white/10 border-t-4 border-t-[#C8A96E] shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] p-6 sm:p-8 mb-16 lg:mb-20">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/15">
-            <div className="text-center sm:text-left sm:pr-4">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#C8A96E]">
-                5
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/70 font-bold mt-1 block">
-                Academic Faculties
-              </span>
-              <span className="text-[11px] text-white/60 mt-0.5 block">
-                Approved by Academic Council
-              </span>
+      {/* Faculty Quick-Jump & Search Filter Bar */}
+      <div className="relative lg:sticky lg:top-24 z-30">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
+          <div className="bg-white border border-stone-300 border-t-4 border-t-[#7F1D1D] rounded-2xl p-3.5 sm:p-4 shadow-[0_24px_50px_-22px_rgba(12,25,18,0.35)] flex flex-col lg:flex-row lg:items-center gap-3 mb-8 sm:mb-10">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none momentum-scroll -mx-1 px-1 lg:flex-wrap lg:overflow-visible lg:pb-0" role="group" aria-label="Filter by faculty">
+              {FACULTY_FILTERS.map((f) => {
+                const isActive = activeFilter === f.id;
+                return (
+                  <button
+                    key={f.id}
+                    type="button"
+                    aria-pressed={isActive}
+                    onClick={() => setActiveFilter(f.id)}
+                    className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-all duration-200 active:scale-[0.98] min-h-[36px] shrink-0 lg:shrink ${
+                      isActive ? 'bg-[#153B27] text-white shadow-sm' : 'text-stone-600 hover:text-[#14291D] hover:bg-stone-100'
+                    }`}
+                  >
+                    {f.label}
+                  </button>
+                );
+              })}
             </div>
 
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:px-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#C8A96E]">
-                28
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/70 font-bold mt-1 block">
-                Teaching Departments
-              </span>
-              <span className="text-[11px] text-white/60 mt-0.5 block">
-                Undergraduate &amp; Postgrad
-              </span>
-            </div>
-
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:px-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#C8A96E]">
-                60+
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/70 font-bold mt-1 block">
-                Degree Programs
-              </span>
-              <span className="text-[11px] text-white/60 mt-0.5 block">
-                BS, MS, MPhil &amp; PhD Tracks
-              </span>
-            </div>
-
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:pl-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                250+
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/70 font-bold mt-1 block">
-                Scholarly Faculty
-              </span>
-              <span className="text-[11px] text-white/60 mt-0.5 block">
-                PhD Professors &amp; Researchers
-              </span>
+            <div className="relative min-w-0 flex-1">
+              <Search className="w-4 h-4 text-stone-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search department, Head of Department, or campus…"
+                aria-label="Search departments"
+                className="w-full pl-10 pr-4 h-10 rounded-lg bg-stone-50 border border-stone-300 text-[16px] sm:text-sm text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent focus:bg-white transition-all"
+              />
             </div>
           </div>
         </div>
+      </div>
 
-        {/* ─── 3. Faculties & Departments with Forest Green & Crimson Contrast ─── */}
-        <div className="space-y-20">
-          {facultiesCatalog.map((faculty) => (
-            <section
-              key={faculty.slug}
-              id={faculty.slug}
-              className="scroll-mt-32"
-              aria-labelledby={`heading-${faculty.slug}`}
+      {/* Editorial canvas */}
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 pb-20 sm:pb-28">
+        {visibleFaculties.length === 0 ? (
+          <div className="p-12 sm:p-16 text-center space-y-4 bg-white border border-stone-300 rounded-2xl shadow-xs">
+            <div className="w-12 h-12 rounded-full bg-stone-100 text-stone-600 mx-auto flex items-center justify-center">
+              <Search className="w-6 h-6" />
+            </div>
+            <h3 className="font-serif text-2xl font-bold text-stone-800">No Matching Departments Found</h3>
+            <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto">
+              We could not find any departments matching your search or faculty filter. Try broadening your search.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setQuery('');
+                setActiveFilter('all');
+              }}
+              className="px-6 py-3 rounded-xl bg-[#153B27] hover:bg-[#0F2D1E] text-white text-[11px] font-bold uppercase tracking-[0.12em] min-h-[44px] transition-all active:scale-[0.985]"
             >
-              {/* Faculty Group Header with Forest Green Badge (#153B27) & Subtle Bottom Divider Rule */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-stone-300 mb-8 gap-4">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-xl bg-[#153B27] flex items-center justify-center shrink-0 shadow-sm">
-                    {facultyIcons[faculty.slug] ?? <GraduationCap className="w-5 h-5 text-white" />}
-                  </div>
-                  <div>
-                    <h2
-                      id={`heading-${faculty.slug}`}
-                      className="font-serif text-2xl sm:text-3xl font-bold text-[#14291D] tracking-tight"
+              Reset Filters
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-20">
+            {visibleFaculties.map(({ fac, depts }, fi) => {
+              const badgeCrimson = fi % 2 === 1;
+              return (
+                <section key={fac.slug} id={fac.slug} className="scroll-mt-40" aria-labelledby={`heading-${fac.slug}`}>
+                  {/* Architectural Faculty Header Strip */}
+                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-b border-stone-300 pb-4 mb-6">
+                    <div className="flex items-end gap-4">
+                      <span aria-hidden="true" className="font-serif text-3xl sm:text-4xl font-bold text-[#7F1D1D] leading-none">
+                        {ROMAN[fi] ?? String(fi + 1)}.
+                      </span>
+                      <div>
+                        <h2
+                          id={`heading-${fac.slug}`}
+                          className="font-serif text-2xl lg:text-3xl font-bold text-[#153B27] tracking-[-0.02em] leading-tight"
+                        >
+                          {fac.name}
+                        </h2>
+                        <p className="text-xs text-stone-500 mt-1 font-medium">
+                          {depts.length} Teaching Department{depts.length === 1 ? '' : 's'}
+                        </p>
+                      </div>
+                    </div>
+                    <span
+                      className={`shrink-0 inline-flex items-center px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest ${
+                        badgeCrimson ? 'bg-[#7F1D1D] text-white' : 'bg-[#153B27] text-[#C8A96E]'
+                      }`}
                     >
-                      {faculty.name}
-                    </h2>
-                    <span className="text-xs text-stone-500 uppercase tracking-widest font-semibold mt-0.5 block">
-                      {faculty.departments.length} Departments &amp; Research Centers
+                      Faculty Division
                     </span>
                   </div>
-                </div>
 
-                <div className="text-xs font-semibold text-[#153B27] hidden sm:block">
-                  <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200">
-                    Active Faculty Group
-                  </span>
-                </div>
-              </div>
+                  {/* Uniform department cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {depts.map((dept) => {
+                      const hod = cleanHod(dept.headOfDepartment);
+                      const hasEmail = Boolean(dept.contactEmail && dept.contactEmail.trim());
+                      return (
+                        <article
+                          key={dept.id}
+                          className="group bg-white border border-stone-200 border-t-[3px] border-t-[#153B27] hover:border-[#7F1D1D] hover:border-t-[#7F1D1D] rounded-xl p-5 sm:p-6 flex flex-col justify-between transition-all hover:shadow-md"
+                        >
+                          <div>
+                            <div className="flex items-center justify-between gap-2">
+                              <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold border ${campusPill(dept.campus)}`}>
+                                {dept.campus}
+                              </span>
+                              <span className="text-xs font-semibold text-stone-500">
+                                {dept.programsOffered.length} Programs
+                              </span>
+                            </div>
 
-              {/* Department Cards Grid with 3px Forest Green / Crimson Top Accent Bar */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {faculty.departments.map((dept) => (
-                  <article
-                    key={dept.id}
-                    className="p-6 rounded-2xl bg-white border border-stone-300 border-t-[3px] border-t-[#153B27] shadow-xs hover:border-[#7F1D1D] hover:border-t-[#7F1D1D] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group first:bg-[#153B27] first:text-white first:border-white/10 first:border-t-[#C8A96E] first:shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] first:hover:bg-[#0F2D1E]! first:hover:border-white/10! first:hover:border-t-[#C8A96E]!"
-                  >
-                    <div>
-                      {/* Top Row: HoD Badge in Forest Green Tint */}
-                      <div className="flex items-start justify-between gap-3 mb-3.5">
-                        <span className="inline-block px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide bg-[#153B27]/10 text-[#153B27] border border-[#153B27]/20 group-first:bg-[#C8A96E]/15 group-first:text-[#C8A96E] group-first:border-[#C8A96E]/30">
-                          {dept.headOfDepartment ? `HoD: ${dept.headOfDepartment}` : 'University Dept.'}
-                        </span>
+                            <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-[#7F1D1D] mt-3 leading-snug transition-colors">
+                              <Link href={`/departments/${dept.id}`}>{dept.name}</Link>
+                            </h3>
 
-                        <div className="flex items-center gap-1 text-[11px] text-stone-600 group-first:text-white/60">
-                          <MapPin className="w-3 h-3 text-emerald-700 shrink-0 group-first:text-[#C8A96E]" />
-                          <span>{dept.campus.split(' ')[0]}</span>
-                        </div>
-                      </div>
+                            <p className="text-sm text-stone-600 line-clamp-2 mt-2 leading-relaxed">
+                              {dept.aims || dept.description}
+                            </p>
+                          </div>
 
-                      {/* Department Title */}
-                      <h3 className="font-serif text-xl font-bold text-[#14291D] group-hover:text-[#153B27] group-first:text-white group-first:group-hover:text-[#C8A96E]! transition-colors mb-2.5 leading-snug">
-                        <Link href={`/departments/${dept.id}`}>
-                          {dept.name}
-                        </Link>
-                      </h3>
-
-                      <p className="font-sans text-xs sm:text-[13px] text-stone-600 leading-relaxed mb-4 line-clamp-3 group-first:text-white/70">
-                        {dept.aims || dept.description}
-                      </p>
-
-                      {/* Programs Offered Chips */}
-                      <div className="space-y-1.5 mb-6">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 block group-first:text-[#C8A96E]">
-                          Offered Degrees:
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {dept.programsOffered.slice(0, 3).map((prog, pIdx) => (
-                            <span
-                              key={pIdx}
-                              className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-stone-50 border border-stone-200 text-stone-700 group-first:bg-white/[0.07] group-first:border-white/[0.12] group-first:text-white/75"
+                          <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
+                            <div className="min-w-0">
+                              <div className="text-xs font-bold text-[#153B27] truncate">{hod}</div>
+                              {hasEmail && (
+                                <div className="text-xs text-stone-500 truncate mt-0.5">{dept.contactEmail}</div>
+                              )}
+                            </div>
+                            <Link
+                              href={`/departments/${dept.id}`}
+                              className="shrink-0 inline-flex items-center gap-1 text-xs font-bold text-[#7F1D1D] hover:text-[#661717] transition-colors"
                             >
-                              {prog.split('(')[0].trim()}
-                            </span>
-                          ))}
-                          {dept.programsOffered.length > 3 && (
-                            <span className="text-[11px] font-semibold text-stone-600 self-center group-first:text-white/60">
-                              +{dept.programsOffered.length - 3} more
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Bottom Row: Contact Email & Bold Crimson "Profile & Faculty →" Link */}
-                    <div className="pt-4 border-t border-stone-200 flex items-center justify-between text-xs mt-auto group-first:border-white/15">
-                      <span className="text-stone-600 font-mono text-[11px] flex items-center gap-1 group-first:text-white/60">
-                        <Mail className="w-3 h-3 text-stone-500 shrink-0 group-first:text-white/60" />
-                        <span className="truncate max-w-[130px]">{dept.contactEmail}</span>
-                      </span>
-
-                      <Link
-                        href={`/departments/${dept.id}`}
-                        className="font-semibold text-[#7F1D1D] hover:text-[#991B1B] hover:underline flex items-center gap-1 transition-colors group-first:text-[#C8A96E] group-first:hover:text-[#E5CD9B]!"
-                      >
-                        <span>Profile &amp; Faculty</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
+                              <span>Profile &amp; Faculty</span>
+                              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                            </Link>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

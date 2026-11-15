@@ -42,9 +42,9 @@ export default function AboutPage() {
       />
 
       {/* ─── Section 1 · The Valley of Swat — editorial split ─────────────────── */}
-      <section id="valley" className="py-16 sm:py-24">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <section id="valley" className="py-12 sm:py-24">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
 
             <div className="lg:col-span-6 space-y-6">
               <div className="flex items-center gap-2.5">
@@ -54,15 +54,15 @@ export default function AboutPage() {
                 </span>
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
                 Where Ancient Gandhara Meets Modern Intellect
               </h2>
 
-              <p className="font-sans text-stone-600 text-base sm:text-lg leading-[1.75]">
+              <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">
                 The lush green forests, running clear streams, and historic Swat Valley lies between 34°-40′ to 35°N latitude and 72′ to 74°-6′ E longitude. The valley is an integral part of the strategic and significant region where three parts of the Asian continent&mdash;South Asia, Central Asia and China&mdash;meet.
               </p>
 
-              <p className="font-sans text-stone-600 text-base sm:text-sm leading-relaxed">
+              <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
                 The River Swat is a clear water river starting from the Ushu mountain range to the wide spread of the valley. Swat was historically known as Uddiyana (the garden), famous worldwide for its Buddhist stupas, rock carvings, ancient monastic sanctuaries, and peaceful hospitality inherited from the historic era of the Wali of Swat.
               </p>
             </div>
@@ -107,17 +107,17 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-radial from-transparent via-[#0C1912]/50 to-[#0C1912]" aria-hidden="true" />
         </div>
 
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10 text-center">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-[#E5CD9B] uppercase tracking-widest mb-6">
             <Landmark className="w-3.5 h-3.5 text-[#C8A96E]" />
             <span>Established 2010 &middot; Government of Khyber Pakhtunkhwa Charter</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] max-w-4xl mx-auto leading-[1.12] mb-6 text-white drop-shadow-sm">
+          <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] max-w-4xl mx-auto leading-[1.12] mb-6 text-white drop-shadow-sm">
             A Young University in the Ancient Cradle of Gandhara
           </h2>
 
-          <p className="font-sans text-stone-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-12">
+          <p className="font-sans text-stone-300 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-12">
             The University of Swat was formally chartered in 2010 by the Government of Khyber Pakhtunkhwa to advance higher education in Swat, Shangla, Buner, and neighboring districts&mdash;growing from humble beginnings into a purpose-built, 100% solarized academic community in Charbagh.
           </p>
 
@@ -143,9 +143,9 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Section 3 · Motto, mission & values — editorial split ────────────── */}
-      <section id="mission" className="py-16 sm:py-24">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <section id="mission" className="py-12 sm:py-24">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
 
             <div className="lg:col-span-7 space-y-7">
               <div className="space-y-6">
@@ -156,11 +156,11 @@ export default function AboutPage() {
                   </span>
                 </div>
 
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
+                <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
                   Aspiring for Quality Education with Relevance
                 </h2>
 
-                <p className="font-sans text-stone-600 text-base sm:text-lg leading-[1.75]">
+                <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">
                   Our academic philosophy centers on &ldquo;relevance&rdquo;&mdash;ensuring that our research programs in botany, geology, environmental resilience, law, business, and software engineering directly address the industrial and environmental imperatives of northern Pakistan.
                 </p>
               </div>
@@ -220,13 +220,13 @@ export default function AboutPage() {
 
       {/* ─── Section 4 · Campuses directory ───────────────────────────────────── */}
       <section id="campuses" className="pb-16 sm:pb-24">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
-          <div className="pb-4 border-b border-stone-200 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
+          <div className="pb-4 border-b border-stone-200 mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold block mb-1">
                 Geographic Presence
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-[-0.02em]">
+              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-stone-900 tracking-[-0.02em]">
                 Campuses of the University of Swat
               </h2>
             </div>
@@ -251,7 +251,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#153B27]/70 via-transparent to-transparent" aria-hidden="true" />
               </div>
-              <div className="p-6 flex flex-col flex-1">
+              <div className="p-5 sm:p-6 flex flex-col flex-1">
                 <h3 className="font-serif text-lg font-bold text-white mb-1">
                   Charbagh Main Campus
                 </h3>
@@ -280,7 +280,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0C1912]/40 via-transparent to-transparent" aria-hidden="true" />
               </div>
-              <div className="p-6 flex flex-col flex-1">
+              <div className="p-5 sm:p-6 flex flex-col flex-1">
                 <h3 className="font-serif text-lg font-bold text-stone-900 mb-1">
                   Women Campus
                 </h3>
@@ -309,7 +309,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0C1912]/40 via-transparent to-transparent" aria-hidden="true" />
               </div>
-              <div className="p-6 flex flex-col flex-1">
+              <div className="p-5 sm:p-6 flex flex-col flex-1">
                 <h3 className="font-serif text-lg font-bold text-stone-900 mb-1">
                   Sangota Campus
                 </h3>

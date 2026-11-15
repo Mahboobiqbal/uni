@@ -11,7 +11,7 @@ export default function CampusTourBanner() {
     <section
       id="campus-tour"
       data-purpose="campus-tour-banner"
-      className="relative w-full py-24 sm:py-32 overflow-hidden bg-[#0C1912] text-white"
+      className="relative w-full py-16 sm:py-28 overflow-hidden bg-[#0C1912] text-white"
     >
       {/* Background Scenic Image with Parallax & Dark Vignette */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
@@ -24,7 +24,7 @@ export default function CampusTourBanner() {
         <div className="absolute inset-0 bg-radial from-transparent via-[#0C1912]/50 to-[#0C1912]" />
       </div>
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10 text-center">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10 text-center">
         {/* Eyebrow */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-emerald-300 uppercase tracking-widest mb-6">
           <MapPin className="w-3.5 h-3.5 text-emerald-400" />
@@ -32,12 +32,12 @@ export default function CampusTourBanner() {
         </div>
 
         {/* Display Serif Headline */}
-        <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] max-w-4xl mx-auto leading-[1.12] mb-6 text-white drop-shadow-sm">
+        <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] max-w-4xl mx-auto leading-[1.12] mb-6 text-white drop-shadow-sm">
           Experience the University of Swat Firsthand
         </h2>
 
         {/* Subtitle */}
-        <p className="font-sans text-stone-300 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+        <p className="font-sans text-stone-300 text-sm sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10">
           Walk across our 350-canal solar-powered campus, tour high-tech computing labs,
           and discover why scholars from across Pakistan choose to study in the heart of the Swat Valley.
         </p>

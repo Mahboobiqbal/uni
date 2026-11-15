@@ -58,7 +58,7 @@ export default function CampusLifePage() {
       {/* Interactive Photo Gallery from approved home design */}
       <CampusLifeHeritage />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 space-y-16">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-10 sm:py-20 space-y-12 sm:space-y-16">
         
         {/* Core Student Life Pillars */}
         <div>
@@ -67,7 +67,7 @@ export default function CampusLifePage() {
               <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold block mb-1">
                 Campus Facilities
               </span>
-              <h2 className="font-serif text-3xl font-bold text-stone-900">
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
                 Pillars of the Student Experience
               </h2>
             </div>
@@ -76,11 +76,11 @@ export default function CampusLifePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {campusHighlights.map((item, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-white border border-stone-300 shadow-xs flex flex-col justify-between group hover:border-[#153B27]/60 hover:shadow-md transition-all"
+                className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-stone-300 shadow-xs flex flex-col justify-between group hover:border-[#153B27]/60 hover:shadow-md transition-all"
               >
                 <div>
                   <div className="relative w-full aspect-16/9 rounded-2xl overflow-hidden mb-6 bg-stone-100 border border-stone-200">
@@ -118,12 +118,12 @@ export default function CampusLifePage() {
         </div>
 
         {/* Student Welfare & Transportation */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
+        <div className="p-5 sm:p-12 rounded-2xl sm:rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)]">
           <div className="pb-4 border-b border-white/15 mb-8">
             <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold block mb-1">
               Welfare &amp; Services
             </span>
-            <h2 className="font-serif text-3xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
               Health, Mobility &amp; Student Safety
             </h2>
           </div>

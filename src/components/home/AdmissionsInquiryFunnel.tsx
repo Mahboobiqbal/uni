@@ -45,11 +45,11 @@ export default function AdmissionsInquiryFunnel() {
       data-purpose="admissions-inquiry-funnel"
       className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
     >
-      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-2xl border border-stone-300">
 
           {/* Left Column: University Crimson Authority & Contacts (5 cols) */}
-          <div className="lg:col-span-5 bg-[#7F1D1D] text-white p-8 sm:p-12 lg:p-14 flex flex-col justify-between relative">
+          <div className="lg:col-span-5 bg-[#7F1D1D] text-white p-5 sm:p-10 lg:p-14 flex flex-col justify-between relative">
             {/* Watermark Crest */}
             <div className="absolute -bottom-16 -right-16 w-80 h-80 opacity-5 pointer-events-none">
               <img src="/uos-logo-circle.png" alt="" className="w-full h-full object-contain" />
@@ -129,7 +129,7 @@ export default function AdmissionsInquiryFunnel() {
           </div>
 
           {/* Right Column: Interactive Lead Capture Form (7 cols) */}
-          <div className="lg:col-span-7 bg-white p-8 sm:p-12 lg:p-14 flex flex-col justify-center">
+          <div className="lg:col-span-7 bg-white p-5 sm:p-10 lg:p-14 flex flex-col justify-center">
             {submitted ? (
               <div className="text-center py-12 space-y-4">
                 <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 mx-auto flex items-center justify-center">
@@ -185,7 +185,7 @@ export default function AdmissionsInquiryFunnel() {
                         value={formData.firstName}
                         onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                         placeholder="e.g. Asim"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-xs text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-[16px] sm:text-xs text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
                       />
                     </div>
                     <div>
@@ -198,7 +198,7 @@ export default function AdmissionsInquiryFunnel() {
                         value={formData.lastName}
                         onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                         placeholder="e.g. Khan"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-xs text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-[16px] sm:text-xs text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -215,7 +215,7 @@ export default function AdmissionsInquiryFunnel() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="applicant@domain.com"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-xs text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-[16px] sm:text-xs text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
                       />
                     </div>
                     <div>
@@ -228,7 +228,7 @@ export default function AdmissionsInquiryFunnel() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+92 300 1234567"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-xs text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-[16px] sm:text-xs text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -243,7 +243,7 @@ export default function AdmissionsInquiryFunnel() {
                         aria-label="Desired Degree Level"
                         value={formData.degreeLevel}
                         onChange={(e) => setFormData({ ...formData, degreeLevel: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-xs text-[#14291D] bg-white focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-[16px] sm:text-xs text-[#14291D] bg-white focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
                       >
                         <option value="undergraduate">Undergraduate (4-Year BS / BBA / LLB)</option>
                         <option value="graduate">Graduate (MS / MPhil)</option>
@@ -259,7 +259,7 @@ export default function AdmissionsInquiryFunnel() {
                         aria-label="Academic Faculty / Field"
                         value={formData.department}
                         onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-xs text-[#14291D] bg-white focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-[16px] sm:text-xs text-[#14291D] bg-white focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
                       >
                         <option value="computing">Computing &amp; IT (Computer Science, SE)</option>
                         <option value="sciences">Sciences (Chemistry, Environmental, Zoology)</option>
@@ -275,7 +275,7 @@ export default function AdmissionsInquiryFunnel() {
                     <label className="block text-xs font-semibold text-stone-700 mb-1.5">
                       I am an:
                     </label>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                       {[
                         { id: 'student', label: 'Prospective Student' },
                         { id: 'parent', label: 'Parent / Guardian' },
@@ -285,7 +285,7 @@ export default function AdmissionsInquiryFunnel() {
                           key={t.id}
                           type="button"
                           onClick={() => setFormData({ ...formData, applicantType: t.id })}
-                          className={`py-2 px-2 text-center rounded-lg text-xs font-medium border active:scale-[0.985] active:translate-y-px transition-all duration-150 ${formData.applicantType === t.id
+                          className={`py-2 px-2 text-center rounded-lg text-xs font-medium border flex items-center justify-center min-h-[44px] active:scale-[0.985] active:translate-y-px transition-all duration-150 ${formData.applicantType === t.id
                             ? 'bg-[#153B27] text-white border-[#153B27]'
                             : 'bg-stone-50 text-stone-600 border-stone-300 hover:bg-stone-100'
                             }`}
@@ -301,7 +301,7 @@ export default function AdmissionsInquiryFunnel() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#7F1D1D] hover:bg-[#681818] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-md transition-all duration-150 group disabled:opacity-70"
+                      className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#7F1D1D] hover:bg-[#681818] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-sm font-semibold shadow-md transition-all duration-150 group disabled:opacity-70"
                     >
                       {loading ? (
                         <span>Registering Inquiry...</span>
