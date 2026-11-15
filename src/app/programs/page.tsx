@@ -416,7 +416,7 @@ export default function ProgramsPage() {
       </PageHeader>
 
       {/* ─── Program Finder Bar (Overlaps header with Crimson top accent) ─── */}
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 -mt-10 sm:-mt-12 relative z-20">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 -mt-10 sm:-mt-12 relative z-20">
         <div
           role="search"
           aria-label="Filter degree programs"
@@ -510,7 +510,7 @@ export default function ProgramsPage() {
       </div>
 
       {/* Main Content Area */}
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20 space-y-20">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 space-y-20">
         {/* ─── Part 1: Featured Degree Specifications (3x2 Grid) ─── */}
         {filteredFlagship.length > 0 && (
           <section id="flagship-degrees" aria-labelledby="flagship-heading">

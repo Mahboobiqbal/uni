@@ -202,7 +202,7 @@ export default function RankingSection() {
       <div className="absolute top-1/4 -right-32 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -left-32 w-96 h-96 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
 
         {/* ── Section Header (Editorial Split) ── */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-16">

@@ -85,7 +85,7 @@ export default function PortalPage() {
         eyebrow="Single Sign-On &amp; Electronic Workflows"
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20 space-y-12">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 space-y-12">
         
         {/* Portals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

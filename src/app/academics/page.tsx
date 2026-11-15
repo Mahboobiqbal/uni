@@ -247,7 +247,7 @@ export default function AcademicsPage() {
         ]}
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 pb-20 sm:pb-28 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 pb-20 sm:pb-28 relative z-10">
         {/* ─── 2. Editorial Year-at-a-Glance Strip (replaces overlapping crimson stat bar) ─── */}
         <div className="-mt-10 sm:-mt-12 relative z-20 mb-14 lg:mb-18">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 rounded-2xl overflow-hidden border border-stone-200 shadow-xs">

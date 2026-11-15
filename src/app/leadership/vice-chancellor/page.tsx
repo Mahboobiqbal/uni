@@ -22,7 +22,7 @@ export default function ViceChancellorDetailPage() {
 
       {/* ── Official Inaugural Discourse & portrait ───────────────────────────────── */}
       <section id="discourse" className="py-16 sm:py-24 bg-[#F6F5F0]">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="mb-8">
             <Link
               href="/leadership"
@@ -164,7 +164,7 @@ export default function ViceChancellorDetailPage() {
       {/* ── The Vice Chancellor's Office: text-left / photo-right split ───────────── */}
       <section id="vice-chancellor-office" className="py-16 sm:py-24 bg-[#F6F5F0] relative overflow-hidden">
         <div className="absolute top-1/3 -left-24 w-80 h-80 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Text (left) */}
             <div className="lg:col-span-6">
@@ -282,7 +282,7 @@ export default function ViceChancellorDetailPage() {
         </div>
         <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/10 blur-3xl pointer-events-none" />
 
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
           <div className="flex items-center gap-2.5 mb-5">
             <span className="h-0.5 w-7 bg-[#C8A96E]" />
             <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold">

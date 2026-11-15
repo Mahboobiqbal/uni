@@ -45,7 +45,7 @@ export default function AdmissionsInquiryFunnel() {
       data-purpose="admissions-inquiry-funnel"
       className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
     >
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-2xl border border-stone-300">
 
           {/* Left Column: University Crimson Authority & Contacts (5 cols) */}

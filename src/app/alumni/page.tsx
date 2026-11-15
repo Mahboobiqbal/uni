@@ -49,7 +49,7 @@ export default function AlumniPage() {
         eyebrow="Alumni · University of Swat"
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20 space-y-14 lg:space-y-20">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 space-y-14 lg:space-y-20">
         {/* Intro narrative */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7">

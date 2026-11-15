@@ -120,7 +120,7 @@ export default function MeritListsPage() {
         </dl>
       </PageHeader>
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-14 sm:py-16 lg:py-20">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-14 sm:py-16 lg:py-20">
         <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <Link
             href="/admissions"

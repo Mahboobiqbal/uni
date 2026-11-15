@@ -57,7 +57,7 @@ export default function CampusPhotoRibbon() {
       data-purpose="campus-photo-ribbon"
       className="py-16 sm:py-20 bg-white border-t border-stone-300 overflow-hidden"
     >
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Camera className="w-4 h-4 text-[#7F1D1D]" />
@@ -82,7 +82,7 @@ export default function CampusPhotoRibbon() {
       </div>
 
       {/* 6-Photo Responsive Strip with Strict 1360px Edge Alignment */}
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {photos.map((p) => (
             <Link

@@ -156,7 +156,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
       </PageHeader>
 
       {/* â”€â”€â”€ Main content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-12 sm:py-16">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* â”€â”€â”€ Main Column â”€â”€â”€ */}
           <main className="lg:col-span-8 space-y-12 sm:space-y-14">

@@ -44,7 +44,7 @@ export default async function EventDetailPage({ params }: PageProps) {
         backLabel="All Events"
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Details column */}
           <div className="lg:col-span-8 space-y-8">

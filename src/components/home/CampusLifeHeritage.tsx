@@ -98,7 +98,7 @@ export default function CampusLifeHeritage() {
       <div className="absolute -top-24 right-0 w-[400px] h-[400px] rounded-full bg-[#C8A96E]/8 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 -left-24 w-[420px] h-[420px] rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
         {/* Split Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10 lg:mb-14">
           <div>

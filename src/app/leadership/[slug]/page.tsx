@@ -146,7 +146,7 @@ export default async function OfficeDetailPage({ params }: PageProps) {
         eyebrow="Leadership &amp; Administrative Governance"
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
         
         {/* Back link */}
         <div className="mb-10">

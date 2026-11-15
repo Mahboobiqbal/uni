@@ -51,7 +51,7 @@ export default function PageHeader({
         <img src="/uos-logo-circle.png" alt="" className="w-full h-full object-contain invert" />
       </div>
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
         {/* Clean Integrated Breadcrumb Trail (inside container, below navbar) */}
         <nav aria-label="Breadcrumb" className="mb-6">
           <ol className="flex items-center gap-2 text-xs font-medium text-white/70 flex-wrap">

@@ -8,7 +8,7 @@ import { Award, Building2, FileText, ArrowUpRight } from 'lucide-react';
 export default function ViceChancellorSection() {
   return (
     <section
-      className="pt-36 sm:pt-44 lg:pt-48 pb-20 sm:pb-28 bg-[#F6F5F0] relative z-10 overflow-hidden"
+      className="pt-44 sm:pt-52 lg:pt-60 pb-20 sm:pb-28 bg-[#F6F5F0] relative z-10 overflow-hidden"
       data-purpose="vice-chancellor-section"
       id="vice-chancellor"
     >
@@ -16,7 +16,7 @@ export default function ViceChancellorSection() {
       <div className="absolute top-10 right-10 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
-      <div className="w-full max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
         {/* Editorial bridge between Hero's crimson cards and the VC portrait */}
         <div className="text-center mb-12 lg:mb-16">
           <div className="flex items-center justify-center gap-2.5 mb-4">

@@ -64,7 +64,7 @@ export default function StudentAlumniSuccess() {
       data-purpose="student-alumni-success"
       className="py-20 sm:py-28 bg-[#F6F5F0] relative overflow-hidden"
     >
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 mb-3">

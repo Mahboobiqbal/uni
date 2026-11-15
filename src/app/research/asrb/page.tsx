@@ -26,7 +26,7 @@ export default function AsrbPage() {
         eyebrow="ASRB · Directorate of Advanced Studies"
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
         
         {/* Back link */}
         <div className="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

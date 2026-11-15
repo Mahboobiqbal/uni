@@ -25,7 +25,7 @@ export default function Footer() {
       data-purpose="site-footer"
       id="site-footer"
     >
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
         {/* ─── Top Header Row: University Branding & Subscribe Box ─── */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-12 border-b border-white/10">
           {/* Left: University Crest Logo & Typography */}

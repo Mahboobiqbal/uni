@@ -158,7 +158,7 @@ export default function AdmissionsPage() {
         </dl>
       </PageHeader>
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-14 sm:py-16 lg:py-20 space-y-14 sm:space-y-16">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-14 sm:py-16 lg:py-20 space-y-14 sm:space-y-16">
         {/* Primary admission actions */}
         <section aria-labelledby="admissions-actions-heading">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7 sm:mb-8">

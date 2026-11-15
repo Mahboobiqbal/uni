@@ -314,7 +314,7 @@ export default function CampusBulletin() {
       <div className="absolute top-1/3 -left-24 w-[380px] h-[380px] rounded-full bg-[#7F1D1D]/8 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 right-1/4 w-[460px] h-[460px] rounded-full bg-[#B48A3E]/10 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
         {/* Split Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
           <div>

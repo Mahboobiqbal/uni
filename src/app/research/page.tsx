@@ -20,7 +20,7 @@ export default function ResearchPage() {
 
       {/* ─── Section 1 · Flagship pillars — ORIC & ASRB photo-led directory rows ── */}
       <section id="pillars" className="py-16 sm:py-24">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 space-y-8">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 space-y-8">
 
           {/* ORIC — forest lead row */}
           <article className="group relative overflow-hidden rounded-3xl bg-[#153B27] text-white border border-white/10 shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] hover:border-[#C8A96E]/40 hover:-translate-y-[2px] transition-all duration-200 ease-out">
@@ -145,7 +145,7 @@ export default function ResearchPage() {
           <div className="absolute inset-0 bg-radial from-transparent via-[#0C1912]/50 to-[#0C1912]" aria-hidden="true" />
         </div>
 
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10 text-center">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-[#E5CD9B] uppercase tracking-widest mb-6">
             <FlaskConical className="w-3.5 h-3.5 text-[#C8A96E]" aria-hidden="true" />
             <span>Research, Innovation &amp; Commercialization</span>
@@ -178,7 +178,7 @@ export default function ResearchPage() {
 
       {/* ─── Section 3 · Gandhara heritage — editorial split ──────────────────── */}
       <section id="gandhara" className="py-16 sm:py-24">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
             <div className="lg:col-span-6 space-y-6">
@@ -239,7 +239,7 @@ export default function ResearchPage() {
 
       {/* ─── Section 4 · International collaborations — ruled directory rows ──── */}
       <section id="partnerships" className="pb-0">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="pb-4 border-b border-stone-200 mb-2 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold block mb-1">
@@ -314,7 +314,7 @@ export default function ResearchPage() {
 
       {/* ─── Section 5 · SUJRIS research journal ──────────────────────────────── */}
       <section id="sujris" className="py-16 sm:py-24">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="rounded-3xl bg-gradient-to-br from-[#153B27] to-[#0D2418] text-white shadow-md p-8 sm:p-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
             <div className="max-w-2xl">
               <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold block mb-2">

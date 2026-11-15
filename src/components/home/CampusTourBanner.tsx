@@ -24,7 +24,7 @@ export default function CampusTourBanner() {
         <div className="absolute inset-0 bg-radial from-transparent via-[#0C1912]/50 to-[#0C1912]" />
       </div>
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10 text-center">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10 text-center">
         {/* Eyebrow */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-emerald-300 uppercase tracking-widest mb-6">
           <MapPin className="w-3.5 h-3.5 text-emerald-400" />

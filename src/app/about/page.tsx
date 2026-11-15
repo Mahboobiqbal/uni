@@ -43,7 +43,7 @@ export default function AboutPage() {
 
       {/* ─── Section 1 · The Valley of Swat — editorial split ─────────────────── */}
       <section id="valley" className="py-16 sm:py-24">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
             <div className="lg:col-span-6 space-y-6">
@@ -107,7 +107,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-radial from-transparent via-[#0C1912]/50 to-[#0C1912]" aria-hidden="true" />
         </div>
 
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10 text-center">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-[#E5CD9B] uppercase tracking-widest mb-6">
             <Landmark className="w-3.5 h-3.5 text-[#C8A96E]" />
             <span>Established 2010 &middot; Government of Khyber Pakhtunkhwa Charter</span>
@@ -144,7 +144,7 @@ export default function AboutPage() {
 
       {/* ─── Section 3 · Motto, mission & values — editorial split ────────────── */}
       <section id="mission" className="py-16 sm:py-24">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
             <div className="lg:col-span-7 space-y-7">
@@ -220,7 +220,7 @@ export default function AboutPage() {
 
       {/* ─── Section 4 · Campuses directory ───────────────────────────────────── */}
       <section id="campuses" className="pb-16 sm:pb-24">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="pb-4 border-b border-stone-200 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#153B27] font-bold block mb-1">

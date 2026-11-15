@@ -97,7 +97,7 @@ export default function Navbar() {
 
       <div className="relative" onMouseLeave={() => setActiveDropdown(null)}>
         <div
-          className={`mx-auto flex w-full max-w-[1360px] items-center justify-between gap-6 px-4 transition-all duration-300 sm:px-6 lg:px-12 ${
+          className={`mx-auto flex w-full max-w-[1440px] items-center justify-between gap-6 px-4 transition-all duration-300 sm:px-10 lg:px-14 ${
             isScrolled ? 'py-2.5' : 'py-3.5'
           }`}
         >

@@ -48,7 +48,7 @@ export default function FacultyPage() {
         ]}
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 pb-20 sm:pb-28">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 pb-20 sm:pb-28">
         {/* ─── 2. Overlapping 4-Stat Summary Bar with Bold Crimson Top Border (#7F1D1D) ─── */}
         <div className="-mt-10 sm:-mt-12 relative z-20 rounded-2xl bg-[#153B27] text-white border border-white/10 border-t-4 border-t-[#C8A96E] shadow-[0_24px_48px_-22px_rgba(12,25,18,0.5)] p-6 sm:p-8 mb-16 lg:mb-20">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/15">

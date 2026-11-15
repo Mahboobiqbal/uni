@@ -146,7 +146,7 @@ function SearchPageContent() {
     <div className="bg-[#F6F5F0] min-h-screen">
       <div className="relative overflow-hidden bg-[#F6F5F0] border-b border-stone-200/80">
         <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/8 blur-3xl pointer-events-none" />
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-14 lg:py-20 relative z-10">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-14 lg:py-20 relative z-10">
           <div className="flex items-center gap-2.5 mb-3">
             <span className="h-0.5 w-7 bg-[#7F1D1D]" />
             <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
@@ -179,7 +179,7 @@ function SearchPageContent() {
         </div>
       </div>
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-14 lg:py-16">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-14 lg:py-16">
         {!query ? (
           <div className="py-20 text-center">
             <Search className="w-10 h-10 text-stone-300 mx-auto mb-4" />

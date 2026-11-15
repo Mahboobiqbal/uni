@@ -192,7 +192,7 @@ export default function HeroSection() {
 
       {/* Bottom content area — editorial left-to-right balance, vertically centered */}
       <div className="relative z-20 mt-auto w-full pb-44 sm:pb-48 md:pb-52">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative">
           <div className="flex flex-col">
             {/* Bottom-Left — Main Hero Headline & CTAs */}
             <div className="max-w-2xl text-left">
@@ -398,7 +398,7 @@ export default function HeroSection() {
 
       {/* Three Architectural Crimson Pillars — overlapping the bottom edge onto Warm Alabaster */}
       <div className="absolute bottom-0 inset-x-0 z-30 pointer-events-none">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 translate-y-[78%] md:translate-y-[82%] pointer-events-auto relative z-30">
             {heroPillars.map((pillar) => (
               <article

@@ -16,7 +16,7 @@ export default function EditorialStorytelling() {
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-[#7F1D1D]/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10 space-y-24 sm:space-y-32">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10 space-y-24 sm:space-y-32">
         {/* ─── Story Row 1: Alpine Sanctuary & Green Campus ─────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Text Content (Left, 6 cols) */}

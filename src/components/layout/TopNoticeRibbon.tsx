@@ -56,7 +56,7 @@ export default function TopNoticeRibbon() {
       aria-label="University Announcement Banner"
       className="relative z-50 bg-[#7F1D1D] text-white border-b border-[#991B1B]/60 text-xs py-1.5 px-3 sm:px-6 transition-all duration-300"
     >
-      <div className="max-w-[1360px] mx-auto flex items-center justify-between gap-3">
+      <div className="max-w-[1440px] w-full mx-auto flex items-center justify-between gap-3 px-4 sm:px-6">
         {/* Left: Live Notification Badge */}
         <div className="flex items-center gap-2.5 shrink-0">
           <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/15 border border-white/20 text-[10px] font-bold tracking-wider uppercase text-amber-200">

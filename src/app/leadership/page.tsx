@@ -55,7 +55,7 @@ export default function LeadershipPage() {
       {/* ── Executive Leadership: featured pair (real portraits lead) ─────────────── */}
       <section id="executive-leadership" className="py-16 sm:py-24 bg-[#F6F5F0] relative overflow-hidden">
         <div className="absolute top-16 -right-24 w-80 h-80 rounded-full bg-[#153B27]/5 blur-3xl pointer-events-none" />
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
           <div className="flex items-center gap-2 mb-3">
             <span className="h-0.5 w-7 bg-[#7F1D1D]" />
             <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">
@@ -190,7 +190,7 @@ export default function LeadershipPage() {
 
       {/* ── Executive Statutory Officers: ruled directory rows ────────────────────── */}
       <section id="statutory-officers" className="py-16 sm:py-24 bg-[#F6F5F0]">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="pb-4 border-b-2 border-stone-300 mb-8">
             <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold block mb-1">
               Administrative Body
@@ -268,7 +268,7 @@ export default function LeadershipPage() {
         </div>
         <div className="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-[#C8A96E]/10 blur-3xl pointer-events-none" />
 
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
           <div className="pb-4 border-b border-white/15 mb-10">
             <span className="text-xs uppercase tracking-widest text-[#C8A96E] font-bold block mb-1">
               Administrative Body
@@ -325,7 +325,7 @@ export default function LeadershipPage() {
 
       {/* ── Statutory office directory: onward links to the executive offices ─────── */}
       <section id="office-directory" className="py-16 sm:py-24 bg-[#F6F5F0]">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14">
           <div className="flex items-center gap-2 mb-3">
             <span className="h-0.5 w-7 bg-[#7F1D1D]" />
             <span className="text-xs uppercase tracking-widest text-[#7F1D1D] font-bold">

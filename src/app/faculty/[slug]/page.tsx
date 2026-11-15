@@ -48,7 +48,7 @@ export default async function FacultyProfilePage({ params }: PageProps) {
         backLabel="Faculties & Departments"
       />
 
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 py-16 sm:py-20">
+      <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Profile card column */}
           <div className="lg:col-span-4">
