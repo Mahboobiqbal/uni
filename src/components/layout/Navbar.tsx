@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import TopNoticeRibbon from './TopNoticeRibbon';
 
 interface SubmenuItem {
   label: string;
@@ -390,11 +391,14 @@ export default function Navbar() {
       onKeyDown={handleHeaderKeyDown}
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0C1912]/55 backdrop-blur-xl border-b border-white/15 shadow-lg py-3.5'
-          : 'bg-gradient-to-b from-black/60 via-black/25 to-transparent py-4 sm:py-5'
+          ? 'bg-[#0C1912]/90 backdrop-blur-xl border-b border-white/15 shadow-lg'
+          : 'bg-gradient-to-b from-black/75 via-black/35 to-transparent'
       }`}
     >
-      <div className="w-full pl-3 sm:pl-4 pr-4 sm:pr-6 flex items-center justify-between">
+      <TopNoticeRibbon />
+      <div className={`w-full pl-3 sm:pl-4 pr-4 sm:pr-6 flex items-center justify-between transition-all duration-300 ${
+        isScrolled ? 'py-3' : 'py-3.5 sm:py-4'
+      }`}>
         {/* Left Branding: Circular Crest Logo + "University of Swat" */}
         <Link
           href="/"

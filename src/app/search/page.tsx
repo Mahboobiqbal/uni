@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { ArrowUpRight, BookOpen, Building2, FileText, Landmark, Search, Users } from 'lucide-react';
@@ -113,7 +113,7 @@ function buildIndex(): SearchItem[] {
   return items;
 }
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [query, setQuery] = useState(searchParams.get('q') ?? '');
@@ -250,5 +250,19 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-[60vh] flex items-center justify-center bg-[#F6F5F0]">
+          <div className="w-8 h-8 rounded-full border-2 border-[#153B27] border-t-transparent animate-spin" />
+        </div>
+      }
+    >
+      <SearchPageContent />
+    </Suspense>
   );
 }

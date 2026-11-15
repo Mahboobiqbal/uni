@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowUpRight, BookOpen, Briefcase, Cpu, FlaskConical, Scale } from 'lucide-react';
+import FlagshipDegreeSpotlight from './FlagshipDegreeSpotlight';
 
 interface Faculty {
   id: string;
@@ -156,6 +157,9 @@ export default function FacultyProgramsGrid() {
             </article>
           ))}
         </div>
+
+        {/* Flagship Curricula & Popular Degree Spotlight */}
+        <FlagshipDegreeSpotlight />
       </div>
     </section>
   );

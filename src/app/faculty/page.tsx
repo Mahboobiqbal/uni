@@ -13,7 +13,9 @@ export const metadata: Metadata = {
 const facultyIcons: Record<string, React.ReactNode> = {
   'physical-computational-sciences': <Cpu className="w-5 h-5 text-[#153B27]" />,
   'chemical-life-sciences': <FlaskConical className="w-5 h-5 text-[#7F1D1D]" />,
+  'allied-health-sciences': <FlaskConical className="w-5 h-5 text-[#153B27]" />,
   'management-social-sciences': <Briefcase className="w-5 h-5 text-[#B48A3E]" />,
+  'languages-humanities-law': <Scale className="w-5 h-5 text-stone-700" />,
   'humanities-legal-studies': <Scale className="w-5 h-5 text-stone-700" />,
 };
 

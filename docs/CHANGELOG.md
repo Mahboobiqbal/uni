@@ -4,6 +4,99 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-15] — Clean Architectural Redesign of Global Footer (`Footer.tsx`)
+
+### Action Summary
+Rebuilt the global footer (`src/components/layout/Footer.tsx`) strictly matching the user-provided reference design:
+
+1. **Top Header Row**:
+   - Left: University of Swat circular crest (`/uos-logo-circle.png`) + display serif name & "Khyber Pakhtunkhwa, Pakistan".
+   - Right: "Subscribe - Get university Updates" label with high-contrast input (`placeholder="Get University Updates"`) and attached dark action button with right arrow (`→`), featuring instant subscription toast feedback.
+2. **Main 4-Column Directory (Stacked Sub-Sections)**:
+   - **Column 1**: *Explore UoS* (About, Leadership, Why Choose UoS, Campus Life, Our Ventures, Placements, Events, Mandatory Disclosure, Privacy Policy) & *Connect* (Image Gallery, Video Gallery, News, Media Coverage, Newsletters).
+   - **Column 2**: *Admissions* (Admission, How to Apply, Why Choose UoS, Department, Fee Structure) & *Campus Life* (Clubs, Sports, NCC/NSS, Webinar/Workshop, UBA, Student Welfare, Faculty Welfare, UGC e-Samadhan).
+   - **Column 3**: *Programmes* (Graduate, PhD Program, Post Graduate, Diploma Courses, Integrated Courses, Certification Courses) & *Top Programmes* (B Tech in AI, Bachelor in Science, B Pharmacy, Bachelor in Commerce, B Sc Agriculture, BBA, Bachelor of Ayurvedic/Herbal Medicine).
+   - **Column 4**: *School* (Engineering, Agriculture, Hotel Management, Pharmacy, Paramedical Science, Fashion Design, Basic Science, Commerce, Physical Education, Educations, Nursing, Journalism & Mass Communication).
+3. **Bottom Bar**:
+   - Left: Clean copyright label `© 2026 University of Swat. All rights reserved`.
+   - Right: 5 circular dark glyph social media buttons (Facebook, LinkedIn, Instagram, X/Twitter, YouTube).
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 103/103 static pages prerendered successfully with Turbopack.
+
+---
+
+## [2026-11-15] — Redesign of Degrees & Curricula Page (`/programs`): Program Finder & Slide-Over Syllabus Drawer
+
+### Action Summary
+Redesigned the Degrees & Curricula page (`src/app/programs/page.tsx`) to eliminate visual overlap and replace the repetitive nested 2x2 faculty card grid with an interactive academic directory:
+
+1. **Header Breadcrumb & Clearance Fix**:
+   - Replaced the overlapping back button with an integrated breadcrumb trail (`Home / Academics / Degrees & Curricula`) situated safely within the hero container under `pt-32 sm:pt-40` clearance.
+   - Preserved display serif typography and institutional color palette.
+2. **Sleek Program Finder Bar**:
+   - Built a full-width search and filter bar bridging the header section:
+     - Instant search input with search icon, clear button (`X`), and live match counters.
+     - Segmented degree-level filter pills (`All Levels`, `Undergraduate (BS / LLB)`, `Graduate (MS / MPhil / MBA)`, `Doctorate (PhD)`).
+3. **Interactive Featured Degree Specifications (3x2 Grid)**:
+   - Kept the 6 flagship degree cards (`BS Computer Science`, `BS Software Engineering`, `BS Chemistry`, `BBA Honors`, `LLB 5-Year`, `BS Environmental Sciences`).
+   - Wired `"View Detailed Syllabus ↗"` to an interactive slide-over drawer displaying eligibility, credit hours, fees, semester-by-semester course roadmaps, and scheme download triggers.
+4. **Clean Architectural Faculty Directory**:
+   - Completely eliminated the double-nested rounded boxes.
+   - Added horizontal faculty filter tabs (`All Faculties`, `Physical & Computational`, `Chemical & Life`, `Allied Health Sciences`, `Management & Social`, `Languages, Humanities & Law`).
+   - Implemented a unified single directory container (`bg-white border divide-y divide-stone-200`) with a 3-column desktop layout:
+     - Left (35%): Faculty group eyebrow + Department Name + Campus location indicator (`Charbagh Main Campus`, `Women Campus`, `Shangla Campus`).
+     - Middle (50%): Interactive degree tags (`BS`, `MPhil/MS`, `PhD`) with duration; clicking any tag opens the syllabus drawer.
+     - Right (15%): Direct `Dept. Profile →` link.
+   - Added real-time empty-state message with a "Reset All Filters" action.
+5. **Data Enrichment**:
+   - Enriched `src/data/departmentsData.ts` with explicit `campus` indicators and added the *Institute of Allied Health Sciences* (DPT, MLT, Dental Technology, Radiology) and *Sub-Campus Shangla*.
+   - Prerendered static paths expanded from 99 to 103 routes.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 103/103 static pages prerendered successfully with Turbopack.
+
+---
+
+## [2026-11-15] — Comprehensive Homepage Redesign & New Editorial Sections Integration
+
+### Action Summary
+Following deep comparative analysis with the high-converting Webflow Collegiate template, implemented and integrated 8 major new/upgraded sections into the University of Swat homepage:
+
+1. **`TopNoticeRibbon` (`src/components/layout/TopNoticeRibbon.tsx`)**:
+   - Integrated directly into the sticky `<header>` above `Navbar`.
+   - Live announcement carousel with auto-rotation (Fall 2026 Admissions, Official Merit Lists, HEC Need-Based Scholarships).
+   - Direct CTA links and dismiss/navigation controls.
+2. **`EditorialStorytelling` (`src/components/home/EditorialStorytelling.tsx`)**:
+   - Two alternating narrative storytelling rows:
+     - Row 1: Alpine Sanctuary & 100% Solarized Charbagh Main Campus with high-res photography, sustainability badges, and campus tour link.
+     - Row 2: Frontier Alpine Research, Herbal Therapeutics & Gandhara Archaeological Preservation with ORIC metrics.
+3. **`FlagshipDegreeSpotlight` (`src/components/home/FlagshipDegreeSpotlight.tsx`)**:
+   - Integrated into `FacultyProgramsGrid.tsx`.
+   - Showcases 4 top undergraduate/professional degrees (BS Computer Science, BS Software Engineering, BBA Honors, BS Environmental Sciences) with duration chips, career trajectories, and direct syllabus links.
+4. **`CampusTourBanner` (`src/components/home/CampusTourBanner.tsx`)**:
+   - Full-bleed scenic alpine banner with dark gradient vignette and key campus metric counters.
+   - Dual actions: "Plan an On-Campus Visit" + "Watch Campus Video Tour" (interactive modal).
+5. **`UpcomingEvents` (`src/components/home/UpcomingEvents.tsx`)**:
+   - Academic & cultural event carousel featuring symposia, sports tournaments, and hackathons with calendar date chips and venue info.
+6. **`StudentAlumniSuccess` (`src/components/home/StudentAlumniSuccess.tsx`)**:
+   - Student & Alumni outcomes section featuring real testimonials from engineering, environmental, and business graduates.
+   - 4-column metric counters (92.6% employability, 10,130+ scholars, PKR 45M+ scholarships, 15,000+ alumni).
+7. **`AdmissionsInquiryFunnel` (`src/components/home/AdmissionsInquiryFunnel.tsx`)**:
+   - Two-column conversion funnel: Left Forest Obsidian helpline & prospectus PDF download; Right interactive lead inquiry form with instant submission feedback.
+8. **`CampusPhotoRibbon` (`src/components/home/CampusPhotoRibbon.tsx`)**:
+   - 6-photo responsive gallery strip displaying student life, main campus gates, laboratories, and Swat heritage.
+9. **`SearchPage` Suspense Wrap (`src/app/search/page.tsx`)**:
+   - Wrapped `SearchPageContent` in `<Suspense>` to ensure Next.js App Router client hook compatibility during static site generation.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 99/99 static pages prerendered successfully with Turbopack.
+
+---
+
 ## [2026-11-15] — Template Completion Pass: Alumni, Search, 404, Event Detail, Faculty Profiles
 
 ### Action Summary
