@@ -248,56 +248,25 @@ export default function AcademicsPage() {
       />
 
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 pb-20 sm:pb-28 relative z-10">
-        {/* ─── 2. Overlapping 4-Metric Institutional Summary Bar with Bold Crimson Top Border (#7F1D1D) ─── */}
-        <div className="-mt-10 sm:-mt-12 relative z-20 rounded-2xl bg-[#7F1D1D] text-white border border-[#661717] border-t-4 border-t-[#E5CD9B] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] p-6 sm:p-8 mb-14 lg:mb-18">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
-            <div className="text-center sm:text-left sm:pr-4">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                05
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/80 font-bold mt-1 block">
-                Academic Faculties
-              </span>
-              <span className="text-[11px] text-white/70 mt-0.5 block">
-                Statutory University Faculties
-              </span>
-            </div>
-
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:px-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#E5CD9B]">
-                28
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/80 font-bold mt-1 block">
-                Teaching Departments
-              </span>
-              <span className="text-[11px] text-white/70 mt-0.5 block">
-                Undergraduate &amp; Postgraduate
-              </span>
-            </div>
-
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:px-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#E5CD9B]">
-                91.4%
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/80 font-bold mt-1 block">
-                HEC QEC Rating
-              </span>
-              <span className="text-[11px] text-white/70 mt-0.5 block">
-                W-Category National Quality
-              </span>
-            </div>
-
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:pl-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                100%
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/80 font-bold mt-1 block">
-                Chartered &amp; Recognized
-              </span>
-              <span className="text-[11px] text-white/70 mt-0.5 block">
-                HEC &amp; Statutory Councils
-              </span>
-            </div>
+        {/* ─── 2. Editorial Year-at-a-Glance Strip (replaces overlapping crimson stat bar) ─── */}
+        <div className="-mt-10 sm:-mt-12 relative z-20 mb-14 lg:mb-18">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 rounded-2xl overflow-hidden border border-stone-200 shadow-xs">
+            {[
+              { value: '05', label: 'Academic Faculties', detail: 'Statutory University Faculties' },
+              { value: '28', label: 'Teaching Departments', detail: 'Undergraduate & Postgraduate' },
+              { value: '91.4%', label: 'HEC QEC Rating', detail: 'W-Category National Quality' },
+              { value: '100%', label: 'Chartered & Recognized', detail: 'HEC & Statutory Councils' },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-white p-5 sm:p-6 text-center sm:text-left">
+                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#153B27] tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="text-xs uppercase tracking-wider text-stone-700 font-bold mt-1 block">
+                  {stat.label}
+                </span>
+                <span className="text-[11px] text-stone-500 mt-0.5 block">{stat.detail}</span>
+              </div>
+            ))}
           </div>
         </div>
 

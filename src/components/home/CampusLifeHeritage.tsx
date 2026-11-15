@@ -15,7 +15,7 @@ interface CampusTile {
 const tiles: CampusTile[] = [
   {
     id: 'main-campus',
-    image: '/images/campus/charbagh-campus.jpg',
+    image: '/images/uos/campus-and-events/campus-event-1.jpg',
     title: 'Charbagh Main Campus',
     description: 'Central administration, Academic Block C, science laboratories, and 100% green solarized campus facilities.',
     alt: 'Charbagh Main Campus of the University of Swat',
@@ -24,7 +24,7 @@ const tiles: CampusTile[] = [
   },
   {
     id: 'women-campus',
-    image: '/images/campus/women-campus.jpg',
+    image: '/images/uos/campus-and-events/campus-event-2.jpg',
     title: 'Women Campus',
     description: 'Dedicated campus for female students housing the College of Home Sciences, modern biology labs, and specialized facilities.',
     alt: 'Women Campus of the University of Swat',
@@ -32,7 +32,7 @@ const tiles: CampusTile[] = [
   },
   {
     id: 'library',
-    image: '/images/campus/admin-block.jpg',
+    image: '/images/uos/campus-and-events/campus-event-3.jpg',
     title: 'Central Library & Administration',
     description: 'Executive secretariats, automated book catalog, HEC Digital Library access, and dedicated scholar reading halls.',
     alt: 'Central Administration and Library at University of Swat',
@@ -40,7 +40,7 @@ const tiles: CampusTile[] = [
   },
   {
     id: 'sports',
-    image: '/images/campus/main-campus-gate.jpeg',
+    image: '/images/uos/campus-and-events/campus-event-4.jpg',
     title: 'Main Campus Portal & Sports',
     description: 'Official main gate, sports pavilions, cricket grounds, and athletic tournament fields for university varsity teams.',
     alt: 'University of Swat Main Campus Entrance',
@@ -48,7 +48,7 @@ const tiles: CampusTile[] = [
   },
   {
     id: 'heritage',
-    image: '/images/news/news-gandhara-mou-oct2026.jpeg',
+    image: '/images/uos/campus-and-events/campus-event-5.jpg',
     title: 'Swat Valley & Gandhara Heritage',
     description: 'World-famous Gandhara Buddhist stupas, archaeology collaborations with Sri Lankan NIIBS, and valley alpine heritage.',
     alt: 'Gandhara heritage and international research at University of Swat',
@@ -132,7 +132,6 @@ export default function CampusLifeHeritage() {
               <button
                 type="button"
                 onClick={() => setActiveId(tile.id)}
-                aria-label={`View larger: ${tile.title}`}
                 className="absolute inset-0 w-full h-full p-0 border-0 bg-transparent cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#153B27] focus-visible:ring-offset-2"
               >
                 <img
@@ -146,7 +145,7 @@ export default function CampusLifeHeritage() {
                 <span className="pointer-events-none absolute inset-0 rounded-xl shadow-[inset_0_0_0_1px_rgba(231,229,228,0.95)]" />
 
                 {/* Frosted editorial caption */}
-                <span className="absolute inset-x-0 bottom-0 text-left p-4 sm:p-5 bg-gradient-to-t from-white via-white/90 to-transparent border-t border-stone-200/70 pointer-events-none">
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 text-left p-4 sm:p-5 bg-gradient-to-t from-white via-white/90 to-transparent border-t border-stone-200/70 pointer-events-none">
                   {tile.badge && (
                     <span className="inline-block text-[10px] uppercase tracking-widest font-bold text-[#7F1D1D] mb-1">
                       {tile.badge}

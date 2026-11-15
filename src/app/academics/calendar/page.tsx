@@ -1,16 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
-  AlertCircle,
   ArrowLeft,
+  ArrowUpRight,
   CalendarDays,
   CheckCircle2,
   Clock,
   Download,
   FileText,
-  Info,
   ShieldCheck,
-  Sparkles,
 } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 
@@ -122,60 +120,29 @@ export default function AcademicCalendarPage() {
       />
 
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 pb-20 sm:pb-28 relative z-10">
-        {/* ─── 2. Overlapping 4-Metric Summary Bar with Bold Crimson Top Border (#7F1D1D) ─── */}
-        <div className="-mt-10 sm:-mt-12 relative z-20 rounded-2xl bg-[#7F1D1D] text-white border border-[#661717] border-t-4 border-t-[#E5CD9B] shadow-[0_24px_48px_-22px_rgba(102,23,23,0.5)] p-6 sm:p-8 mb-10 lg:mb-14">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
-            <div className="text-center sm:text-left sm:pr-4">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                02
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/80 font-bold mt-1 block">
-                Academic Semesters
-              </span>
-              <span className="text-[11px] text-white/70 mt-0.5 block">
-                Fall 2026 &amp; Spring 2027
-              </span>
-            </div>
-
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:px-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#E5CD9B]">
-                13
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/80 font-bold mt-1 block">
-                Official Milestones
-              </span>
-              <span className="text-[11px] text-white/70 mt-0.5 block">
-                Exams, Add/Drop &amp; Results
-              </span>
-            </div>
-
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:px-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#E5CD9B]">
-                16–18
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/80 font-bold mt-1 block">
-                Weeks / Semester
-              </span>
-              <span className="text-[11px] text-white/70 mt-0.5 block">
-                Instructional Contact Hours
-              </span>
-            </div>
-
-            <div className="text-center sm:text-left pt-4 sm:pt-0 sm:pl-6">
-              <span className="block font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                75%
-              </span>
-              <span className="text-xs uppercase tracking-wider text-white/80 font-bold mt-1 block">
-                Attendance Threshold
-              </span>
-              <span className="text-[11px] text-white/70 mt-0.5 block">
-                Statutory Exam Requirement
-              </span>
-            </div>
+        {/* ─── 2. Editorial Year-at-a-Glance Strip (replaces overlapping crimson stat bar) ─── */}
+        <div className="-mt-10 sm:-mt-12 relative z-20 mb-12 lg:mb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 rounded-2xl overflow-hidden border border-stone-200 shadow-xs">
+            {[
+              { value: '02', label: 'Academic Semesters', detail: 'Fall 2026 & Spring 2027' },
+              { value: '13', label: 'Official Milestones', detail: 'Exams, Add/Drop & Results' },
+              { value: '16–18', label: 'Weeks per Semester', detail: 'Instructional Contact Hours' },
+              { value: '75%', label: 'Attendance Threshold', detail: 'Statutory Exam Requirement' },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-white p-5 sm:p-6 text-center sm:text-left">
+                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#153B27] tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="text-xs uppercase tracking-wider text-stone-700 font-bold mt-1 block">
+                  {stat.label}
+                </span>
+                <span className="text-[11px] text-stone-500 mt-0.5 block">{stat.detail}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* ─── Quick Actions & Cross-Links ─── */}
+        {/* ─── 3. Quick Actions ─── */}
         <div className="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <Link
             href="/academics"
@@ -206,7 +173,7 @@ export default function AcademicCalendarPage() {
           </div>
         </div>
 
-        {/* ─── Side-by-Side Semester Milestones ─── */}
+        {/* ─── 4. Side-by-Side Semester Milestones ─── */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-10 mb-14">
           {/* Fall Semester 2026 */}
           <section
@@ -262,7 +229,7 @@ export default function AcademicCalendarPage() {
           </section>
         </div>
 
-        {/* ─── Statutory Advisory Notice Box ─── */}
+        {/* ─── 5. Statutory Advisory Notice Box ─── */}
         <div className="p-7 sm:p-8 rounded-2xl bg-[#0F291B] text-white border border-[#0C1912] shadow-xl relative overflow-hidden">
           <div aria-hidden="true" className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#C8A96E]/10 blur-3xl pointer-events-none" />
 

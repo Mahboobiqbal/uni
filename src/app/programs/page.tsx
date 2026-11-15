@@ -378,7 +378,7 @@ export default function ProgramsPage() {
   }, [selectedLevel, searchQuery]);
 
   return (
-    <div className="bg-[#F6F5F0] min-h-screen text-[#14291D]">
+    <main id="main-content" className="bg-[#F6F5F0] min-h-screen text-[#14291D]">
       {/* ─── Hero Header & Academic Fact Strip (Deep Forest Green) ─── */}
       <PageHeader
         eyebrow="Academic Programs &amp; Schemes of Study"
@@ -386,8 +386,7 @@ export default function ProgramsPage() {
         description="HEC-recognized undergraduate, master's, and doctoral degrees across five faculties — from Charbagh Main Campus to the Women Campus and Shangla."
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Academics', href: '/academics' },
-          { label: 'Degrees & Curricula' },
+          { label: 'Programs' },
         ]}
       >
         {/* Verified institutional fact strip — reads as one line with hairline dividers */}
@@ -408,7 +407,7 @@ export default function ProgramsPage() {
               <dt className="order-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-white/55 font-semibold mt-1.5">
                 {fact.label}
               </dt>
-              <dd className="order-1 font-serif text-2xl sm:text-3xl lg:text-4xl text-[#C8A96E] font-bold leading-none tabular-nums">
+              <dd className="order-1 font-serif text-2xl sm:text-3xl lg:text-4xl text-[#D4B87A] font-bold leading-none tabular-nums">
                 {fact.value}
               </dd>
             </div>
@@ -425,7 +424,7 @@ export default function ProgramsPage() {
         >
           {/* Left: Instant Search Input */}
           <div className="relative min-w-0 flex-1">
-            <Search className="w-4 h-4 text-stone-500 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
+            <Search className="w-4 h-4 text-stone-600 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
             <input
               ref={searchInputRef}
               type="text"
@@ -433,21 +432,21 @@ export default function ProgramsPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search degrees or departments — try “Chemistry”…"
               aria-label="Search degree programs, departments, or disciplines"
-              className="w-full pl-11 pr-16 lg:pr-14 h-12 rounded-xl bg-stone-50 border border-stone-300 text-sm text-[#14291D] placeholder:text-stone-500 placeholder:truncate focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent focus:bg-white transition-all"
+              className="w-full pl-11 pr-16 lg:pr-14 h-12 rounded-xl bg-stone-50 border border-stone-300 text-sm text-[#14291D] placeholder:text-stone-600 placeholder:truncate focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent focus:bg-white transition-all"
             />
             {searchQuery ? (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
                 aria-label="Clear search"
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-stone-500 hover:text-stone-800 rounded-full transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-stone-600 hover:text-stone-800 rounded-full transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
             ) : (
               <kbd
                 aria-hidden="true"
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 items-center justify-center text-[11px] font-sans font-bold text-stone-500 bg-white border border-stone-300 rounded-md shadow-[0_1px_0_0_#e7e5e4] hidden lg:flex pointer-events-none"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 items-center justify-center text-[11px] font-sans font-bold text-stone-600 bg-white border border-stone-300 rounded-md shadow-[0_1px_0_0_#e7e5e4] hidden lg:flex pointer-events-none"
               >
                 /
               </kbd>
@@ -530,7 +529,7 @@ export default function ProgramsPage() {
                   Featured Degree Specifications
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm text-stone-500 max-w-md sm:text-right leading-relaxed">
+              <p className="text-xs sm:text-sm text-stone-600 max-w-md sm:text-right leading-relaxed">
                 Six flagship curricula with semester-by-semester roadmaps, credit allocations, and eligibility — drawn from the official schemes of study.
               </p>
             </div>
@@ -567,7 +566,7 @@ export default function ProgramsPage() {
                       <span
                         className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full ${
                           idx === 0
-                            ? 'bg-[#C8A96E]/15 text-[#C8A96E] border border-[#C8A96E]/30'
+                            ? 'bg-[#C8A96E]/15 text-[#D4B87A] border border-[#C8A96E]/30'
                             : 'bg-[#EFF5EE] text-[#153B27] border border-[#C9D6C2]'
                         }`}
                       >
@@ -585,7 +584,7 @@ export default function ProgramsPage() {
 
                     <h3
                       className={`font-serif text-[1.65rem] sm:text-2xl font-bold transition-colors mb-3 leading-[1.15] tracking-[-0.01em] pr-8 ${
-                        idx === 0 ? 'text-white group-hover:text-[#C8A96E]' : 'text-[#14291D] group-hover:text-[#153B27]'
+                        idx === 0 ? 'text-white group-hover:text-[#D4B87A]' : 'text-[#14291D] group-hover:text-[#153B27]'
                       }`}
                     >
                       {prog.name}
@@ -637,7 +636,7 @@ export default function ProgramsPage() {
                         openProgramModal(prog.name, matchingDept);
                       }}
                       className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors min-h-[44px] -my-2 ${
-                        idx === 0 ? 'text-[#C8A96E] hover:text-white' : 'text-[#153B27] hover:text-[#7F1D1D]'
+                        idx === 0 ? 'text-[#D4B87A] hover:text-white' : 'text-[#153B27] hover:text-[#7F1D1D]'
                       }`}
                     >
                       <span>View Syllabus</span>
@@ -650,7 +649,7 @@ export default function ProgramsPage() {
                       title={`Direct link to ${prog.name}`}
                       className={`p-2.5 rounded-lg active:scale-[0.94] border transition-all duration-150 ${
                         idx === 0
-                          ? 'bg-white/10 text-[#C8A96E] border-white/15 hover:bg-white/20'
+                          ? 'bg-white/10 text-[#D4B87A] border-white/15 hover:bg-white/20'
                           : 'bg-stone-50 text-stone-600 border-stone-300 hover:bg-[#153B27] hover:text-white'
                       }`}
                     >
@@ -681,7 +680,7 @@ export default function ProgramsPage() {
                 Comprehensive Degree Directory
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-stone-500 max-w-md sm:text-right leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-600 max-w-md sm:text-right leading-relaxed">
               Filter by faculty, then click any degree tag for the full syllabus — eligibility, fees, and outcomes.
             </p>
           </div>
@@ -710,7 +709,7 @@ export default function ProgramsPage() {
                   <span>{fac.label}</span>
                   <span
                     className={`text-[10px] font-bold tabular-nums px-1.5 py-0.5 rounded-md ${
-                      isActive ? 'bg-white/15 text-[#C8A96E]' : 'bg-stone-100 text-stone-600'
+                      isActive ? 'bg-white/15 text-[#E5CD9B]' : 'bg-stone-100 text-stone-600'
                     }`}
                   >
                     {count}
@@ -721,8 +720,8 @@ export default function ProgramsPage() {
           </div>
 
           {/* Directory legend (degree tiers) */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mb-3 px-1 text-[10px] text-stone-500">
-            <span className="uppercase tracking-[0.16em] font-bold text-stone-400">Key</span>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mb-3 px-1 text-[10px] text-stone-600">
+            <span className="uppercase tracking-[0.16em] font-bold text-stone-600">Key</span>
             <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-[#EFF5EE] border border-[#C9D6C2]" /> Undergraduate</span>
             <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-[#EFEDE6] border border-[#D8D3C4]" /> Graduate</span>
             <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-[2px] bg-[#FBF6EA] border border-[#C8A96E]/70" /> Doctorate</span>
@@ -733,7 +732,7 @@ export default function ProgramsPage() {
             {filteredDepartments.length === 0 ? (
               /* Empty State */
               <div className="p-12 sm:p-16 text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-stone-100 text-stone-400 mx-auto flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-stone-100 text-stone-600 mx-auto flex items-center justify-center">
                   <Search className="w-6 h-6" />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-stone-800">
@@ -772,7 +771,7 @@ export default function ProgramsPage() {
                       <div className="lg:w-[38%] flex items-start gap-4 lg:gap-5 shrink-0">
                         <span
                           aria-hidden="true"
-                          className="font-serif text-sm sm:text-base font-bold text-stone-400 tabular-nums pt-1 w-7 shrink-0 border-r border-stone-200 pr-3"
+                          className="font-serif text-sm sm:text-base font-bold text-stone-600 tabular-nums pt-1 w-7 shrink-0 border-r border-stone-200 pr-3"
                         >
                           {String(deptIdx + 1).padStart(2, '0')}
                         </span>
@@ -885,10 +884,10 @@ export default function ProgramsPage() {
                   </h3>
 
                   <p className="text-[11px] text-white/75 font-medium flex items-center gap-2 flex-wrap">
-                    <Building2 className="w-3.5 h-3.5 text-[#C8A96E]" />
+                    <Building2 className="w-3.5 h-3.5 text-[#D4B87A]" />
                     <span>{selectedProgram.departmentName}</span>
                     <span aria-hidden="true" className="text-white/30">&bull;</span>
-                    <span className="text-[#C8A96E]">{selectedProgram.campus}</span>
+                    <span className="text-[#D4B87A]">{selectedProgram.campus}</span>
                   </p>
                 </div>
               </div>
@@ -902,7 +901,7 @@ export default function ProgramsPage() {
                   { label: 'Open Merit Fee', value: selectedProgram.feePerSemester.split('/')[0].trim() },
                 ].map((spec) => (
                   <div key={spec.label} className="px-4 py-3.5 sm:py-4">
-                    <span className="text-[9px] uppercase font-bold tracking-[0.16em] text-stone-400 block mb-1">
+                    <span className="text-[9px] uppercase font-bold tracking-[0.16em] text-stone-600 block mb-1">
                       {spec.label}
                     </span>
                     <span className="text-[11px] sm:text-xs font-bold text-[#14291D] leading-tight block">
@@ -944,7 +943,7 @@ export default function ProgramsPage() {
                         <Layers className="w-4 h-4" />
                         <span>Semester Roadmap &amp; Course Structure</span>
                       </h4>
-                      <span className="text-[10px] uppercase tracking-[0.14em] text-stone-400 font-bold tabular-nums whitespace-nowrap">
+                      <span className="text-[10px] uppercase tracking-[0.14em] text-stone-600 font-bold tabular-nums whitespace-nowrap">
                         {selectedProgram.semesterOutline.length} Terms
                       </span>
                     </div>
@@ -966,14 +965,14 @@ export default function ProgramsPage() {
                               <span className="text-xs sm:text-[13px] font-bold text-[#14291D] leading-snug">
                                 {term.semester}
                               </span>
-                              <span className="text-[9px] uppercase tracking-[0.14em] font-bold text-stone-400 tabular-nums shrink-0">
+                              <span className="text-[9px] uppercase tracking-[0.14em] font-bold text-stone-600 tabular-nums shrink-0">
                                 {term.courses.length} Courses
                               </span>
                             </div>
                             <ul className="text-[11px] text-stone-600 leading-snug flex flex-wrap gap-x-3 gap-y-1">
                               {term.courses.map((course, cIdx) => (
                                 <li key={cIdx} className="flex items-start gap-1.5">
-                                  <span aria-hidden="true" className="text-[#C8A96E] font-bold">&mdash;</span>
+                                  <span aria-hidden="true" className="text-[#D4B87A] font-bold">&mdash;</span>
                                   <span>{course}</span>
                                 </li>
                               ))}
@@ -1041,10 +1040,10 @@ export default function ProgramsPage() {
           aria-live="polite"
           className="fixed bottom-6 right-6 z-50 bg-[#0C1912] text-white px-5 py-3 rounded-xl shadow-2xl border border-[#C8A96E]/30 text-xs font-semibold flex items-center gap-2.5 animate-toast-in"
         >
-          <Download className="w-4 h-4 text-[#C8A96E]" />
+          <Download className="w-4 h-4 text-[#D4B87A]" />
           <span>{downloadToast}</span>
         </div>
       )}
-    </div>
+    </main>
   );
 }

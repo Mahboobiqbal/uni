@@ -240,6 +240,7 @@ export default function AdmissionsInquiryFunnel() {
                         Desired Degree Level
                       </label>
                       <select
+                        aria-label="Desired Degree Level"
                         value={formData.degreeLevel}
                         onChange={(e) => setFormData({ ...formData, degreeLevel: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-xs text-[#14291D] bg-white focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"
@@ -255,6 +256,7 @@ export default function AdmissionsInquiryFunnel() {
                         Academic Faculty / Field
                       </label>
                       <select
+                        aria-label="Academic Faculty / Field"
                         value={formData.department}
                         onChange={(e) => setFormData({ ...formData, department: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 text-xs text-[#14291D] bg-white focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent transition-all"

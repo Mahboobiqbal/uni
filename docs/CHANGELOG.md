@@ -49,6 +49,72 @@ Added an accessible, floating AI assistant widget (`AiChatbot`) rendered from `s
 
 ---
 
+## [2026-11-15] — Breadcrumb Hierarchy Fixed Across Faculty & Program Pages
+
+### Action Summary
+Fixed incorrect breadcrumb trails on `/faculty`, `/programs`, and `/programs/[slug]` that incorrectly nested them under "Academics".
+
+### Key Changes
+1. **`/faculty`** (`src/app/faculty/page.tsx`): Breadcrumb changed from "Home > Academics > Faculties" to "Home > Faculties".
+2. **`/programs`** (`src/app/programs/page.tsx`): Breadcrumb changed from "Home > Academics > Degrees & Curricula" to "Home > Programs".
+3. **`/programs/[slug]`** (`src/app/programs/[slug]/page.tsx`): Breadcrumb changed from "Home > Academics > Degrees & Curricula > [Program]" to "Home > Programs > [Program]".
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+
+### Files Modified
+- `src/app/faculty/page.tsx`
+- `src/app/programs/page.tsx`
+- `src/app/programs/[slug]/page.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Header Navigation Taxonomy Fixed & Mega Menu Made Full-Width
+
+### Action Summary
+Fixed misplaced page links in the header mega menu and made the mega menu panel span the full viewport width.
+
+### Key Changes
+1. **Navigation taxonomy corrected** (`src/data/navigation.ts`):
+   - **Programs**: Removed department page links (`/departments/[slug]`) that were incorrectly listed under Graduate and Doctoral sections. Replaced with "Browse all graduate/doctoral programs" links pointing to `/programs` with level filters. Programs now contains only actual program pages (`/programs/[slug]`).
+   - **Faculties**: Added a new "Graduate & doctoral departments" group containing all the department links that were previously misplaced under Programs. These are now correctly categorized under Faculties where they belong.
+   - **Academics**: Removed the redundant "Faculties & Departments" link (already present in Faculties). Retained Academic Calendar, Downloads & Forms, Academic Framework, and Affiliated Colleges.
+2. **Mega menu full-width** (`src/components/layout/MegaMenuPanel.tsx`): Changed `WIDTH_BY_COLUMNS` from constrained values (`max-w-[760px]`/`[1080px]`/`[1180px]`) to `max-w-full` so the popup spans the full screen width.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+- `npm run build`: 239/239 static pages prerendered.
+
+### Files Modified
+- `src/data/navigation.ts`
+- `src/components/layout/MegaMenuPanel.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
+## [2026-11-15] — Academics Sub Pages Redesigned in Modern Editorial Style
+
+### Action Summary
+Redesigned `/academics`, `/academics/calendar`, and `/academics/downloads` (including `DownloadsClient`) into a modern editorial style following the website's institutional design language.
+
+### Key Changes
+1. **Overlapping crimson stat bar replaced** with a cleaner editorial "Year-at-a-Glance" stat strip (white cards on stone grid) across all three pages, reducing template repetition while preserving key institutional metrics.
+2. **`/academics`** (`src/app/academics/page.tsx`): Stat bar replaced with editorial stat strip; all other sections preserved (gateway cards, editorial photo split, grading matrix, QEC showcase, academic authorities, related pathways).
+3. **`/academics/calendar`** (`src/app/academics/calendar/page.tsx`): Stat bar replaced with editorial stat strip; side-by-side semester timelines, quick actions, and statutory advisory preserved.
+4. **`/academics/downloads`** (`src/components/academics/DownloadsClient.tsx`): Stat bar replaced with editorial stat strip; search, category filters, document list, and attestation box preserved.
+
+### Quality & Verification
+- `npx tsc --noEmit`: 0 errors.
+
+### Files Modified
+- `src/app/academics/page.tsx`
+- `src/app/academics/calendar/page.tsx`
+- `src/components/academics/DownloadsClient.tsx`
+- `docs/CHANGELOG.md`
+
+---
+
 ## [2026-11-15] — AI Chatbot Rebuilt in React Bits Style (`UosAssistant`)
 
 ### Action Summary

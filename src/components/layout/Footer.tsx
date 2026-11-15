@@ -97,9 +97,9 @@ export default function Footer() {
           <div className="space-y-9">
             {/* Block 1: Explore UoS */}
             <div>
-              <h4 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
+              <h3 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
                 Explore UoS
-              </h4>
+              </h3>
               <ul className="space-y-2 text-[13px] text-stone-300">
                 <li>
                   <Link href="/about" className="hover:text-white transition-colors">
@@ -151,9 +151,9 @@ export default function Footer() {
 
             {/* Block 2: Connect */}
             <div>
-              <h4 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
+              <h3 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
                 Connect
-              </h4>
+              </h3>
               <ul className="space-y-2 text-[13px] text-stone-300">
                 <li>
                   <Link href="/#campus-life" className="hover:text-white transition-colors">
@@ -188,9 +188,9 @@ export default function Footer() {
           <div className="space-y-9">
             {/* Block 1: Admissions */}
             <div>
-              <h4 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
+              <h3 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
                 Admissions
-              </h4>
+              </h3>
               <ul className="space-y-2 text-[13px] text-stone-300">
                 <li>
                   <Link href="/admissions" className="hover:text-white transition-colors">
@@ -227,9 +227,9 @@ export default function Footer() {
 
             {/* Block 2: Campus Life */}
             <div>
-              <h4 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
+              <h3 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
                 Campus Life
-              </h4>
+              </h3>
               <ul className="space-y-2 text-[13px] text-stone-300">
                 <li>
                   <Link href="/campus-life" className="hover:text-white transition-colors">
@@ -279,9 +279,9 @@ export default function Footer() {
           <div className="space-y-9">
             {/* Block 1: Programmes */}
             <div>
-              <h4 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
+              <h3 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
                 Programmes
-              </h4>
+              </h3>
               <ul className="space-y-2 text-[13px] text-stone-300">
                 <li>
                   <Link href="/programs" className="hover:text-white transition-colors">
@@ -323,9 +323,9 @@ export default function Footer() {
 
             {/* Block 2: Top Programmes */}
             <div>
-              <h4 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
+              <h3 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
                 Top Programmes
-              </h4>
+              </h3>
               <ul className="space-y-2 text-[13px] text-stone-300">
                 <li>
                   <Link href="/programs/bs-computer-science" className="hover:text-white transition-colors">
@@ -373,9 +373,9 @@ export default function Footer() {
 
           {/* Column 4: School / Academic Faculties */}
           <div>
-            <h4 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
+            <h3 className="font-semibold text-white text-sm sm:text-[15px] mb-3.5 tracking-tight border-l-2 border-[#C8A96E] pl-2.5">
               Faculties &amp; Schools
-            </h4>
+            </h3>
             <ul className="space-y-2 text-[13px] text-stone-300">
               <li>
                 <Link href="/departments/computer-software-technology" className="hover:text-white transition-colors">

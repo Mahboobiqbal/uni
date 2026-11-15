@@ -87,25 +87,15 @@ export const navItems: NavItem[] = [
         ],
       },
       {
-        title: 'Graduate',
+        title: 'Graduate programs',
         links: [
-          { label: 'MS Computer Science', href: '/departments/computer-software-technology', meta: '2 years', icon: Code },
-          { label: 'MBA / MS Management Sciences', href: '/departments/management-commerce', meta: '2 years', icon: Briefcase },
-          { label: 'M.Phil Chemistry', href: '/departments/chemistry', meta: '2 years', icon: FlaskConical },
-          { label: 'M.Phil Environmental Sciences', href: '/departments/environmental-sciences', meta: '2 years', icon: Leaf },
-          { label: 'LLM', href: '/departments/law-shariah', meta: '2 years', icon: Scale },
-          { label: 'M.Phil English', href: '/departments/english-foreign-languages', meta: '2 years', icon: BookOpen },
+          { label: 'Browse all graduate programs', href: '/programs?level=graduate', meta: 'MS / MPhil / MBA', icon: GraduationCap },
         ],
       },
       {
-        title: 'Doctoral',
+        title: 'Doctoral programs',
         links: [
-          { label: 'PhD Computer Science', href: '/departments/computer-software-technology', meta: 'PhD', icon: Code },
-          { label: 'PhD Chemistry', href: '/departments/chemistry', meta: 'PhD', icon: FlaskConical },
-          { label: 'PhD Environmental Sciences', href: '/departments/environmental-sciences', meta: 'PhD', icon: Leaf },
-          { label: 'PhD Botany', href: '/departments/botany', meta: 'PhD', icon: Leaf },
-          { label: 'PhD Zoology', href: '/departments/zoology', meta: 'PhD', icon: Leaf },
-          { label: 'PhD Islamic Studies', href: '/departments/islamic-arabic-studies', meta: 'PhD', icon: BookOpen },
+          { label: 'Browse all doctoral programs', href: '/programs?level=doctoral', meta: 'PhD', icon: BookOpen },
         ],
       },
     ],
@@ -123,7 +113,7 @@ export const navItems: NavItem[] = [
     anchor: 'faculties',
     summary: 'Five faculties and their teaching departments',
     viewAllLabel: 'Academic structure',
-    columns: 2,
+    columns: 3,
     groups: [
       {
         title: 'Faculties',
@@ -171,6 +161,20 @@ export const navItems: NavItem[] = [
           { label: 'Allied Health Sciences', href: '/departments/allied-health-sciences', meta: 'Institute', icon: Award },
         ],
       },
+      {
+        title: 'Graduate & doctoral departments',
+        links: [
+          { label: 'Computer & Software Technology', href: '/departments/computer-software-technology', meta: 'MS · PhD', icon: Code },
+          { label: 'Management & Commerce', href: '/departments/management-commerce', meta: 'MBA · MS', icon: Briefcase },
+          { label: 'Chemistry', href: '/departments/chemistry', meta: 'M.Phil · PhD', icon: FlaskConical },
+          { label: 'Environmental Sciences', href: '/departments/environmental-sciences', meta: 'M.Phil · PhD', icon: Leaf },
+          { label: 'Law & Shariah', href: '/departments/law-shariah', meta: 'LLM', icon: Scale },
+          { label: 'English & Foreign Languages', href: '/departments/english-foreign-languages', meta: 'M.Phil', icon: BookOpen },
+          { label: 'Botany', href: '/departments/botany', meta: 'PhD', icon: Leaf },
+          { label: 'Zoology', href: '/departments/zoology', meta: 'PhD', icon: Leaf },
+          { label: 'Islamic & Arabic Studies', href: '/departments/islamic-arabic-studies', meta: 'PhD', icon: BookOpen },
+        ],
+      },
     ],
     rail: {
       kicker: 'Academic structure',
@@ -200,7 +204,6 @@ export const navItems: NavItem[] = [
         title: 'Institution',
         links: [
           { label: 'Affiliated Colleges', href: '/affiliated-colleges', meta: 'Registered', icon: Landmark },
-          { label: 'Faculties & Departments', href: '/faculty', meta: 'Directory', icon: Building2 },
         ],
       },
     ],

@@ -24,7 +24,7 @@ function QualityGrowthChart() {
     <div className="w-full">
       <div className="flex items-center justify-between text-[11px] font-mono text-white/60 mb-2">
         <span>5-Year Audit Trajectory</span>
-        <span className="text-[#C8A96E] font-semibold font-sans flex items-center gap-1">
+        <span className="text-[#D4B87A] font-semibold font-sans flex items-center gap-1">
           <TrendingUp className="w-3.5 h-3.5" /> +17.4% Since 2021
         </span>
       </div>
@@ -87,7 +87,7 @@ function QualityGrowthChart() {
         <span>2022</span>
         <span>2023 (82.5%)</span>
         <span>2024</span>
-        <span className="font-semibold text-[#C8A96E]">2025/26 (91.4% · W)</span>
+                        <span className="font-semibold text-[#D4B87A]">2025/26 (91.4% · W)</span>
       </div>
     </div>
   );
@@ -243,7 +243,7 @@ export default function RankingSection() {
             <div>
               {/* Top Row: Eyebrow + Verified Badge */}
               <div className="flex items-center justify-between gap-4 mb-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#C8A96E]/15 text-[#C8A96E] border border-[#C8A96E]/30">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#C8A96E]/15 text-[#D4B87A] border border-[#C8A96E]/30">
                   <Award className="w-3.5 h-3.5" />
                   HEC Quality Assurance Agency
                 </span>
@@ -421,7 +421,7 @@ export default function RankingSection() {
                 National clean-green ranking benchmarked for Swat Valley water catchment and zero-plastic campus zones.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-stone-200 flex items-center gap-1.5 text-[11px] font-semibold text-[#B48A3E]">
+            <div className="mt-4 pt-3 border-t border-stone-200 flex items-center gap-1.5 text-[11px] font-semibold text-[#856530]">
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>100% Solar Powered</span>
             </div>

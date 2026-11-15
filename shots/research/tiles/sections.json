@@ -1,0 +1,66 @@
+{
+ "url": "http://localhost:3000/research",
+ "views": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "navH": 107,
+   "scrollHeight": 4856,
+   "screens": 5.4,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "footer",
+     "id": "site-footer",
+     "cls": "bg-[#0F291B] text-stone-200 border-t-4 border-t-[#7F1D1D] pt",
+     "top": 3956,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-01-a.jpg",
+       "scrollY": 3956
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  },
+  "mobile": {
+   "width": 390,
+   "height": 844,
+   "navH": 107,
+   "scrollHeight": 7950,
+   "screens": 9.42,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "footer",
+     "id": "site-footer",
+     "cls": "bg-[#0F291B] text-stone-200 border-t-4 border-t-[#7F1D1D] pt",
+     "top": 6031,
+     "h": 1920,
+     "hScreens": 2.27,
+     "offGrid": 232,
+     "tiles": [
+      {
+       "file": "mobile-sec-01-a.jpg",
+       "scrollY": 6031
+      },
+      {
+       "file": "mobile-sec-01-b.jpg",
+       "scrollY": 6875
+      },
+      {
+       "file": "mobile-sec-01-c.jpg",
+       "scrollY": 7106
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-15T10:56:47.942Z"
+}

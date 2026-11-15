@@ -37,7 +37,6 @@ export default function UosAssistant({
 
   const rootRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -58,17 +57,50 @@ export default function UosAssistant({
     }
   }, [open]);
 
-  // Escape closes the panel and returns focus to the toggle.
+  // Escape closes the panel; Tab is trapped inside the dialog.
   useEffect(() => {
     if (!open) return;
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpen(false);
         toggleRef.current?.focus();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const panel = rootRef.current?.querySelector<HTMLElement>('#uos-assistant-dialog');
+      if (!panel) return;
+      const focusables = panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
     document.addEventListener('keydown', handleKey);
     return () => document.removeEventListener('keydown', handleKey);
+  }, [open]);
+
+  // Close when clicking outside the widget.
+  useEffect(() => {
+    if (!open) return;
+    const handlePointer = (e: MouseEvent | TouchEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handlePointer);
+    document.addEventListener('touchstart', handlePointer);
+    return () => {
+      document.removeEventListener('mousedown', handlePointer);
+      document.removeEventListener('touchstart', handlePointer);
+    };
   }, [open]);
 
   // Restore focus to toggle on unmount while open.
@@ -141,6 +173,7 @@ export default function UosAssistant({
         type="button"
         aria-expanded={open}
         aria-controls="uos-assistant-dialog"
+        title={open ? 'Close assistant' : 'Open assistant'}
         aria-label={open ? 'Close University of Swat assistant' : 'Open University of Swat assistant'}
         onClick={handleToggle}
         className="uos-assistant__toggle"
@@ -151,7 +184,6 @@ export default function UosAssistant({
       {/* ── Panel ── */}
       {open && (
         <div
-          ref={panelRef}
           id="uos-assistant-dialog"
           role="dialog"
           aria-modal="true"
@@ -206,7 +238,7 @@ export default function UosAssistant({
               </div>
             ))}
             {isSending && (
-              <div className="uos-assistant__msg uos-assistant__msg--bot" aria-live="polite">
+              <div className="uos-assistant__msg uos-assistant__msg--bot" role="status" aria-label="Assistant is typing">
                 <span className="uos-assistant__avatar uos-assistant__avatar--bot" aria-hidden="true">
                   S
                 </span>

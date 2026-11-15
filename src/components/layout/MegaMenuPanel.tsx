@@ -12,9 +12,9 @@ interface MegaMenuPanelProps {
 }
 
 const WIDTH_BY_COLUMNS: Record<NavItem['columns'], string> = {
-  1: 'max-w-[760px]',
-  2: 'max-w-[1080px]',
-  3: 'max-w-[1180px]',
+  1: 'max-w-full',
+  2: 'max-w-full',
+  3: 'max-w-full',
 };
 
 const GRID_BY_COLUMNS: Record<NavItem['columns'], string> = {

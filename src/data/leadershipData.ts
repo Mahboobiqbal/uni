@@ -1,6 +1,6 @@
 /**
  * University of Swat — Leadership & Administrative Governance
- * Authenticated from uswat.edu.pk (2026)
+ * Verified from uswat.edu.pk
  */
 
 export interface Officer {
@@ -57,74 +57,64 @@ export const administrativeGovernance: LeadershipGroup[] = [
     description: "Principal administrative and academic executive officers of the university.",
     officers: [
       {
+        name: "Prof. Dr. Husnul Amin",
+        designation: "Vice Chancellor",
+        departmentOffice: "Office of the Vice Chancellor",
+        email: "vc@uswat.edu.pk",
+        phone: "+92-946-730510",
+        image: "/images/leadership/vc-prof-dr-husnul-amin.jpeg",
+        bio: "Vice Chancellor, University of Swat.",
+      },
+      {
+        name: "Prof. Dr. Muhammad Qasim",
+        designation: "Pro-Vice Chancellor",
+        departmentOffice: "Office of the Pro-Vice Chancellor",
+        email: "",
+        image: "/images/leadership/pro-vc-prof-dr-muhammad-qasim.jpg",
+        bio: "Pro-Vice Chancellor, University of Swat.",
+      },
+      {
         name: "Dr. Arshad Ali Khan",
         designation: "Registrar",
         departmentOffice: "Office of the Registrar",
         email: "registrar@uswat.edu.pk",
-        image: "/images/leadership/registrar-dr-arshad-ali.jpeg",
+        image: "/images/leadership/registrar-dr-arshad-ali-khan.jpg",
         bio: "Oversees academic statutory bodies, syndicate meetings, human resources, faculty appointments, and regulatory compliance.",
       },
       {
-        name: "Mr. Munir Ahmad",
+        name: "Mr. Mahboob Ur Rahman",
         designation: "Treasurer",
         departmentOffice: "Treasurer Office",
-        email: "treasurer@uswat.edu.pk",
+        email: "mahboob@uswat.edu.pk",
         bio: "Manages university fiscal budgets, financial accounts, student fee reconciliation, and annual audits.",
       },
       {
-        name: "Mr. Muhammad Riaz",
+        name: "Aziz ur Rehman",
         designation: "Controller of Examinations",
         departmentOffice: "Controller of Examination Office",
-        email: "controller@uswat.edu.pk",
+        email: "",
         bio: "Supervises university-wide semester examinations, transcript generation, degree verifications, and convocation rosters.",
       },
       {
-        name: "Prof. Dr. Muhammad Qasim",
-        designation: "Dean, Faculty of Chemical & Life Sciences",
-        departmentOffice: "Deans Council",
-        email: "dean.cls@uswat.edu.pk",
-        bio: "Coordinates academic curriculum and research development across Chemistry, Environmental Sciences, Botany, and Zoology.",
+        name: "Dr. Muhammad Imad Khan",
+        designation: "Provost",
+        departmentOffice: "Provost Office",
+        email: "provost@uswat.edu.pk",
+        bio: "Provost and In-charge Guest House, University of Swat.",
       },
     ],
   },
   {
-    category: "Directorates & Student Support Services",
+    category: "Directorates and Student Support Services",
     description: "Specialized directorates ensuring institutional growth, research development, and campus welfare.",
     officers: [
       {
         name: "Dr. Anwar Hussain",
         designation: "Director ORIC",
-        departmentOffice: "Office of Research, Innovation & Commercialization",
-        email: "oric@uswat.edu.pk",
+        departmentOffice: "Office of Research, Innovation and Commercialization",
+        email: "anwar@uswat.edu.pk",
+        image: "/images/leadership/oric-dr-anwar-hussain.jpg",
         bio: "Heads industrial linkages, academic patents, faculty research grants, and student entrepreneurship incubators.",
-      },
-      {
-        name: "Dr. Amjad Ali",
-        designation: "Director of Sports",
-        departmentOffice: "Directorate of Sports",
-        email: "dsports@uswat.edu.pk",
-        bio: "Organizes HEC inter-varsity athletic tournaments, badminton championships, cricket leagues, and youth fitness programs.",
-      },
-      {
-        name: "Dr. Wajid Rashid",
-        designation: "Chief Librarian",
-        departmentOffice: "Central Library Office",
-        email: "wajid@uswat.edu.pk",
-        bio: "Oversees the central library catalog, HEC Digital Library subscriptions, research journal access, and student reading halls.",
-      },
-      {
-        name: "Engr. Muhammad Ali",
-        designation: "Director of Works",
-        departmentOffice: "Directorate of Works",
-        email: "works@uswat.edu.pk",
-        bio: "Manages infrastructure development at Charbagh Main Campus, civil construction, and the campus solarization project.",
-      },
-      {
-        name: "Mr. Asad Ullah",
-        designation: "Director IT",
-        departmentOffice: "Directorate of Information Technology",
-        email: "dit@uswat.edu.pk",
-        bio: "Administers campus-wide optical fiber network, Campus Management System (CMS), e-Office, and high-speed Wi-Fi.",
       },
     ],
   },

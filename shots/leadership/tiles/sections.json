@@ -1,0 +1,262 @@
+{
+ "url": "http://localhost:3000/leadership",
+ "views": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "navH": 107,
+   "scrollHeight": 4847,
+   "screens": 5.39,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "div",
+     "id": "",
+     "cls": "relative overflow-hidden bg-[#153B27] text-white border-b bo",
+     "top": 0,
+     "h": 365,
+     "hScreens": 0.41,
+     "offGrid": 365,
+     "tiles": [
+      {
+       "file": "desktop-sec-01-a.jpg",
+       "scrollY": 0
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tag": "section",
+     "id": "executive-leadership",
+     "cls": "py-16 sm:py-24 bg-[#F6F5F0] relative overflow-hidden",
+     "top": 365,
+     "h": 976,
+     "hScreens": 1.08,
+     "offGrid": 76,
+     "tiles": [
+      {
+       "file": "desktop-sec-02-a.jpg",
+       "scrollY": 365
+      },
+      {
+       "file": "desktop-sec-02-b.jpg",
+       "scrollY": 441
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tag": "section",
+     "id": "statutory-officers",
+     "cls": "py-16 sm:py-24 bg-[#F6F5F0]",
+     "top": 1341,
+     "h": 1015,
+     "hScreens": 1.13,
+     "offGrid": 115,
+     "tiles": [
+      {
+       "file": "desktop-sec-03-a.jpg",
+       "scrollY": 1341
+      },
+      {
+       "file": "desktop-sec-03-b.jpg",
+       "scrollY": 1456
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tag": "section",
+     "id": "directorates",
+     "cls": "py-16 sm:py-24 relative overflow-hidden bg-[#153B27] text-wh",
+     "top": 2355,
+     "h": 918,
+     "hScreens": 1.02,
+     "offGrid": 18,
+     "tiles": [
+      {
+       "file": "desktop-sec-04-a.jpg",
+       "scrollY": 2355
+      },
+      {
+       "file": "desktop-sec-04-b.jpg",
+       "scrollY": 2373
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tag": "section",
+     "id": "office-directory",
+     "cls": "py-16 sm:py-24 bg-[#F6F5F0]",
+     "top": 3274,
+     "h": 673,
+     "hScreens": 0.75,
+     "offGrid": 673,
+     "tiles": [
+      {
+       "file": "desktop-sec-05-a.jpg",
+       "scrollY": 3274
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tag": "footer",
+     "id": "site-footer",
+     "cls": "bg-[#0F291B] text-stone-200 border-t-4 border-t-[#7F1D1D] pt",
+     "top": 3947,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-06-a.jpg",
+       "scrollY": 3947
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  },
+  "mobile": {
+   "width": 390,
+   "height": 844,
+   "navH": 107,
+   "scrollHeight": 8505,
+   "screens": 10.08,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "div",
+     "id": "",
+     "cls": "relative overflow-hidden bg-[#153B27] text-white border-b bo",
+     "top": 0,
+     "h": 422,
+     "hScreens": 0.5,
+     "offGrid": 422,
+     "tiles": [
+      {
+       "file": "mobile-sec-01-a.jpg",
+       "scrollY": 0
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tag": "section",
+     "id": "executive-leadership",
+     "cls": "py-16 sm:py-24 bg-[#F6F5F0] relative overflow-hidden",
+     "top": 422,
+     "h": 2017,
+     "hScreens": 2.39,
+     "offGrid": 329,
+     "tiles": [
+      {
+       "file": "mobile-sec-02-a.jpg",
+       "scrollY": 422
+      },
+      {
+       "file": "mobile-sec-02-b.jpg",
+       "scrollY": 1266
+      },
+      {
+       "file": "mobile-sec-02-c.jpg",
+       "scrollY": 1595
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tag": "section",
+     "id": "statutory-officers",
+     "cls": "py-16 sm:py-24 bg-[#F6F5F0]",
+     "top": 2439,
+     "h": 1710,
+     "hScreens": 2.03,
+     "offGrid": 22,
+     "tiles": [
+      {
+       "file": "mobile-sec-03-a.jpg",
+       "scrollY": 2439
+      },
+      {
+       "file": "mobile-sec-03-b.jpg",
+       "scrollY": 3283
+      },
+      {
+       "file": "mobile-sec-03-c.jpg",
+       "scrollY": 3305
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tag": "section",
+     "id": "directorates",
+     "cls": "py-16 sm:py-24 relative overflow-hidden bg-[#153B27] text-wh",
+     "top": 4149,
+     "h": 1811,
+     "hScreens": 2.15,
+     "offGrid": 123,
+     "tiles": [
+      {
+       "file": "mobile-sec-04-a.jpg",
+       "scrollY": 4149
+      },
+      {
+       "file": "mobile-sec-04-b.jpg",
+       "scrollY": 4993
+      },
+      {
+       "file": "mobile-sec-04-c.jpg",
+       "scrollY": 5116
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tag": "section",
+     "id": "office-directory",
+     "cls": "py-16 sm:py-24 bg-[#F6F5F0]",
+     "top": 5960,
+     "h": 625,
+     "hScreens": 0.74,
+     "offGrid": 625,
+     "tiles": [
+      {
+       "file": "mobile-sec-05-a.jpg",
+       "scrollY": 5960
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tag": "footer",
+     "id": "site-footer",
+     "cls": "bg-[#0F291B] text-stone-200 border-t-4 border-t-[#7F1D1D] pt",
+     "top": 6585,
+     "h": 1920,
+     "hScreens": 2.27,
+     "offGrid": 232,
+     "tiles": [
+      {
+       "file": "mobile-sec-06-a.jpg",
+       "scrollY": 6585
+      },
+      {
+       "file": "mobile-sec-06-b.jpg",
+       "scrollY": 7429
+      },
+      {
+       "file": "mobile-sec-06-c.jpg",
+       "scrollY": 7661
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-15T10:44:58.167Z"
+}

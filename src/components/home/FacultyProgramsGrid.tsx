@@ -149,7 +149,7 @@ export default function FacultyProgramsGrid() {
                 {faculty.levels.map((level) => (
                   <span
                     key={level}
-                    className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold ${faculty.featured ? 'text-[#C8A96E] bg-[#C8A96E]/15 border border-[#C8A96E]/30' : 'text-[#153B27] bg-[#153B27]/8 border border-[#153B27]/15'}`}
+                    className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold ${faculty.featured ? 'text-[#D4B87A] bg-[#C8A96E]/15 border border-[#C8A96E]/30' : 'text-[#153B27] bg-[#153B27]/8 border border-[#153B27]/15'}`}
                   >
                     {level}
                   </span>

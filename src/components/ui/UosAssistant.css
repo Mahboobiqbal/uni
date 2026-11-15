@@ -432,6 +432,15 @@
   letter-spacing: 0.01em;
 }
 
+/* ── Mobile: drop expensive blur for smoother scrolling ───────────────────── */
+@media (max-width: 640px) {
+  .uos-assistant__panel {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #ffffff;
+  }
+}
+
 /* ── Reduced motion ───────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .uos-assistant__panel,

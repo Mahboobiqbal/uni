@@ -107,9 +107,9 @@ function AutoScrollingFeed({ items, selectedId, onSelect, lockOnLeave }: AutoScr
               </span>
               <span className={cn(BADGE_BASE, BADGE_TONES[item.tone])}>{item.badge}</span>
             </div>
-            <h4 className="text-sm font-bold text-stone-900 leading-snug mt-1.5 line-clamp-2 group-hover:text-[#153B27] transition-colors">
+            <span className="text-sm font-bold text-stone-900 leading-snug mt-1.5 line-clamp-2 group-hover:text-[#153B27] transition-colors block">
               {item.title}
-            </h4>
+            </span>
             <p className="text-xs text-stone-600 line-clamp-1 mt-1">{item.snippet}</p>
           </button>
         );
@@ -361,7 +361,7 @@ export default function CampusBulletin() {
                       onClick={() => handleCategoryClick(cat)}
                       aria-pressed={isActive}
                       className={cn(
-                        'group relative z-10 flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50 shrink-0',
+                        'group relative z-10 flex items-center justify-between gap-2 px-3.5 py-3 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/50 shrink-0',
                         isActive
                           ? 'text-[#153B27]'
                           : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/70 hover:-translate-y-px'

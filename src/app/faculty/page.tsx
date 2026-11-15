@@ -44,7 +44,6 @@ export default function FacultyPage() {
         eyebrow="ACADEMIC STRUCTURE"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Academics', href: '/academics' },
           { label: 'Faculties' },
         ]}
       />
