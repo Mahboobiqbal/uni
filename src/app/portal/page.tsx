@@ -81,7 +81,7 @@ export default function PortalPage() {
       <PageHeader
         tag="Digital Gateway"
         title="University Online Services &amp; Portals"
-        subtitle="Unified institutional gateway for students, faculty members, researchers, and administrative officers."
+        subtitle="One place for students, teachers, and staff to log in to the university's online services."
         eyebrow="Single Sign-On &amp; Electronic Workflows"
       />
 

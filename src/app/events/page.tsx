@@ -17,7 +17,7 @@ export default function EventsPage() {
       <PageHeader
         tag="Academic Calendar &amp; Gatherings"
         title="University Events &amp; Public Lectures"
-        subtitle="Conferences, scholarly symposiums, convocation ceremonies, and cultural gatherings across the campuses of University of Swat."
+        subtitle="Conferences, symposia, convocation, and cultural events across our campuses."
         eyebrow="Events · University of Swat"
       />
 

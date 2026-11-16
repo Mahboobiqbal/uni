@@ -15,7 +15,7 @@ export default function MainCampusPage() {
       <PageHeader
         tag="Central Campus"
         title="Charbagh Main Campus"
-        subtitle="Spread along the banks of River Swat, Charbagh Main Campus serves as the heart of academic, research, and administrative life."
+        subtitle="The heart of the university — most classes, labs, and offices are here, along the banks of the River Swat."
         eyebrow="Campuses · University of Swat"
       />
 

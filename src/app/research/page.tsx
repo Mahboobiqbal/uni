@@ -14,7 +14,7 @@ export default function ResearchPage() {
       <PageHeader
         tag="Research &amp; Discovery"
         title="Innovation &amp; Scholastic Impact"
-        subtitle="Empowering cutting-edge empirical inquiry across mountain biodiversity, renewable solar systems, Gandhara archaeology, and applied computational sciences."
+        subtitle="Our researchers study mountain biodiversity, clean energy, Gandhara heritage, and applied computing — in the field and in the lab at Charbagh."
         eyebrow="Office of Research, Innovation &amp; Commercialization (ORIC)"
       />
 

@@ -37,7 +37,7 @@ export default function AboutPage() {
       <PageHeader
         tag="Institutional Profile"
         title="About the University of Swat"
-        subtitle="Aspiring for Quality Education with Relevance in the historic, alpine cradle of Gandhara civilization."
+        subtitle="A public university in the Swat Valley, at the crossroads of Gandhara heritage and modern learning."
         eyebrow="History, Vision &amp; Strategic Roadmap"
       />
 

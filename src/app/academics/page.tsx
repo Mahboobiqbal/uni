@@ -37,7 +37,7 @@ const academicGateways = [
     tag: 'Semester Timelines',
     title: 'Academic Calendar 2026–2027',
     description:
-      'Official statutory schedule for Fall 2026 and Spring 2027 semesters, including registration windows, midterms, terminal examinations, and statutory holidays.',
+      'The official Fall 2026 and Spring 2027 schedule — registration, midterms, exams, and holidays.',
     liveStatus: 'Fall 2026 Midterm Ongoing · Spring 2027 Classes Feb 01',
     cta: 'View Semester Calendar',
     icon: CalendarDays,
@@ -58,7 +58,7 @@ const academicGateways = [
     tag: 'Statutory Repository',
     title: 'Downloads & Official Forms',
     description:
-      'Direct access to University Statutes 2016, ASRB research synopsis templates, clearance proformas, degree verification forms, and affiliation regulations.',
+      'Download University Statutes 2016, research synopsis templates, degree verification forms, and clearance proformas.',
     liveStatus: '8 Verified Statutory Documents Available in PDF',
     cta: 'Open Download Center',
     icon: FileText,
@@ -79,7 +79,7 @@ const academicGateways = [
     tag: 'Curricular Schemes',
     title: 'Degrees & Curricula Directory',
     description:
-      'Comprehensive catalog of 73 approved undergraduate, graduate, and doctoral degree tracks across 28 departments with semester course breakdowns.',
+      'Browse all 73 undergraduate, graduate, and doctoral degree tracks across 28 departments, with semester course breakdowns.',
     liveStatus: 'Approved by Academic Council & Boards of Studies',
     cta: 'Explore Degree Directory',
     icon: GraduationCap,
@@ -145,17 +145,17 @@ const progressionRules = [
 const qecPillars = [
   {
     title: 'Self-Assessment Reports (SAR)',
-    text: 'Systematic outcome-based audits across all 28 departments to align program learning objectives with national HEC and international criteria.',
+    text: 'Every department reviews its programs each year against HEC and international standards.',
     icon: FileCheck2,
   },
   {
-    title: 'Student & Pedagogical Evaluation',
-    text: 'Confidential end-of-semester digital feedback ensuring pedagogical rigor, syllabus coverage, and continuous classroom improvement.',
+    title: 'Student & Teaching Feedback',
+    text: 'Students rate their courses in a private end-of-semester survey, which we use to improve teaching.',
     icon: Users,
   },
   {
-    title: 'National Professional Accreditations',
-    text: 'Continuous liaison with statutory accreditation bodies including NCEAC (Computing), Pakistan Bar Council (Law), and NAEAC (Agricultural Sciences).',
+    title: 'Professional Accreditations',
+    text: 'We work with NCEAC (Computing), the Pakistan Bar Council (Law), and NAEAC (Agricultural Sciences).',
     icon: ShieldCheck,
   },
 ];
@@ -240,7 +240,7 @@ export default function AcademicsPage() {
         tag="ACADEMIC EXCELLENCE & CURRICULAR FRAMEWORK"
         eyebrow="ACADEMIC AFFAIRS & GOVERNANCE"
         title="Academics & Scholastic Framework"
-        subtitle="Statutory semester regulations, academic timelines, curriculum governance, and institutional quality standards supporting scholars across 28 teaching departments at the University of Swat."
+        subtitle="How our courses, semesters, grading, and quality checks work — across 28 teaching departments at Charbagh Main Campus."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Academics' },

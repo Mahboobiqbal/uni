@@ -33,7 +33,7 @@ export const programsDetailCatalog: ProgramDetail[] = [
     facultyGroup: "Faculty of Physical, Numerical & Computational Sciences",
     departmentId: "computer-software-technology",
     departmentName: "Department of Computer and Software Technology",
-    description: "The BS Computer Science program at the University of Swat provides foundational and cutting-edge education in algorithms, software engineering, artificial intelligence, databases, and computer systems. Accredited by NCEAC / HEC.",
+    description: "Learn algorithms, software engineering, AI, databases, and how computers work. Accredited by NCEAC / HEC.",
     eligibility: "Intermediate (F.Sc Pre-Engineering / ICS / General Science with Mathematics) or equivalent with minimum 50% marks.",
     learningOutcomes: [
       "Master software development life cycle using modern frameworks and languages (Python, Java, C++, TypeScript).",
@@ -69,7 +69,7 @@ export const programsDetailCatalog: ProgramDetail[] = [
     facultyGroup: "Faculty of Physical, Numerical & Computational Sciences",
     departmentId: "computer-software-technology",
     departmentName: "Department of Computer and Software Technology",
-    description: "Focuses on the systematic engineering of large-scale, reliable, and fault-tolerant software systems. Emphasizes modern agile requirements engineering, cloud architecture, quality assurance, and automated DevOps pipelines.",
+    description: "Build complex, dependable software using modern methods — agile development, cloud systems, testing, and DevOps.",
     eligibility: "F.Sc Pre-Engineering / ICS / A-Level with Mathematics (minimum 50% marks).",
     learningOutcomes: [
       "Specify, model, design, and verify high-performance enterprise software systems.",
@@ -104,7 +104,7 @@ export const programsDetailCatalog: ProgramDetail[] = [
     facultyGroup: "Faculty of Chemical & Life Sciences",
     departmentId: "chemistry",
     departmentName: "Department of Chemistry",
-    description: "Equipping students with deep empirical knowledge in organic synthesis, spectroscopy, inorganic crystal systems, thermodynamics, and analytical instrumentation for pharmaceutical and industrial sectors.",
+    description: "Study organic synthesis, spectroscopy, thermodynamics, and lab instruments for work in medicine and industry.",
     eligibility: "F.Sc Pre-Medical / Pre-Engineering with minimum 45% marks.",
     learningOutcomes: [
       "Operate advanced spectrophotometers, chromatography systems, and chemical synthesis rigs.",
@@ -138,7 +138,7 @@ export const programsDetailCatalog: ProgramDetail[] = [
     facultyGroup: "Faculty of Management, Art & Social Sciences",
     departmentId: "management-commerce",
     departmentName: "Department of Management & Commerce",
-    description: "A premier business program preparing visionary managers and startup founders with core strengths in corporate finance, brand strategy, digital marketing, supply chain, and organizational behavior.",
+    description: "Prepare for management and starting your own business — finance, marketing, supply chains, and teamwork.",
     eligibility: "Intermediate (FA / F.Sc / I.Com / ICS / A-Level) with minimum 45% marks.",
     learningOutcomes: [
       "Analyze financial statements, corporate valuation, and capital investment budgets.",
@@ -173,7 +173,7 @@ export const programsDetailCatalog: ProgramDetail[] = [
     facultyGroup: "Faculty of Religious, Languages, Humanities & Legal Studies",
     departmentId: "law-shariah",
     departmentName: "Department of Law & Shariah",
-    description: "Recognized by the Pakistan Bar Council (PBC) and HEC. Prepares prospective advocates, judges, and corporate legal counsels through rigorous grounding in constitutional jurisprudence, criminal law, civil procedure, Islamic jurisprudence, and moot courtroom practice.",
+    description: "Recognized by the Pakistan Bar Council and HEC. Trains future lawyers and judges in constitutional, criminal, and Islamic law, with moot-court practice.",
     eligibility: "Intermediate / HSSC with minimum 50% marks + Valid LAT (Law Admission Test) score.",
     learningOutcomes: [
       "Draft legal briefs, pleadings, writs, contracts, and constitutional petitions.",
@@ -204,7 +204,7 @@ export const programsDetailCatalog: ProgramDetail[] = [
     facultyGroup: "Faculty of Chemical & Life Sciences",
     departmentId: "environmental-sciences",
     departmentName: "Department of Environmental Sciences",
-    description: "Focusing on climate adaptation, river basin hydrology, pollution remediation, disaster risk management, and alpine ecology in the Hindukush-Himalayan region.",
+    description: "Study climate change, rivers, pollution, disaster risk, and the mountain environment of the Hindukush-Himalaya.",
     eligibility: "F.Sc Pre-Medical / Pre-Engineering with minimum 45% marks.",
     learningOutcomes: [
       "Monitor air, water, and soil contaminants using EPA analytical standards.",

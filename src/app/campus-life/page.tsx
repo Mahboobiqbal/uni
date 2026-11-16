@@ -38,7 +38,7 @@ const campusHighlights = [
   {
     title: 'Hunerkada: Center for Art & Culture',
     tag: 'Heritage & Creativity',
-    description: 'Promoting traditional Swati embroidery, Gandharan sculpture, calligraphy, painting, and regional folklore revitalization in collaboration with national artists.',
+    description: 'Keeps Swati embroidery, Gandharan sculpture, calligraphy, painting, and regional folklore alive with national artists.',
     image: '/images/news/news-gandhara-mou-oct2026.jpeg',
     link: '/about',
     linkText: 'Cultural Heritage Overview',
@@ -51,7 +51,7 @@ export default function CampusLifePage() {
       <PageHeader
         tag="Student Experience"
         title="Vibrant Campus Life &amp; Alpine Valley"
-        subtitle="From athletic championships and high-tech digital reading halls to artistic societies and Gandhara excavations, life at Swat is an immersive journey."
+        subtitle="Sports, a large digital library, student clubs, and heritage fieldwork — all set in the Swat Valley."
         eyebrow="Campus Life · University of Swat"
       />
 

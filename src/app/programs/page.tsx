@@ -101,7 +101,7 @@ export default function ProgramsPage() {
       <PageHeader
         eyebrow="Academic Programs &amp; Schemes of Study"
         title="Degrees &amp; Curricula"
-        description="HEC-recognized undergraduate, master's, and doctoral degree programs across five faculties — from Charbagh Main Campus to the Women Campus and Shangla."
+        description="Undergraduate, master's, and doctoral degrees recognized by HEC, across five faculties at Charbagh Main Campus, the Women Campus, and Shangla."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Programs' },

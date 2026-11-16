@@ -19,7 +19,7 @@ export default function NewsPage() {
       <PageHeader
         tag="Media Cell &amp; Public Relations"
         title="University News &amp; Press Releases"
-        subtitle="Stay informed with authentic updates on academic achievements, international research partnerships, campus development, and administrative milestones."
+        subtitle="Updates on academic milestones, research partnerships, campus construction, and university life."
         eyebrow="Newsroom · University of Swat"
       />
 

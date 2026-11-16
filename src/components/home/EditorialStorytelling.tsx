@@ -33,11 +33,9 @@ export default function EditorialStorytelling() {
             </h2>
 
             <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">
-              Spread across the verdant foothills of Charbagh, the University of Swat combines majestic
-              alpine geography with purpose-built collegiate architecture. Recognized among Pakistan&rsquo;s
-              top institutions in the UI GreenMetric World University Rankings, our flagship grounds provide a
-              peaceful sanctuary where mountain air meets state-of-the-art computing laboratories, high-speed
-              fiber networks, and expansive botanical lawns.
+              Our main campus sits in the green foothills of Charbagh. The university ranks among
+              Pakistan&rsquo;s top schools in the UI GreenMetric World University Rankings, and its
+              buildings house modern computing labs, fast internet, and wide botanical lawns.
             </p>
 
             {/* Value checklist */}
@@ -167,11 +165,10 @@ export default function EditorialStorytelling() {
             </h2>
 
             <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">
-              The University of Swat sits at the historic crossroads of Buddhist antiquity and the fragile
-              mountain ecosystems of Northern Pakistan. Through the Office of Research, Innovation &amp;
-              Commercialization (ORIC), our faculty collaborate with international archaeological missions,
-              investigate medicinal flora endemic to the Swat Valley, and formulate climate resilience
-              strategies for alpine watersheds.
+              Our location puts us at the meeting point of Gandhara history and the mountain ecosystems of
+              northern Pakistan. Through ORIC, our faculty work with international archaeological teams,
+              study medicinal plants found only in the Swat Valley, and research ways to protect mountain
+              watersheds from climate change.
             </p>
 
             {/* Research stats bar */}

@@ -48,7 +48,7 @@ export default function LeadershipPage() {
       <PageHeader
         tag="Governance &amp; Leadership"
         title="University Leadership &amp; Administration"
-        subtitle="Meet the executive leadership and statutory administrative officers steering the academic and institutional growth of the University of Swat."
+        subtitle="Meet the people who lead and run the University of Swat."
         eyebrow="Executive Governance · University of Swat"
       />
 

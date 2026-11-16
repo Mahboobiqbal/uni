@@ -61,7 +61,7 @@ export const announcementsData: Announcement[] = [
     date: "Oct 23, 2026",
     title: "University of Swat Launches Major Campus Solarization Project",
     snippet:
-      "University of Swat becomes the first public university in KP to transition all academic and administrative facilities to green solar energy.",
+      "The first public university in KP to run its campus on solar energy.",
     paragraphs: [
       "In a landmark development for environmental sustainability, the University of Swat has become the first public sector university in Khyber Pakhtunkhwa to inaugurate a comprehensive solarization project across its Main Campus in Charbagh.",
       "The newly commissioned photovoltaic array powers academic blocks, research laboratories, the central library, and administrative secretariats, significantly mitigating carbon footprint and eliminating power disruptions during academic hours.",
@@ -82,7 +82,7 @@ export const announcementsData: Announcement[] = [
     date: "Oct 05, 2026",
     title: "Prof. Dr. Husnul Amin Assumes Office as Vice Chancellor",
     snippet:
-      "Distinguished scholar Prof. Dr. Husnul Amin officially takes charge as Vice Chancellor, unveiling a roadmap for good governance and scholastic excellence.",
+      "Prof. Dr. Husnul Amin begins his term as Vice Chancellor.",
     paragraphs: [
       "It is hereby notified that Prof. Dr. Husnul Amin has assumed the charge of the office of Vice Chancellor, University of Swat, pursuant to the notification issued by the Higher Education Department, Government of Khyber Pakhtunkhwa.",
       "In his address to academic deans, chairpersons, and heads of sections, the Vice Chancellor declared that transparency, meritocracy, empowerment of female scholars across the Women's Campus, and technological modernization will form the bedrock of his tenure.",
@@ -161,7 +161,7 @@ export const announcementsData: Announcement[] = [
     date: "Nov 02, 2026",
     title: "Date Sheet for BS Mid-Term & MA/MSc Annual Examinations",
     snippet:
-      "Controller of Examinations releases official schedule for semester examinations across all affiliated colleges and campus departments.",
+      "The official exam schedule for all affiliated colleges and campus departments has been released.",
     paragraphs: [
       "The Controller of Examination Office has notified the schedule for BS Fall Mid-Term examinations and annual examinations for affiliated institutions.",
       "Roll number slips and center allotments are accessible through the online examination portal (exam.uswat.edu.pk).",
@@ -177,7 +177,7 @@ export const announcementsData: Announcement[] = [
     date: "Nov 08, 2026",
     title: "ORIC Training & Research Grant Workshop for PhD Faculty",
     snippet:
-      "Specialized grant-writing seminar conducted for early-career faculty on securing national and international competitive research funding.",
+      "A workshop on winning research grants, for early-career faculty.",
     paragraphs: [
       "The Office of Research, Innovation and Commercialization (ORIC) organized an intensive capacity-building session for PhD faculty members on competitive grant formulation and HEC research funding.",
       "Director ORIC Dr. Anwar Hussain shared strategic frameworks on industry-academia collaborative projects and patent filings.",

@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
     degree: 'BS Software Engineering',
     year: 'Class of 2022',
     quote:
-      'The rigorous algorithms training and mentorship from the computing faculty gave me the exact technical edge required to clear international engineering interviews. Studying in the peaceful alpine surroundings of Charbagh provided unmatched focus.',
+      'The computing faculty\'s rigorous training helped me clear international engineering interviews. And the calm surroundings at Charbagh kept me focused.',
     image: '/campus-shot-2.jpg',
     faculty: 'Computing & IT',
   },
@@ -37,7 +37,7 @@ const testimonials: Testimonial[] = [
     degree: 'BS Environmental Sciences',
     year: 'Class of 2021',
     quote:
-      'We were not just reading textbooks—we were taking hydrological samples from Swat River tributaries and studying glacial melt firsthand. That authentic fieldwork foundation made my postgraduate admissions seamless.',
+      'We didn\'t just read about rivers. We took water samples from Swat tributaries and studied melting glaciers ourselves. That fieldwork made my postgraduate applications easier.',
     image: '/campus-shot-3.jpg',
     faculty: 'Sciences',
   },
@@ -49,7 +49,7 @@ const testimonials: Testimonial[] = [
     degree: 'BBA (Honors)',
     year: 'Class of 2023',
     quote:
-      'Through ORIC’s entrepreneurship incubation, our student team was able to validate and pilot a cold-chain logistics platform for regional fruit growers. University of Swat truly believes in empowering local enterprise.',
+      'With ORIC\'s help, our team built and tested a cold-chain platform for local fruit growers. The university really backs local enterprise.',
     image: '/campus-shot-4.jpg',
     faculty: 'Management Sciences',
   },

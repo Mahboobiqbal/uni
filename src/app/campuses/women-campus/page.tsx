@@ -15,7 +15,7 @@ export default function WomenCampusPage() {
       <PageHeader
         tag="Specialized Campus"
         title="Women Campus &amp; College of Home Sciences"
-        subtitle="A dedicated, self-contained scholastic sanctuary fostering academic leadership, healthcare sciences, and artistic innovation for female scholars."
+        subtitle="A secure campus for female students, with the College of Home Sciences, healthcare programs, textile and art studios, and a dedicated women-only shuttle service."
         eyebrow="Campuses · University of Swat"
       />
 

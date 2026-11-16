@@ -66,10 +66,9 @@ export default function FacultyPage() {
     <div className="bg-[#F6F5F0] min-h-screen text-[#14291D]">
       {/* Photographic hero with Deep Forest Green glow */}
       <PageHeader
-        tag="ACADEMIC STRUCTURE"
         title="Faculties & Teaching Departments"
-        description="The University of Swat is organized into specialized academic faculties encompassing its teaching departments, research institutes, and regional sub-campuses."
-        eyebrow="ACADEMIC STRUCTURE"
+        description="Five faculties group our teaching departments, research institutes, and regional sub-campuses."
+        eyebrow="Academic Structure"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Faculties' },

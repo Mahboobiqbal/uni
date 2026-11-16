@@ -55,6 +55,13 @@
       "skillPath": "skills/color/SKILL.md",
       "computedHash": "69aa4cc14ce7e5d799035e1b5a425255836fe941462631f82afbd26a287ff0b5"
     },
+    "copy-editing": {
+      "source": "coreyhaines31/marketingskills",
+      "commit": "1f837447b20bb6f0e72d87b80ece1c221c362c7d",
+      "sourceType": "github",
+      "skillPath": "skills/copy-editing/SKILL.md",
+      "computedHash": "faf2d2cb156cdebe9b7ad16df2d25e42494e6069b33f237f5cdd24b04853636b"
+    },
     "design-taste-frontend": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",

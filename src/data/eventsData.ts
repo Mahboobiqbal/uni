@@ -24,7 +24,7 @@ export const universityEvents: UniversityEvent[] = [
     category: "International Conference",
     organizer: "Department of Environmental Sciences & ORIC",
     description:
-      "Multidisciplinary research symposium addressing alpine climate resilience, glacier runoff dynamics, vector-borne disease models, and sustainable mountain ecosystem management.",
+      "Researchers discuss climate change, glaciers, disease, and protecting mountain ecosystems.",
   },
   {
     id: "algorithmic-trading-fintech-seminar",
@@ -35,7 +35,7 @@ export const universityEvents: UniversityEvent[] = [
     category: "Fintech Seminar",
     organizer: "Department of Management & Commerce",
     description:
-      "Practical training on algorithmic financial modeling, quantitative investing, and cryptocurrency market regulation for business scholars.",
+      "Hands-on training in algorithmic trading, quantitative investing, and how crypto markets are regulated.",
   },
   {
     id: "swat-lectures-reclaiming-soul",
@@ -46,7 +46,7 @@ export const universityEvents: UniversityEvent[] = [
     category: "Keynote Discourse",
     organizer: "Vice Chancellor's Secretariat",
     description:
-      "Keynote philosophical lecture delivered by Vice Chancellor Prof. Dr. Husnul Amin exploring academic ethics, critical thinking, and institutional mission.",
+      "Vice Chancellor Prof. Dr. Husnul Amin speaks on academic ethics, critical thinking, and the university purpose.",
   },
   {
     id: "allama-iqbal-day-colloquium",
@@ -57,7 +57,7 @@ export const universityEvents: UniversityEvent[] = [
     category: "Literary & National Day",
     organizer: "Department of Urdu & Department of Pashto",
     description:
-      "Recitation of classical philosophical poetry, panel discussions on national selfhood (Khudi), and student inter-departmental speech contests.",
+      "Poetry recitations, panel talks on national identity (Khudi), and inter-departmental speaking contests.",
   },
   {
     id: "annual-general-convocation-2026",
@@ -68,6 +68,6 @@ export const universityEvents: UniversityEvent[] = [
     category: "Commencement",
     organizer: "Controller of Examination Office",
     description:
-      "Conferring degrees upon graduating scholars of BS, MA/MSc, MS/MPhil, and PhD batches 2022–2026 with Chancellor's and Vice Chancellor's Gold Medals.",
+      "Degrees awarded to BS, MA/MSc, MS/MPhil, and PhD graduates of 2022–2026, including the Chancellor's and Vice Chancellor's Gold Medals.",
   },
 ];

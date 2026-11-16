@@ -7,7 +7,7 @@ const heroPillars = [
   {
     numeral: 'I.',
     title: 'Quality',
-    description: 'Experience a world-class education and unlock your potential at our university',
+    description: 'HEC-accredited programs recognized across Pakistan',
     stats: [
       { label: 'HEC Rating', value: '91.4% · W-Category' },
       { label: 'Recognition', value: '100% HEC Recognized' },
@@ -25,7 +25,7 @@ const heroPillars = [
   {
     numeral: 'II.',
     title: 'Leadership',
-    description: 'Guided by visionary leadership, inspires growth, and shapes future leaders',
+    description: 'Led by Vice Chancellor Prof. Dr. Husnul Amin',
     stats: [
       { label: 'Vice Chancellor', value: 'Prof. Dr. Husnul Amin' },
       { label: 'Research Output', value: '200+ High-Impact Papers' },
@@ -44,7 +44,7 @@ const heroPillars = [
   {
     numeral: 'III.',
     title: 'Experience',
-    description: 'Embark on a transformative journey of personal and professional growth',
+    description: 'Study in the Swat Valley at Charbagh Main Campus',
     stats: [
       { label: 'Students', value: '10,130 Across Degree Levels' },
       { label: 'Campus', value: 'Charbagh · Swat Valley' },
@@ -223,9 +223,8 @@ export default function HeroSection() {
 
               {/* Subtext */}
               <p className="font-sans text-xs sm:text-base md:text-lg text-white/90 max-w-xl mt-4 sm:mt-5 leading-[1.65] font-normal drop-shadow-sm">
-                Rooted in ancient Gandharan heritage and energized by modern academic zeal, the
-                University of Swat provides world-class education, transformative scientific inquiry,
-                and regional leadership.
+                A public university in the Swat Valley, rooted in Gandhara heritage and built for
+                modern study, research, and regional leadership.
               </p>
 
               {/* CTAs */}
@@ -393,12 +392,12 @@ export default function HeroSection() {
 
       {/* Three Architectural Crimson Pillars — standalone section distinctly below the hero fold */}
       <section
-        className="relative z-20 w-full bg-[#F6F5F0] -mt-5 pt-12 pb-6 sm:pt-16 sm:pb-8 lg:pt-20 lg:pb-10"
+        className="relative z-20 w-full bg-[#F6F5F0] pt-12 pb-6 sm:pt-16 sm:pb-8 lg:pt-20 lg:pb-10"
         aria-label="Core Institutional Pillars"
         id="core-pillars"
       >
         <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 -mt-10">
             {heroPillars.map((pillar) => (
               <article
                 key={pillar.title}
