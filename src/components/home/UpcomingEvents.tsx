@@ -67,7 +67,7 @@ const events: EventItem[] = [
     title: 'Swat Valley IT Hackathon: Machine Learning for Mountain Agriculture',
     time: '09:00 AM – 08:00 PM PKT',
     venue: 'Academic Block C · Computer Labs',
-    description: 'A 36-hour sprint for undergraduate software engineering teams designing automated plant pathology tools.',
+    description: 'A 36-hour contest for software teams building automated plant-disease tools.',
     image: '/images/facilities/oric-building.jpeg',
     badgeTone: 'bg-[#153B27] text-white',
   },
