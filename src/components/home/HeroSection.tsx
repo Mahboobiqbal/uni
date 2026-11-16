@@ -332,13 +332,12 @@ export default function HeroSection() {
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span
-                            className={`inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${
-                              item.category === 'ADMISSIONS'
+                            className={`inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${item.category === 'ADMISSIONS'
                                 ? 'bg-[#7F1D1D] text-white'
                                 : item.category === 'EVENT'
-                                ? 'bg-[#153B27] text-white'
-                                : 'bg-white/20 text-white'
-                            }`}
+                                  ? 'bg-[#153B27] text-white'
+                                  : 'bg-white/20 text-white'
+                              }`}
                           >
                             {item.category}
                           </span>
@@ -365,13 +364,12 @@ export default function HeroSection() {
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span
-                            className={`inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${
-                              item.category === 'ADMISSIONS'
+                            className={`inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${item.category === 'ADMISSIONS'
                                 ? 'bg-[#7F1D1D] text-white'
                                 : item.category === 'EVENT'
-                                ? 'bg-[#153B27] text-white'
-                                : 'bg-white/20 text-white'
-                            }`}
+                                  ? 'bg-[#153B27] text-white'
+                                  : 'bg-white/20 text-white'
+                              }`}
                           >
                             {item.category}
                           </span>
@@ -397,14 +395,14 @@ export default function HeroSection() {
             {heroPillars.map((pillar) => (
               <article
                 key={pillar.title}
-                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] px-2.5 py-3 sm:px-7 sm:py-6 flex flex-col gap-1 sm:gap-3 transition-all duration-200 ease-out hover:-translate-y-[2px]"
+                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] p-4 sm:px-7 sm:py-6 flex flex-col gap-1.5 sm:gap-3 transition-all duration-200 ease-out hover:-translate-y-[2px]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-serif italic text-sm sm:text-lg text-[#E0C078]">{pillar.numeral}</span>
+                  <span className="font-serif italic text-base sm:text-lg text-[#E0C078]">{pillar.numeral}</span>
                   {pillar.icon}
                 </div>
-                <h2 className="font-serif text-xs sm:text-xl font-bold tracking-tight truncate sm:overflow-visible">{pillar.title}</h2>
-                <p className="font-sans text-white/85 leading-[1.62] text-[11px] sm:text-sm hidden sm:block">{pillar.description}</p>
+                <h2 className="font-serif text-base sm:text-xl font-bold tracking-tight">{pillar.title}</h2>
+                <p className="font-sans text-white/85 leading-relaxed text-xs sm:text-sm">{pillar.description}</p>
 
                 {/* Key institutional facts */}
                 <div className="hidden sm:flex mt-1 border-t border-white/15 pt-3 flex-col gap-2">

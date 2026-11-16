@@ -22,6 +22,16 @@ const nextConfig: NextConfig = {
       destination: "/admissions#merit-lists",
       permanent: true,
     },
+    {
+      source: "/faculties",
+      destination: "/faculty",
+      permanent: true,
+    },
+    {
+      source: "/affiliations",
+      destination: "/affiliated-colleges",
+      permanent: true,
+    },
   ],
 };
 

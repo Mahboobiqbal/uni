@@ -8,7 +8,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 export default function ViceChancellorSection() {
   return (
     <section
-      className="pt-52 sm:pt-64 lg:pt-72 pb-8 sm:pb-10 bg-[#F6F5F0] relative z-10 overflow-hidden"
+      className="pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-10 bg-[#F6F5F0] relative z-10 overflow-hidden"
       data-purpose="vice-chancellor-section"
       id="vice-chancellor"
     >

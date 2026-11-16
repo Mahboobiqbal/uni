@@ -4,6 +4,37 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — Full-Site Visual QA & Mobile/Desktop Responsiveness Audit (Browser Screenshot Loop)
+
+### Action Summary
+Conducted a section-by-section visual and responsive audit across both Mobile (`390×844`) and Desktop (`1440×900`) viewports using Chrome DevTools MCP browser screenshot loop.
+
+### Bugs Discovered & Fixed
+1. **Critical CSS Loading Bug**: Fixed unstyled HTML and oversized SVGs caused by `as: "*.css"` in `next.config.ts` under `@tailwindcss/turbopack` rules. Removed malformed rule, purged `.next` cache, and verified complete 244 KB Tailwind CSS v4 bundle delivery.
+2. **Missing Shorthand Route Redirects**: Added permanent redirects in `next.config.ts` from `/faculties` -> `/faculty` and `/affiliations` -> `/affiliated-colleges`.
+3. **Broken Image Link**: Replaced 404 missing photo `/images/campus/heritage-swat.jpg` in `src/components/home/CampusPhotoRibbon.tsx` with existing high-resolution asset `/images/uos/campus-and-events/campus-event-5.jpg`.
+4. **Excessive Vertical Whitespace**: Fixed ~288px empty white gap above the Vice Chancellor portrait by updating `pt-52 sm:pt-64 lg:pt-72` to `pt-16 sm:pt-20 lg:pt-24` in `src/components/home/ViceChancellorSection.tsx`.
+5. **Mobile Hero Pillar Cards**: Enhanced typography, padding, and visible description on mobile in `src/components/home/HeroSection.tsx`.
+
+### Verified Pages & Overlays (Screenshots Confirmed)
+- **Home (`/`)**: Desktop & Mobile verified (Announcement bar, Hero + news stream + 3 crimson cards, VC section, Marquee, Academic Showcase, Admissions Pathways, Campus Bulletin, Events, Ranking Scorecard, Photo Ribbon, Footer).
+- **All Programs (`/programs`)**: Desktop & Mobile verified (Green-glow hero, live search bar, level filter chips, faculty rail, all 73 degree cards).
+- **Individual Degree Pages (`/programs/bs-computer-science`, `/programs/bs-software-engineering`, `/programs/bba-hons`)**: Desktop & Mobile verified (Full-bleed hero, criteria, semester outline accordion cards, career paths).
+- **Faculties & Departments (`/faculty` & `/departments/computer-software-technology`)**: Desktop & Mobile verified (Hero, faculty tabs, HoD info, 3-column faculty grid on desktop collapsing to clean single column on mobile).
+- **Academics Suite & Admissions**:
+  - `/academics`: Verified 8-row grading cards on mobile vs desktop table.
+  - `/academics/calendar`: Verified milestone timeline with status chips.
+  - `/academics/downloads`: Verified category pills, search bar, and download cards.
+  - `/affiliated-colleges`: Verified public/private college cards and location badges.
+  - `/admissions`: Verified `#fees` card transformation, `#merit-lists`, `#scholarships`, and `#help-desk`.
+- **Global UI Overlays**:
+  - Verified all 6 Desktop Mega-Drawers (`Programs`, `Faculties`, `Academics`, `Campus Life`, `Research`, `University`).
+  - Verified Mobile Navigation Drawer with nested accordion expansion.
+  - Verified UoS Assistant Chat Widget modal on mobile and floating letterhead panel on desktop.
+- **Verification**: `npx tsc --noEmit` passed with 0 errors.
+
+---
+
 ## [2026-11-15] — Skill Installation: `responsive-design` & Implementation of Modern Mobile Patterns
 
 ### Action Summary
