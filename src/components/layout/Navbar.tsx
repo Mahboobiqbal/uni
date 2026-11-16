@@ -116,7 +116,9 @@ export default function Navbar() {
           : 'bg-gradient-to-b from-black/75 via-black/35 to-transparent'
       }`}
     >
-      <TopNoticeRibbon />
+      <div className="hidden lg:block">
+        <TopNoticeRibbon />
+      </div>
 
       <div className="relative" onMouseLeave={() => setActiveDropdown(null)}>
         <div

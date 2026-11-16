@@ -22,6 +22,26 @@ const nextConfig: NextConfig = {
       destination: "/admissions#merit-lists",
       permanent: true,
     },
+    {
+      source: "/faculties",
+      destination: "/faculty",
+      permanent: true,
+    },
+    {
+      source: "/affiliations",
+      destination: "/affiliated-colleges",
+      permanent: true,
+    },
+    {
+      source: "/departments/computer-and-software-technology",
+      destination: "/departments/department-of-computer-and-software-technology",
+      permanent: true,
+    },
+    {
+      source: "/departments/computer-software-technology",
+      destination: "/departments/department-of-computer-and-software-technology",
+      permanent: true,
+    },
   ],
 };
 

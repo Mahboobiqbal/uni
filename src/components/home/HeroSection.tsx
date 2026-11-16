@@ -195,7 +195,7 @@ export default function HeroSection() {
         <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative">
           <div className="flex flex-col">
             {/* Bottom-Left — Main Hero Headline & CTAs */}
-            <div className="max-w-2xl text-left">
+            <div className="max-w-2xl text-center lg:text-left items-center lg:items-start flex flex-col">
               {/* Headline with italic gold "Innovators" + hand-drawn gold SVG underline */}
               <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.1] sm:leading-[1.08] drop-shadow-md">
                 Shaping Scholars &amp;{' '}
