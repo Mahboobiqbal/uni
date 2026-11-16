@@ -393,7 +393,7 @@ export default function HeroSection() {
 
       {/* Three Architectural Crimson Pillars — standalone section distinctly below the hero fold */}
       <section
-        className="relative z-20 w-full bg-[#F6F5F0] pt-12 pb-6 sm:pt-16 sm:pb-8 lg:pt-20 lg:pb-10"
+        className="relative z-20 w-full bg-[#F6F5F0] -mt-5 pt-12 pb-6 sm:pt-16 sm:pb-8 lg:pt-20 lg:pb-10"
         aria-label="Core Institutional Pillars"
         id="core-pillars"
       >
