@@ -150,7 +150,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative z-30 w-full min-h-screen flex flex-col justify-between overflow-x-clip bg-[#0C1912] text-white">
+    <section className="relative z-30 w-full min-h-[560px] sm:min-h-[600px] lg:min-h-[88vh] flex flex-col overflow-x-clip bg-[#0C1912] text-white">
       {/* Inline keyframes for the seamless vertical auto-scroll loop */}
       <style>{`
         @keyframes hero-widget-scroll {
@@ -190,12 +190,12 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Bottom content area — editorial left-to-right balance, vertically centered */}
-      <div className="relative z-20 mt-auto w-full pb-44 sm:pb-48 md:pb-52">
+      {/* Bottom content area — centered on mobile, editorial left-to-right on desktop */}
+      <div className="relative z-20 w-full flex flex-col justify-center items-center text-center pt-24 pb-16 sm:pt-28 sm:pb-20 lg:py-32 lg:items-start lg:text-left">
         <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative">
           <div className="flex flex-col">
             {/* Bottom-Left — Main Hero Headline & CTAs */}
-            <div className="max-w-2xl text-center lg:text-left items-center lg:items-start flex flex-col">
+            <div className="max-w-2xl flex flex-col items-center lg:items-start">
               {/* Headline with italic gold "Innovators" + hand-drawn gold SVG underline */}
               <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.1] sm:leading-[1.08] drop-shadow-md">
                 Shaping Scholars &amp;{' '}
@@ -244,8 +244,8 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Bottom-Right — Compact Frosted-Glass News & Events Widget */}
-            <div className="relative w-full mt-8 h-[240px] lg:mt-0 lg:absolute lg:right-4 xl:right-8 lg:top-1/2 lg:-translate-y-1/2 z-20 lg:w-[400px] xl:w-[420px] lg:h-[48vh] lg:min-h-[380px] lg:max-h-[480px] shrink-0">
+            {/* Bottom-Right — Compact Frosted-Glass News & Events Widget (desktop only) */}
+            <div className="hidden lg:block relative w-full mt-8 h-[240px] lg:mt-0 lg:absolute lg:right-4 xl:right-8 lg:top-1/2 lg:-translate-y-1/2 z-20 lg:w-[400px] xl:w-[420px] lg:h-[48vh] lg:min-h-[380px] lg:max-h-[480px] shrink-0">
               {/* Organic multi-lobe mesh blur cluster — full text coverage, zero rectangular edges */}
               <div className="absolute -inset-20 -z-10 pointer-events-none">
                 {/* Layer 1 (Full-Text Consistent Core) */}
@@ -390,10 +390,10 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Three Architectural Crimson Pillars — overlapping the bottom edge onto Warm Alabaster */}
-      <div className="absolute bottom-0 inset-x-0 z-30 pointer-events-none">
+      {/* Three Architectural Crimson Pillars — stacked on mobile, overlap on desktop */}
+      <div className="relative z-30 -mt-8 lg:-mt-16 pointer-events-none">
         <div className="max-w-[1440px] w-full mx-auto px-3 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 translate-y-[78%] md:translate-y-[82%] pointer-events-auto relative z-30">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pointer-events-auto relative z-30">
             {heroPillars.map((pillar) => (
               <article
                 key={pillar.title}

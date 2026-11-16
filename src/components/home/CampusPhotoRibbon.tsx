@@ -44,7 +44,7 @@ const photos: GalleryPhoto[] = [
   },
   {
     id: 'photo-6',
-    image: '/images/uos/campus-and-events/campus-event-5.jpg',
+    image: '/images/campus/heritage-swat.jpg',
     caption: 'Swat Valley Heritage & Field Archeology',
     category: 'Fieldwork',
   },
