@@ -202,7 +202,7 @@ export default function HeroSection() {
                 Where Rigorous Research
                 <span className="block mt-1">
                   Meets Student{' '}
-                  <span className="italic text-[#C8A96E] underline decoration-[#C8A96E]/80 decoration-2 underline-offset-8 whitespace-nowrap">
+                  <span className="italic text-emerald-300 underline decoration-emerald-300/80 decoration-2 underline-offset-8 whitespace-nowrap">
                     Discovery
                   </span>
                 </span>
