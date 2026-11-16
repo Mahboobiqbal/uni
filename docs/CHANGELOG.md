@@ -4,6 +4,19 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — UoS Navigation Guide: Mobile Bottom Sheet Redesign
+
+### Action Summary
+1. **Mobile (< 640px) converted to a full-width native bottom sheet** (`src/components/ui/UosAssistant.tsx` + `.css`):
+   - Added a dimmed backdrop (`fixed inset-0 bg-black/45 backdrop-blur-[2px] z-40 sm:hidden`) that closes the widget on tap.
+   - Panel becomes `fixed inset-x-0 bottom-0 w-full h-[84dvh] rounded-t-3xl` on mobile, anchored flush with `pb-[env(safe-area-inset-bottom)]`; desktop keeps the floating card (`sm:inset-auto sm:bottom-24 sm:right-6 sm:w-[420px] sm:h-[620px] sm:rounded-2xl`).
+   - Floating green launcher is hidden while the sheet is open on mobile (`hidden sm:flex` ↔ `flex`), so it never overlaps the sheet.
+2. **Streamlined mobile header**: added a centered drag-handle pill (`w-10 h-1 rounded-full bg-white/30 mx-auto mb-2.5 sm:hidden`), and removed the duplicate `↺` header reset circle — only the single `×` close button remains (the footer's `← Back to Main Topics` handles reset when a flow starts).
+3. **Ergonomic thumbs**: tight `px-4 py-4` alabaster padding, `space-y-3` bubble spacing, and `min-h-[46px] px-4 py-3 text-[14px] active:scale-[0.99]` tappable pills.
+4. **Verification**: `npx tsc --noEmit` passes; `npm run lint` passes (0 errors); `npm run build` generates 303/303 static pages. (Live browser check unavailable — paired browser not connected.) Not committed.
+
+---
+
 ## [2026-11-16] — Removed Dark-Green Promo Rail from Desktop Mega-Drawers
 
 ### Action Summary

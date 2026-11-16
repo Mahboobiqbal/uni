@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ChevronDown, MessageCircle, RotateCcw, X } from 'lucide-react';
+import { ArrowLeft, ChevronDown, MessageCircle, X } from 'lucide-react';
 
 import './UosAssistant.css';
 
@@ -380,10 +380,6 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
     scrollToTop();
   }, [scrollToTop]);
 
-  const handleStartOver = useCallback(() => {
-    resetToStart();
-  }, [resetToStart]);
-
   const handleBackToMain = useCallback(() => {
     resetToStart();
   }, [resetToStart]);
@@ -405,7 +401,7 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
 
   return (
     <div ref={rootRef} className="uos-assistant" aria-label="University of Swat navigation guide">
-      {/* Launcher — always visible; icon swaps between chat and chevron */}
+      {/* Launcher — visible on desktop; hidden behind the bottom sheet on mobile while open */}
       <button
         ref={toggleRef}
         type="button"
@@ -414,7 +410,7 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
         title={open ? 'Close assistant' : 'Open assistant'}
         aria-label={open ? 'Close University of Swat navigation guide' : 'Open University of Swat navigation guide'}
         onClick={handleToggle}
-        className="uos-assistant__toggle"
+        className={`uos-assistant__toggle ${open ? 'uos-assistant__toggle--hidden-mobile' : ''}`}
       >
         {open ? (
           <ChevronDown size={26} strokeWidth={2.4} className="uos-assistant__toggle-chevron" />
@@ -422,6 +418,15 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
           <MessageCircle size={22} strokeWidth={2} />
         )}
       </button>
+
+      {/* Mobile backdrop — dims the page behind the bottom sheet */}
+      {open && (
+        <div
+          aria-hidden="true"
+          onClick={handleClose}
+          className="uos-assistant__backdrop sm:hidden"
+        />
+      )}
 
       {open && (
         <div
@@ -432,6 +437,7 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
           className="uos-assistant__panel"
         >
           <header className="uos-assistant__header">
+            <span className="uos-assistant__handle sm:hidden" aria-hidden="true" />
             <span className="uos-assistant__mark" aria-hidden="true">
               <img src="/uos-logo-circle.png" alt="" />
             </span>
@@ -444,18 +450,6 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
                 Instant Campus Navigator
               </p>
             </div>
-            {flowStarted && (
-              <button
-                type="button"
-                onClick={handleStartOver}
-                className="uos-assistant__startover"
-                aria-label="Start over"
-                title="Start over"
-              >
-                <RotateCcw size={14} strokeWidth={2.2} />
-                <span>Start Over</span>
-              </button>
-            )}
             <button type="button" onClick={handleClose} className="uos-assistant__close" aria-label="Close assistant">
               <X size={16} strokeWidth={2} />
             </button>
