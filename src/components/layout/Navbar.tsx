@@ -116,7 +116,7 @@ export default function Navbar() {
           : 'bg-gradient-to-b from-black/75 via-black/35 to-transparent'
       }`}
     >
-      <div className="hidden lg:block">
+      <div className="block">
         <TopNoticeRibbon />
       </div>
 
@@ -229,7 +229,9 @@ export default function Navbar() {
           </nav>
 
           {/* ── Actions ────────────────────────────────────────────────── */}
-          <div className="hidden shrink-0 items-center gap-2.5 md:flex">
+          {/* Hidden below xl — when the desktop nav collapses into the hamburger,
+              Student Portal lives in the drawer, so it cannot float mid-bar. */}
+          <div className="hidden shrink-0 items-center gap-2.5 xl:flex">
             <Link
               href={primaryActions.portal.href}
               className="inline-flex items-center justify-center rounded-lg bg-[#7F1D1D] px-4 py-2.5 text-[13px] font-semibold text-white shadow-[0_10px_24px_-12px_rgba(0,0,0,0.9)] transition-all duration-150 hover:bg-[#681818] active:translate-y-px active:bg-[#521313]"

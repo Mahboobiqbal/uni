@@ -59,7 +59,7 @@ export default function CampusLifePage() {
       <CampusLifeHeritage />
 
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-10 sm:py-20 space-y-12 sm:space-y-16">
-        
+
         {/* Core Student Life Pillars */}
         <div>
           <div className="pb-4 border-b border-stone-200 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">

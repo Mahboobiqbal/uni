@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Bell, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 interface NoticeItem {
   id: string;
-  badge: string;
+  category: string;
   text: string;
   href: string;
   linkText: string;
@@ -15,37 +15,48 @@ interface NoticeItem {
 const notices: NoticeItem[] = [
   {
     id: 'academic-calendar',
-    badge: 'Academic Calendar',
-    text: 'Fall 2026 Academic Calendar is live — semester dates, examination schedule, and public holidays.',
+    category: 'Academic Calendar',
+    text: 'Fall 2026 Academic Calendar is now live.',
     href: '/academics/calendar',
     linkText: 'View Calendar',
   },
   {
     id: 'oric-research',
-    badge: 'Research & Innovation',
-    text: 'ORIC research grants and Gandhara heritage program open for faculty and postgraduate applications.',
+    category: 'Research & Innovation',
+    text: 'ORIC research grants are open for applications.',
     href: '/research/oric',
-    linkText: 'Learn More',
+    linkText: 'Learn more',
   },
   {
     id: 'downloads-statutes',
-    badge: 'Downloads & Statutes',
-    text: 'Official statutes, proformas, and regulatory templates are available in the public repository.',
+    category: 'Downloads & Statutes',
+    text: 'Official statutes and proformas are available.',
     href: '/academics/downloads',
-    linkText: 'Browse Files',
+    linkText: 'Browse files',
   },
 ];
+
+const CYCLE_MS = 3500;
 
 export default function TopNoticeRibbon() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [leaving, setLeaving] = useState(false);
+  const hoverRef = useRef(false);
 
   useEffect(() => {
+    if (!isVisible) return;
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % notices.length);
-    }, 6000);
+      if (!hoverRef.current) {
+        setLeaving(true);
+        window.setTimeout(() => {
+          setCurrentIndex((prev) => (prev + 1) % notices.length);
+          setLeaving(false);
+        }, 180);
+      }
+    }, CYCLE_MS);
     return () => clearInterval(timer);
-  }, []);
+  }, [isVisible]);
 
   if (!isVisible) return null;
 
@@ -53,65 +64,53 @@ export default function TopNoticeRibbon() {
 
   return (
     <aside
-      aria-label="University Announcement Banner"
-      className="relative z-50 bg-[#7F1D1D] text-white border-b border-[#991B1B]/60 text-xs py-1.5 px-3 sm:px-6 transition-all duration-300"
+      aria-label="University Announcement Strip"
+      className="relative z-50 min-h-[38px] bg-[#7F1D1D] text-white border-b border-[#C8A96E]/20"
+      onMouseEnter={() => (hoverRef.current = true)}
+      onMouseLeave={() => (hoverRef.current = false)}
+      onFocus={() => (hoverRef.current = true)}
+      onBlur={() => (hoverRef.current = false)}
     >
-      <div className="max-w-[1440px] w-full mx-auto flex items-center justify-between gap-2 sm:gap-3 px-2.5 sm:px-6">
-        {/* Left: Live Notification Badge */}
-        <div className="flex items-center gap-2 shrink-0">
-          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/15 border border-white/20 text-[10px] font-bold tracking-wider uppercase text-amber-200">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-            <Bell className="w-2.5 h-2.5 hidden sm:inline" />
-            <span className="truncate max-w-[85px] sm:max-w-none">{currentNotice.badge}</span>
+      {/* Centered announcement container — responsive padding clears the pinned close button */}
+      <div className="flex min-h-[38px] items-center justify-center gap-1.5 sm:gap-2.5 pl-4 pr-11 sm:px-12 py-2">
+        <div
+          className={`flex items-center gap-1.5 sm:gap-2.5 min-w-0 transition-all duration-300 ease-out ${
+            leaving ? 'opacity-0 -translate-y-1' : 'opacity-100 translate-y-0'
+          }`}
+          aria-live="polite"
+        >
+          {/* Category prefix — hidden on small screens to keep one crisp line */}
+          <span className="hidden sm:inline text-[#C8A96E] text-[11px] font-semibold tracking-[0.16em] uppercase whitespace-nowrap">
+            {currentNotice.category}
           </span>
-        </div>
+          <span aria-hidden="true" className="hidden sm:inline text-[#C8A96E]/50 text-xs select-none">
+            •
+          </span>
 
-        {/* Center: Dynamic Announcement Ticker */}
-        <div className="flex-1 overflow-hidden min-w-0 text-left flex items-center justify-start gap-1.5 sm:gap-2">
-          <p className="truncate text-[11px] sm:text-xs font-medium text-white/95">
+          {/* Announcement copy */}
+          <p className="truncate text-stone-100 text-xs sm:text-[13px] font-normal">
             {currentNotice.text}
           </p>
+
+          {/* Action link */}
           <Link
             href={currentNotice.href}
-            className="inline-flex items-center gap-0.5 sm:gap-1 font-semibold text-amber-300 hover:text-white underline underline-offset-2 shrink-0 text-[10.5px] sm:text-xs transition-colors"
+            className="whitespace-nowrap shrink-0 text-[#C8A96E] hover:text-white font-medium underline underline-offset-4 decoration-[#C8A96E]/60 text-xs sm:text-[13px] transition-colors"
           >
-            <span>{currentNotice.linkText}</span>
-            <ArrowRight className="w-3 h-3" />
+            {currentNotice.linkText} →
           </Link>
         </div>
-
-        {/* Right: Ticker Navigation & Dismiss (hidden on smallest screens to give full width to notice text) */}
-        <div className="hidden sm:flex items-center gap-1 sm:gap-2 shrink-0 text-white/80">
-          <button
-            type="button"
-            onClick={() => setCurrentIndex((prev) => (prev - 1 + notices.length) % notices.length)}
-            aria-label="Previous announcement"
-            className="p-1 rounded hover:bg-white/10 hover:text-white transition-colors"
-          >
-            <ChevronLeft className="w-3.5 h-3.5" />
-          </button>
-          <span className="text-[10px] tabular-nums text-white/60 select-none">
-            {currentIndex + 1}/{notices.length}
-          </span>
-          <button
-            type="button"
-            onClick={() => setCurrentIndex((prev) => (prev + 1) % notices.length)}
-            aria-label="Next announcement"
-            className="p-1 rounded hover:bg-white/10 hover:text-white transition-colors"
-          >
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
-          <div className="w-px h-3 bg-white/20 mx-1" />
-          <button
-            type="button"
-            onClick={() => setIsVisible(false)}
-            aria-label="Dismiss banner"
-            className="p-1 rounded hover:bg-white/10 hover:text-white transition-colors"
-          >
-            <X className="w-3.5 h-3.5" />
-          </button>
-        </div>
       </div>
+
+      {/* Pinned far-right dismiss button */}
+      <button
+        type="button"
+        onClick={() => setIsVisible(false)}
+        aria-label="Dismiss announcement"
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 text-white/75 hover:text-white transition-colors p-1.5"
+      >
+        <X className="w-3.5 h-3.5" />
+      </button>
     </aside>
   );
 }

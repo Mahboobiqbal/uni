@@ -140,25 +140,22 @@ export default function AcademicShowcase() {
               type="button"
               onMouseEnter={() => handleSelectArea(area.id, false)}
               onClick={() => handleSelectArea(area.id, true)}
-              className={`text-left flex flex-col justify-between gap-2.5 sm:gap-3 rounded-xl px-4 py-3.5 sm:px-6 sm:py-4 transition-all duration-300 cursor-pointer ${
-                isActive
+              className={`text-left flex flex-col justify-between gap-2.5 sm:gap-3 rounded-xl px-4 py-3.5 sm:px-6 sm:py-4 transition-all duration-300 cursor-pointer ${isActive
                   ? 'bg-[#153B27] text-white border-l-4 border-l-[#C8A96E] shadow-lg lg:translate-x-1.5'
                   : 'bg-white border border-stone-200 hover:border-[#153B27]'
-              }`}
+                }`}
             >
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-4">
                   <span
-                    className={`font-serif text-lg font-bold ${
-                      isActive ? 'text-[#C8A96E]' : 'text-[#7F1D1D]'
-                    }`}
+                    className={`font-serif text-lg font-bold ${isActive ? 'text-[#C8A96E]' : 'text-[#7F1D1D]'
+                      }`}
                   >
                     {area.index}
                   </span>
                   <span
-                    className={`font-serif text-lg sm:text-xl font-bold tracking-[-0.01em] ${
-                      isActive ? 'text-white' : 'text-[#14291D]'
-                    }`}
+                    className={`font-serif text-lg sm:text-xl font-bold tracking-[-0.01em] ${isActive ? 'text-white' : 'text-[#14291D]'
+                      }`}
                   >
                     {area.title}
                   </span>
@@ -167,11 +164,10 @@ export default function AcademicShowcase() {
                   {area.levels.map((level) => (
                     <span
                       key={level}
-                      className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold ${
-                        isActive
+                      className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold ${isActive
                           ? 'text-[#D4B87A] bg-[#C8A96E]/15 border border-[#C8A96E]/30'
                           : 'text-[#153B27] bg-[#153B27]/8 border border-[#153B27]/15'
-                      }`}
+                        }`}
                     >
                       {level}
                     </span>
@@ -180,16 +176,14 @@ export default function AcademicShowcase() {
               </div>
               <div className="flex items-center justify-between">
                 <span
-                  className={`text-xs font-medium ${
-                    isActive ? 'text-white/70' : 'text-stone-500'
-                  }`}
+                  className={`text-xs font-medium ${isActive ? 'text-white/70' : 'text-stone-500'
+                    }`}
                 >
                   {area.description.slice(0, 72)}…
                 </span>
                 <span
-                  className={`shrink-0 text-xs font-bold uppercase tracking-wider pl-3 ${
-                    isActive ? 'text-[#C8A96E]' : 'text-[#7F1D1D]'
-                  }`}
+                  className={`shrink-0 text-xs font-bold uppercase tracking-wider pl-3 ${isActive ? 'text-[#C8A96E]' : 'text-[#7F1D1D]'
+                    }`}
                 >
                   {area.degrees} Programs
                 </span>

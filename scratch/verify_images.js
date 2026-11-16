@@ -25,22 +25,22 @@ if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
   await showcase.screenshot({ path: path.join(outDir, 'academic_showcase_01_computing.png') });
 
   // Tab 2: Sciences
-  await showcase.locator('button:has-text("Sciences")').click({ force: true });
+  await showcase.getByRole('button', { name: /02 Sciences/ }).click();
   await page.waitForTimeout(400);
   await showcase.screenshot({ path: path.join(outDir, 'academic_showcase_02_sciences.png') });
 
   // Tab 3: Management
-  await showcase.locator('button:has-text("Management")').click({ force: true });
+  await showcase.getByRole('button', { name: /03 Management Sciences/ }).click();
   await page.waitForTimeout(400);
   await showcase.screenshot({ path: path.join(outDir, 'academic_showcase_03_management.png') });
 
   // Tab 4: Law
-  await showcase.locator('button:has-text("Law")').click({ force: true });
+  await showcase.getByRole('button', { name: /04 Law/ }).click();
   await page.waitForTimeout(400);
   await showcase.screenshot({ path: path.join(outDir, 'academic_showcase_04_law.png') });
 
   // Tab 5: Humanities
-  await showcase.locator('button:has-text("Humanities")').click({ force: true });
+  await showcase.getByRole('button', { name: /05 Humanities/ }).click();
   await page.waitForTimeout(400);
   await showcase.screenshot({ path: path.join(outDir, 'academic_showcase_05_humanities.png') });
 

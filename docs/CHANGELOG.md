@@ -4,6 +4,89 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — Site-Wide Image Audit & Strict Subject-Matching Fix (Buildings vs. People Portraits)
+
+### Action Summary
+1. **Enforced Strict Separation of People vs. Architecture**:
+   - Eliminated all professor, faculty, and person portraits from buildings, campus galleries, program previews, and departmental hero banners.
+   - Preserved authentic portraits strictly for their designated people slots: Faculty Rosters, Officers in Charge, and Leadership profiles.
+2. **Components & Data Files Updated**:
+   - `src/components/home/AcademicShowcase.tsx`: Replaced headshots on Sciences (`02`) and Law (`04`), and MoU meeting photo on Humanities (`05`), with authentic University of Swat campus blocks (`/campus-shot-2.jpg`, `/campus-shot-1.jpg`, and `/campus-shot-3.jpg`).
+   - `src/components/home/CampusLifeHeritage.tsx`: Replaced all 5 seminar/MoU/meeting photos with verified architectural photography:
+     - Main Campus: `/campus-shot-1.jpg` (Charbagh Academic Block)
+     - Women Campus: `/images/campus/women-campus.jpg` (Women Sub-Campus Building)
+     - Central Library & Administration: `/campus-shot-2.jpg` (Academic Complex)
+     - Main Campus Portal & Sports: `/campus-shot-4.jpg` (Monumental Main Gate)
+     - Swat Valley & Gandhara Heritage: `/campus-shot-3.jpg` (Swat Valley Alpine Landscape)
+   - `src/app/departments/[slug]/page.tsx`: Replaced 6 departmental hero headshots (chemistry, botany, zoology, environmental sciences, biotechnology, english) with authentic campus buildings (`/campus-shot-1.jpg`, `/campus-shot-2.jpg`, `/campus-shot-3.jpg`, `/campus-main.jpg`).
+   - `src/data/programs.ts`: Updated `HERO_IMAGES`, `DEFAULT_HERO`, and `deptHero` to use authentic campus and academic facilities instead of faculty headshots or MoU meeting photos.
+   - `src/app/about/page.tsx`: Replaced person portrait `/images/campus/14_img.jpeg` in the Founding Statement full-width photo band with the high-resolution aerial `/campus-main.jpg`.
+   - `src/app/research/page.tsx`: Replaced person portrait `/images/campus/14_img.jpeg` in the Empirical Inquiry photo band with `/campus-shot-2.jpg`.
+   - `src/data/administration.ts`: Replaced MoU signing image on `media-cell` with `/images/campus/charbagh-campus.jpg`.
+   - `src/app/campus-life/page.tsx`: Replaced MoU table photo on Hunerkada Cultural Heritage card with `/campus-shot-3.jpg`.
+   - `src/components/home/EditorialStorytelling.tsx`: Replaced MoU table photo in Research & Cultural Heritage section with `/campus-shot-3.jpg`.
+3. **Verification**:
+   - `npx tsc --noEmit` passed with 0 errors.
+   - Automated browser screenshots captured and verified across:
+     - Academic Showcase (Tabs 01–05)
+     - Campus Life Heritage Gallery
+     - Department Headers (`/departments/chemistry`, `/departments/botany`)
+     - Degree Program Headers (`/programs/bs-chemistry`, `/programs/ba-llb-law-and-shariah`)
+     - About page Founding Statement Photo Band (`/about`)
+     - Research Discovery Photo Band (`/research`)
+   - Visual inspection confirmed 100% architectural and campus fidelity with zero headshots in building or category slots.
+
+---
+
+## [2026-11-16] — Navbar: Fixed Student Portal Button Floating on Compact PC Screens
+
+### Action Summary
+1. **Synchronized breakpoints**: the `Student Portal` actions group in `Navbar.tsx` changed from `hidden md:flex` to `hidden xl:flex` — the **same `xl:` breakpoint** as the desktop navigation menu. So the standalone button is hidden whenever the nav has collapsed into the hamburger (Option A: the button already lives in the slide-out drawer).
+2. **Result**: on 768–1280px screens (including 1024px square/compact PCs) the bar shows only the logo (left) + hamburger (right) — nothing floats in the middle. At `xl`+ the nav and `Student Portal` appear together on the right.
+3. **Verification**: `npx tsc --noEmit` passes; `npm run build` generates 303/303 static pages. Browser-verified at 390/768/1024/1440px: logo left, actions/nav right, hamburger active below `xl`, portal hidden below `xl` and visible at 1440, and `floats: false` at every viewport. Not committed.
+
+---
+
+## [2026-11-16] — Top Announcement Bar: Visible on All Screen Sizes
+
+### Action Summary
+1. **Made the bar visible on mobile & tablet**: removed the `hidden lg:block` wrapper in `Navbar.tsx` (now `block`) so the Top Announcement Bar renders on all viewports (390px / 768px / 1440px).
+2. **Responsive single-line layout** in `TopNoticeRibbon.tsx`:
+   - Switched the container to `min-h-[38px] pl-4 pr-11 sm:px-12 py-2` so text clears the pinned close button.
+   - Category prefix + bullet are `hidden sm:inline` — hidden on small mobile screens to keep announcement text + action link on one crisp line.
+   - Dismiss `×` moved to `right-3 sm:right-6` (closer on mobile).
+3. **Verification**: `npx tsc --noEmit` passes; `npm run build` generates 303/303 static pages. Browser-verified at 390/768/1440px: bar visible on all, single-line text (≤20px height), close button at far-right edge, and no text/link overlap with the close button; category prefix shown on tablet/desktop, hidden on mobile. Not committed.
+
+---
+
+## [2026-11-16] — Top Announcement Bar: Silent Auto-Rotation & Far-Right Pin
+
+### Action Summary
+1. **Silent automatic rotation** (`src/components/layout/TopNoticeRibbon.tsx`):
+   - Cycles through the 3 announcements every **3500ms** with a subtle fade/slide transition (fades out, swaps, fades in), pausing while the user hovers/focuses the bar.
+   - **Zero indicators** — no `1/3` counter, no chevron arrows, no progress bars, and no indicator dots.
+2. **Typographic-only strip**: `bg-[#7F1D1D] text-white border-b border-[#C8A96E]/20 h-10 flex items-center justify-center relative px-12`. Muted Gold uppercase category (`text-[#C8A96E] text-[11px] font-semibold tracking-[0.16em] uppercase`) + `•` separator + concise off-white 1-line copy (`text-stone-100 text-xs sm:text-[13px]`) + Muted Gold link (`text-[#C8A96E] hover:text-white underline underline-offset-4`). No pill boxes, no bell icon, no bright yellow.
+3. **Close button pinned to far-right edge**: single `×` at `absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 text-white/75 hover:text-white p-1.5`, separated from the centered container by `px-12` so it never collides with the text.
+4. **Verification**: `npx tsc --noEmit` passes; `npm run build` generates 303/303 static pages. Browser-verified: 40px full-width crimson strip, zero arrows/counter/dots, close button at far-right edge, and silent rotation (Academic Calendar → Research & Innovation after ~4s). Not committed.
+
+---
+
+## [2026-11-16] — Top Announcement Bar Redesigned as a Minimal Typographic Strip
+
+### Action Summary
+1. **Removed clutter** (`src/components/layout/TopNoticeRibbon.tsx`):
+   - Deleted the `< 1/3 >` counter, the left/right chevron arrows, the `🔔` bell icon, the pulsing dot, and the rounded capsule/pill badge around the category.
+   - The bar is now a clean typographic-only strip: `bg-[#7F1D1D] text-white border-b border-[#C8A96E]/25`.
+2. **Restrained typography**:
+   - Category prefix as borderless uppercase Muted Gold (`text-[#C8A96E] text-[11px] font-semibold tracking-[0.16em] uppercase`) separated from the message by a hairline `|`.
+   - Announcement copy tightened to one crisp line (`text-stone-100 text-xs sm:text-[13px] font-normal`).
+   - Action link in Muted Gold with hairline underline (`text-[#C8A96E] hover:text-white underline underline-offset-4 decoration-[#C8A96E]/60`).
+   - Only the single `×` dismiss button remains on the far right (`text-white/75 hover:text-white`).
+3. **Subtle auto-cycle**: announcements rotate every 6s, pausing on hover/focus, with 3 tiny understated `w-1.5 h-1.5` indicator dots (no numbers/arrows/boxes).
+4. **Verification**: `npx tsc --noEmit` passes; `npm run build` generates 303/303 static pages. Browser-verified: no chevrons, no counter, no bell, no capsule, dismiss `×` present, 3 dots present, crimson bg + gold hairline, and concise copy. Not committed.
+
+---
+
 ## [2026-11-16] — UoS Navigation Guide: Initial-Screen Fit & Hidden Scrollbar
 
 ### Action Summary
