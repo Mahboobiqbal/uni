@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowUpRight, BookOpen, ExternalLink, FileCheck2, FileText, GraduationCap, LayoutDashboard, MonitorPlay, ScrollText, ShieldCheck, Mail } from 'lucide-react';
+import { ArrowUpRight, BookOpen, ExternalLink, FileCheck2, FileText, LayoutDashboard, MonitorPlay, ScrollText, Mail } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {

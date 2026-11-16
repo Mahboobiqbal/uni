@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Compass, Eye, MapPin, Play, X } from 'lucide-react';
+import { ArrowRight, MapPin, Play, X } from 'lucide-react';
 
 export default function CampusTourBanner() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);

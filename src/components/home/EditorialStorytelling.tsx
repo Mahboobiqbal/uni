@@ -2,8 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowUpRight, Compass, Leaf, Sparkles, SunMedium, BookOpenCheck, Microscope } from 'lucide-react';
+import { ArrowUpRight, Compass, Leaf, SunMedium, BookOpenCheck } from 'lucide-react';
 
 export default function EditorialStorytelling() {
   return (

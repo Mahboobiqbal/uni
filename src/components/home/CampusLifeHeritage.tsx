@@ -109,7 +109,7 @@ export default function CampusLifeHeritage() {
               </span>
             </div>
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
-              Campus life, set in Swat's heritage
+              Campus life, set in Swat&rsquo;s heritage
             </h2>
           </div>
           <p className="font-sans text-sm sm:text-base text-stone-600 max-w-md lg:text-right leading-[1.68]">

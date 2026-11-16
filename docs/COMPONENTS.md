@@ -92,14 +92,14 @@ This file tracks every component in the University of Swat project, its source l
 | --- | --- | --- |
 | Navigation Data | `src/data/navigation.ts` | Mega menu links, categories, campus details |
 | Announcements Data | `src/data/announcements.ts` | Structured typed notices (13 items, all 7 tabs), tone-based badges, official references, callout boxes |
-| University Data | `src/data/universityData.ts` | Statutory history, governance, accreditation metrics, official email/phone directory |
+| Administration Data | `src/data/administration.ts` | Administrative wings, statutory offices, directorates, and staff rosters |
+| Faculty Data | `src/data/facultyData.ts` | Faculty profiles referenced by department pages |
 | Leadership Data | `src/data/leadershipData.ts` | VC credentials (Prof. Dr. Husnul Amin), Secretariat roster, Statutory Officers profiles |
 | Departments Catalog | `src/data/departmentsData.ts` | All 4 official faculties, 28 teaching departments, faculty rosters, programs, and contact proformas |
+| Program Registry | `src/data/programs.ts` | Unified degree registry (all programs with slugs, levels, fees, campuses) |
 | Program Syllabi | `src/data/programsDetailData.ts` | Deep curriculum specifications, 8-semester course outlines, credit hours, and eligibility criteria |
+| Events Data | `src/data/eventsData.ts` | University events calendar |
 | Verified News | `src/data/newsData.ts` | Authentic press releases and research breakthroughs from official university coverage |
-| Campus Specifications | `src/data/campusData.ts` | Specifications, acreage, facilities, and programs for Charbagh and Women Sub-Campus |
-| Crawled Web Data | `src/data/crawled_pages.json` | 1.2 MB raw structured extraction of 258 pages from `uswat.edu.pk` |
 | Site Config | `src/config/site.ts` | University metadata, contact information, social URLs |
-| Utilities | `src/lib/utils.ts` | `cn()`, `formatDate()`, `truncate()` |
-| Shared Types | `src/types/index.ts` | `NavItem`, `SEOProps`, `ContactInfo` |
-| Custom Hooks | `src/hooks/index.ts` | `useIsMounted`, `useScrollPosition`, `useMediaQuery` |
+| Utilities | `src/lib/utils.ts` | `cn()` class merge helper |
+| Slugify | `src/lib/slugify.ts` | Slug generation for dynamic routes |

@@ -133,7 +133,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   const engineRef = useRef<Engine | null>(null);
   const settings = { enableTilt, tiltStrength, parallax, mobileTiltSensitivity, intro };
   const settingsRef = useRef(settings);
-  settingsRef.current = settings;
+
+  useEffect(() => {
+    settingsRef.current = settings;
+  }, [settings]);
 
   useEffect(() => {
     const root = rootRef.current;

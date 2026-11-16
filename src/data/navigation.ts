@@ -45,15 +45,6 @@ export interface NavGroup {
   links: NavLink[];
 }
 
-/** Editorial fact block pinned to the right edge of a mega panel. */
-export interface NavRail {
-  kicker: string;
-  figure: string;
-  caption: string;
-  ctaLabel: string;
-  ctaHref: string;
-}
-
 export interface NavItem {
   label: string;
   href: string;
@@ -62,9 +53,8 @@ export interface NavItem {
   /** Serif one-line description of what the panel holds. */
   summary: string;
   viewAllLabel: string;
-  columns: 1 | 2 | 3;
+  columns: 2 | 3;
   groups: NavGroup[];
-  rail: NavRail;
   /** Render as a direct single-click link (no mega drawer / chevron). */
   direct?: boolean;
 }
@@ -112,13 +102,6 @@ export const navItems: NavItem[] = [
         ],
       },
     ],
-    rail: {
-      kicker: 'Degree tracks',
-      figure: '59',
-      caption: 'Undergraduate, graduate and doctoral study across five faculties.',
-      ctaLabel: 'Compare all programs',
-      ctaHref: '/programs#faculty-directory',
-    },
   },
   {
     label: 'Faculties',
@@ -164,13 +147,6 @@ export const navItems: NavItem[] = [
         ],
       },
     ],
-    rail: {
-      kicker: 'Academic structure',
-      figure: '05',
-      caption: 'Faculties, their teaching departments and research institutes.',
-      ctaLabel: 'Browse the structure',
-      ctaHref: '/faculty',
-    },
   },
   {
     label: 'Academics',
@@ -195,13 +171,6 @@ export const navItems: NavItem[] = [
         ],
       },
     ],
-    rail: {
-      kicker: 'Records & affiliation',
-      figure: '2026',
-      caption: 'Semester calendar, statutory proformas and affiliated colleges.',
-      ctaLabel: 'Open academic calendar',
-      ctaHref: '/academics/calendar',
-    },
   },
   {
     label: 'Campus Life',
@@ -227,13 +196,6 @@ export const navItems: NavItem[] = [
         ],
       },
     ],
-    rail: {
-      kicker: 'Campuses',
-      figure: '03',
-      caption: 'Charbagh main campus, the Women sub-campus and Shangla.',
-      ctaLabel: 'Visit the campuses',
-      ctaHref: '/campus-life',
-    },
   },
   {
     label: 'Research',
@@ -241,24 +203,25 @@ export const navItems: NavItem[] = [
     anchor: 'research',
     summary: 'Research offices and advanced studies',
     viewAllLabel: 'Research home',
-    columns: 1,
+    columns: 2,
     groups: [
       {
-        title: 'Research at UoS',
+        title: 'Research offices',
         links: [
           { label: 'Research Overview', href: '/research', meta: 'Focus areas', icon: Globe },
           { label: 'ORIC', href: '/research/oric', meta: 'Innovation', icon: Compass },
           { label: 'ASRB', href: '/research/asrb', meta: 'Advanced studies', icon: BookOpen },
         ],
       },
+      {
+        title: 'Tools & resources',
+        links: [
+          { label: 'Academic Calendar', href: '/academics/calendar', meta: '2026', icon: Calendar },
+          { label: 'Downloads & Forms', href: '/academics/downloads', meta: 'Synopses', icon: Download },
+          { label: 'Faculty & Departments', href: '/faculty', meta: 'Directory', icon: Users },
+        ],
+      },
     ],
-    rail: {
-      kicker: 'Research & innovation',
-      figure: 'ORIC',
-      caption: 'Commercialization, grants and advanced studies oversight.',
-      ctaLabel: 'Explore research',
-      ctaHref: '/research',
-    },
   },
   {
     label: 'Administration',
@@ -269,25 +232,23 @@ export const navItems: NavItem[] = [
     columns: 2,
     groups: [
       {
-        title: 'Administration',
+        title: 'Offices & governance',
         links: [
           { label: 'University Offices', href: '/administration?tab=offices', meta: 'Statutory', icon: Building2 },
           { label: 'Directorates', href: '/administration?tab=directorates', meta: 'Operations', icon: ClipboardList },
-          { label: 'Alumni Association (UOSAA)', href: '/administration?tab=alumni', meta: 'Network', icon: GraduationCap },
+          { label: 'Proctorial Board', href: '/administration?tab=proctorial-board', meta: 'Discipline', icon: ShieldCheck },
+        ],
+      },
+      {
+        title: 'Service units',
+        links: [
           { label: 'Central Library', href: '/administration?tab=central-library', meta: 'Library', icon: BookOpen },
           { label: 'Media Cell', href: '/administration?tab=media-cell', meta: 'Media', icon: Camera },
-          { label: 'Proctorial Board', href: '/administration?tab=proctorial-board', meta: 'Discipline', icon: ShieldCheck },
+          { label: 'Alumni Association (UOSAA)', href: '/administration?tab=alumni', meta: 'Network', icon: GraduationCap },
           { label: 'Youth Development Centre (YDC)', href: '/administration?tab=ydc', meta: 'Students', icon: Users },
         ],
       },
     ],
-    rail: {
-      kicker: 'Administration',
-      figure: '07',
-      caption: 'Offices, directorates, and services that run the university.',
-      ctaLabel: 'Explore administration',
-      ctaHref: '/administration',
-    },
   },
   {
     label: 'University',
@@ -314,13 +275,6 @@ export const navItems: NavItem[] = [
         ],
       },
     ],
-    rail: {
-      kicker: 'Established',
-      figure: '2010',
-      caption: 'A public university in the Swat valley, Khyber Pakhtunkhwa.',
-      ctaLabel: 'About the university',
-      ctaHref: '/about',
-    },
   },
 ];
 

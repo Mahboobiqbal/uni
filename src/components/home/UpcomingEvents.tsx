@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Clock, MapPin, Tag } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Clock, MapPin } from 'lucide-react';
 
 interface EventItem {
   id: string;

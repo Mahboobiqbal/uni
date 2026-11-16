@@ -314,7 +314,7 @@ const heroFor = (title: string, deptId: string, slug: string): string => {
 
 /* ── Feature merging ──────────────────────────────────────────────────────── */
 
-const findFeatured = (title: string, deptId: string): ProgramDetail | undefined =>
+const findFeatured = (title: string): ProgramDetail | undefined =>
   programsDetailCatalog.find((p) => {
     const t = title.toLowerCase();
     return (
@@ -377,7 +377,7 @@ const buildAllPrograms = (): ProgramData[] => {
   const seen = new Set<string>();
   for (const dept of allDepartments) {
     for (const title of dept.programsOffered) {
-      const featured = findFeatured(title, dept.id);
+      const featured = findFeatured(title);
       let prog = featured ? fromFeatured(featured, dept) : generate(title, dept);
       if (seen.has(prog.slug)) {
         prog = { ...prog, slug: `${prog.slug}-${dept.id}` };

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, BookOpen, Trophy, Palette, Sparkles, Bus, Shield, HeartPulse, Building2 } from 'lucide-react';
+import { ArrowUpRight, Bus, Shield, HeartPulse } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CampusLifeHeritage from '@/components/home/CampusLifeHeritage';
 

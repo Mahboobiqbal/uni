@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Mail, Phone, MapPin, Clock, Building2, Send, ShieldAlert, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {

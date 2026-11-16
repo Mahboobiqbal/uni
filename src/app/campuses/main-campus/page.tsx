@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Building2, CheckCircle2, MapPin, Sun, Zap, Users, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Building2, Sun, Zap } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {

@@ -4,6 +4,22 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — Full Repository Cleanup & Production Codebase Audit
+
+### Action Summary
+1. **Root-level clutter removed**: deleted temp audit reports (`source-inventory.md`, `UOS_SCRAPING_AUDIT_REPORT.md`, `lighthouse-home.json`), scratch text (`deptinfo_*.txt`), junk files (`$null`, `%log%`, `;`), duplicate dev videos (`1114.mp4`, `swat-university.mp4` in root), test images (`screenshot.png`, `swat-logo.jpg`, root `ODF.jpg`), `.detect-out*.json` dumps, and `tsconfig.tsbuildinfo` cache.
+2. **Dev/scratch directories removed**: `scratch/`, `shots/`, `qa-screenshots/`, `.qa-audit/`, `.claude/`, `.commandcode/`, `.freebuff/`, `.impeccable/`, `.kilo/`, `.taste-skill/`, `.agent-cache/`.
+3. **Dead routes verified**: `src/app/` confirmed clean — no leftover `/search`, `/admissions`, or `/administration/[slug]` folders.
+4. **Orphaned source removed**: deleted `src/components/ui/Masonry.tsx` + `Masonry.css` (unused), `src/hooks/index.ts`, `src/types/index.ts`, `src/data/campusData.ts`, `src/data/universityData.ts`, `src/data/uos-scraped-manifest.json`, `src/data/crawled_pages.json`, and `src/components/ui/MagicBento.css`.
+5. **Unused public assets removed**: cross-referenced all 279 files in `public/` against `src/` and deleted 122 unreferenced/duplicate assets (raw campus gallery copies, deprecated department `_N_img` galleries, 11 superseded Chemistry faculty portraits, unused campus-event/queue images, root defaults like `file.svg`/`next.svg`/`logo.jpg`/`logo-circle.png`/`ODF.jpg`). 157 referenced files remain, organized under `public/images/campus|departments|facilities|leadership|news|uos/...`.
+6. **ESLint config**: added `globalIgnores` for tooling dirs (`.agents/`, etc.) and `scripts/` so the scanner only checks shipped source. Reduced from 13,825 problems → 0 errors (remaining warnings are `no-img-element` / `exhaustive-deps` advisories).
+7. **Fixed 4 lint errors**: unescaped apostrophe in `CampusLifeHeritage.tsx`; ref-write-during-render in `ProfileCard.tsx` (moved into `useEffect`); Navbar route-reset effect documented with scoped disable; UoS Assistant greeting seeding moved out of effect into toggle handler.
+8. **Unused imports cleaned**: removed ~70 unused imports/identifiers across 21 files via a delegated cleanup pass (all `no-unused-vars` warnings resolved).
+9. **Chore**: rewrote `README.md` (stack, structure, routes, design tokens, setup); updated `docs/COMPONENTS.md` data-models table to match the current tree.
+10. **Final verification**: `npx tsc --noEmit` passes (0 errors); `npm run lint` → 0 errors; `npm run build` → 303/303 static pages with zero build warnings; cross-referenced all 157 asset references in `src/` against `public/` → zero missing/broken files.
+
+---
+
 ## [2026-11-16] — Site-Wide Image Audit & Strict Subject-Matching Fix (Buildings vs. People Portraits)
 
 ### Action Summary

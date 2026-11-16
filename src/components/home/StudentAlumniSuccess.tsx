@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import { Quote, Star } from 'lucide-react';
 
 interface Testimonial {
@@ -56,8 +55,6 @@ const testimonials: Testimonial[] = [
 ];
 
 export default function StudentAlumniSuccess() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <section
       id="alumni-success"
@@ -84,7 +81,7 @@ export default function StudentAlumniSuccess() {
 
         {/* 3 Testimonial Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {testimonials.map((item, idx) => (
+          {testimonials.map((item) => (
             <article
               key={item.id}
               className="relative flex flex-col rounded-2xl bg-white border border-stone-300 p-5 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-200 ease-out hover:-translate-y-[2px] group"

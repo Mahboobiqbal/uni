@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, Calendar, User, Tag, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Calendar } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import { officialNewsArticles } from '@/data/newsData';
 

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowLeft, Lightbulb, Handshake, ShieldCheck, Award, Building, Users, Mail, Phone } from 'lucide-react';
+import { ArrowLeft, Lightbulb, Handshake, ShieldCheck, Award, Mail } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {

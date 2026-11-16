@@ -29,12 +29,15 @@ export default function Navbar() {
     setMobileSubmenu(null);
   };
 
-  // Close any open surface after a route change.
+  // Close any open surface after a route change. The pathname is an external
+  // navigation value, so resyncing this UI state here is the correct pattern.
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
     setMobileSubmenu(null);
   }, [pathname]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   // Lock body scroll when mobile drawer is open.
   useEffect(() => {

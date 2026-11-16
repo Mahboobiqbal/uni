@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight, GraduationCap, Mail, MapPin, Users } from 'lucide-react';
+import { ArrowUpRight, GraduationCap, Mail, MapPin, Users } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import { facultyProfiles } from '@/data/facultyData';
-import { allDepartments } from '@/data/departmentsData';
 
 interface PageProps {
   params: Promise<{ slug: string }>;

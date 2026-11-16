@@ -9,7 +9,6 @@ import {
   CalendarDays,
   CheckCircle2,
   Clock,
-  Download,
   FileCheck2,
   FileText,
   GraduationCap,

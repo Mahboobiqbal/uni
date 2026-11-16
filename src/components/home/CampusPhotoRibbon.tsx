@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Camera, ExternalLink, Sparkles } from 'lucide-react';
+import { Camera } from 'lucide-react';
 
 interface GalleryPhoto {
   id: string;

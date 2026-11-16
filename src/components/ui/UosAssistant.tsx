@@ -69,8 +69,10 @@ const FACULTY_DEPTS: Record<string, string[]> = {
 
 export default function UosAssistant({ defaultOpen = false }: UosAssistantProps = {}) {
   const [open, setOpen] = useState(defaultOpen);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [choices, setChoices] = useState<Choice[]>([]);
+  const [messages, setMessages] = useState<Message[]>(() =>
+    defaultOpen ? [{ role: 'bot', text: GREETING }] : [],
+  );
+  const [choices, setChoices] = useState<Choice[]>(() => (defaultOpen ? MAIN_CHOICES : []));
   const [typing, setTyping] = useState(false);
   const [flowStarted, setFlowStarted] = useState(false);
 
@@ -92,15 +94,6 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
   useEffect(() => {
     scrollToBottom();
   }, [messages, choices, typing, scrollToBottom]);
-
-  /* Seed the conversation the first time the panel opens. */
-  useEffect(() => {
-    if (!open) return;
-    if (messages.length === 0) {
-      setMessages([{ role: 'bot', text: GREETING }]);
-      setChoices(MAIN_CHOICES);
-    }
-  }, [open, messages.length]);
 
   /* Clear any pending typing timer on unmount. */
   useEffect(() => {
@@ -400,7 +393,15 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
     window.setTimeout(() => toggleRef.current?.focus(), 60);
   }, []);
 
-  const handleToggle = () => setOpen((prev) => !prev);
+  const handleToggle = () => {
+    const next = !open;
+    // Seed the greeting the first time the panel opens.
+    if (next && messages.length === 0) {
+      setMessages([{ role: 'bot', text: GREETING }]);
+      setChoices(MAIN_CHOICES);
+    }
+    setOpen(next);
+  };
 
   return (
     <div ref={rootRef} className="uos-assistant" aria-label="University of Swat navigation guide">

@@ -12,7 +12,6 @@ import {
   Leaf,
   Scale,
   ShieldCheck,
-  Sparkles,
   TrendingUp,
 } from 'lucide-react';
 
@@ -88,27 +87,6 @@ function QualityGrowthChart() {
         <span>2023 (82.5%)</span>
         <span>2024</span>
                         <span className="font-semibold text-[#D4B87A]">2025/26 (91.4% · W)</span>
-      </div>
-    </div>
-  );
-}
-
-/** Segmented Performance Bar for HEC W-Category Audit */
-function AuditScoreBar() {
-  return (
-    <div className="w-full">
-      <div className="flex items-center justify-between text-xs mb-1.5">
-        <span className="font-medium text-stone-600">Institutional Performance Score</span>
-        <span className="font-bold text-[#14291D] font-mono">91.4 / 100</span>
-      </div>
-      <div className="relative h-2.5 rounded-full bg-stone-200/90 overflow-hidden flex" aria-hidden="true">
-        <div className="bg-[#153B27] h-full rounded-l-full" style={{ width: '91.4%' }} />
-        <div className="bg-[#7F1D1D] h-full" style={{ width: '7.2%' }} />
-        <div className="bg-[#C8A96E] h-full rounded-r-full" style={{ width: '1.4%' }} />
-      </div>
-      <div className="flex items-center justify-between text-[10px] text-stone-600 mt-1.5 font-sans">
-        <span className="text-[#153B27] font-semibold">Tier-1 W-Category (91.4%)</span>
-        <span className="text-stone-600">Threshold: 85.0%</span>
       </div>
     </div>
   );

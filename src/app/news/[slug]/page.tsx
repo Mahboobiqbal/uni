@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Share2, Tag, User, Building } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import { officialNewsArticles } from '@/data/newsData';
 

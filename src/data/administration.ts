@@ -1,21 +1,14 @@
 import type { LucideIcon } from 'lucide-react';
 import {
-  Award,
   BookOpen,
   Building2,
-  Calendar,
   Camera,
   ClipboardList,
   GraduationCap,
   Landmark,
   Mail,
-  Monitor,
-  Newspaper,
-  Phone,
-  Scale,
   ShieldCheck,
   Users,
-  Wallet,
 } from 'lucide-react';
 
 export interface AdminStaff {
