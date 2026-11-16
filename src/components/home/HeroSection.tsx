@@ -150,7 +150,8 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative z-30 w-full min-h-[560px] sm:min-h-[600px] lg:min-h-[88vh] flex flex-col overflow-x-clip bg-[#0C1912] text-white">
+    <>
+      <section className="relative z-20 w-full min-h-[580px] sm:min-h-[640px] lg:min-h-screen flex flex-col justify-center overflow-x-clip bg-[#0C1912] text-white pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-28 lg:pb-20">
       {/* Inline keyframes for the seamless vertical auto-scroll loop */}
       <style>{`
         @keyframes hero-widget-scroll {
@@ -388,27 +389,33 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Three Architectural Crimson Pillars — stacked on mobile, overlap on desktop */}
-      <div className="relative z-30 -mt-8 lg:-mt-16 pointer-events-none">
-        <div className="max-w-[1440px] w-full mx-auto px-3 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pointer-events-auto relative z-30">
+      </section>
+
+      {/* Three Architectural Crimson Pillars — standalone section distinctly below the hero fold */}
+      <section
+        className="relative z-20 w-full bg-[#F6F5F0] pt-12 pb-6 sm:pt-16 sm:pb-8 lg:pt-20 lg:pb-10"
+        aria-label="Core Institutional Pillars"
+        id="core-pillars"
+      >
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
             {heroPillars.map((pillar) => (
               <article
                 key={pillar.title}
-                className="bg-[#7F1D1D] text-white rounded-xl border-t-2 border-[#C8A96E] shadow-[0_18px_42px_-16px_rgba(127,29,29,0.5)] p-4 sm:px-7 sm:py-6 flex flex-col gap-1.5 sm:gap-3 transition-all duration-200 ease-out hover:-translate-y-[2px]"
+                className="bg-[#7F1D1D] text-white rounded-2xl border-t-2 border-[#C8A96E] shadow-[0_16px_36px_-12px_rgba(127,29,29,0.35)] p-5 sm:p-7 flex flex-col gap-2.5 sm:gap-3.5 transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_20px_42px_-10px_rgba(127,29,29,0.45)]"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-serif italic text-base sm:text-lg text-[#E0C078]">{pillar.numeral}</span>
                   {pillar.icon}
                 </div>
-                <h2 className="font-serif text-base sm:text-xl font-bold tracking-tight">{pillar.title}</h2>
-                <p className="font-sans text-white/85 leading-relaxed text-xs sm:text-sm">{pillar.description}</p>
+                <h2 className="font-serif text-lg sm:text-2xl font-bold tracking-tight">{pillar.title}</h2>
+                <p className="font-sans text-white/90 leading-relaxed text-xs sm:text-sm">{pillar.description}</p>
 
                 {/* Key institutional facts */}
-                <div className="hidden sm:flex mt-1 border-t border-white/15 pt-3 flex-col gap-2">
+                <div className="mt-1 border-t border-white/15 pt-3.5 flex flex-col gap-2">
                   {pillar.stats.map((stat) => (
                     <div key={stat.label} className="flex items-center justify-between gap-3 text-[13px]">
-                      <span className="text-white/70 uppercase tracking-wider font-medium">{stat.label}</span>
+                      <span className="text-white/70 uppercase tracking-wider font-medium text-xs">{stat.label}</span>
                       <span className="text-[#E0C078] font-bold text-right">{stat.value}</span>
                     </div>
                   ))}
@@ -417,7 +424,7 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

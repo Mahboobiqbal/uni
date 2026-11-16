@@ -4,6 +4,21 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — Separated Core Institutional Pillar Cards from Hero Section
+
+### Action Summary
+1. **Hero Section Viewport Decoupling**:
+   - Refactored `HeroSection.tsx` so the hero viewport occupies `min-h-[580px] sm:min-h-[640px] lg:min-h-screen`, providing full visual clearance for the campus video, typography, and news stream widget.
+   - Removed the negative margins (`-mt-8 lg:-mt-16`) and pointer-events hacks that were forcing the 3 crimson pillar cards to overlap and obstruct the hero video and CTA buttons.
+2. **Dedicated Institutional Pillars Section (`#core-pillars`)**:
+   - Placed the 3 cards ("Quality", "Leadership", "Experience") in their own clean section on the Uni Alabaster (`#F6F5F0`) canvas immediately below the hero fold.
+   - On **Desktop (`1440×900`)**: The 3 cards are now completely below the fold on initial page load, allowing the full hero video, headline, subtext, CTAs, and news stream to breathe without obstruction. They smoothly appear on scroll.
+   - On **Mobile (`390×844`)**: The 3 cards are positioned below the hero video fade on the `#F6F5F0` background as a stacked series of cards with clear padding, gold Roman numerals, and institutional stats, distinctly separated from the hero section.
+3. **Vice Chancellor Section Rhythm**:
+   - Balanced top padding in `ViceChancellorSection.tsx` to `pt-6 sm:pt-8 lg:pt-10` for an intentional, cohesive transition from Card II ("Vice Chancellor Prof. Dr. Husnul Amin") into the VC discourse and portrait.
+
+---
+
 ## [2026-11-16] — Full-Site Visual QA & Mobile/Desktop Responsiveness Audit (Browser Screenshot Loop)
 
 ### Action Summary
