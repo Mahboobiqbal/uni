@@ -64,7 +64,7 @@ export default function AdmissionsInquiryFunnel() {
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-white leading-[1.18]">
-                Take Your First Step Toward Academic Distinction
+                Start your application today
               </h2>
 
               <p className="font-sans text-white/80 text-sm sm:text-base leading-relaxed">

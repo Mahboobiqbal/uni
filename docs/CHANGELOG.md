@@ -4,6 +4,23 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — Compact Horizontal Swipe Rail for Core Pillar Cards on Mobile View
+
+### Action Summary
+1. **Mobile Horizontal Swipe Rail (`HeroSection.tsx`)**:
+   - Converted the 3 crimson pillar cards on mobile view (`< md`) from a tall, vertically stacked 3-row layout into a **compact horizontal swipe rail** (`flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none momentum-scroll`).
+   - Cards on mobile are sized compactly (`w-[78vw] min-w-[260px] max-w-[295px] p-4`), reducing vertical height consumption from ~800px down to ~180px.
+   - Added subtle swipe indicator dots (`flex md:hidden`) below the rail.
+2. **Preserved Desktop Layout & Section Position**:
+   - Preserved the existing 3-column desktop layout (`md:grid-cols-3 gap-5 lg:gap-6`).
+   - Kept exact position (`#core-pillars` with `-mt-8 sm:-mt-10`) and background canvas (`#F6F5F0`) intact.
+3. **Verification**:
+   - Verified via DevTools mobile (`390×844`) and desktop (`1440×900`) browser screenshots.
+   - Verified zero horizontal page overflow (`hasOverflow: false`).
+   - `npx tsc --noEmit` passed with 0 errors.
+
+---
+
 ## [2026-11-16] — Separated Core Institutional Pillar Cards from Hero Section
 
 ### Action Summary

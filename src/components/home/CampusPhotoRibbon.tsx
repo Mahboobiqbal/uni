@@ -66,7 +66,7 @@ export default function CampusPhotoRibbon() {
             </span>
           </div>
           <h3 className="font-serif text-2xl sm:text-3xl text-[#14291D] font-bold tracking-tight">
-            Life Across Our Swat Valley Campuses
+            Life across our campuses
           </h3>
         </div>
 

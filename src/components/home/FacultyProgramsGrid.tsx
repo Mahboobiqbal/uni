@@ -26,14 +26,13 @@ export default function FacultyProgramsGrid() {
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
-              Program Areas &amp; Academic Programs
+              Five faculties, one focus: your future
             </h2>
           </div>
 
           <div className="flex flex-col items-start lg:items-end gap-3">
             <p className="font-sans text-sm sm:text-base text-stone-600 max-w-md lg:text-right leading-[1.68]">
-              An overview of the university&rsquo;s five program areas — delivered through four
-              faculties and 28 departments.
+              Our program areas span five faculties and 28 departments, from computing to the sciences, management, law, and the humanities.
             </p>
             <Link
               href="/programs"

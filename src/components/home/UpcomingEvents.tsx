@@ -105,7 +105,7 @@ export default function UpcomingEvents() {
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
-              Upcoming Events &amp; Academic Symposia
+              Upcoming events and conferences
             </h2>
           </div>
 

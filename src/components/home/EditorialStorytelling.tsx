@@ -29,7 +29,7 @@ export default function EditorialStorytelling() {
             </div>
 
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
-              An Alpine Sanctuary Designed for Inspired Scholars &amp; Natural Harmony
+              A green campus built for study and calm
             </h2>
 
             <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">
@@ -161,7 +161,7 @@ export default function EditorialStorytelling() {
             </div>
 
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14]">
-              Frontier Alpine Research, Herbal Therapeutics &amp; Gandhara Preservation
+              Research rooted in the Swat Valley
             </h2>
 
             <p className="font-sans text-stone-600 text-sm sm:text-lg leading-[1.75]">

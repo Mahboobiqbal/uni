@@ -33,13 +33,12 @@ export default function CampusTourBanner() {
 
         {/* Display Serif Headline */}
         <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] max-w-4xl mx-auto leading-[1.12] mb-6 text-white drop-shadow-sm">
-          Experience the University of Swat Firsthand
+          Visit the University of Swat in person
         </h2>
 
         {/* Subtitle */}
         <p className="font-sans text-stone-300 text-sm sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10">
-          Walk across our 350-canal solar-powered campus, tour high-tech computing labs,
-          and discover why scholars from across Pakistan choose to study in the heart of the Swat Valley.
+          Walk a 350-canal solar-powered campus, tour the computing labs, and see why students from across Pakistan choose Swat.
         </p>
 
         {/* Dual Actions */}

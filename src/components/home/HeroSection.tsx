@@ -197,34 +197,20 @@ export default function HeroSection() {
           <div className="flex flex-col">
             {/* Bottom-Left — Main Hero Headline & CTAs */}
             <div className="max-w-2xl flex flex-col items-center lg:items-start">
-              {/* Headline with italic gold "Innovators" + hand-drawn gold SVG underline */}
-              <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.1] sm:leading-[1.08] drop-shadow-md">
-                Shaping Scholars &amp;{' '}
-                <span className="relative inline-block italic font-serif text-[#E2C07D]">
-                  Innovators
-                  <svg
-                    className="absolute -bottom-2 left-0 w-full h-3 text-[#E2C07D]"
-                    viewBox="0 0 200 12"
-                    preserveAspectRatio="none"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2 8 C 40 2, 80 10, 120 6 S 180 2, 198 8"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                  </svg>
-                </span>{' '}
-                in the Heart of Swat
+              {/* Headline — balanced 2-line structure, research ↔ student */}
+              <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.12] drop-shadow-md text-balance">
+                Where Rigorous Research
+                <span className="block mt-1">
+                  Meets Student{' '}
+                  <span className="italic text-[#C8A96E] underline decoration-[#C8A96E]/80 decoration-2 underline-offset-8 whitespace-nowrap">
+                    Discovery
+                  </span>
+                </span>
               </h1>
 
               {/* Subtext */}
-              <p className="font-sans text-xs sm:text-base md:text-lg text-white/90 max-w-xl mt-4 sm:mt-5 leading-[1.65] font-normal drop-shadow-sm">
-                A public university in the Swat Valley, rooted in Gandhara heritage and built for
-                modern study, research, and regional leadership.
+              <p className="font-sans text-stone-200/95 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 mt-4">
+                A chartered public university in Swat Valley uniting 250+ dedicated faculty and 10,000+ scholars across 73 HEC-recognized degrees.
               </p>
 
               {/* CTAs */}
@@ -392,35 +378,43 @@ export default function HeroSection() {
 
       {/* Three Architectural Crimson Pillars — standalone section distinctly below the hero fold */}
       <section
-        className="relative z-20 w-full bg-[#F6F5F0] pt-12 pb-6 sm:pt-16 sm:pb-8 lg:pt-20 lg:pb-10"
+        className="relative z-20 w-full bg-[#F6F5F0] pt-8 pb-6 sm:pt-14 sm:pb-8 lg:pt-16 lg:pb-10"
         aria-label="Core Institutional Pillars"
         id="core-pillars"
       >
         <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 -mt-10">
+          {/* Mobile: Horizontal swipeable rail with compact cards. Desktop: 3-column grid */}
+          <div className="flex md:grid md:grid-cols-3 gap-3.5 md:gap-5 lg:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none momentum-scroll -mt-8 sm:-mt-10 pb-2 px-1">
             {heroPillars.map((pillar) => (
               <article
                 key={pillar.title}
-                className="bg-[#7F1D1D] text-white rounded-2xl border-t-2 border-[#C8A96E] shadow-[0_16px_36px_-12px_rgba(127,29,29,0.35)] p-5 sm:p-7 flex flex-col gap-2.5 sm:gap-3.5 transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_20px_42px_-10px_rgba(127,29,29,0.45)]"
+                className="w-[78vw] min-w-[260px] max-w-[295px] shrink-0 snap-start md:w-auto md:min-w-0 md:max-w-none md:shrink bg-[#7F1D1D] text-white rounded-xl sm:rounded-2xl border-t-2 border-[#C8A96E] shadow-[0_12px_28px_-10px_rgba(127,29,29,0.35)] p-4 sm:p-6 lg:p-7 flex flex-col gap-2 sm:gap-3 transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_20px_42px_-10px_rgba(127,29,29,0.45)]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-serif italic text-base sm:text-lg text-[#E0C078]">{pillar.numeral}</span>
+                  <span className="font-serif italic text-sm sm:text-lg text-[#E0C078]">{pillar.numeral}</span>
                   {pillar.icon}
                 </div>
-                <h2 className="font-serif text-lg sm:text-2xl font-bold tracking-tight">{pillar.title}</h2>
-                <p className="font-sans text-white/90 leading-relaxed text-xs sm:text-sm">{pillar.description}</p>
+                <h2 className="font-serif text-base sm:text-xl lg:text-2xl font-bold tracking-tight">{pillar.title}</h2>
+                <p className="font-sans text-white/90 leading-snug text-xs sm:text-sm">{pillar.description}</p>
 
                 {/* Key institutional facts */}
-                <div className="mt-1 border-t border-white/15 pt-3.5 flex flex-col gap-2">
+                <div className="mt-auto border-t border-white/15 pt-2.5 sm:pt-3.5 flex flex-col gap-1.5 sm:gap-2">
                   {pillar.stats.map((stat) => (
-                    <div key={stat.label} className="flex items-center justify-between gap-3 text-[13px]">
-                      <span className="text-white/70 uppercase tracking-wider font-medium text-xs">{stat.label}</span>
-                      <span className="text-[#E0C078] font-bold text-right">{stat.value}</span>
+                    <div key={stat.label} className="flex items-baseline justify-between gap-2 text-xs sm:text-[13px]">
+                      <span className="text-white/70 uppercase tracking-wider font-medium text-[10.5px] sm:text-xs shrink-0">{stat.label}</span>
+                      <span className="text-[#E0C078] font-bold text-right text-[11.5px] sm:text-[13px]">{stat.value}</span>
                     </div>
                   ))}
                 </div>
               </article>
             ))}
+          </div>
+
+          {/* Mobile subtle swipe indicator dots */}
+          <div className="flex md:hidden items-center justify-center gap-1.5 pt-2" aria-hidden="true">
+            <span className="h-1 w-5 rounded-full bg-[#7F1D1D]/70" />
+            <span className="h-1 w-1.5 rounded-full bg-[#7F1D1D]/25" />
+            <span className="h-1 w-1.5 rounded-full bg-[#7F1D1D]/25" />
           </div>
         </div>
       </section>

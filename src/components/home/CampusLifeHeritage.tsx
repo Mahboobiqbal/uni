@@ -109,12 +109,11 @@ export default function CampusLifeHeritage() {
               </span>
             </div>
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
-              Campus Life &amp; Swat Valley Heritage
+              Campus life, set in Swat's heritage
             </h2>
           </div>
           <p className="font-sans text-sm sm:text-base text-stone-600 max-w-md lg:text-right leading-[1.68]">
-            A visual tour of the University of Swat — from the Charbagh Main Campus and the Women
-            Campus to libraries, sports, and the Gandharan heritage surrounding the valley.
+            A tour of the university: Charbagh Main Campus, the Women Campus, libraries, sports, and the Gandharan heritage around the valley.
           </p>
         </div>
 

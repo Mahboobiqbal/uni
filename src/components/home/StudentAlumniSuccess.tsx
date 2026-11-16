@@ -75,11 +75,10 @@ export default function StudentAlumniSuccess() {
             <span className="h-0.5 w-6 bg-[#7F1D1D]" />
           </div>
           <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-[#14291D] font-bold tracking-[-0.025em] leading-[1.14] mb-4">
-            Where Ambition Meets Proven Real-World Impact
+            Where our graduates go
           </h2>
           <p className="font-sans text-stone-600 text-sm sm:text-lg leading-relaxed">
-            Our graduates lead engineering teams, author high-impact scientific publications,
-            and launch ventures that reshape the socio-economic landscape of Pakistan and beyond.
+            Our alumni lead engineering teams, publish research, and start businesses across Pakistan and beyond.
           </p>
         </div>
 

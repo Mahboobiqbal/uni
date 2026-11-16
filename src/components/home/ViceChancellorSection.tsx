@@ -84,13 +84,11 @@ export default function ViceChancellorSection() {
                   &ldquo;
                 </span>
                 <p className="font-serif text-xl lg:text-2xl text-stone-900 leading-relaxed">
-                  It is with immense pride, humility, and a profound sense of responsibility that I assume
-                  the office of Vice Chancellor of the University of Swat. We stand at a pivotal moment to
-                  cultivate{' '}
+                  I take up the role of Vice Chancellor with pride and a clear focus. Our priorities are{' '}
                   <strong className="text-[#153B27] font-semibold">
-                    intellectual excellence, good governance, campus-wide green solarization
+                    strong teaching, honest governance, and a campus powered by clean solar energy
                   </strong>
-                  , and dedicated empowerment for our scholars across Swat and beyond.
+                  , so every student here can succeed in Swat and beyond.
                 </p>
               </blockquote>
 

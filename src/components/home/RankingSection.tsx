@@ -214,12 +214,10 @@ export default function RankingSection() {
               </span>
             </div>
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-[44px] text-[#14291D] font-bold tracking-[-0.025em] leading-[1.12]">
-              Ranking, Recognition &amp; Quality Audits
+              Rankings and quality checks
             </h2>
             <p className="font-sans text-sm sm:text-base text-stone-600 mt-4 leading-[1.68]">
-              The University of Swat is independently evaluated by the Higher Education Commission of Pakistan (HEC),
-              the UI GreenMetric World University framework, and Times Higher Education for governance excellence,
-              alpine sustainability, and scholarly research vitality.
+              Independent reviewers — the Higher Education Commission (HEC) of Pakistan, the UI GreenMetric World University framework, and Times Higher Education — assess our governance, sustainability, and research.
             </p>
           </div>
 

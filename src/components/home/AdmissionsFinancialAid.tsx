@@ -39,7 +39,7 @@ const aidCards: AidCard[] = [
     badgeClass: 'bg-black/20 text-[#E2C07D]',
     title: 'Merit & Need-Based Scholarships',
     copy:
-      'Ensuring zero deserving students are turned away through HEC, KPEF, Ehsaas, and University Merit fee-waiver schemes.',
+      'HEC, KPEF, and Ehsaas support, plus university merit fee-waivers, so cost is never the reason a student stays away.',
     highlights: ['HEC Need-Based & Ehsaas', 'KPEF Merit Scholarships', 'Hafiz-e-Quran & Kinship Concessions'],
     cta: 'Check Scholarship Eligibility',
     ctaHref: '/admissions',
@@ -76,7 +76,7 @@ export default function AdmissionsFinancialAid() {
             </span>
           </div>
           <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#14291D] tracking-[-0.02em]">
-            Accessible Excellence &amp; Student Financial Support
+            Admissions, fees, and financial support
           </h3>
         </div>
 
