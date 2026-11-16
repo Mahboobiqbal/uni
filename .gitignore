@@ -43,3 +43,26 @@ next-env.d.ts
 # tasteskill chrome profiles + local audit scratch
 .taste-skill/
 .detect-out*.json
+
+# agent tooling / scratch (not part of the application)
+.agents/
+skills-lock.json
+.claude/
+.agent/
+.cursor/
+.gemini/
+.commandcode/
+.freebuff/
+.impeccable/
+.kilo/
+.qa-audit/
+
+# OS junk
+Thumbs.db
+*.log
+*.bak
+*.old
+*.tmp
+scratch/
+shots/
+qa-screenshots/

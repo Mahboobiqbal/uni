@@ -4,6 +4,21 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — Removed Dark-Green Promo Rail from Desktop Mega-Drawers
+
+### Action Summary
+1. **Removed the Deep Forest Green right-hand promo rail** from every desktop mega-drawer in `MegaMenuPanel.tsx` (Programs, Faculties, Academics, Campus Life, Research, Administration, University). The `NavRail` type and the `rail` field were removed from `src/data/navigation.ts` and all nav items (type narrowed to `columns: 2 | 3`).
+2. **Unified Warm Alabaster canvas**: all mega-drawers now sit on a single `bg-[#F6F5F0]` surface with `border-b-2 border-b-[#7F1D1D]` (no heavy colored box/card).
+3. **Full-width, balanced link columns**: the inner container is now `max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 py-8`, with the section header row (eyebrow + serif title left, uppercase overview link right) and balanced `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` link grids, `gap-x-12 gap-y-8`, hairline `border-stone-200` header divider.
+4. **Rebalanced sparse menus** to fill the freed space (no empty void):
+   - **Research**: was a single narrow column → now two balanced columns (`Research offices` / `Tools & resources`).
+   - **Administration**: was one 7-link column → split into `Offices & governance` / `Service units`.
+   - **Campus Life / University / Academics**: already two-group, left intact; header labels upgraded to `text-[11px] font-bold tracking-[0.18em] text-stone-500 uppercase`.
+   - **Faculties** drawer already used a two-pane layout (no rail) — unchanged.
+5. **Verification**: `npx tsc --noEmit` passes (0 errors); `npm run lint` passes (0 errors); `npm run build` generates 303/303 static pages with zero warnings. Not committed.
+
+---
+
 ## [2026-11-16] — Full Repository Cleanup & Production Codebase Audit
 
 ### Action Summary
