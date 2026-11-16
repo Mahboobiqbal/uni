@@ -13,6 +13,7 @@ const universityCol = [
   { label: 'About & Heritage', href: '/about' },
   { label: "Vice Chancellor's Office", href: '/leadership/vice-chancellor' },
   { label: 'Administration & Offices', href: '/administration' },
+  { label: 'Complaints & Feedback', href: '/complaints' },
   { label: 'Quality Enhancement Cell (QEC)', href: '/academics#qec' },
   { label: 'ORIC & Research', href: '/research' },
   { label: 'Tenders & Careers', href: '/portal' },

@@ -277,6 +277,7 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
             { label: 'Central Library & Digital Access', to: 'd-library' },
             { label: 'Youth Development Centre (YDC) & Career Help', to: 'd-ydc' },
             { label: 'Proctorial Board, Alumni & Media Cell', to: 'd-proctorial' },
+            { label: 'Submit a Complaint or Request', to: 'd-complaint' },
           ],
         };
       case 'd-offices':
@@ -302,6 +303,12 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
           bot:
             'The Proctorial Board keeps campus safe and fair; the Alumni Association (UOSAA) and Media Cell also sit under university services in the Administration Block.',
           card: { title: 'Proctorial, Alumni & Media', desc: 'Discipline · UOSAA · Media Cell', href: '/administration?tab=proctorial-board', cta: 'Open Section' },
+        };
+      case 'd-complaint':
+        return {
+          bot:
+            'You can submit a complaint or improvement suggestion securely through the university portal — it is reviewed directly by the University Administration & Proctorial Office.',
+          card: { title: 'Complaints & Feedback', desc: 'Submit a complaint or suggestion', href: '/complaints', cta: 'Open Portal' },
         };
 
       /* Flow E — Calendar, forms & affiliations */
@@ -434,6 +441,7 @@ export default function UosAssistant({ defaultOpen = false }: UosAssistantProps 
           role="dialog"
           aria-modal="true"
           aria-labelledby="uos-assistant-title"
+          onClick={(e) => e.stopPropagation()}
           className="uos-assistant__panel"
         >
           <header className="uos-assistant__header">

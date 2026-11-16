@@ -4,6 +4,32 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — University Complaint & Feedback Portal (/complaints)
+
+### Action Summary
+1. **New route `src/app/complaints/page.tsx`** + client `src/components/complaints/ComplaintPortal.tsx`:
+   - **Hero**: photographic Charbagh campus banner under a Deep Forest Green gradient (`from-[#0B1F14]/95 via-[#153B27]/88 to-[#153B27]/75`), Muted Gold breadcrumb, white serif title `Student & Staff Complaint Portal`, and the welcoming 2-line subtitle.
+   - **2-column layout**: left `lg:col-span-8` form card (crimson top rule) — role-selector pills (Student / Faculty / Administrative Staff / Visitor-Parent), 6 category pills, accessible `#FBF9F5` inputs, **anonymous toggle** (disables/clears name + roll/employee ID), department/campus select, email/phone, subject, details textarea.
+   - **Confirmation state**: generates a tracking reference (e.g. `UOS-2026-4819`), shows a Deep Forest Green confirmation card with copy-reference button, `2–3 working days` timeline, and `Submit Another Complaint` reset; the record is saved to `localStorage`.
+   - **Right column `lg:col-span-4`**: status lookup box (looks up the stored ref by `localStorage`) + Direct Escalation Contacts (Registrar, Proctorial Board, VC Secretariat — `info@uswat.edu.pk`, Administration Block, Charbagh).
+2. **Site-wide connections**: added `Complaints & Feedback` to the Administration mega-drawer + mobile drawer (`src/data/navigation.ts`, `MessageSquare` icon), the Footer UNIVERSITY column, and a direct `Submit a Complaint or Request` option in the UoS Navigation Guide chatbot (`d-complaint` node → `/complaints`).
+3. **Verification**: `npx tsc --noEmit` passes (0 errors); `npm run lint` passes (0 errors); `npm run build` generates 304/304 static pages (new `/complaints` route). Browser-verified: hero/breadcrumb, role & category pills, inputs, anonymous toggle disabling fields, form submission → confirmation with live reference, and status lookup returning the stored record. Not committed.
+
+---
+
+## [2026-11-16] — Mobile Chatbot Blur/Backdrop Z-Index Bug Fix
+
+### Action Summary
+1. **Bug**: on mobile the dimmed/blurred backdrop was stacking *on top of* the UoS Navigation Guide bottom sheet (backdrop `z-index: 40` vs. sheet with no explicit z-index), blurring the whole chat UI and causing taps inside to trigger the backdrop's close handler.
+2. **Fix** (`src/components/ui/UosAssistant.css` + `.tsx`):
+   - Sheet panel now gets an explicit `z-index: 50` (above the `z-40` backdrop) so it paints sharp and unblurred above the dim layer.
+   - Sheet uses `backdrop-filter: none` / no opacity filter; bottom-sheet geometry unchanged (`fixed inset-x-0 bottom-0 w-full h-[84dvh] rounded-t-3xl`, desktop `sm:` floating card).
+   - Added `onClick={(e) => e.stopPropagation()}` on the sheet so taps inside never bubble to the backdrop.
+   - Backdrop remains a sibling `fixed inset-0 z-40 bg-black/45 backdrop-blur-[2px] sm:hidden` rendered strictly behind the sheet.
+3. **Verification (mobile 390px, live browser)**: backdrop `z-index:40` / sheet `z-index:50` confirmed; sheet `backdrop-filter:none`, opacity 1; tapping an option advances the conversation without closing; tapping only the dark backdrop area above the sheet closes it; `npx tsc --noEmit`, `npm run lint` (0 errors), and `npm run build` (303/303 pages) all pass. Not committed.
+
+---
+
 ## [2026-11-16] — UoS Navigation Guide: Mobile Bottom Sheet Redesign
 
 ### Action Summary
