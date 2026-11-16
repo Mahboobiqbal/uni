@@ -127,7 +127,7 @@ export default function EditorialStorytelling() {
 
               <div className="relative rounded-2xl overflow-hidden border border-stone-300/80 shadow-xl bg-white aspect-[4/3] group">
                 <img
-                  src="/images/news/news-gandhara-mou-oct2026.jpeg"
+                  src="/campus-shot-3.jpg"
                   alt="Swat Valley Buddhist Heritage & Archaeological Research"
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500 ease-out"

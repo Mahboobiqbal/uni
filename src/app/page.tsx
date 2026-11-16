@@ -9,7 +9,6 @@ import UpcomingEvents from "@/components/home/UpcomingEvents";
 import RankingSection from "@/components/home/RankingSection";
 import CampusLifeHeritage from "@/components/home/CampusLifeHeritage";
 import StudentAlumniSuccess from "@/components/home/StudentAlumniSuccess";
-import AdmissionsInquiryFunnel from "@/components/home/AdmissionsInquiryFunnel";
 import CampusPhotoRibbon from "@/components/home/CampusPhotoRibbon";
 
 export default function HomePage() {
@@ -50,10 +49,7 @@ export default function HomePage() {
         {/* 10. [NEW] Student & Alumni Success Stories & Outcomes */}
         <StudentAlumniSuccess />
 
-        {/* 11. [NEW] Interactive Admissions Inquiry Funnel */}
-        <AdmissionsInquiryFunnel />
-
-        {/* 12. [NEW] Campus Life Photo Ribbon */}
+        {/* 11. [NEW] Campus Life Photo Ribbon */}
         <CampusPhotoRibbon />
       </main>
     </>

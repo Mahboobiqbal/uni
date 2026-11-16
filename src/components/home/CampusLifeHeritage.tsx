@@ -15,7 +15,7 @@ interface CampusTile {
 const tiles: CampusTile[] = [
   {
     id: 'main-campus',
-    image: '/images/uos/campus-and-events/campus-event-1.jpg',
+    image: '/campus-shot-1.jpg',
     title: 'Charbagh Main Campus',
     description: 'Central administration, Academic Block C, science laboratories, and 100% green solarized campus facilities.',
     alt: 'Charbagh Main Campus of the University of Swat',
@@ -24,7 +24,7 @@ const tiles: CampusTile[] = [
   },
   {
     id: 'women-campus',
-    image: '/images/uos/campus-and-events/campus-event-2.jpg',
+    image: '/images/campus/women-campus.jpg',
     title: 'Women Campus',
     description: 'Dedicated campus for female students housing the College of Home Sciences, modern biology labs, and specialized facilities.',
     alt: 'Women Campus of the University of Swat',
@@ -32,7 +32,7 @@ const tiles: CampusTile[] = [
   },
   {
     id: 'library',
-    image: '/images/uos/campus-and-events/campus-event-3.jpg',
+    image: '/campus-shot-2.jpg',
     title: 'Central Library & Administration',
     description: 'Executive secretariats, automated book catalog, HEC Digital Library access, and dedicated scholar reading halls.',
     alt: 'Central Administration and Library at University of Swat',
@@ -40,7 +40,7 @@ const tiles: CampusTile[] = [
   },
   {
     id: 'sports',
-    image: '/images/uos/campus-and-events/campus-event-4.jpg',
+    image: '/campus-shot-4.jpg',
     title: 'Main Campus Portal & Sports',
     description: 'Official main gate, sports pavilions, cricket grounds, and athletic tournament fields for university varsity teams.',
     alt: 'University of Swat Main Campus Entrance',
@@ -48,7 +48,7 @@ const tiles: CampusTile[] = [
   },
   {
     id: 'heritage',
-    image: '/images/uos/campus-and-events/campus-event-5.jpg',
+    image: '/campus-shot-3.jpg',
     title: 'Swat Valley & Gandhara Heritage',
     description: 'World-famous Gandhara Buddhist stupas, archaeology collaborations with Sri Lankan NIIBS, and valley alpine heritage.',
     alt: 'Gandhara heritage and international research at University of Swat',

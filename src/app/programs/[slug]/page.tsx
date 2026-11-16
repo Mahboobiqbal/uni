@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, BookOpen, Building2, GraduationCap, Landmark } from 'lucide-react';
+import { ArrowRight, BookOpen, Building2, GraduationCap, Landmark } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import { ALL_PROGRAMS, getProgramBySlug } from '@/data/programs';
 
@@ -288,15 +288,9 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                   Ready to Begin Your Journey?
                 </h2>
                 <p className="font-sans text-white/75 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
-                  Admissions for Fall 2026 are open. Review the eligibility criteria, gather your documents, and submit your application through the student portal.
+                  Explore the department, its faculty, labs, and the program structure to plan your next step.
                 </p>
                 <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                  <Link href="/admissions" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-[#7F1D1D] hover:bg-[#661717] text-white text-[11px] font-bold uppercase tracking-[0.1em] min-h-[44px] shadow-[0_10px_24px_-12px_rgba(127,29,29,0.6)] transition-all duration-200 active:scale-[0.985]">
-                    Apply Fall 2026 <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                  <Link href="/admissions/fee-structure" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-white/30 text-white/90 hover:border-[#C8A96E] hover:text-[#C8A96E] bg-white/5 text-[11px] font-bold uppercase tracking-[0.1em] min-h-[44px] transition-all duration-200 active:scale-[0.985]">
-                    View Fee Structure <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
                   <Link href={`/departments/${prog.departmentSlug}`} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-white/30 text-white/90 hover:border-[#C8A96E] hover:text-[#C8A96E] bg-white/5 text-[11px] font-bold uppercase tracking-[0.1em] min-h-[44px] transition-all duration-200 active:scale-[0.985]">
                     <Building2 className="w-4 h-4" /> Department Faculty &amp; Labs
                   </Link>
@@ -337,9 +331,6 @@ export default async function ProgramDetailPage({ params }: PageProps) {
               </dl>
 
               <div className="flex flex-col gap-2.5 mt-6">
-                <Link href="/admissions" className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-[#7F1D1D] hover:bg-[#661717] text-white text-[11px] font-bold uppercase tracking-[0.1em] min-h-[44px] shadow-[0_10px_24px_-12px_rgba(127,29,29,0.6)] transition-all duration-200 active:scale-[0.985]">
-                  Apply Fall 2026 <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
                 <Link href={`/departments/${prog.departmentSlug}`} className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl border border-stone-300 text-stone-700 hover:border-[#153B27] hover:text-[#153B27] bg-white text-[11px] font-bold uppercase tracking-[0.1em] min-h-[44px] transition-all duration-200 active:scale-[0.985]">
                   <GraduationCap className="w-4 h-4" /> Department Faculty &amp; Labs
                 </Link>

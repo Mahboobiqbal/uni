@@ -473,10 +473,10 @@ export default function RankingSection() {
             </button>
 
             <Link
-              href="/admissions"
+              href="/about"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-xl bg-[#153B27] hover:bg-[#0F291C] hover:-translate-y-[2px] active:scale-[0.985] active:translate-y-px text-white text-xs font-semibold shadow-xs transition-all duration-150 min-h-[44px]"
             >
-              <span>Explore Admissions Criteria</span>
+              <span>About the University</span>
               <ArrowUpRight className="w-4 h-4 text-emerald-300" />
             </Link>
           </div>

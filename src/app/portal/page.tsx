@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowUpRight, Banknote, BookOpen, ExternalLink, FileCheck2, FileText, GraduationCap, LayoutDashboard, MonitorPlay, ScrollText, ShieldCheck, Mail } from 'lucide-react';
+import { ArrowUpRight, BookOpen, ExternalLink, FileCheck2, FileText, GraduationCap, LayoutDashboard, MonitorPlay, ScrollText, ShieldCheck, Mail } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
@@ -64,14 +64,6 @@ const portals = [
     external: true,
     tag: 'Broadcast Media',
     text: 'Official YouTube broadcast channel: live convocation streaming, public lectures, sports events, and documentary features.',
-  },
-  {
-    icon: <Banknote className="w-6 h-6 text-[#7F1D1D]" />,
-    title: 'Digital Payments & Fee Vouchers',
-    url: '/admissions/fee-structure',
-    external: false,
-    tag: 'Bank of Khyber Integration',
-    text: 'Direct banking instructions for tuition deposits, online 1Link Kuickpay options, and fee structure breakdowns.',
   },
 ];
 

@@ -13,6 +13,8 @@ import {
   Briefcase,
   Building2,
   Calendar,
+  Camera,
+  ClipboardList,
   Code,
   Compass,
   Download,
@@ -25,10 +27,9 @@ import {
   MapPin,
   Monitor,
   Newspaper,
-  Phone,
   Scale,
+  ShieldCheck,
   Users,
-  Wallet,
 } from 'lucide-react';
 
 export interface NavLink {
@@ -203,39 +204,6 @@ export const navItems: NavItem[] = [
     },
   },
   {
-    label: 'Admissions',
-    href: '/admissions',
-    anchor: 'admissions',
-    summary: 'The Fall 2026 admission cycle',
-    viewAllLabel: 'Admissions 2026',
-    columns: 2,
-    direct: true,
-    groups: [
-      {
-        title: 'Admission cycle',
-        links: [
-          { label: 'Admissions Overview', href: '/admissions', meta: 'Fall 2026', icon: GraduationCap },
-          { label: 'Fee Structure', href: '/admissions/fee-structure', meta: 'Semester', icon: Wallet },
-          { label: 'Merit Lists & Quotas', href: '/admissions/merit-lists', meta: 'Official', icon: Award },
-        ],
-      },
-      {
-        title: 'Funding & help',
-        links: [
-          { label: 'Scholarships & Financial Aid', href: '/admissions#scholarships-heading', meta: 'HEC', icon: Award },
-          { label: 'Admissions Help Desk', href: '/contact', meta: 'Contact', icon: Phone },
-        ],
-      },
-    ],
-    rail: {
-      kicker: 'Fall intake',
-      figure: '2026',
-      caption: 'Merit lists, semester fee schedules and financial aid.',
-      ctaLabel: 'Apply for Fall 2026',
-      ctaHref: '/admissions',
-    },
-  },
-  {
     label: 'Campus Life',
     href: '/campus-life',
     anchor: 'campus-life',
@@ -293,6 +261,35 @@ export const navItems: NavItem[] = [
     },
   },
   {
+    label: 'Administration',
+    href: '/administration',
+    anchor: 'administration',
+    summary: 'Offices, services, and how the university runs',
+    viewAllLabel: 'Administration overview',
+    columns: 2,
+    groups: [
+      {
+        title: 'Administration',
+        links: [
+          { label: 'University Offices', href: '/administration?tab=offices', meta: 'Statutory', icon: Building2 },
+          { label: 'Directorates', href: '/administration?tab=directorates', meta: 'Operations', icon: ClipboardList },
+          { label: 'Alumni Association (UOSAA)', href: '/administration?tab=alumni', meta: 'Network', icon: GraduationCap },
+          { label: 'Central Library', href: '/administration?tab=central-library', meta: 'Library', icon: BookOpen },
+          { label: 'Media Cell', href: '/administration?tab=media-cell', meta: 'Media', icon: Camera },
+          { label: 'Proctorial Board', href: '/administration?tab=proctorial-board', meta: 'Discipline', icon: ShieldCheck },
+          { label: 'Youth Development Centre (YDC)', href: '/administration?tab=ydc', meta: 'Students', icon: Users },
+        ],
+      },
+    ],
+    rail: {
+      kicker: 'Administration',
+      figure: '07',
+      caption: 'Offices, directorates, and services that run the university.',
+      ctaLabel: 'Explore administration',
+      ctaHref: '/administration',
+    },
+  },
+  {
     label: 'University',
     href: '/about',
     anchor: 'university',
@@ -329,6 +326,5 @@ export const navItems: NavItem[] = [
 
 /** Quick destinations shared by the header actions and the mobile drawer. */
 export const primaryActions = {
-  search: { label: 'Search the university', href: '/search' },
   portal: { label: 'Student Portal', href: '/portal' },
 } as const;

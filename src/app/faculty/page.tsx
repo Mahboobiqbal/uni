@@ -37,9 +37,25 @@ const facultyStats = (() => {
   return { facultyCount: facultiesCatalog.length, deptCount, programCount };
 })();
 
+const CAMPUS_FILTERS = [
+  { id: 'all', label: 'All Campuses' },
+  { id: 'charbagh', label: 'Charbagh Main' },
+  { id: 'women', label: 'Women Campus' },
+  { id: 'shangla', label: 'Shangla' },
+] as const;
+
+const campusMatches = (campus: string, id: string): boolean => {
+  if (id === 'all') return true;
+  const c = campus.toLowerCase();
+  if (id === 'women') return c.includes('women');
+  if (id === 'shangla') return c.includes('shangla');
+  return c.includes('charbagh') || c.includes('main');
+};
+
 export default function FacultyPage() {
   const [query, setQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [activeCampus, setActiveCampus] = useState<string>('all');
 
   const visibleFaculties = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -47,6 +63,7 @@ export default function FacultyPage() {
       .map((fac) => {
         if (activeFilter !== 'all' && fac.slug !== activeFilter) return null;
         const depts = fac.departments.filter((d) => {
+          if (!campusMatches(d.campus, activeCampus)) return false;
           if (!q) return true;
           return (
             d.name.toLowerCase().includes(q) ||
@@ -58,7 +75,7 @@ export default function FacultyPage() {
         return depts.length ? { fac, depts } : null;
       })
       .filter((x): x is { fac: (typeof facultiesCatalog)[number]; depts: (typeof facultiesCatalog)[number]['departments'] } => x !== null);
-  }, [query, activeFilter]);
+  }, [query, activeFilter, activeCampus]);
 
   const totalShown = visibleFaculties.reduce((s, v) => s + v.depts.length, 0);
 
@@ -99,41 +116,78 @@ export default function FacultyPage() {
         </dl>
       </PageHeader>
 
-      {/* Faculty Quick-Jump & Search Filter Bar */}
-      <div className="relative lg:sticky lg:top-24 z-30">
-        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14">
-          <div className="bg-white border border-stone-300 border-t-4 border-t-[#7F1D1D] rounded-2xl p-3.5 sm:p-4 shadow-[0_24px_50px_-22px_rgba(12,25,18,0.35)] flex flex-col lg:flex-row lg:items-center gap-3 mb-8 sm:mb-10">
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none momentum-scroll -mx-1 px-1 lg:flex-wrap lg:overflow-visible lg:pb-0" role="group" aria-label="Filter by faculty">
-              {FACULTY_FILTERS.map((f) => {
-                const isActive = activeFilter === f.id;
-                return (
-                  <button
-                    key={f.id}
-                    type="button"
-                    aria-pressed={isActive}
-                    onClick={() => setActiveFilter(f.id)}
-                    className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-all duration-200 active:scale-[0.98] min-h-[36px] shrink-0 lg:shrink ${
-                      isActive ? 'bg-[#153B27] text-white shadow-sm' : 'text-stone-600 hover:text-[#14291D] hover:bg-stone-100'
-                    }`}
-                  >
-                    {f.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="relative min-w-0 flex-1">
-              <Search className="w-4 h-4 text-stone-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search department, Head of Department, or campus…"
-                aria-label="Search departments"
-                className="w-full pl-10 pr-4 h-10 rounded-lg bg-stone-50 border border-stone-300 text-[16px] sm:text-sm text-[#14291D] placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent focus:bg-white transition-all"
-              />
-            </div>
+      {/* Two-tier search & filter bar — matches /programs */}
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 -mt-10 sm:-mt-12 relative z-20">
+        <div role="search" aria-label="Filter departments"
+          className="bg-white border border-stone-300 border-t-4 border-t-[#7F1D1D] rounded-2xl p-3.5 sm:p-5 shadow-[0_24px_50px_-22px_rgba(12,25,18,0.45)] flex flex-col lg:flex-row lg:items-center gap-3 sm:gap-4">
+          <div className="relative min-w-0 flex-1">
+            <Search className="w-4 h-4 text-stone-600 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder='Search departments, Heads of Department, or campus — try "Computer", "Women Campus"…'
+              aria-label="Search departments"
+              className="w-full pl-11 pr-4 h-12 rounded-xl bg-stone-50 border border-stone-300 text-[16px] sm:text-sm text-[#14291D] placeholder:text-stone-600 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent focus:bg-white transition-all"
+            />
           </div>
+
+          <div role="group" aria-label="Filter by campus" className="flex items-center gap-1.5 p-1 bg-stone-100/90 rounded-xl overflow-x-auto pb-1.5 sm:pb-1 scrollbar-none max-w-full shrink-0">
+            {CAMPUS_FILTERS.map((c) => {
+              const isActive = activeCampus === c.id;
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => setActiveCampus(c.id)}
+                  className={`px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-200 active:scale-[0.98] min-h-[40px] shrink-0 ${
+                    isActive ? 'bg-[#153B27] text-white shadow-sm' : 'text-stone-600 hover:text-[#14291D] hover:bg-white/70'
+                  }`}
+                >
+                  {c.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-600 px-1">
+          <span className="font-medium" aria-live="polite">
+            Showing{' '}
+            <strong className="text-[#153B27] font-bold tabular-nums">{totalShown}</strong> departments
+          </span>
+          {(query.trim() || activeFilter !== 'all' || activeCampus !== 'all') && (
+            <button type="button" onClick={() => { setQuery(''); setActiveFilter('all'); setActiveCampus('all'); }} className="text-[#7F1D1D] hover:text-[#661717] underline underline-offset-2 decoration-[#7F1D1D]/30 hover:decoration-[#7F1D1D] font-semibold transition-colors">
+              Reset All Filters
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Faculty pills with counts — second tier */}
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-10 lg:px-14 pt-6">
+        <div className="flex flex-wrap items-center gap-2.5" role="group" aria-label="Filter by faculty">
+          {FACULTY_FILTERS.map((f) => {
+            const isActive = activeFilter === f.id;
+            const count = f.id === 'all' ? allDepartments.length : facultiesCatalog.find((x) => x.slug === f.id)?.departments.length ?? 0;
+            return (
+              <button
+                key={f.id}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() => setActiveFilter(f.id)}
+                className={`inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-[11px] font-semibold whitespace-nowrap transition-all duration-200 active:scale-[0.985] ${
+                  isActive ? 'bg-[#153B27] text-white shadow-sm' : 'bg-white border border-stone-200 text-stone-800 hover:border-[#153B27]'
+                }`}
+              >
+                <span>{f.label}</span>
+                <span className={`text-[10px] font-bold tabular-nums px-1.5 py-0.5 rounded-md ${isActive ? 'bg-white/15 text-[#E5CD9B]' : 'bg-stone-100 text-stone-600'}`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
 

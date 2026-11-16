@@ -12,17 +12,16 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const FALLBACK_HERO = '/images/campus/main-campus-gate.jpeg';
+const FALLBACK_HERO = '/images/campus/charbagh-campus.jpg';
 
-/** Real departmental/field photos where they exist; verified campus block fallback otherwise. */
+/** Authentic campus & laboratory facility photos for departmental banners. */
 const HERO_IMAGES: Record<string, string> = {
-  chemistry: '/images/departments/department-of-chemistry_1_img.jpg',
-  botany: '/images/departments/department-of-botany_0_img.jpg',
-  zoology: '/images/departments/department-of-zoology_0_img.png',
-  'environmental-sciences': '/images/departments/department-of-environmental-sciences_2_img.png',
-  'biotechnology-genetics-forensic-and-microbiology':
-    '/images/departments/department-of-biotechnology-genetics-forensic-and-microbiology_0_img.jpg',
-  'english-and-foreign-languages': '/images/departments/department-of-english-and-foreign-languages_0_img.png',
+  chemistry: '/campus-shot-2.jpg',
+  botany: '/campus-shot-3.jpg',
+  zoology: '/campus-shot-1.jpg',
+  'environmental-sciences': '/campus-main.jpg',
+  'biotechnology-genetics-forensic-and-microbiology': '/campus-shot-2.jpg',
+  'english-and-foreign-languages': '/campus-shot-1.jpg',
 };
 
 const durationOf = (prog: string): string => {
@@ -286,12 +285,6 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/15 flex flex-col gap-2.5">
-                  <Link
-                    href="/admissions"
-                    className="w-full py-3 rounded-xl bg-[#C8A96E] text-[#14291D] font-semibold text-xs text-center hover:bg-[#DCC489] transition-colors shadow-xs"
-                  >
-                    Apply for Admission
-                  </Link>
                   <Link
                     href="/academics/downloads"
                     className="w-full py-3 rounded-xl bg-white/10 text-white/80 font-semibold text-xs text-center hover:bg-white/20 transition-colors"

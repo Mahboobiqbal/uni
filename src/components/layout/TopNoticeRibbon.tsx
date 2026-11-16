@@ -14,25 +14,25 @@ interface NoticeItem {
 
 const notices: NoticeItem[] = [
   {
-    id: 'admissions-fall-2026',
-    badge: 'Admissions 2026',
-    text: 'Fall 2026 Admissions are now open across 28 Academic Departments (BS, MS/MPhil & PhD).',
-    href: '/admissions',
-    linkText: 'Apply Online',
+    id: 'academic-calendar',
+    badge: 'Academic Calendar',
+    text: 'Fall 2026 Academic Calendar is live — semester dates, examination schedule, and public holidays.',
+    href: '/academics/calendar',
+    linkText: 'View Calendar',
   },
   {
-    id: 'merit-list-notice',
-    badge: 'Merit List',
-    text: 'Spring 2026 Official Merit Lists & Quota Allocation Registers released by the Directorate of Admissions.',
-    href: '/admissions/merit-lists',
-    linkText: 'View Lists',
-  },
-  {
-    id: 'scholarship-aid',
-    badge: 'Financial Aid',
-    text: 'HEC Need-Based & Ehsaas Scholarships: Phase VIII Application Submission Deadline extended.',
-    href: '/admissions/fee-structure',
+    id: 'oric-research',
+    badge: 'Research & Innovation',
+    text: 'ORIC research grants and Gandhara heritage program open for faculty and postgraduate applications.',
+    href: '/research/oric',
     linkText: 'Learn More',
+  },
+  {
+    id: 'downloads-statutes',
+    badge: 'Downloads & Statutes',
+    text: 'Official statutes, proformas, and regulatory templates are available in the public repository.',
+    href: '/academics/downloads',
+    linkText: 'Browse Files',
   },
 ];
 

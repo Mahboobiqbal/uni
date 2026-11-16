@@ -99,7 +99,7 @@ export default function AboutPage() {
       >
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <img
-            src="/images/campus/14_img.jpeg"
+            src="/campus-main.jpg"
             alt="University of Swat campus grounds at the foothills of the Swat Valley"
             className="w-full h-full object-cover scale-105"
           />

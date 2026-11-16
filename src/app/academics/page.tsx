@@ -207,12 +207,6 @@ const relatedPathways = [
     icon: Library,
   },
   {
-    href: '/admissions',
-    title: 'Admissions & Quota Criteria',
-    description: 'Undergraduate and postgraduate eligibility, merit calculation formulas, seat quotas, and online application guidelines.',
-    icon: GraduationCap,
-  },
-  {
     href: '/research/oric',
     title: 'ORIC & Research Initiatives',
     description: 'Office of Research, Innovation & Commercialization managing alpine research grants, Gandhara archaeology, and patents.',

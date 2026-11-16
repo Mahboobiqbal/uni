@@ -4,6 +4,157 @@ All modifications, component replacements, and architectural updates are logged 
 
 ---
 
+## [2026-11-16] — UoS Navigation Guide: Initial-Screen Fit & Hidden Scrollbar
+
+### Action Summary
+1. **Bigger widget + tighter initial layout**:
+   - Panel resized to `max-h-[82vh]` with `sm:h-[620px]` and `w-[380px] sm:w-[420px]`, so the welcome card and all 5 main topic pills fit with breathing room and **zero overflow** on initial open.
+   - The `← Back to Main Topics` footer is now **hidden on the initial welcome step** (gated on `flowStarted`), freeing ~64px of vertical space; it appears only once the user enters a topic flow (and hides again after a clean reset).
+2. **Hidden browser scrollbar track, scroll preserved**:
+   - The message list now uses `overflow-y: auto` with `scrollbar-width: none`, `-ms-overflow-style: none`, and `::-webkit-scrollbar { display: none }` — the thick Windows scrollbar track never appears, while mouse-wheel / touch scrolling still works on deeper multi-step conversations.
+3. **Verification**: `npx tsc --noEmit` passes; `npm run build` generates 303/303 static pages. Browser-verified: initial open has no scrollbar and all 5 choices fit; the footer appears on deeper steps; a long thread scrolls (`scrollHeight 767 > clientHeight 472`) with both Firefox (`scrollbar-width:none`) and WebKit (`display:none`) scrollbar hiding. Not committed.
+
+---
+
+## [2026-11-16] — Redesigned the Custom 404 Error Page
+
+### Action Summary
+1. **Replaced the generic graduation-cap icon** with the official University of Swat crest (`/uos-logo-circle.png`), framed in a `w-20 h-20 sm:w-24 sm:h-24` Muted Gold ring badge (`ring-2 ring-[#C8A96E]/50 p-2 rounded-full bg-white shadow-sm`).
+2. **Editorial depth (no heavy boxes)**:
+   - Warm Alabaster `#F6F5F0` canvas with an ultra-subtle giant crest watermark (`opacity-[0.035]`) centered behind the content.
+   - Thin University Crimson top hairline (`border-t` `h-1 bg-[#7F1D1D]`).
+   - Oversized serif `404` numeral (`text-stone-200/80 text-7xl sm:text-8xl`) behind the crimson `ERROR 404 • UNIVERSITY OF SWAT` eyebrow.
+3. **Copy & actions**:
+   - Kept serif heading `This page has not been enrolled` in Deep Forest Green.
+   - Fixed the misleading subtext to: *"The page you’re looking for may have moved or no longer exists. Use the links below to return to the main university portal."*
+   - Three verified CTA pills: `Return Home` (`/`, green-filled), `Browse All Programs ↗` (`/programs`, white with crimson border hover), `Administration & Offices` (`/administration`, white with green border hover) — all rounded-full.
+4. **Verification**: `npx tsc --noEmit` passes; `npm run build` generates 303/303 static pages; browser-verified the 404 page renders correctly and all three CTA routes return HTTP 200 (no dead links). Not committed.
+
+---
+
+## [2026-11-16] — Audited & Grounded All UoS Navigation Guide URLs in Real Routes
+
+### Action Summary
+1. **Audited the real file-system routes** under `src/app/**/page.tsx` and the supported section IDs / query params:
+   - Real routes include `/programs`, `/programs/[slug]`, `/faculty`, `/faculty/[slug]`, `/departments/[slug]`, `/administration` (`?tab=offices|directorates|alumni|central-library|media-cell|proctorial-board|ydc`), `/academics`, `/academics/calendar`, `/academics/downloads`, `/affiliated-colleges`, `/research`, `/research/oric`, `/research/asrb`, `/leadership`, `/campuses/*`, `/contact`, `/portal`, `/news`, `/events`, `/about`, `/alumni`, `/campus-life`, etc.
+2. **Fixed every dead/hallucinated chatbot URL** in `UosAssistant.tsx`:
+   - **Flow A (Apply)**: the deleted `/admissions` and `/admissions#fees/#merit-lists/#scholarships` are replaced with real routes — `/programs` (application criteria, per-program semester fees, merit/quota info) and `/academics/downloads` (KPEF scholarship & financial-aid forms).
+   - **Flow C (Faculties)**: `/faculties` → `/faculty` (the real route), with descriptive department copy.
+   - **Flow E (Affiliations)**: `/affiliations` → `/affiliated-colleges` (the real route).
+   - **Flow B (Programs)** → `/programs`; **Flow D (Administration)** → `/administration?tab=offices|central-library|ydc|proctorial-board`; **Flow E** → `/academics/calendar`, `/academics/downloads`, `/academics` — all verified existing routes.
+3. **Browser verification**: walked every decision-tree branch (A guide/fees/grants, B, C, D library/ydc, E calendar/affiliations/academics) and confirmed every suggested destination opens an actual populated page — all 10 unique destinations return HTTP 200 with zero 404 errors.
+4. **Verification**: `npx tsc --noEmit` passes (0 errors); `npm run build` generates 303/303 static pages. Not committed.
+
+---
+
+## [2026-11-16] — UoS Navigation Guide Polish Pass (Launcher, Typing, Labels, Reset)
+
+### Action Summary
+1. **Launcher always visible**: the circular Deep Forest Green floating button (`bg-[#153B27] hover:bg-[#0F291B] text-white`) now stays permanently fixed at `bottom-6 right-6 z-50` whether the panel is open or closed. Its icon morphs between the chat bubble (closed) and a clean downward chevron `⌄` (open), acting as the open/close toggle. The chat panel anchors directly above it (`bottom-24 right-6 w-[370px] sm:w-[400px] max-h-[75vh]`).
+2. **Distinct sender labels + typing delay**:
+   - Assistant (left): UoS mini-crest in a Muted Gold `#C8A96E` ringed badge, with a tiny **`UOS GUIDE`** label above a clean white card (`bg-white border border-stone-200 border-l-[3px] border-l-[#153B27] rounded-2xl rounded-tl-sm p-3.5 shadow-xs`).
+   - Student (right): the confusing `U` avatar is removed; a tiny **`YOU`** label sits above a University Crimson (`bg-[#7F1D1D] text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm font-medium shadow-xs`) bubble.
+   - A **350ms typing indicator** (3-dot `"UoS Guide is checking…"`) appears between steps — the student's selection bubble shows immediately, then the next question card + choices reveal smoothly.
+   - **Only the latest step's choices are interactive** — previous choices are hidden/locked during typing and after answering.
+3. **Clean "Back to Main Topics" reset**: the footer button now resets the conversation to the initial welcome message + 5 main topic buttons, hides the Start Over button, and scrolls to the top of the panel (no more appended "Back to Main Topics" bubble or duplicated welcome at the bottom).
+4. **Verification**: `npx tsc --noEmit` passes (0 errors); `npm run build` generates 303/303 static pages; browser-verified launcher visibility + chevron swap, UOS GUIDE/YOU labels, 350ms typing pause + choice locking, and clean reset, all with 0 console errors. Not committed.
+
+---
+
+## [2026-11-16] — UoS Assistant Converted to a Guided Interactive Navigation Assistant
+
+### Action Summary
+1. **Replaced the static text-input chat widget** (`src/components/ui/UosAssistant.tsx` + `.css`) with a **rule-based decision-tree guided assistant** — zero external AI API calls, and the `"Replies may be limited"` disclaimer is gone.
+2. **Widget UI cleanup**:
+   - **Header**: `bg-[#153B27]` with gold `border-b-2 border-b-[#C8A96E]`, crest mark, `UoS Navigation Guide` title, `Instant Campus Navigator` status line, a `Start Over ↺` button that appears once a flow begins, and a single `X` close button.
+   - **Footer bar**: replaced the broken double-bordered `<input>` composer with a clean `← Back to Main Topics` quick-reset bar (no dead-end text input).
+3. **Five guided flows** (greeting + 5 primary topic buttons), each resolving in 2–3 taps to a crimson navigation card:
+   - **A — Apply to University**: degree level → what you need → card to `/admissions`, `/admissions#fees`, `/admissions#merit-lists`, or `/admissions#scholarships` (mentions PKR 1,500 Bank of Khyber challan & Fall 2026).
+   - **B — Explore Programs & Degrees**: field of study → degree level → lists 3–4 matching programs + card to `/programs`.
+   - **C — Find Faculties & Departments**: faculty/campus → lists teaching departments + card to `/faculties`.
+   - **D — Administration, Library & Student Services**: office/service → location + email + card to `/administration?tab=offices|central-library|ydc|proctorial-board`.
+   - **E — Academic Calendar, Forms & Affiliated Colleges**: document type → card to `/academics/calendar`, `/academics/downloads`, `/affiliations`, or `/academics`.
+4. **Conversation UX**: user selections render as Deep Forest Green (`bg-[#153B27] text-white`) bubbles on the right; assistant responses render as crisp white cards on the left with interactive choice pills below; auto-scroll to newest step; Escape closes; Tab-focus trap preserved.
+5. **Verification**: `npx tsc --noEmit` passes (0 errors); `npm run build` generates 303/303 static pages; browser-verified greeting, all 5 flows, navigation cards, Start Over, and Back to Main Topics with 0 console errors. Not committed.
+
+---
+
+## [2026-11-16] — Removed Global Navbar Search Button & Deleted the /search Page
+
+### Action Summary
+1. **Removed the global search icon button from the Navbar** (`src/components/layout/Navbar.tsx`):
+   - Desktop circular magnifying-glass button next to `Student Portal` — removed.
+   - Mobile magnifying-glass icon next to the hamburger menu — removed.
+   - Mobile-drawer "Search the university" link (below the nav groups) — removed.
+   - Dropped the now-unused `Search` lucide import; `Student Portal` button remains in all three surfaces.
+2. **Removed `search` from `primaryActions`** (`src/data/navigation.ts`) so no header/drawer destination points at `/search`.
+3. **Deleted the standalone `/search` route** (`src/app/search/` + its internal `SearchPageContent` client index). `/search` now returns 404. No dedicated global search modal component existed.
+4. **No global keyboard shortcut** for `/search` existed (only the kept in-page `/` shortcuts inside `/programs`, `/faculties`, `/administration`, `/academics/downloads`, `/affiliated-colleges`). In-page directory filters and the floating UoS Assistant widget remain intact.
+5. **Verification**: `npx tsc --noEmit` passes (0 errors); `npm run build` generates 303/303 static pages (was 304, minus /search); browser-verified the header shows only `Student Portal` + hamburger (no search control), and `/search` → 404. Not committed.
+
+---
+
+## [2026-11-16] — Distinct Per-Tab Editorial Layouts for Administration (Replacing the Generic Template)
+
+### Action Summary
+1. **Replaced the repeated "Key areas" / "People" / "Contact" template** in `AdministrationExplorer.tsx` with a **purpose-built editorial layout per category tab**:
+   - **Overview**: asymmetric `lg:grid-cols-12` split (left: 3-campus org intro; right: Deep Forest Green `Central Administration Desk` panel with phone/email/hours) + **7-wing navigation matrix** with Roman numerals (I–VII), function counts, 1-line summaries, and `Open Wing →` buttons that switch `activeCategory`.
+   - **Offices (7)**: numbered statutory ledger (01–07 in crimson) with `Admin Block • Floor` tags, serif titles, 2-line descriptions, direct desk emails; plus a 5-officer **leadership roster** with monogram badges.
+   - **Directorates (6)**: full-width Deep Forest Green **operational banner** (with `Prof. Dr. Hazrat Bilal — ao@uswat.edu.pk` contact) + 2-column split cards with crimson `border-l-4` accent bars, director names, and emails.
+   - **Central Library**: top 4-stat architectural strip (45,000+ volumes / HEC digital / reading hours / campuses) + 2-column editorial split (borrowing rules on alabaster left; Chief Librarian `Dr. Wajid Rashid` + circulation desk on green right).
+   - **Youth Development Centre**: warm green showcase (careers/scholarships/societies) + 3-column facilitation team (Dr. Imran, Mr. Tariq Ziad, Dr. Amjad Ali).
+   - **Alumni / Media Cell / Proctorial Board**: tailored 2-column editorial layouts — Alumni = green registration & verification callout + network benefits; Media Cell = press/media guidelines + official channels; Proctorial Board = conduct & safety charter + deputy chief proctor roster.
+2. **Restored 4-column footer balance** in `Footer.tsx`: Brand & Contact (5) · ACADEMICS (2) · ADMISSIONS & CAMPUS (3) · UNIVERSITY (2) = 12 cols, full width. Replaced the removed admissions links in the "Admissions & Campus" column with living campus/portal routes (`/campus-life`, `/campuses/main-campus`, `/campuses/women-campus`, `/portal`, `/contact`).
+3. **Verification**: `npx tsc --noEmit` passes (0 errors); `npm run build` generates 304/304 static pages; browser-verified all 8 tabs render their distinct layouts (green panels, Roman numerals, numbered ledgers, stat strips, banners) with 0 console errors. Not committed.
+
+---
+
+## [2026-11-16] — Redesigned Administration Category Cards in Premium Editorial Style
+
+### Action Summary
+1. **Rebuilt every card type inside the `AdministrationExplorer` category views** to match the established house style used across `DownloadsClient` / `AffiliatedCollegesClient`:
+   - **Key areas / highlights** and **Overview** cards: white card with `border-t-[3px] border-t-[#153B27]`, hover to crimson (`hover:border-[#7F1D1D]`), icon chip (tints green→crimson on hover), serif heading that tints crimson on hover, large Muted Gold `#C8A96E` serif numeral index (01, 02…), hairline footer rule with uppercase tracking-wider label + count badge, and `hover:shadow-md`.
+   - **Staff cards**: monogram ring with gold `ring-2 ring-[#C8A96E]/40`, serif name, crimson uppercase role eyebrow, numbered index, hairline footer with `mailto:` email link (mail icon) or "On campus".
+   - **Section headers**: added editorial `border-b border-stone-300` underline headers with a crimson eyebrow + serif H2 and a count pill badge (green for key areas, crimson for people).
+   - **Contact cards**: now use the house top-rule card treatment (crimson rule → hover green).
+2. **Verification**: `npx tsc --noEmit` passes (0 errors). Browser-verified on `?tab=offices` (14 premium cards, 3 sections) and `?tab=directorates` (10 cards, 8 gold numerals) with 0 console errors. Not committed.
+
+---
+
+## [2026-11-16] — Deleted All Admissions Pages & Sub-Pages
+
+### Action Summary
+1. **Deleted the `/admissions` route** and all sub-pages:
+   - Removed `src/app/admissions/` (the hub page) and `src/components/admissions/AdmissionsHub.tsx`.
+   - `/admissions`, `/admissions/fee-structure`, and `/admissions/merit-lists` now return **404**.
+2. **Removed all inbound admissions entry points** (per user decision — "Remove all admissions entry points"):
+   - **Nav**: removed the entire "Admissions" mega-drawer section + its icons (`Wallet`, `Phone`) from `src/data/navigation.ts`.
+   - **Footer**: removed the "Admissions & Campus" column; ORIC link moved under University; grid rebalanced (5/2/5).
+   - **Top ribbon**: replaced the three admissions notices with non-admissions ones (Academic Calendar, ORIC Research, Downloads & Statutes).
+   - **Portal**: removed the "Digital Payments & Fee Vouchers" card (`/admissions/fee-structure`).
+   - **Home**: removed `AdmissionsInquiryFunnel` (from `/`) and `AdmissionsFinancialAid` (from `FacultyProgramsGrid`); deleted both component files.
+   - **CTAs**: removed "Apply"/"View Fee Structure" buttons from programs `[slug]`, departments `[slug]`, faculty `[slug]`, women-campus, and the RankingSection "Explore Admissions Criteria" link.
+   - **Academics**: removed the "Admissions & Quota Criteria" relatedPathway.
+   - **next.config.ts**: removed the two admissions redirects.
+3. **Verification**: `npx tsc --noEmit` passes; `npm run build` generates 304/304 static pages; browser-verified nav/footer/home render with zero admissions references and `/admissions` → 404. Not committed.
+
+---
+
+## [2026-11-16] — Administration Converted to a Single Interactive Self-Contained Page
+
+### Action Summary
+1. **Consolidated `/administration` into one client-driven page**:
+   - Created `src/components/administration/AdministrationExplorer.tsx` (client) — a single self-contained interactive explorer that follows the exact `/programs` / `/faculties` two-tier client-side state pattern.
+   - `activeCategory` React state (`overview` | the 7 section slugs) drives in-page content swapping — clicking a category pill updates state and instantly swaps the detail panel below without any route change or reload.
+   - Deleted all 7 sub-page routes under `src/app/administration/[slug]/` (offices, directorates, alumni, central-library, media-cell, proctorial-board, ydc) plus the now-obsolete `AdminPageLayout.tsx` and `AdministrationOverview.tsx`.
+2. **Category pills are `<button>` controls, never `<Link>` navigations**: `Overview` (default) shows all wings with "View details" triggers that switch `activeCategory`; each section pill (`Offices 7`, `Directorates 6`, `Alumni 4`, `Central Library 4`, `Media Cell 4`, `Proctorial Board 4`, `Youth Development Centre 4`) swaps to that unit's intro, highlights, staff roster, and contact.
+3. **Two-tier search & filter bar** matching `/programs`: floating white card (crimson top rule, `h-12` search input with contextual placeholder + `?` keyboard shortcut) with wing segmented toggle (All Wings / Statutory Offices / Directorates / Student Services), live results counter, "Reset All Filters", and the category pill row — all with `gap-2` breathing room between label and count badge.
+4. **Live search** filters the overview cards by title/summary/staff/contact, and filters highlights + staff within the active section detail.
+5. **Deep links & nav**: Navbar mega-drawer links and `adminNavLinks` now point to `/administration?tab=slug` → `searchParams` (`useSearchParams` + Suspense) pre-selects the tab. Old `/administration/*` URLs return 404.
+6. **Verification**: `npx tsc --noEmit` passes; `npm run build` generates 305/305 static pages; browser-verified pill swapping, deep-link pre-selection, `/` shortcut focus, and 404 on deleted routes. Not committed.
+
+---
+
 ## [2026-11-16] — Compact Horizontal Swipe Rail for Core Pillar Cards on Mobile View
 
 ### Action Summary

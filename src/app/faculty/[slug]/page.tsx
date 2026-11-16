@@ -157,12 +157,6 @@ export default async function FacultyProfilePage({ params }: PageProps) {
 
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/admissions"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#153B27] text-white text-sm font-semibold hover:bg-[#153B27]/90 transition-colors shadow-xs"
-              >
-                Apply for Admission
-              </Link>
-              <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-stone-100 text-stone-700 text-sm font-semibold hover:bg-stone-200 transition-colors"
               >

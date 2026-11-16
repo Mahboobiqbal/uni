@@ -77,13 +77,62 @@ export default function AffiliatedCollegesClient() {
         </a>
       </div>
 
-      {/* Filter bar directly on canvas */}
-      <div className="mb-8 sm:mb-12 space-y-4">
-        <div className="flex overflow-x-auto pb-2 scrollbar-none momentum-scroll sm:flex-wrap items-center gap-2" role="group" aria-label="Filter by sector">
+      {/* Two-tier search & filter bar — matches /programs */}
+      <div className="relative z-20 -mt-6 sm:-mt-8 mb-8 sm:mb-12">
+        <div role="search" aria-label="Filter colleges"
+          className="bg-white border border-stone-300 border-t-4 border-t-[#7F1D1D] rounded-2xl p-3.5 sm:p-5 shadow-[0_24px_50px_-22px_rgba(12,25,18,0.45)] flex flex-col lg:flex-row lg:items-center gap-3 sm:gap-4">
+          <div className="relative min-w-0 flex-1">
+            <Search className="w-4 h-4 text-stone-600 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder='Search colleges, degree programs, or city — try "Mingora", "Saidu Sharif", "Law"…'
+              aria-label="Search colleges"
+              className="w-full pl-11 pr-4 h-12 rounded-xl bg-stone-50 border border-stone-300 text-[16px] sm:text-sm text-[#14291D] placeholder:text-stone-600 focus:outline-none focus:ring-2 focus:ring-[#153B27] focus:border-transparent focus:bg-white transition-all"
+            />
+          </div>
+
+          <div role="group" aria-label="Filter by sector" className="flex items-center gap-1.5 p-1 bg-stone-100/90 rounded-xl overflow-x-auto pb-1.5 sm:pb-1 scrollbar-none max-w-full shrink-0">
+            {[
+              { id: 'all' as SectorFilter, label: 'All Sectors' },
+              { id: 'public' as SectorFilter, label: 'Public Sector' },
+              { id: 'private' as SectorFilter, label: 'Private Sector' },
+            ].map((f) => {
+              const isActive = sector === f.id;
+              return (
+                <button
+                  key={f.id}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => setSector(f.id)}
+                  className={`px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-200 active:scale-[0.98] min-h-[40px] shrink-0 ${
+                    isActive ? 'bg-[#153B27] text-white shadow-sm' : 'text-stone-600 hover:text-[#14291D] hover:bg-white/70'
+                  }`}
+                >
+                  {f.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-600 px-1">
+          <span className="font-medium" aria-live="polite">
+            Showing <strong className="text-[#153B27] font-bold tabular-nums">{totalVisible}</strong> affiliated colleges
+          </span>
+          {(query.trim() || sector !== 'all') && (
+            <button type="button" onClick={() => { setQuery(''); setSector('all'); }} className="text-[#7F1D1D] hover:text-[#661717] underline underline-offset-2 font-semibold transition-colors">
+              Reset All Filters
+            </button>
+          )}
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center gap-2.5" role="group" aria-label="Sector group">
           {[
-            { id: 'all' as SectorFilter, label: `All Colleges (${publicColleges.length + privateColleges.length})` },
-            { id: 'public' as SectorFilter, label: `Public Sector (${publicColleges.length})` },
-            { id: 'private' as SectorFilter, label: `Private Sector (${privateColleges.length})` },
+            { id: 'all' as SectorFilter, label: 'All Colleges', count: publicColleges.length + privateColleges.length },
+            { id: 'public' as SectorFilter, label: 'Public Sector', count: publicColleges.length },
+            { id: 'private' as SectorFilter, label: 'Private Sector', count: privateColleges.length },
           ].map((f) => {
             const isActive = sector === f.id;
             return (
@@ -92,29 +141,18 @@ export default function AffiliatedCollegesClient() {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => setSector(f.id)}
-                className={`px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 active:scale-[0.98] min-h-[38px] shrink-0 ${
-                  isActive ? 'bg-[#7F1D1D] text-white shadow-sm' : 'bg-white border border-stone-200 text-stone-700 hover:border-[#153B27]'
+                className={`inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-[11px] font-semibold whitespace-nowrap transition-all duration-200 active:scale-[0.985] ${
+                  isActive ? 'bg-[#153B27] text-white shadow-sm' : 'bg-white border border-stone-200 text-stone-800 hover:border-[#153B27]'
                 }`}
               >
-                {f.label}
+                <span>{f.label}</span>
+                <span className={`text-[10px] font-bold tabular-nums px-1.5 py-0.5 rounded-md ${isActive ? 'bg-white/15 text-[#E5CD9B]' : 'bg-stone-100 text-stone-600'}`}>
+                  {f.count}
+                </span>
               </button>
             );
           })}
         </div>
-
-        <div className="relative max-w-xl">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-500" />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by college, degree, or city…"
-            className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-300 bg-white text-[16px] sm:text-sm text-stone-800 placeholder-stone-500 focus:outline-none focus:border-[#153B27] focus:ring-2 focus:ring-[#153B27]/20 transition-colors"
-          />
-        </div>
-        <p className="text-xs text-stone-500 font-medium" aria-live="polite">
-          Showing <strong className="text-stone-800">{totalVisible}</strong> affiliated colleges
-        </p>
       </div>
 
       {/* Public sector */}

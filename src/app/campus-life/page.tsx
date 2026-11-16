@@ -39,7 +39,7 @@ const campusHighlights = [
     title: 'Hunerkada: Center for Art & Culture',
     tag: 'Heritage & Creativity',
     description: 'Keeps Swati embroidery, Gandharan sculpture, calligraphy, painting, and regional folklore alive with national artists.',
-    image: '/images/news/news-gandhara-mou-oct2026.jpeg',
+    image: '/campus-shot-3.jpg',
     link: '/about',
     linkText: 'Cultural Heritage Overview',
   },

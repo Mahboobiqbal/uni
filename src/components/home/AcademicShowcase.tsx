@@ -50,8 +50,8 @@ const programAreas: ProgramArea[] = [
     levels: ['BS', 'MS / MPhil', 'PhD'],
     description:
       'Chemistry, physics, botany, zoology, microbiology, biotechnology and environmental sciences with strong alpine-field research.',
-    image: '/images/departments/department-of-chemistry_1_img.jpg',
-    imageAlt: 'University of Swat chemistry laboratory',
+    image: '/campus-shot-2.jpg',
+    imageAlt: 'University of Swat academic science complex',
     tracks: [
       { label: 'BS Chemistry', href: '/programs/bs-chemistry' },
       { label: 'BS Environmental Sciences', href: '/programs/bs-environmental-sciences' },
@@ -86,8 +86,8 @@ const programAreas: ProgramArea[] = [
     levels: ['LLB', 'LLM', 'MPhil'],
     description:
       'LLB and LLM programs covering constitutional, Islamic (Sharia) and criminal law, plus public administration studies.',
-    image: '/images/campus/14_img.jpeg',
-    imageAlt: 'University of Swat campus building',
+    image: '/campus-shot-1.jpg',
+    imageAlt: 'University of Swat academic block and lecture halls',
     tracks: [
       { label: 'LLB (Integrated)', href: '/programs/ba-llb-law-and-shariah' },
       { label: 'LLM', href: '/departments/law-shariah' },
@@ -104,8 +104,8 @@ const programAreas: ProgramArea[] = [
     levels: ['BS / BA', 'MA / MPhil', 'PhD'],
     description:
       'English, Urdu, Pashto, Islamic studies, history, sociology and applied psychology across undergraduate and graduate levels.',
-    image: '/images/news/news-gandhara-mou-oct2026.jpeg',
-    imageAlt: 'Swat Valley Gandharan heritage',
+    image: '/campus-shot-3.jpg',
+    imageAlt: 'Swat Valley alpine landscape and heritage',
     tracks: [
       { label: 'MA / M.Phil English', href: '/departments/english-foreign-languages' },
       { label: 'PhD Islamic Studies', href: '/departments/islamic-arabic-studies' },

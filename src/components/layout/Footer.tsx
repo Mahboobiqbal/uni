@@ -9,20 +9,21 @@ const academicsCol = [
   { label: 'Affiliated Colleges', href: '/affiliated-colleges' },
 ];
 
-const admissionsCol = [
-  { label: 'Admissions 2026', href: '/admissions' },
-  { label: 'Fee Structure', href: '/admissions#fees' },
-  { label: 'Merit Lists & Quotas', href: '/admissions#merit-lists' },
-  { label: 'Scholarships & Aid', href: '/admissions#scholarships' },
-  { label: 'ORIC & Research', href: '/research' },
-];
-
 const universityCol = [
   { label: 'About & Heritage', href: '/about' },
   { label: "Vice Chancellor's Office", href: '/leadership/vice-chancellor' },
+  { label: 'Administration & Offices', href: '/administration' },
   { label: 'Quality Enhancement Cell (QEC)', href: '/academics#qec' },
-  { label: 'Campus Life & Hostels', href: '/campus-life' },
+  { label: 'ORIC & Research', href: '/research' },
   { label: 'Tenders & Careers', href: '/portal' },
+];
+
+const campusCol = [
+  { label: 'Campus Life & Hostels', href: '/campus-life' },
+  { label: 'Charbagh Main Campus', href: '/campuses/main-campus' },
+  { label: 'Women Sub-Campus', href: '/campuses/women-campus' },
+  { label: 'Student Portal & Services', href: '/portal' },
+  { label: 'Contact & Helpdesk', href: '/contact' },
 ];
 
 const social = [
@@ -79,10 +80,10 @@ export default function Footer() {
           </div>
 
           {/* Column 3 · Admissions & Campus */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#C8A96E] mb-4">Admissions &amp; Campus</h3>
             <ul className="space-y-1 sm:space-y-2.5 text-sm text-stone-300">
-              {admissionsCol.map((l) => (
+              {campusCol.map((l) => (
                 <li key={l.label}>
                   <Link href={l.href} className="inline-block py-1 hover:text-white transition-colors">{l.label}</Link>
                 </li>
@@ -91,7 +92,7 @@ export default function Footer() {
           </div>
 
           {/* Column 4 · University */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#C8A96E] mb-4">University</h3>
             <ul className="space-y-1 sm:space-y-2.5 text-sm text-stone-300">
               {universityCol.map((l) => (

@@ -134,12 +134,6 @@ export default function WomenCampusPage() {
 
               <div className="mt-8 pt-6 border-t border-stone-200 flex flex-col gap-2">
                 <Link
-                  href="/admissions"
-                  className="w-full py-3 rounded-xl bg-[#7F1D1D] text-white font-semibold text-xs text-center hover:bg-[#7F1D1D]/90 transition-colors shadow-xs"
-                >
-                  Apply to Women Campus Programs
-                </Link>
-                <Link
                   href="/campuses/main-campus"
                   className="w-full py-3 rounded-xl bg-stone-100 text-stone-700 font-semibold text-xs text-center hover:bg-stone-200 transition-colors"
                 >

@@ -285,29 +285,29 @@ const roadmapOf = (title: string, level: DegreeLevel, content: (typeof DISCIPLIN
   }));
 };
 
-/* ── Hero image mapping (subject-specific, with curated fallbacks) ────────── */
+/* ── Hero image mapping (subject-specific campus & academic blocks) ────────── */
 
 const HERO_IMAGES: Record<string, string> = {
-  'bs-computer-science': '/images/campus/main-campus-gate.jpeg',
-  'bs-software-engineering': '/images/campus/main-campus-gate.jpeg',
-  'bs-chemistry': '/images/departments/department-of-chemistry_1_img.jpg',
-  'bs-environmental-sciences': '/images/departments/department-of-environmental-sciences_2_img.png',
+  'bs-computer-science': '/campus-shot-4.jpg',
+  'bs-software-engineering': '/campus-shot-4.jpg',
+  'bs-chemistry': '/campus-shot-2.jpg',
+  'bs-environmental-sciences': '/campus-main.jpg',
   'bba-hons': '/images/campus/charbagh-campus.jpg',
-  'ba-llb-law-and-shariah': '/images/news/news-gandhara-mou-oct2026.jpeg',
+  'ba-llb-law-and-shariah': '/campus-shot-1.jpg',
 };
 
-const DEFAULT_HERO = '/images/campus/main-campus-gate.jpeg';
+const DEFAULT_HERO = '/images/campus/charbagh-campus.jpg';
 
 const heroFor = (title: string, deptId: string, slug: string): string => {
   if (HERO_IMAGES[slug]) return HERO_IMAGES[slug];
   const key = disciplineKey(title, deptId);
   const deptHero: Record<DisciplineKey, string> = {
-    computing: '/images/campus/main-campus-gate.jpeg',
-    law: '/images/news/news-gandhara-mou-oct2026.jpeg',
-    health: '/images/campus/main-campus-gate.jpeg',
-    science: '/images/departments/department-of-chemistry_1_img.jpg',
+    computing: '/campus-shot-4.jpg',
+    law: '/campus-shot-1.jpg',
+    health: '/campus-shot-2.jpg',
+    science: '/campus-shot-2.jpg',
     management: '/images/campus/charbagh-campus.jpg',
-    humanities: '/images/news/news-gandhara-mou-oct2026.jpeg',
+    humanities: '/campus-shot-3.jpg',
   };
   return deptHero[key] ?? DEFAULT_HERO;
 };

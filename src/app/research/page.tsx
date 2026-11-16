@@ -137,8 +137,8 @@ export default function ResearchPage() {
       >
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <img
-            src="/images/campus/14_img.jpeg"
-            alt="University of Swat campus grounds where its research community works"
+            src="/campus-shot-2.jpg"
+            alt="University of Swat academic research campus and facilities"
             className="w-full h-full object-cover scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0C1912]/90 via-[#0C1912]/75 to-[#0C1912]/85" aria-hidden="true" />

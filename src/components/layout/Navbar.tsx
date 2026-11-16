@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, Menu, Search, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import TopNoticeRibbon from './TopNoticeRibbon';
 import MegaMenuPanel from './MegaMenuPanel';
 import { navItems, primaryActions } from '@/data/navigation';
@@ -231,13 +231,6 @@ export default function Navbar() {
           {/* ── Actions ────────────────────────────────────────────────── */}
           <div className="hidden shrink-0 items-center gap-2.5 md:flex">
             <Link
-              href={primaryActions.search.href}
-              aria-label={primaryActions.search.label}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/85 transition-colors hover:border-white/40 hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
-            >
-              <Search className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link
               href={primaryActions.portal.href}
               className="inline-flex items-center justify-center rounded-lg bg-[#7F1D1D] px-4 py-2.5 text-[13px] font-semibold text-white shadow-[0_10px_24px_-12px_rgba(0,0,0,0.9)] transition-all duration-150 hover:bg-[#681818] active:translate-y-px active:bg-[#521313]"
             >
@@ -247,14 +240,6 @@ export default function Navbar() {
 
           {/* ── Mobile / Tablet Action Icons ───────────────────────────── */}
           <div className="flex items-center gap-1 xl:hidden">
-            <Link
-              href={primaryActions.search.href}
-              aria-label={primaryActions.search.label}
-              className="flex h-10 w-10 items-center justify-center rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition-colors focus:outline-none"
-            >
-              <Search className="h-4.5 w-4.5" aria-hidden="true" />
-            </Link>
-
             <button
               type="button"
               onClick={() => setMobileMenuOpen((open) => !open)}
@@ -387,14 +372,6 @@ export default function Navbar() {
           </nav>
 
           <div className="mt-6 flex flex-col gap-2.5">
-            <Link
-              href={primaryActions.search.href}
-              onClick={closeAll}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-white/15"
-            >
-              <Search className="h-4 w-4" aria-hidden="true" />
-              {primaryActions.search.label}
-            </Link>
             <Link
               href={primaryActions.portal.href}
               onClick={closeAll}

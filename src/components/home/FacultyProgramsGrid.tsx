@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import AcademicShowcase from './AcademicShowcase';
-import AdmissionsFinancialAid from './AdmissionsFinancialAid';
 
 export default function FacultyProgramsGrid() {
   return (
@@ -46,9 +45,6 @@ export default function FacultyProgramsGrid() {
 
         {/* Interactive Academic Showcase — left index + right photographic spotlight */}
         <AcademicShowcase />
-
-        {/* Admissions, Scholarships & Financial Aid showcase */}
-        <AdmissionsFinancialAid />
       </div>
     </section>
   );
